@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare AI Tools - AI Tools Resource</title>
+    <!-- Add Google Font 'Inter' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to the updated stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Inter', var(--font-family-sans-serif); }
+        /* Specific styles for comparison page layout */
+        .comparison-page-layout {
+            display: grid;
+            grid-template-columns: 1fr; /* Default mobile: single column */
+            gap: calc(var(--spacing-unit) * 2);
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+        .comparison-sidebar {
+            background-color: var(--card-background);
+            padding: var(--spacing-unit);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .comparison-sidebar h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-unit);
+            padding-bottom: calc(var(--spacing-unit) * 0.5);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .filter-group {
+            margin-bottom: var(--spacing-unit);
+        }
+        .filter-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: calc(var(--spacing-unit) * 0.3);
+            font-size: 0.9rem;
+        }
+        .filter-group select,
+        .filter-group input[type="search"] {
+            width: 100%;
+            padding: calc(var(--spacing-unit) * 0.6) var(--spacing-unit);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: var(--background-color); /* Ensure contrast */
+        }
+        .tool-selection-list {
+            max-height: 300px; /* Limit height and make scrollable */
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: calc(var(--spacing-unit) * 0.5);
+            background-color: var(--background-color);
+        }
+        .tool-selection-list .list-group-item {
+            display: block;
+            padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+            border: none;
+            cursor: pointer;
+        }
+        .tool-selection-list .list-group-item input[type="checkbox"] {
+            margin-right: calc(var(--spacing-unit) * 0.5);
+        }
+        .comparison-main-content h2 {
+            margin-bottom: var(--spacing-unit);
+        }
+        #comparison-placeholder {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 3);
+            background-color: var(--card-background);
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+            color: var(--secondary-text-color);
+        }
+        .comparison-table-container {
+            overflow-x: auto; /* Allow horizontal scrolling on small screens */
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid var(--border-color);
+            padding: calc(var(--spacing-unit) * 0.75);
+            text-align: left;
+            vertical-align: top;
+        }
+        .comparison-table thead th {
+            background-color: var(--card-background);
+            font-weight: 600;
+            position: sticky; /* Keep header visible when scrolling horizontally */
+            top: 0;
+            z-index: 1;
+        }
+        .comparison-table tbody th {
+            background-color: var(--card-background);
+            font-weight: 500;
+            width: 150px; /* Fixed width for feature column */
+        }
+        .comparison-charts {
+            display: grid;
+            grid-template-columns: 1fr; /* Stack charts on mobile */
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        @media (min-width: 768px) {
+            .comparison-page-layout {
+                grid-template-columns: 300px 1fr; /* Sidebar and main content */
+            }
+            .comparison-charts {
+                 grid-template-columns: 1fr 1fr; /* Side-by-side charts */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a class="logo" href="index.html">AI Tools Resource</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="categories.html">Categories</a></li>
+                    <li><a class="nav-link active" href="comparison.html">Comparison</a></li>
+                    <li><a class="nav-link" href="blog.html">Blog</a></li> <!-- Added Blog Link -->
+                </ul>
+                <div class="header-controls"> <!-- Wrapper for controls -->
+                    <!-- Theme Switcher Button -->
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <span class="visually-hidden">Toggle theme</span>
+                    </button>
+                    <!-- Mobile Navigation Toggle Button -->
+                    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                        <span>&#9776;</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container comparison-page-layout">
+        <aside class="comparison-sidebar">
+            <h3>Compare Tools</h3>
+
+            <div class="filter-group">
+                <label for="category-filter">Filter by Category:</label>
+                <select id="category-filter" name="category">
+                    <option value="all">All Categories</option>
+                    <!-- Options populated by JS -->
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="tool-search">Search Tools:</label>
+                <input type="search" id="tool-search" placeholder="Type to filter tools...">
+            </div>
+
+            <div class="filter-group">
+                <label>Select Tools (up to 4):</label>
+                <div id="tool-list" class="tool-selection-list list-group">
+                    <!-- Tool checkboxes populated by JS -->
+                    <p>Loading tools...</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="comparison-main-content">
+            <h2>Tool Comparison</h2>
+
+            <div id="comparison-placeholder">
+                <p>Select 2 to 4 tools from the sidebar to compare.</p>
+            </div>
+
+            <div id="comparison-results" style="display: none;">
+                <div class="comparison-table-container">
+                    <table id="comparison-table" class="comparison-table">
+                        <!-- Table content generated by JS -->
+                    </table>
+                </div>
+
+                <div class="comparison-charts">
+                    <div class="chart-container">
+                        <canvas id="features-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pricing-chart"></canvas> <!-- Consider renaming or repurposing this chart -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>AI Tools Resource &copy; 2025 | Data last updated: <span id="last-updated">Loading...</span></p>
+            <!-- Add social links here if desired -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Ensure main.js is loaded first -->
+    <script src="js/main.js"></script>
+    <script src="js/comparison.js"></script>
+    <!-- Mobile navigation toggle script -->
+    <script>
+        const navToggle = document.getElementById('mobile-nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+                navToggle.querySelector('span').textContent = !isExpanded ? '✕' : '☰';
+            });
+        }
+         // Global last updated span
+        const lastUpdatedSpanCompare = document.querySelector('#last-updated');
+        function updateFooterTimestampCompare() {
+             if (lastUpdatedSpanCompare && typeof lastDataUpdateTimestamp !== 'undefined' && lastDataUpdateTimestamp) {
+                 lastUpdatedSpanCompare.textContent = lastDataUpdateTimestamp.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+             } else if (lastUpdatedSpanCompare) {
+                 lastUpdatedSpanCompare.textContent = 'N/A';
+             }
+        }
+         if (typeof lastDataUpdateTimestamp !== 'undefined') {
+             updateFooterTimestampCompare();
+         } else {
+             const checkTimestampCompare = setInterval(() => {
+                 if (typeof lastDataUpdateTimestamp !== 'undefined') {
+                     clearInterval(checkTimestampCompare);
+                     updateFooterTimestampCompare();
+                 }
+             }, 200);
+         }
+    </script>
+</body>
+</html>

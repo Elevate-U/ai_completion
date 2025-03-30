@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Details - AI Tools Resource</title>
+    <!-- Add Google Font 'Inter' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to the main stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Inter', var(--font-family-sans-serif); }
+        .tool-details-container { padding: calc(var(--spacing-unit) * 2) 0; }
+        .loading-message, .error-message { text-align: center; padding: calc(var(--spacing-unit) * 3); color: var(--secondary-text-color); }
+        /* Add more specific styles for tool details layout later */
+        .tool-header h1 { margin-bottom: calc(var(--spacing-unit) * 0.25); }
+        .tool-header .category-badge { font-size: 1rem; background-color: var(--secondary-text-color); color: #fff; padding: 0.3em 0.8em; border-radius: 6px; display: inline-block; margin-bottom: var(--spacing-unit); }
+        .tool-section { margin-bottom: calc(var(--spacing-unit) * 2); }
+        .tool-section h3 { font-size: 1.3rem; margin-bottom: var(--spacing-unit); border-bottom: 1px solid var(--border-color); padding-bottom: calc(var(--spacing-unit) * 0.5); }
+        .tool-section ul { list-style: disc; padding-left: calc(var(--spacing-unit) * 1.5); }
+        .tool-section li { margin-bottom: calc(var(--spacing-unit) * 0.5); }
+        .tool-section p { color: var(--text-color); } /* Use primary text color for details */
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a class="logo" href="index.html">AI Tools Resource</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="categories.html">Categories</a></li>
+                    <li><a class="nav-link" href="comparison.html">Comparison</a></li>
+                    <!-- Add active class dynamically if needed -->
+                </ul>
+                <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span>&#9776;</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container tool-details-container">
+        <div id="tool-details-content">
+            <p class="loading-message">Loading tool details...</p>
+            <!-- Tool details will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>AI Tools Resource &copy; 2025 | Data last updated: <span id="last-updated">Loading...</span></p>
+             <div class="footer-social-links">
+                 <ul class="social-links-list-inline">
+                     <li><a href="https://x.com/ttcruiserrr" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">X</a></li>
+                     <li><a href="https://github.com/Elevate-U" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a></li>
+                     <li><a href="https://www.instagram.com/evrgreenw/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
+                     <li><a href="https://linktr.ee/evrgreenw" target="_blank" rel="noopener noreferrer" aria-label="Linktree">Linktree</a></li>
+                 </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Ensure main.js is loaded first -->
+    <script src="js/main.js"></script>
+    <script src="js/tool-details.js"></script> <!-- Add script for this page -->
+    <!-- Mobile navigation toggle script -->
+    <script>
+        const navToggle = document.getElementById('mobile-nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+                navToggle.querySelector('span').textContent = !isExpanded ? '✕' : '☰';
+            });
+        }
+         // Global last updated span
+        const lastUpdatedSpanDetails = document.querySelector('#last-updated');
+        function updateFooterTimestampDetails() {
+             if (lastUpdatedSpanDetails && typeof lastDataUpdateTimestamp !== 'undefined' && lastDataUpdateTimestamp) {
+                 lastUpdatedSpanDetails.textContent = lastDataUpdateTimestamp.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+             } else if (lastUpdatedSpanDetails) {
+                 lastUpdatedSpanDetails.textContent = 'N/A';
+             }
+        }
+         if (typeof lastDataUpdateTimestamp !== 'undefined') {
+             updateFooterTimestampDetails();
+         } else {
+             const checkTimestampDetails = setInterval(() => {
+                 if (typeof lastDataUpdateTimestamp !== 'undefined') {
+                     clearInterval(checkTimestampDetails);
+                     updateFooterTimestampDetails();
+                 }
+             }, 200);
+         }
+    </script>
+</body>
+</html>

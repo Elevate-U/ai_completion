@@ -1,0 +1,79 @@
+{
+  "name": "Amazon Lex",
+  "category": "Natural Language Processing",
+  "features": [
+    "Conversational AI Chatbots and Voice Bots",
+    "Generative AI Integration",
+    "Omnichannel Engagement",
+    "Automated Chatbot Designer",
+    "Visual Conversation Builder",
+    "Pre-built Connectors",
+    "Streaming Conversations",
+    "Request and Response Interaction Models",
+    "Multilingual Support" 
+  ],
+  "pricing": {
+    "model": "Pay-per-use, request-based pricing. Different rates for speech and text requests, and for streaming vs. request-response interactions. Separate training cost for Automated Chatbot Designer.",
+    "request_response_interaction": {
+      "speech_request": 0.004,
+      "text_request": 0.00075,
+      "unit_speech_request": "USD per request",
+      "unit_text_request": "USD per request"
+    },
+    "streaming_conversation": {
+      "speech_interval": 0.0065,
+      "text_request": 0.0020,
+      "unit_speech_interval": "USD per 15-second interval",
+      "unit_text_request": "USD per request"
+    },
+    "automated_chatbot_designer": {
+      "training_fee": 0.50,
+      "unit_training": "USD per minute"
+    },
+    "free_tier": {
+      "text_requests": "10,000 requests per month (first 12 months)",
+      "speech_requests": "5,000 requests per month (first 12 months)",
+      "chatbot_designer_training": "2 hours per month (first 2 months)"
+    },
+    "notes": "Pay-as-you-go pricing, no upfront commitments. See AWS website for detailed pricing and regional variations."
+  },
+  "pros": [
+    "Comprehensive AI chat builder service",
+    "Powered by the same technology as Alexa",
+    "Supports both voice and text interfaces",
+    "Scalable and secure AWS infrastructure",
+    "Automated chatbot designer accelerates development",
+    "Free tier available"
+  ],
+  "cons": [
+    "Pricing can be complex with different interaction models and features",
+    "Requires integration within the AWS ecosystem"
+  ],
+  "technical_specifications": {
+    "api_type": "REST API",
+    "sdks": "AWS SDKs",
+    "platforms": "AWS Cloud"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+  },
+  "integration_capabilities": [
+    "Amazon Connect",
+    "Facebook Messenger",
+    "Slack",
+    "Kik",
+    "Twilio SMS",
+    "Other AWS services"
+  ],
+  "scalability": "Highly scalable, leveraging AWS infrastructure",
+  "support_options": [
+    "Documentation",
+    "AWS Support plans (paid)",
+    "Community forums"
+  ],
+  "data_source_urls": [
+    "https://aws.amazon.com/lex/",
+    "https://aws.amazon.com/lex/pricing/"
+  ],
+  "last_updated": "2025-03-29"
+}

@@ -1,0 +1,100 @@
+{
+  "name": "Dialogflow (Google Conversational AI)",
+  "category": "Natural Language Processing",
+  "features": [
+    "Conversational Agents (Dialogflow CX)",
+    "Dialogflow ES (Essentials)",
+    "Prebuilt Agents",
+    "Visual Flow Builder (CX)",
+    "Form-based Bot Builder (ES)",
+    "Multilingual Support (30+ languages)",
+    "Omnichannel Integration",
+    "Advanced AI Models (BERT-based NLU in CX)",
+    "Analytics Dashboards",
+    "Integrations with Google Cloud and other platforms",
+    "Agent Assist (add-on)"
+  ],
+  "pricing": {
+    "model": "Monthly pricing based on edition and requests. Different pricing for CX and ES editions.",
+    "dialogflow_cx": {
+      "text_request": 0.007,
+      "audio_input_output": 0.001,
+      "unit": "USD per request (text) or second (audio)",
+      "generative_requests": "See Generative AI App Builder pricing",
+      "design_time_requests": "No charge",
+      "session_requests": "No charge",
+      "free_trial": "600 USD credit for new customers"
+    },
+    "dialogflow_es": {
+      "text_request": 0.002,
+      "audio_input": 0.0065,
+      "audio_output_standard_voice": 4,
+      "audio_output_wavenet_voice": 16,
+      "sentiment_analysis": {
+        "tier_1": {
+          "range": "0-1 million requests",
+          "price_per_1k_requests": 1.00
+        },
+        "tier_2": {
+          "range": "1-5 million requests",
+          "price_per_1k_requests": 0.50
+        },
+        "tier_3": {
+          "range": "5-20 million requests",
+          "price_per_1k_requests": 0.25
+        }
+      },
+      "phone_gateway_tolled": 0.05,
+      "phone_gateway_toll_free": 0.06,
+      "mega_agent_less_than_2k_intents": 0.002,
+      "mega_agent_more_than_2k_intents": 0.006,
+      "unit_text_request": "USD per request",
+      "unit_audio_input": "USD per 15 seconds of audio",
+      "unit_audio_output_standard_voice": "USD per 1 million characters",
+      "unit_audio_output_wavenet_voice": "USD per 1 million characters",
+      "unit_phone_gateway": "USD per minute of phone call processed",
+      "unit_mega_agent_request": "USD per request",
+      "design_time_requests": "No charge",
+      "session_requests": "No charge"
+    },
+    "notes": "Pricing varies based on edition (CX vs ES) and usage. See Google Cloud Dialogflow pricing page for detailed information and volume discounts."
+  },
+  "pros": [
+    "Comprehensive conversational AI platform",
+    "Two editions to suit different needs (CX for advanced, ES for simpler use cases)",
+    "Powerful NLU and speech recognition from Google",
+    "Visual flow builder (CX) simplifies development",
+    "Prebuilt agents and templates accelerate development",
+    "Integrates with Google Cloud and other channels"
+  ],
+  "cons": [
+    "Pricing can be complex, especially for ES edition with add-on features",
+    "May require familiarity with Google Cloud Platform",
+    "Advanced features (e.g., Speaker ID, advanced analytics) are limited to CX edition"
+  ],
+  "technical_specifications": {
+    "api_type": "REST API",
+    "sdks": "Available in various languages",
+    "platforms": "Google Cloud Platform"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+  },
+  "integration_capabilities": [
+    "Google Cloud services",
+    "Google Assistant",
+    "Various messaging platforms and channels",
+    "Telephony integrations"
+  ],
+  "scalability": "Designed for high scalability, leveraging Google Cloud infrastructure",
+  "support_options": [
+    "Documentation",
+    "Google Cloud Support plans (paid)",
+    "Community support"
+  ],
+  "data_source_urls": [
+    "https://cloud.google.com/products/conversational-agents",
+    "https://cloud.google.com/dialogflow/pricing"
+  ],
+  "last_updated": "2025-03-29"
+}

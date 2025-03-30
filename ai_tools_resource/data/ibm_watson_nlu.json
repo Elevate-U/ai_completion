@@ -1,0 +1,73 @@
+{
+  "name": "IBM Watson Natural Language Understanding",
+  "category": "Natural Language Processing",
+  "features": [
+    "Entities",
+    "Categories (Beta)",
+    "Classifications",
+    "Concepts",
+    "Emotions",
+    "Sentiment (Beta)",
+    "Relations",
+    "Metadata",
+    "Semantic Roles"
+  ],
+  "pricing": {
+    "model": "Tiered pricing based on NLU items (text unit + feature). Separate costs for custom models.",
+    "lite": {
+      "nlu_items": "30,000 NLU items/month",
+      "custom_models": "1 free custom model"
+    },
+    "standard": {
+      "tier_1": {
+        "range": "1-250,000 NLU items",
+        "price_per_item": 0.003
+      },
+      "tier_2": {
+        "range": "250,001 - 5,000,000 NLU items",
+        "price_per_item": 0.001
+      },
+      "tier_3": {
+        "range": "Over 5,000,000 NLU items",
+        "price_per_item": 0.0002
+      },
+      "custom_entities_relations_model": {
+        "cost_per_month": 800,
+        "unit": "USD per custom model"
+      },
+      "custom_classification_model": {
+        "cost_per_month": 25,
+        "unit": "USD per custom model"
+      }
+    },
+    "notes": "See IBM Cloud website for detailed pricing."
+  },
+  "pros": [
+    "Comprehensive set of NLP features",
+    "Customizable models",
+    "Integration with IBM Cloud"
+  ],
+  "cons": [
+    "Pricing can be complex",
+    "Requires integration within the IBM Cloud ecosystem"
+  ],
+  "technical_specifications": {
+    "api_type": "REST"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., Capterra)."
+  },
+  "integration_capabilities": [
+    "IBM Cloud services"
+  ],
+  "scalability": "Designed for scalability",
+  "support_options": [
+    "Documentation",
+    "IBM Support plans (paid)"
+  ],
+  "data_source_urls": [
+    "https://www.ibm.com/products/natural-language-understanding",
+    "https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-pricing"
+  ],
+  "last_updated": "2025-03-29"
+}

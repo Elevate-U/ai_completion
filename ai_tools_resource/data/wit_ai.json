@@ -1,0 +1,53 @@
+{
+  "name": "Wit.ai (Meta Conversational AI)",
+  "category": "Natural Language Processing",
+  "features": [
+    "Natural Language Understanding (NLU)",
+    "Intent Recognition",
+    "Entity Recognition",
+    "Bot Building Platform",
+    "Multi-platform Support (Messaging Platforms, Mobile Apps, Smart Home, Wearables)",
+    "Multilingual Support (132 languages for NLU, 30+ for Speech Recognition, English for Speech Synthesis)",
+    "Community-based Learning"
+  ],
+  "pricing": {
+    "model": "Free, including for commercial use. ",
+    "notes": "Wit.ai is a free platform for building natural language experiences. Check documentation for any usage limits or terms of service."
+  },
+  "pros": [
+    "Completely free to use, even for commercial applications",
+    "Easy to get started and build basic chatbots",
+    "Large developer community and knowledge sharing",
+    "Supports a wide range of languages"
+  ],
+  "cons": [
+    "May have rate limits (check documentation)",
+    "Features might be less comprehensive compared to paid platforms",
+    "Less enterprise-focused, may lack advanced enterprise features"
+  ],
+  "technical_specifications": {
+    "api_type": "HTTP API",
+    "sdks": "Likely available in various languages (need to confirm)",
+    "platforms": "Meta Platform"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+  },
+  "integration_capabilities": [
+    "Messaging platforms (Facebook Messenger, etc.)",
+    "Mobile apps",
+    "Smart home devices",
+    "Wearable devices",
+    "Webhooks for backend integration"
+  ],
+  "scalability": "Likely scalable, being a Meta product (needs confirmation)",
+  "support_options": [
+    "Documentation",
+    "Community forum (Facebook Group, GitHub Forum)"
+  ],
+  "data_source_urls": [
+    "https://wit.ai/",
+    "https://wit.ai/faq"
+  ],
+  "last_updated": "2025-03-29"
+}

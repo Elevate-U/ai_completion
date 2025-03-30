@@ -1,0 +1,158 @@
+[
+  {
+    "name": "Sample New AI Tool",
+    "category": "Sample Category",
+    "features": [
+      "Feature X",
+      "Feature Y",
+      "Feature Z (New)"
+    ],
+    "pricing": {
+      "model": "Freemium",
+      "free_tier": "Basic features, limited usage",
+      "paid_tiers": [
+        {
+          "name": "Plus",
+          "price": "$15/month"
+        }
+      ],
+      "notes": "Annual discount available."
+    },
+    "pros": [
+      "Very innovative",
+      "Good UI"
+    ],
+    "cons": [
+      "Still in beta",
+      "Documentation sparse"
+    ],
+    "technical_specifications": {
+      "api_type": "REST",
+      "input_methods": [
+        "API call",
+        "Web interface"
+      ],
+      "supported_languages": [
+        "English"
+      ]
+    },
+    "user_reviews": {
+      "summary": "Promising, but needs refinement.",
+      "sources_to_check": []
+    },
+    "integration_capabilities": [
+      "Zapier"
+    ],
+    "scalability": "Scales horizontally",
+    "support_options": [
+      "Community forum",
+      "Email support (paid)"
+    ],
+    "data_source_urls": [
+      "https://example.com/sample-new-ai-tool"
+    ],
+    "last_updated": "2025-03-29",
+    "status": "pending",
+    "update_type": "new"
+  },
+  {
+    "name": "Amazon Comprehend",
+    "category": "Natural Language Processing",
+    "features": [
+      "Entity Recognition",
+      "Sentiment Analysis (including Targeted Sentiment)",
+      "Syntax Analysis",
+      "Keyphrase Extraction",
+      "Language Detection (10+ languages)",
+      "Topic Modeling",
+      "PII Identification and Redaction",
+      "Custom Entity Recognition (AutoML)",
+      "Custom Classification (AutoML)",
+      "Events Detection",
+      "Toxicity Detection",
+      "Prompt Safety Classification",
+      "UPDATED FEATURE!"
+    ],
+    "pricing": {
+      "model": "Usage-based, per 100 characters (unit). Varies by feature. Custom models have training and management costs.",
+      "free_tier": "50K units of text (5M characters) per API per month for some APIs (Key Phrase Extraction, Sentiment, Targeted Sentiment, Entity Recognition, Language Detection, Event Detection, Syntax Analysis, Detect PII, Contains PII, and Prompt Safety Classification). No free tier for Custom Comprehend.",
+      "paid_tiers": [
+        {
+          "feature": "Key Phrase Extraction, Sentiment Analysis, Targeted Sentiment, Entity Recognition, Language Detection",
+          "unit_size": 100,
+          "tiers": [
+            {
+              "range": "Up to 10M units",
+              "price_per_unit": 0.0001
+            },
+            {
+              "range": "10M - 50M units",
+              "price_per_unit": 5e-05
+            },
+            {
+              "range": "Over 50M units",
+              "price_per_unit": 2.5e-05
+            }
+          ]
+        }
+      ],
+      "notes": "Minimum 3 units (300 characters) per request. Pricing varies by region. See AWS Pricing Calculator for details. UPDATED NOTE!"
+    },
+    "pros": [
+      "Comprehensive set of NLP features",
+      "AutoML for custom models without ML expertise",
+      "Integration with other AWS services",
+      "Scalability",
+      "Support for PDF and Word documents (for some APIs)",
+      "NEW PRO ADDED!"
+    ],
+    "cons": [
+      "Complex pricing structure",
+      "Requires integration within the AWS ecosystem",
+      "Can be expensive at high volumes",
+      "Separate costs for custom model training and management"
+    ],
+    "technical_specifications": {
+      "api_type": "REST",
+      "input_methods": [
+        "Direct text upload in request",
+        "PDF and Word documents (for some APIs)"
+      ],
+      "supported_languages": [
+        "German",
+        "English",
+        "Spanish",
+        "Italian",
+        "Portuguese",
+        "French",
+        "Japanese",
+        "Korean",
+        "Hindi",
+        "Arabic",
+        "Chinese (simplified)",
+        "Chinese (traditional)"
+      ]
+    },
+    "user_reviews": {
+      "summary": "Capterra reviews for Amazon Comprehend indicate an average rating of 4.3 out of 5 stars (based on the listing title). More detailed user feedback, including specific pros and cons, requires further investigation due to scraping limitations.",
+      "sources_to_check": [
+        "https://www.g2.com/products/amazon-comprehend/reviews",
+        "https://www.capterra.com/p/144359/Amazon-Comprehend/"
+      ]
+    },
+    "integration_capabilities": [
+      "Other AWS services"
+    ],
+    "scalability": "Designed for high scalability, leveraging AWS infrastructure",
+    "support_options": [
+      "Extensive online documentation",
+      "AWS Support plans (paid)"
+    ],
+    "data_source_urls": [
+      "https://aws.amazon.com/comprehend/"
+    ],
+    "last_updated": "2025-03-30",
+    "status": "pending",
+    "update_type": "update"
+  }
+]

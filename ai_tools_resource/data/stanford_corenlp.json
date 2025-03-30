@@ -1,0 +1,57 @@
+{
+  "name": "Stanford CoreNLP",
+  "category": "Natural Language Processing",
+  "features": [
+    "Token and Sentence Boundary Detection",
+    "Part-of-Speech Tagging",
+    "Named Entity Recognition",
+    "Numeric and Time Value Extraction",
+    "Dependency Parsing",
+    "Constituency Parsing",
+    "Coreference Resolution",
+    "Sentiment Analysis",
+    "Quote Attribution",
+    "Relation Extraction",
+    "Support for Multiple Languages (Arabic, Chinese, English, French, German, Hungarian, Italian, and Spanish)"
+  ],
+  "pricing": {
+    "model": "Free and open-source (GNU GPL v3 or later). Commercial license available for proprietary software distributors.",
+    "commercial_license": {
+      "availability": "Available from Stanford. Contact java-nlp-support@lists.stanford.edu for details.",
+      "notes": "Required for use in proprietary software distributed to others."
+    }
+  },
+  "pros": [
+    "Comprehensive set of NLP tools",
+    "Supports multiple languages",
+    "Can be accessed via various APIs (command-line, Java, third-party, web service)",
+    "Well-documented"
+  ],
+  "cons": [
+    "Requires Java",
+    "Commercial license required for proprietary software distribution",
+    "May require more coding compared to some commercial NLP services"
+  ],
+  "technical_specifications": {
+    "language": "Java",
+    "dependencies": "Java 8+",
+    "api_type": "Java API, REST API (via web service)",
+    "license": "GNU GPL v3 or later (commercial license available)"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+  },
+  "integration_capabilities": [
+    "Can be integrated with various programming languages via third-party APIs or web service"
+  ],
+  "scalability": "Scalability depends on the specific implementation and hardware",
+  "support_options": [
+    "Documentation",
+    "Community support (mailing lists)"
+  ],
+  "data_source_urls": [
+    "https://stanfordnlp.github.io/CoreNLP/",
+    "https://nlp.stanford.edu/software/"
+  ],
+  "last_updated": "2025-03-29"
+}

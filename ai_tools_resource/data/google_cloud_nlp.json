@@ -1,0 +1,131 @@
+{
+  "name": "Google Cloud Natural Language API",
+  "category": "Natural Language Processing",
+  "features": [
+    "Entity Analysis",
+    "Sentiment Analysis",
+    "Entity Sentiment Analysis",
+    "Syntax Analysis",
+    "Content Classification (700+ predefined categories)",
+    "Text Moderation",
+    "Custom entity extraction (via AutoML)",
+    "Custom sentiment analysis (via AutoML)",
+    "Custom content classification (via AutoML)",
+    "Multi-language support (English, Spanish, Japanese, Chinese (simplified/traditional), French, German, Italian, Korean, Portuguese, Russian)",
+    "REST API access",
+    "Integration with Cloud Storage",
+    "Powered by Google's AutoML models",
+    "Spatial structure understanding for PDFs (improves custom entity extraction)",
+    "Large dataset support (up to 5k classification labels, 1M documents, 10MB doc size for AutoML)"
+  ],
+  "pricing": {
+    "model": "Pay-as-you-go based on Unicode characters (units)",
+    "free_tier": {
+      "entity_analysis": "First 5K units/month",
+      "sentiment_analysis": "First 5K units/month",
+      "syntax_analysis": "First 5K units/month",
+      "entity_sentiment_analysis": "First 5K units/month",
+      "content_classification": "First 30K units/month",
+      "text_moderation": "First 50K units/month"
+    },
+    "paid_tiers": [
+      {
+        "feature": "Entity Analysis",
+        "unit_size": 1000,
+        "tiers": [
+          { "range": "5K+ - 1M units/month", "price_per_unit": 0.0010 },
+          { "range": "1M+ - 5M units/month", "price_per_unit": 0.00050 },
+          { "range": "5M+ units/month", "price_per_unit": 0.000250 }
+        ]
+      },
+      {
+        "feature": "Sentiment Analysis",
+        "unit_size": 1000,
+        "tiers": [
+          { "range": "5K+ - 1M units/month", "price_per_unit": 0.0010 },
+          { "range": "1M+ - 5M units/month", "price_per_unit": 0.00050 },
+          { "range": "5M+ units/month", "price_per_unit": 0.000250 }
+        ]
+      },
+      {
+        "feature": "Syntax Analysis",
+        "unit_size": 1000,
+        "tiers": [
+          { "range": "5K+ - 1M units/month", "price_per_unit": 0.0005 },
+          { "range": "1M+ - 5M units/month", "price_per_unit": 0.00025 },
+          { "range": "5M+ units/month", "price_per_unit": 0.000125 }
+        ]
+      },
+      {
+        "feature": "Entity Sentiment Analysis",
+        "unit_size": 1000,
+        "tiers": [
+          { "range": "5K+ - 1M units/month", "price_per_unit": 0.0020 },
+          { "range": "1M+ - 5M units/month", "price_per_unit": 0.00100 },
+          { "range": "5M+ units/month", "price_per_unit": 0.000500 }
+        ]
+      },
+      {
+        "feature": "Content Classification",
+        "unit_size": 1000,
+        "tiers": [
+          { "range": "30K+ - 250K units/month", "price_per_unit": 0.0020 },
+          { "range": "250K+ - 5M units/month", "price_per_unit": 0.00050 },
+          { "range": "5M+ units/month", "price_per_unit": 0.0001 }
+        ]
+      },
+      {
+        "feature": "Text Moderation",
+        "unit_size": 100,
+        "tiers": [
+          { "range": "50K+ - 10M units/month", "price_per_unit": 0.0005 },
+          { "range": "10M+ - 50M units/month", "price_per_unit": 0.00025 },
+          { "range": "50M+ units/month", "price_per_unit": 0.000125 }
+        ]
+      }
+    ],
+    "notes": "Pricing is for applications on personal systems. Contact sales for embedded device pricing or high-volume usage (>20M units/month). AutoML pricing is separate."
+  },
+  "pros": [
+    "Leverages powerful Google pre-trained models",
+    "Offers AutoML for building custom models with minimal ML expertise",
+    "Integrates well with other Google Cloud services (Storage, Speech, Vision, Translation)",
+    "Highly scalable infrastructure",
+    "Supports multiple languages",
+    "Provides fine-grained analysis (syntax, entity sentiment)"
+  ],
+  "cons": [
+    "Pricing model based on character units can be complex to estimate",
+    "Can become expensive at very high volumes without negotiated discounts",
+    "Requires integration within the Google Cloud ecosystem",
+    "AutoML training and hosting have separate costs"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "input_methods": ["Direct text upload in request", "Integration with Google Cloud Storage"],
+    "supported_languages": ["English", "Spanish", "Japanese", "Chinese (Simplified)", "Chinese (Traditional)", "French", "German", "Italian", "Korean", "Portuguese", "Russian"]
+  },
+  "user_reviews": {
+    "summary": "G2 reviews indicate an overall positive user experience with Google Cloud Natural Language API, with a rating of 4.3 out of 5 stars based on 104 reviews. Users appreciate its strong language understanding capabilities. However, detailed pros and cons and specific user feedback require further investigation due to scraping limitations.",
+    "sources_to_check": ["https://www.g2.com/products/google-cloud-natural-language-api/reviews", "https://www.capterra.com/natural-language-processing-software/"]
+  },
+  "integration_capabilities": [
+    "Google Cloud Storage",
+    "Google App Engine",
+    "Google Cloud Speech-to-Text API",
+    "Google Cloud Vision API",
+    "Google Cloud Translation API",
+    "Other Google Cloud Platform services"
+  ],
+  "scalability": "Designed for high scalability, leveraging Google Cloud infrastructure. Supports large datasets and high request volumes. Custom quotes available for very large usage.",
+  "support_options": [
+    "Extensive online documentation",
+    "Google Cloud Community support forums",
+    "Google Cloud Support packages (paid)"
+  ],
+  "data_source_urls": [
+    "https://cloud.google.com/natural-language",
+    "https://cloud.google.com/natural-language/pricing"
+  ],
+  "last_updated": "2025-03-29"
+}

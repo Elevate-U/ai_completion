@@ -1,0 +1,54 @@
+{
+  "name": "Sample New AI Tool",
+  "category": "Sample Category",
+  "features": [
+    "Feature X",
+    "Feature Y",
+    "Feature Z (New)"
+  ],
+  "pricing": {
+    "model": "Freemium",
+    "free_tier": "Basic features, limited usage",
+    "paid_tiers": [
+      {
+        "name": "Plus",
+        "price": "$15/month"
+      }
+    ],
+    "notes": "Annual discount available."
+  },
+  "pros": [
+    "Very innovative",
+    "Good UI"
+  ],
+  "cons": [
+    "Still in beta",
+    "Documentation sparse"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "input_methods": [
+      "API call",
+      "Web interface"
+    ],
+    "supported_languages": [
+      "English"
+    ]
+  },
+  "user_reviews": {
+    "summary": "Promising, but needs refinement.",
+    "sources_to_check": []
+  },
+  "integration_capabilities": [
+    "Zapier"
+  ],
+  "scalability": "Scales horizontally",
+  "support_options": [
+    "Community forum",
+    "Email support (paid)"
+  ],
+  "data_source_urls": [
+    "https://example.com/sample-new-ai-tool"
+  ],
+  "last_updated": "2025-03-29"
+}

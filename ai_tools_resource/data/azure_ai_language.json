@@ -1,0 +1,122 @@
+{
+  "name": "Microsoft Azure AI Language",
+  "category": "Natural Language Processing",
+  "features": [
+    "Sentiment Analysis",
+    "Key Phrase Extraction",
+    "Language Detection",
+    "Named Entity Recognition",
+    "PII Detection",
+    "Summarization (all types)",
+    "Custom Text Classification",
+    "Custom Named Entity Recognition",
+    "Conversational Language Understanding (CLU)",
+    "Orchestration Workflow",
+    "Text Analytics for Health"
+  ],
+  "pricing": {
+    "model": "Tiered pricing based on text records (1,000 characters per record). Separate costs for training and hosting custom models. Commitment tiers and disconnected containers available.",
+    "free_tier": "5,000 text records per month shared across Sentiment Analysis, Key Phrase Extraction, Language Detection, Custom Question Answering, Prebuilt Question Answering, Named Entity Recognition, PII Detection, and Summarization.",
+    "paid_tiers": [
+      {
+        "feature": "Sentiment Analysis, Key Phrase Extraction, Language Detection, Named Entity Recognition, PII Detection",
+        "unit_size": "1,000 text records",
+        "tiers": [
+          { "range": "0 - 0.5M text records", "price_per_unit": 1.00 },
+          { "range": "0.5M - 2.5M text records", "price_per_unit": 0.75 },
+          { "range": "2.5M - 10M text records", "price_per_unit": 0.30 },
+          { "range": "Over 10M text records", "price_per_unit": 0.25 }
+        ]
+      },
+      {
+        "feature": "Conversational Language Understanding, Orchestration Workflow",
+        "unit_size": "1,000 text records",
+        "tiers": [
+          { "range": "All", "price_per_unit": 2.00 }
+        ]
+      },
+      {
+        "feature": "Custom Text Classification, Custom Named Entity Recognition",
+        "unit_size": "1,000 text records",
+        "tiers": [
+          { "range": "All", "price_per_unit": 5.00 }
+        ]
+      },
+      {
+        "feature": "Text Analytics for Health",
+        "unit_size": "1,000 text records",
+        "tiers": [
+          { "range": "0 - 0.005M text records", "price_per_unit": "Included" },
+          { "range": "0.005M - 0.01M text records", "price_per_unit": 25.00 },
+          { "range": "0.01M - 0.50M text records", "price_per_unit": 20.00 },
+          { "range": "0.505M - 2.50M text records", "price_per_unit": 15.00 },
+          { "range": "2.505M - 10.01M text records", "price_per_unit": 6.00 },
+          { "range": "Over 10.01M text records", "price_per_unit": 5.00 }
+        ]
+      },
+      {
+        "feature": "Custom Question Answering, Prebuilt Question Answering",
+        "unit_size": "1,000 text records",
+        "tiers": [
+          { "range": "0 - 2.5M text records", "price_per_unit": 1.50 },
+          { "range": "Over 2.5M text records", "price_per_unit": 1.0001 }
+        ]
+      },
+      {
+        "feature": "Summarization (all types)",
+        "unit_size": "1,000 text records",
+        "tiers": [
+          { "range": "All", "price_per_unit": 2.00 }
+        ]
+      }
+    ],
+    "commitment_tiers": {
+      "sentiment_analysis_etc": [
+        { "records_per_month": "1M", "price": 700, "overage_per_1k_records": 0.70 },
+        { "records_per_month": "3M", "price": 1375, "overage_per_1k_records": 0.55 },
+        { "records_per_month": "10M", "price": 3500, "overage_per_1k_records": 0.35 }
+      ],
+      "summarization": [
+        { "records_per_month": "3M", "price": 3300, "overage_per_1k_records": 1.10 },
+        { "records_per_month": "10M", "price": 7000, "overage_per_1k_records": 0.70 }
+      ]
+    },
+    "notes": "Pricing is based on US dollars. See Azure Pricing Calculator for details. S0-S4 pricing tiers have been deprecated."
+  },
+  "pros": [
+    "Comprehensive set of NLP features",
+    "Integration with other Azure services",
+    "Customizable AI models",
+    "Option for on-premises deployment with disconnected containers",
+    "Uses state-of-the-art transformer models"
+  ],
+  "cons": [
+    "Complex pricing structure",
+    "Requires integration within the Azure ecosystem"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "sdks": "Available",
+    "azure_ai_foundry": "Supported"
+  },
+  "user_reviews": {
+    "summary": "User reviews from G2 (4.3/5 stars, 77 reviews) and Capterra (4.0/5 stars, 6 reviews) suggest a generally positive experience with Azure AI Language. Users highlight its easy integration with Azure, scalability, intuitive API, and useful features like sentiment analysis and entity recognition. Specific cons were not readily available in search snippets, and the low review count on Capterra limits the representativeness of that rating. Further investigation is needed for detailed feedback.",
+    "sources_to_check": ["https://www.g2.com/products/azure-ai-language/reviews", "https://www.capterra.com/p/233979/Azure-Cognitive-Services/"]
+  },
+  "integration_capabilities": [
+    "Azure OpenAI Service",
+    "Azure AI Foundry",
+    "Azure AI Speech",
+    "Azure AI Translator"
+  ],
+  "scalability": "Designed for scalability, leveraging Azure infrastructure",
+  "support_options": [
+    "Documentation",
+    "Azure Support plans (paid)"
+  ],
+  "data_source_urls": [
+    "https://azure.microsoft.com/en-us/products/ai-services/ai-language",
+    "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/language-service/"
+  ],
+  "last_updated": "2025-03-29"
+}

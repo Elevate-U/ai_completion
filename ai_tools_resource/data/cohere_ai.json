@@ -1,0 +1,88 @@
+{
+  "name": "Cohere AI",
+  "category": "Natural Language Processing",
+  "features": [
+    "Command A (Generative Model)",
+    "Command R+ (Generative Model)",
+    "Command R (Generative Model)",
+    "Command R7B (Generative Model)",
+    "Rerank 3.5 (Retrieval Model)",
+    "Embed 3 (Retrieval Model)"
+  ],
+  "pricing": {
+    "model": "Token-based pricing for generative models, per search for retrieval models.",
+    "generative_models": {
+      "command_a": {
+        "input": 2.50,
+        "output": 10.00,
+        "unit": "per 1M tokens"
+      },
+      "command_r_plus": {
+        "input": 2.50,
+        "output": 10.00,
+        "unit": "per 1M tokens"
+      },
+      "command_r": {
+        "input": 0.15,
+        "output": 0.60,
+        "unit": "per 1M tokens"
+      },
+      "command_r_fine_tuned": {
+        "input": 0.30,
+        "output": 1.20,
+        "training": 3.00,
+        "unit": "per 1M tokens"
+      },
+      "command_r7b": {
+        "input": 0.0375,
+        "output": 0.15,
+        "unit": "per 1M tokens"
+      }
+    },
+    "retrieval_models": {
+      "rerank_3_5": {
+        "cost": 2.00,
+        "unit": "per 1K searches (up to 100 documents per search)"
+      },
+      "embed_3": {
+        "text": {
+          "cost": 0.10,
+          "unit": "per 1M tokens"
+        },
+        "image": {
+          "cost": 0.0001,
+          "unit": "per 1 Image"
+        }
+      }
+    },
+    "notes": "See Cohere website for detailed pricing."
+  },
+  "pros": [
+    "Cutting-edge multilingual models",
+    "Advanced retrieval capabilities",
+    "AI workspace tailored for enterprise",
+    "Private and secure platform"
+  ],
+  "cons": [
+    "Pricing can be complex",
+    "Requires careful monitoring of token usage to manage costs"
+  ],
+  "technical_specifications": {
+    "api_type": "REST"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+  },
+  "integration_capabilities": [
+    "Integrates with various platforms and tools"
+  ],
+  "scalability": "Designed for scalability",
+  "support_options": [
+    "Enterprise support plans (paid)"
+  ],
+  "data_source_urls": [
+    "https://cohere.com/",
+    "https://cohere.com/pricing"
+  ],
+  "last_updated": "2025-03-29"
+}

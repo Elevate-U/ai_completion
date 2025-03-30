@@ -1,0 +1,137 @@
+{
+  "name": "OpenAI API",
+  "category": "Natural Language Processing",
+  "features": [
+    "Reasoning Models (OpenAI o1, OpenAI o3-mini)",
+    "GPT Models (GPT-4.5, GPT-4o, GPT-4o mini)",
+    "Responses API",
+    "Chat Completions API",
+    "Realtime API",
+    "Assistants API",
+    "Batch API",
+    "Web Search Tool",
+    "File Search Tool",
+    "Computer Use Tool",
+    "Code Interpreter Tool",
+    "Fine-tuning",
+    "Agents SDK"
+  ],
+  "pricing": {
+    "model": "Token-based pricing. Varies significantly by model, API, and tool usage. Separate costs for fine-tuning and storage.",
+    "reasoning_models": {
+      "openai_o1": {
+        "input": 15.00,
+        "cached_input": 7.50,
+        "output": 60.00,
+        "unit": "per 1M tokens"
+      },
+      "openai_o3_mini": {
+        "input": 1.10,
+        "cached_input": 0.55,
+        "output": 4.40,
+        "unit": "per 1M tokens"
+      }
+    },
+    "gpt_models": {
+      "gpt_4_5": {
+        "input": 75.00,
+        "cached_input": 37.50,
+        "output": 150.00,
+        "unit": "per 1M tokens"
+      },
+      "gpt_4o": {
+        "input": 2.50,
+        "cached_input": 1.25,
+        "output": 10.00,
+        "unit": "per 1M tokens"
+      },
+      "gpt_4o_mini": {
+        "input": 0.150,
+        "cached_input": 0.075,
+        "output": 0.600,
+        "unit": "per 1M tokens"
+      }
+    },
+    "fine_tuning": {
+      "gpt_4o": {
+        "input": 3.750,
+        "cached_input": 1.875,
+        "output": 15.000,
+        "training": 25.000,
+        "unit": "per 1M tokens"
+      },
+      "gpt_4o_mini": {
+        "input": 0.30,
+        "cached_input": 0.15,
+        "output": 1.20,
+        "training": 3.00,
+        "unit": "per 1M tokens"
+      }
+    },
+    "tool_usage": {
+      "code_interpreter": {
+        "cost": 0.03,
+        "unit": "per session"
+      },
+      "file_search_storage": {
+        "cost": 0.10,
+        "unit": "per GB of vector storage per day (first GB free)"
+      },
+      "file_search_tool_call": {
+        "cost": 2.50,
+        "unit": "per 1k tool calls (Responses API only)"
+      },
+      "web_search_tool_call": {
+        "gpt_4o": {
+          "search_context_size": {
+            "low": 30.00,
+            "medium": 35.00,
+            "high": 50.00,
+            "unit": "per 1K calls"
+          }
+        },
+        "gpt_4o_mini": {
+          "search_context_size": {
+            "low": 25.00,
+            "medium": 27.50,
+            "high": 30.00,
+            "unit": "per 1K calls"
+          }
+        }
+      }
+    },
+    "notes": "Pricing is complex and varies significantly based on model, API, and tool usage. Monitor token usage carefully. See OpenAI website for detailed pricing."
+  },
+  "pros": [
+    "Powerful and versatile models",
+    "Wide range of APIs and tools",
+    "Customization options (fine-tuning)",
+    "Large community and extensive documentation"
+  ],
+  "cons": [
+    "Pricing can be complex and vary significantly based on model, usage, and tools",
+    "Requires careful monitoring of token usage to manage costs"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "sdks": "Available (Python, etc.)"
+  },
+  "user_reviews": {
+    "summary": "OpenAI products generally receive high ratings (e.g., Whisper has 4.5/5 on G2). G2 lists 978 reviews for OpenAI products overall. However, specific user feedback (pros/cons) for the OpenAI API could not be extracted due to scraping limitations on review sites.",
+    "sources_to_check": ["https://www.g2.com/sellers/openai", "https://www.capterra.com/"]
+  },
+  "integration_capabilities": [
+    "Widely used and integrated with various platforms and tools"
+  ],
+  "scalability": "Designed for scalability",
+  "support_options": [
+    "Documentation",
+    "Community forum",
+    "Enterprise support plans (paid)"
+  ],
+  "data_source_urls": [
+    "https://openai.com/api/",
+    "https://openai.com/api/pricing/"
+  ],
+  "last_updated": "2025-03-29"
+}

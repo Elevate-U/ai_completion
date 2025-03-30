@@ -1,0 +1,71 @@
+{
+  "name": "spaCy",
+  "category": "Natural Language Processing",
+  "features": [
+    "Tokenization",
+    "Part-of-speech Tagging",
+    "Dependency Parsing",
+    "Named Entity Recognition",
+    "Text Classification",
+    "Lemmatization",
+    "Morphological Analysis",
+    "Entity Linking",
+    "Multi-language Support (75+ languages)",
+    "Pre-trained Word Vectors",
+    "Transformer Integration (BERT, etc.)",
+    "Customizable Pipelines",
+    "Built-in Visualizers",
+    "Integration with PyTorch and TensorFlow",
+    "LLM Integration (via spacy-llm package)"
+  ],
+  "pricing": {
+    "model": "Free and open-source library.",
+    "prodigy_annotation_tool": {
+      "license_type": "Lifetime",
+      "personal_license": 390,
+      "unit": "USD per user (estimated, based on external source)",
+      "notes": "Team pricing and enterprise options available. Requires confirmation from official source."
+    },
+    "custom_pipeline_development": {
+      "pricing_model": "Quoted on request",
+      "notes": "Contact Explosion AI for custom pipeline development costs."
+    }
+  },
+  "pros": [
+    "Free and open-source",
+    "Industrial-strength performance",
+    "Large and active community",
+    "Extensive documentation",
+    "Highly customizable",
+    "Supports a wide range of NLP tasks",
+    "Integrates with other popular ML frameworks"
+  ],
+  "cons": [
+    "Requires programming knowledge (Python)",
+    "Commercial offerings (Prodigy, custom pipelines) have separate costs"
+  ],
+  "technical_specifications": {
+    "language": "Python",
+    "dependencies": "Cython, etc.",
+    "model_formats": "Custom spaCy formats"
+  },
+  "user_reviews": {
+    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+  },
+  "integration_capabilities": [
+    "PyTorch",
+    "TensorFlow",
+    "Hugging Face Transformers"
+  ],
+  "scalability": "Designed for scalability",
+  "support_options": [
+    "Extensive documentation",
+    "Community forum"
+  ],
+  "data_source_urls": [
+    "https://spacy.io/",
+    "https://explosion.ai/tailored-solutions",
+    "https://prodi.gy/"
+  ],
+  "last_updated": "2025-03-29"
+}

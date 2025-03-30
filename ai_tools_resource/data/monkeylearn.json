@@ -1,0 +1,64 @@
+{
+  "name": "MonkeyLearn / Medallia Text Analytics",
+  "category": "Natural Language Processing",
+  "features": [
+    "Text Analytics API",
+    "Text Analytics Studio",
+    "Sentiment Analysis",
+    "Topic Extraction",
+    "Keyword Extraction",
+    "Entity Recognition",
+    "Text Classification",
+    "Customizable Models",
+    "Omnichannel Analytics (Surveys, Social Media, Reviews, Emails, Conversations, Voice, etc.)",
+    "Real-time Insights and Actions",
+    "Out-of-the-box Topic Models",
+    "Customizable KPIs"
+  ],
+  "pricing": {
+    "model": "Subscription-based. API plan with monthly fee and query limits. Studio plan with custom pricing.",
+    "api_plan": {
+      "starting_price": 299,
+      "unit": "USD per month",
+      "queries_included": "10,000 queries/month",
+      "notes": "Starting price for API plan. May have overage fees or limitations. See Capterra and TrustRadius for details."
+    },
+    "studio_plan": {
+      "pricing_model": "Custom pricing",
+      "notes": "Contact MonkeyLearn/Medallia for Studio plan pricing."
+    }
+  },
+  "pros": [
+    "User-friendly platform",
+    "Pre-built models and customization options",
+    "Focus on actionable insights",
+    "Omnichannel analytics capabilities",
+    "Real-time insights"
+  ],
+  "cons": [
+    "Pricing can be considered high for startups",
+    "Limited integrations (according to some reviews)",
+    "Information may be limited as MonkeyLearn is now part of Medallia"
+  ],
+  "technical_specifications": {
+    "api_type": "REST API",
+    "platform": "Cloud-based"
+  },
+  "user_reviews": {
+    "summary": "Mixed reviews on pricing. User-friendly platform with good features, but can be expensive for startups. Requires further research from external review sites (G2, Capterra, TrustRadius) for detailed reviews of Medallia Text Analytics."
+  },
+  "integration_capabilities": [
+    "Integrates with various platforms and data sources (surveys, social media, etc.)"
+  ],
+  "scalability": "Scalable platform",
+  "support_options": [
+    "Documentation",
+    "Support resources from Medallia"
+  ],
+  "data_source_urls": [
+    "https://www.capterra.com/p/166580/MonkeyLearn/",
+    "https://www.trustradius.com/products/monkeylearn/pricing",
+    "https://www.medallia.com/platform/text-analytics/?utm_campaign=monkeylearnmigration"
+  ],
+  "last_updated": "2025-03-29"
+}

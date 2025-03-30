@@ -1,0 +1,16 @@
+Starting update check...
+Fetching data from sheet: 1bTOS9fWernm3bN7UiIDQfjqf2mbcNVV3y8bWafbQJ8g, worksheet: ToolData, range: 'ToolData'!A1:Z
+Error fetching Google Sheet data: <HttpError 400 when requesting https://sheets.googleapis.com/v4/spreadsheets/1bTOS9fWernm3bN7UiIDQfjqf2mbcNVV3y8bWafbQJ8g/values/%27ToolData%27%21A1%3AZ?alt=json returned "Unable to parse range: 'ToolData'!A1:Z". Details: "Unable to parse range: 'ToolData'!A1:Z">
+Attempting to fetch without worksheet name in range...
+Fetched 2 rows from Google Sheet (fallback).
+Loading existing data...
+Loaded 14 existing tools.
+Comparing data...
+Warning: Row 2 seems empty or has no mappable data. Skipping.
+Writing updates...
+No new tools or updates found to write.
+
+--- Update Summary ---
+New tools found: 0
+Tool updates found: 0
+Update check finished.

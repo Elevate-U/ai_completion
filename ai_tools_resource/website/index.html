@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Resource - Perfected</title>
+    <!-- Add Google Font 'Inter' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to the updated stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Apply Inter font where system font isn't specified */
+        body { font-family: 'Inter', var(--font-family-sans-serif); }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a class="logo" href="index.html">AI Tools Resource</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a class="nav-link active" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="categories.html">Categories</a></li>
+                    <li><a class="nav-link" href="comparison.html">Comparison</a></li>
+                    <!-- Add more links as needed -->
+                    <li><a class="nav-link" href="blog.html">Blog</a></li> <!-- Added Blog Link -->
+                </ul>
+                <div class="header-controls"> <!-- Wrapper for controls -->
+                    <!-- Theme Switcher Button -->
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <!-- Icons will be added via CSS/JS -->
+                        <span class="theme-icon sun-icon">☀️</span>
+                        <span class="theme-icon moon-icon">🌙</span>
+                        <span class="visually-hidden">Toggle theme</span>
+                    </button>
+                    <!-- Mobile Navigation Toggle Button -->
+                    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                        <!-- Icon for menu (e.g., hamburger icon) - can use SVG or font icon -->
+                        <span>&#9776;</span> <!-- Basic hamburger character -->
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content-wrapper"> <!-- Wrapper for grid layout -->
+        <main class="main-content">
+            <section class="hero-section">
+                <h1>Discover the Best AI Tools</h1>
+                <p class="subtitle">Your curated guide to the latest and most powerful AI technologies across all categories. Stay informed, compare options, and find the perfect tool for your needs.</p>
+                <!-- Optional: Add a subtle call-to-action button -->
+                <!-- <a href="categories.html" class="btn btn-primary hero-cta">Explore Tools</a> -->
+            </section>
+
+            <section class="featured-categories">
+                <h2>Featured Categories</h2>
+                <div id="categories-list" class="categories-grid">
+                    <!-- Dynamic content: Category cards will be populated by JavaScript -->
+                    <p>Loading categories...</p>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="recent-updates-widget">
+                <h3>Recently Updated</h3>
+                <ul id="recent-updates" class="update-list">
+                    <!-- Dynamic content: Recent updates will be populated by JavaScript -->
+                    <li>Loading updates...</li>
+                </ul>
+            </div>
+
+            <!-- Elegant Ad Placement -->
+            <div class="ad-placeholder">
+                <p>Advertisement</p>
+                <!-- Ad content/script goes here -->
+            </div>
+
+             <!-- Social Media Links Widget -->
+            <div class="social-links-widget">
+                 <h3>follow me!</h3>
+                 <ul class="social-links-list">
+                     <li><a href="https://x.com/ttcruiserrr" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
+                     <li><a href="https://github.com/Elevate-U" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                     <li><a href="https://www.instagram.com/evrgreenw/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                     <li><a href="https://linktr.ee/evrgreenw" target="_blank" rel="noopener noreferrer">Linktree</a></li>
+                     <!-- Add more social links as needed -->
+                 </ul>
+             </div>
+        </aside>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>AI Tools Resource &copy; 2025 | Data last updated: <span id="last-updated">Loading...</span></p>
+            <!-- Optional: Add footer navigation or other links -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Add script for mobile navigation toggle -->
+    <script>
+        const navToggle = document.getElementById('mobile-nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+            // Optional: Change toggle icon based on state
+            navToggle.querySelector('span').textContent = !isExpanded ? '✕' : '☰';
+        });
+    </script>
+</body>
+</html>
