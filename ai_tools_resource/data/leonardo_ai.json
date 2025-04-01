@@ -56,28 +56,21 @@
     "api_type": "REST",
     "sdks": "None explicitly mentioned, but API available",
     "platforms": "Web, Mobile App (iOS), API",
-    "input_methods": [
-      "Text prompt",
-      "Image upload"
-    ],
-    "supported_languages": [
-      "English (primarily)"
-    ],
+    "input_methods": ["Text prompt", "Image upload"],
+    "supported_languages": ["English (primarily)"],
     "performance_metrics": {
       "latency": "Depends on subscription tier and settings",
       "accuracy": "High quality potential, model/prompt dependent",
       "throughput": "Scalable cloud platform"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "~12.3 (FID, similar to Stable Diffusion)",
-      "accuracy": "Not detailed",
-      "speed": "Varies by GPU",
-      "task_specific": {}
-    },
-  "integration_capabilities": [
-    "API integration"
-  ],
+  "benchmark_scores": {
+    "overall_performance": "~12.3 (FID, similar to Stable Diffusion)",
+    "accuracy": "Not detailed",
+    "speed": "Varies by GPU",
+    "task_specific": {}
+  },
+  "integration_capabilities": ["API integration"],
   "scalability": "Scalable cloud platform",
   "support_options": [
     "Discord community",
@@ -88,9 +81,6 @@
     "certifications": [],
     "data_protection": "Governed by standard ToS and Privacy Policy. Paid tiers offer private generations. User control over image use for training."
   },
-  "data_source_urls": [
-    "https://leonardo.ai",
-    "https://docs.leonardo.ai"
-  ],
+  "data_source_urls": ["https://leonardo.ai", "https://docs.leonardo.ai"],
   "last_updated": "2025-04-01"
 }

@@ -1,5 +1,5 @@
 // Parallax effect for hero section
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   const hero = document.querySelector('.hero-section');
   if (hero) {
     const scrollPosition = window.pageYOffset;

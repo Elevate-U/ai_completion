@@ -1,5 +1,4 @@
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -12,5 +11,4 @@ module.exports = function(grunt) {
   // Default task(s).
   // This task runs when you just type "grunt" in the terminal
   grunt.registerTask('default', []);
-
 };

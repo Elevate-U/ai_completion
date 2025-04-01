@@ -105,16 +105,16 @@
       "https://www.capterra.com/p/234576/Amazon-Comprehend/"
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "74%",
-      "accuracy": "74%",
-      "speed": "Real-time",
-      "task_specific": {
-        "sentiment_analysis_imdb_accuracy": "78%",
-        "sentiment_analysis_sentiment140_accuracy": "76%",
-        "sentiment_analysis_twitter_accuracy": "69%"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "74%",
+    "accuracy": "74%",
+    "speed": "Real-time",
+    "task_specific": {
+      "sentiment_analysis_imdb_accuracy": "78%",
+      "sentiment_analysis_sentiment140_accuracy": "76%",
+      "sentiment_analysis_twitter_accuracy": "69%"
+    }
+  },
   "integration_capabilities": ["Other AWS services"],
   "scalability": "Designed for high scalability, leveraging AWS infrastructure",
   "support_options": [

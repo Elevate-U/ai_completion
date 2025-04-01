@@ -273,14 +273,14 @@
       }
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "83.3% (Intent Classification F1)",
-      "accuracy": "Not detailed",
-      "speed": "Real-time",
-      "task_specific": {
-        "notes": "Other task-specific scores not available."
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "83.3% (Intent Classification F1)",
+    "accuracy": "Not detailed",
+    "speed": "Real-time",
+    "task_specific": {
+      "notes": "Other task-specific scores not available."
+    }
+  },
   "integration_capabilities": [
     "Google Cloud Storage",
     "Google App Engine",

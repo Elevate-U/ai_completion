@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // blogPostList.innerHTML = ''; // We will remove static content from HTML instead
 
   fetch('data/blog_posts.json') // Corrected path relative to blog.html
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
-    .then(posts => {
+    .then((posts) => {
       if (!Array.isArray(posts)) {
         throw new Error('Fetched data is not an array');
       }
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      posts.forEach(post => {
+      posts.forEach((post) => {
         const listItem = document.createElement('li');
         listItem.classList.add('blog-post-item');
 
@@ -37,16 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const dateObj = new Date(post.date + 'T00:00:00'); // Assume date is YYYY-MM-DD, add time to avoid timezone issues
           if (!isNaN(dateObj)) {
-             formattedDate = dateObj.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-             });
+            formattedDate = dateObj.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
           }
         } catch (e) {
-            console.warn(`Could not format date ${post.date}: ${e}`);
+          console.warn(`Could not format date ${post.date}: ${e}`);
         }
-
 
         listItem.innerHTML = `
           <h3>
@@ -63,8 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         blogPostList.appendChild(listItem);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error fetching or processing blog posts:', error);
-      blogPostList.innerHTML = '<li>Error loading blog posts. Please try again later.</li>';
+      blogPostList.innerHTML =
+        '<li>Error loading blog posts. Please try again later.</li>';
     });
 });

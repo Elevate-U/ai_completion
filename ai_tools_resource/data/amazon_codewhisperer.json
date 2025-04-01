@@ -40,12 +40,23 @@
     "api_type": "Delivered as IDE extensions (Amazon Q has APIs)",
     "sdks": "N/A (IDE extensions)",
     "platforms": "IDE Extensions (VS Code, JetBrains, AWS Cloud9, Lambda, JupyterLab, SageMaker Studio, EMR Studio)",
-    "input_methods": [
-      "Code context",
-      "Natural language comments"
-    ],
+    "input_methods": ["Code context", "Natural language comments"],
     "supported_languages": [
-      "Python", "Java", "JavaScript", "C#", "TypeScript", "Go", "Rust", "PHP", "Ruby", "SQL", "C/C++", "Shell", "Terraform", "CloudFormation", "etc."
+      "Python",
+      "Java",
+      "JavaScript",
+      "C#",
+      "TypeScript",
+      "Go",
+      "Rust",
+      "PHP",
+      "Ruby",
+      "SQL",
+      "C/C++",
+      "Shell",
+      "Terraform",
+      "CloudFormation",
+      "etc."
     ],
     "performance_metrics": {
       "latency": "Real-time suggestions",
@@ -53,14 +64,14 @@
       "throughput": "Managed AWS service"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "31.1%",
-      "accuracy": "31.1%",
-      "speed": "Not available",
-      "task_specific": {
-        "code_validity": "94.2%"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "31.1%",
+    "accuracy": "31.1%",
+    "speed": "Not available",
+    "task_specific": {
+      "code_validity": "94.2%"
+    }
+  },
   "integration_capabilities": [
     "VS Code",
     "JetBrains IDEs",
@@ -72,15 +83,9 @@
     "Deep integration with AWS services"
   ],
   "scalability": "Managed, scalable AWS service",
-  "support_options": [
-    "AWS Support plans",
-    "AWS Documentation",
-    "AWS Forums"
-  ],
+  "support_options": ["AWS Support plans", "AWS Documentation", "AWS Forums"],
   "security_compliance": {
-    "certifications": [
-      "Leverages AWS compliance framework"
-    ],
+    "certifications": ["Leverages AWS compliance framework"],
     "data_protection": "Governed by AWS terms. Options to control telemetry/data sharing (especially Pro tier)."
   },
   "data_source_urls": [

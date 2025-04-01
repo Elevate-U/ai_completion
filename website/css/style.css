@@ -20,7 +20,11 @@
 }
 
 .button:hover {
-  background-color: color-mix(in srgb, var(--primary-color) 85%, black); /* Darken primary */
+  background-color: color-mix(
+    in srgb,
+    var(--primary-color) 85%,
+    black
+  ); /* Darken primary */
   border-color: color-mix(in srgb, var(--primary-color) 80%, black);
   transform: translateY(-1px);
   box-shadow: 0 2px 5px var(--shadow-color); /* Subtle shadow */
@@ -48,22 +52,22 @@
 
   /* Spacing scale (8px base) */
   --space-xxs: 0.25rem; /* 4px */
-  --space-xs: 0.5rem;   /* 8px */
-  --space-sm: 1rem;     /* 16px */
-  --space-md: 1.5rem;   /* 24px */
-  --space-lg: 2rem;     /* 32px */
-  --space-xl: 3rem;     /* 48px */
-  --space-xxl: 4rem;    /* 64px */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+  --space-xxl: 4rem; /* 64px */
 
   /* Code block variables */
   --code-bg: #121212;
-  --code-text: #4AF626;
-  --code-accent: #4AF626;
-  --code-keyword: #4D4DFF;
-  --code-string: #FFA724;
-  --code-comment: #A0A0A0;
-  --code-number: #FF44FF;
-  --code-function: #00BFFF;
+  --code-text: #4af626;
+  --code-accent: #4af626;
+  --code-keyword: #4d4dff;
+  --code-string: #ffa724;
+  --code-comment: #a0a0a0;
+  --code-number: #ff44ff;
+  --code-function: #00bfff;
   --code-shadow: 0 0 10px rgb(74 246 38 / 20%);
 
   /* Default (Light Theme) Variables - Moved from implicit body style */
@@ -105,28 +109,28 @@ html[data-theme='light'] {
 /* Dark theme variables */
 /* Dark theme variables - Updated to match Behance style */
 html[data-theme='dark'] {
-  --primary-color: #007AFF; /* Bright blue accent */
-  --secondary-color: #8B949E; /* Medium gray for secondary text/elements */
+  --primary-color: #007aff; /* Bright blue accent */
+  --secondary-color: #8b949e; /* Medium gray for secondary text/elements */
   --accent-color: var(--primary-color); /* Use primary blue as accent */
-  --text-primary: #E6EDF3; /* Light gray/off-white text */
-  --text-secondary: #8B949E; /* Medium gray secondary text */
-  --bg-primary: #1A1D21; /* Dark blue/gray main background */
-  --bg-secondary: #2C3036; /* Slightly lighter dark background for cards/sections */
-  --border-color: #30363D; /* Subtle dark border */
+  --text-primary: #e6edf3; /* Light gray/off-white text */
+  --text-secondary: #8b949e; /* Medium gray secondary text */
+  --bg-primary: #1a1d21; /* Dark blue/gray main background */
+  --bg-secondary: #2c3036; /* Slightly lighter dark background for cards/sections */
+  --border-color: #30363d; /* Subtle dark border */
   --card-background: var(--bg-secondary); /* Use secondary bg for cards */
   --shadow-color: rgba(0, 0, 0, 0.3); /* Darker shadow */
   --link-color: var(--primary-color); /* Use primary blue for links */
-  --code-bg: #22272E; /* Darker code background */
-  --code-text: #CDD9E5; /* Light code text */
-  --code-accent: #58A6FF; /* Blue accent for code */
-  --code-keyword: #F47067; /* Coral keyword */
-  --code-string: #96D0FF; /* Light blue string */
+  --code-bg: #22272e; /* Darker code background */
+  --code-text: #cdd9e5; /* Light code text */
+  --code-accent: #58a6ff; /* Blue accent for code */
+  --code-keyword: #f47067; /* Coral keyword */
+  --code-string: #96d0ff; /* Light blue string */
   --code-comment: #768390; /* Gray comment */
-  --code-number: #F0A350; /* Orange number */
-  --code-function: #D2A8FF; /* Purple function */
+  --code-number: #f0a350; /* Orange number */
+  --code-function: #d2a8ff; /* Purple function */
   --code-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  --success-color: #34C759; /* Keep bright green */
-  --error-color: #FF453A; /* Keep bright red */
+  --success-color: #34c759; /* Keep bright green */
+  --error-color: #ff453a; /* Keep bright red */
 }
 
 /* Spotify theme variables */
@@ -168,11 +172,14 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: Inter, var(--font-family-sans-serif); /* Ensure Inter is primary */
+  font-family:
+    Inter, var(--font-family-sans-serif); /* Ensure Inter is primary */
   line-height: 1.6;
   color: var(--text-primary); /* Use theme variable */
   background-color: var(--bg-primary); /* Use theme variable */
-  transition: background-color 0.3s, color 0.3s; /* Smooth theme transitions */
+  transition:
+    background-color 0.3s,
+    color 0.3s; /* Smooth theme transitions */
 }
 
 /* Layout System */
@@ -197,7 +204,6 @@ body {
     grid-template-columns: minmax(0, 3fr) minmax(300px, 1fr);
     align-items: start;
   }
-  
 }
 
 /* Typography */
@@ -225,11 +231,10 @@ h3 {
 p {
   margin-bottom: var(--space-sm); /* Use spacing variable */
 
-
-/* Override default top margin for category page title */
-.tools-main-content h2 {
-  margin-top: 0;
-}
+  /* Override default top margin for category page title */
+  .tools-main-content h2 {
+    margin-top: 0;
+  }
 
   /* color: var(--text-primary); Inherits from body/html */
 }
@@ -241,7 +246,11 @@ a {
 }
 
 a:hover {
-  color: color-mix(in srgb, var(--link-color) 80%, white); /* Slightly lighten link color on hover */
+  color: color-mix(
+    in srgb,
+    var(--link-color) 80%,
+    white
+  ); /* Slightly lighten link color on hover */
   text-decoration: underline; /* Add underline on hover for clarity */
 }
 
@@ -253,13 +262,17 @@ a:hover {
   padding: var(--space-xs) 0; /* 8px */
   background-color: var(--bg-primary); /* Use variable */
   border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.3s, border-color 0.3s; /* Smooth theme transition */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Smooth theme transition */
 }
 
 /* Specific theme overrides for header if needed */
 /* Dark theme header */
 html[data-theme='dark'] .site-header {
-  background-color: var(--bg-secondary); /* Use slightly lighter dark bg for header */
+  background-color: var(
+    --bg-secondary
+  ); /* Use slightly lighter dark bg for header */
   border-bottom-color: var(--border-color);
 }
 
@@ -293,7 +306,9 @@ html[data-theme='spotify'] .site-header {
   padding: var(--space-xs) var(--space-sm); /* 8px 16px */
   color: var(--text-primary);
   border-radius: 6px; /* Match button radius */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
 .nav-link.active,
@@ -364,7 +379,6 @@ html[data-theme='spotify'] .theme-toggle:hover {
 
   transform: scale(0.5);
 }
-
 
 /* --- Table Wrapper for Scrolling --- */
 .table-wrapper {
@@ -480,16 +494,15 @@ html[data-theme='light'] .hero-section .subtitle {
   z-index: 1;
 }
 
-
 @media (min-width: 768px) {
   .hero-section {
     padding: 7.5rem 0 11.25rem; /* 120px 180px - Kept specific rem values */
   }
-  
+
   .hero-section h1 {
     font-size: 4rem;
   }
-  
+
   .hero-section .subtitle {
     font-size: 1.5rem;
   }
@@ -583,7 +596,9 @@ html[data-theme='spotify'] .pricing-tier {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   position: relative;
-  transition: background-color 0.3s, border-color 0.3s; /* Theme transition */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Theme transition */
 }
 
 .update-list,
@@ -644,7 +659,10 @@ html[data-theme='spotify'] .pricing-tier {
   color: var(--text-secondary); /* Use secondary text */
   background-color: var(--bg-secondary); /* Use secondary background */
   border-top: 1px solid var(--border-color);
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Theme transition */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s; /* Theme transition */
 }
 
 .footer-content {
@@ -738,7 +756,8 @@ html[data-theme='spotify'] .pricing-tier {
 .search-bar input[type='search']:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent); /* Focus ring */
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--primary-color) 20%, transparent); /* Focus ring */
 }
 
 .search-bar button {
@@ -792,22 +811,26 @@ html[data-theme='dark'] .search-bar button {
 html[data-theme='dark'] .button:hover,
 html[data-theme='dark'] .search-bar button:hover {
   color: #ffffff; /* Keep text white on hover */
-  background-color: color-mix(in srgb, var(--primary-color) 85%, black); /* Darken primary */
+  background-color: color-mix(
+    in srgb,
+    var(--primary-color) 85%,
+    black
+  ); /* Darken primary */
   border-color: color-mix(in srgb, var(--primary-color) 80%, black);
 }
 
 /* Code Block Styles - Use Theme Variables */
 .code-block {
-    position: relative;
-    margin: var(--space-sm) 0; /* 16px */
-    padding: var(--space-sm); /* 16px */
-    font-family: var(--font-family-monospace); /* Use variable */
-    color: var(--code-text); /* Use variable */
-    background-color: var(--code-bg); /* Use variable */
-    border: 1px solid var(--border-color); /* Add subtle border */
-    border-radius: 6px; /* Match other elements */
-    box-shadow: var(--code-shadow); /* Use variable */
-    overflow: auto;
+  position: relative;
+  margin: var(--space-sm) 0; /* 16px */
+  padding: var(--space-sm); /* 16px */
+  font-family: var(--font-family-monospace); /* Use variable */
+  color: var(--code-text); /* Use variable */
+  background-color: var(--code-bg); /* Use variable */
+  border: 1px solid var(--border-color); /* Add subtle border */
+  border-radius: 6px; /* Match other elements */
+  box-shadow: var(--code-shadow); /* Use variable */
+  overflow: auto;
 }
 
 /* Remove pseudo-element header for cleaner look */
@@ -818,13 +841,22 @@ html[data-theme='dark'] .search-bar button:hover {
 }
 
 /* Syntax Highlighting - Use Theme Variables */
-.code-block .keyword { color: var(--code-keyword); }
-.code-block .string { color: var(--code-string); }
-.code-block .comment { color: var(--code-comment); }
-.code-block .number { color: var(--code-number); }
-.code-block .function { color: var(--code-function); }
+.code-block .keyword {
+  color: var(--code-keyword);
+}
+.code-block .string {
+  color: var(--code-string);
+}
+.code-block .comment {
+  color: var(--code-comment);
+}
+.code-block .number {
+  color: var(--code-number);
+}
+.code-block .function {
+  color: var(--code-function);
+}
 /* Add more syntax classes if needed */
-
 
 /* Utility Classes */
 .category-image-placeholder {
@@ -856,8 +888,8 @@ html[data-theme='dark'] .search-bar button:hover {
 /* Tablet and larger screens */
 @media (width >= 768px) {
   .container {
-      padding-right: var(--space-lg); /* 32px */
-      padding-left: var(--space-lg); /* 32px */
+    padding-right: var(--space-lg); /* 32px */
+    padding-left: var(--space-lg); /* 32px */
   }
 
   h1 {
@@ -873,15 +905,15 @@ html[data-theme='dark'] .search-bar button:hover {
   }
 
   .nav-links {
-      gap: var(--space-lg); /* 32px */
+    gap: var(--space-lg); /* 32px */
   }
 
   .nav-link {
-      padding: var(--space-xs) var(--space-md); /* 8px 24px */
+    padding: var(--space-xs) var(--space-md); /* 8px 24px */
   }
 
   .hero-section {
-      padding: 5rem 0; /* 80px - Kept specific rem value */
+    padding: 5rem 0; /* 80px - Kept specific rem value */
     text-align: left; /* Align hero text to the left on larger screens */
   }
 
@@ -899,8 +931,8 @@ html[data-theme='dark'] .search-bar button:hover {
 /* Desktop and larger screens */
 @media (width >= 1200px) {
   .container {
-      padding-right: var(--space-xl); /* 48px */
-      padding-left: var(--space-xl); /* 48px */
+    padding-right: var(--space-xl); /* 48px */
+    padding-left: var(--space-xl); /* 48px */
   }
 
   h1 {
@@ -926,12 +958,12 @@ html[data-theme='dark'] .search-bar button:hover {
   }
 
   .sidebar {
-      position: sticky; /* Sticky sidebar */
-      top: 12rem; /* Corrected unit and maintained offset (192px) */
-      grid-column: 2;
-      /* margin-top: 6rem; /* Removed - Let grid alignment handle initial position */
-      /* Add max-height and overflow for tall sidebars */
-      /* height: fit-content; /* Removed - Let max-height control */
+    position: sticky; /* Sticky sidebar */
+    top: 12rem; /* Corrected unit and maintained offset (192px) */
+    grid-column: 2;
+    /* margin-top: 6rem; /* Removed - Let grid alignment handle initial position */
+    /* Add max-height and overflow for tall sidebars */
+    /* height: fit-content; /* Removed - Let max-height control */
   }
 
   .footer-content {
@@ -948,8 +980,8 @@ html[data-theme='dark'] .search-bar button:hover {
   left: 0;
   display: none; /* Initially hide nav links on mobile */
   flex-direction: column;
-    width: 100%;
-    padding: var(--space-md) 0; /* 24px */
+  width: 100%;
+  padding: var(--space-md) 0; /* 24px */
   text-align: center;
   background-color: var(--bg-primary);
   border-top: 1px solid var(--border-color);
@@ -990,64 +1022,69 @@ html[data-theme='dark'] .search-bar button:hover {
 
 /* User Reviews Section Styles */
 .review-sources {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 1.5rem;
-    margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .review-source-card {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1rem;
-    background-color: var(--card-background);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    color: var(--text-primary); /* Ensure all text inside inherits color */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: var(--card-background);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  color: var(--text-primary); /* Ensure all text inside inherits color */
 }
 
 .review-source-card h5 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
 }
 
 .review-source-card p {
-    color: var(--text-primary); /* Ensure text is visible */
-    margin-bottom: 0.5rem;
-    color: var(--text-primary); /* Explicit color */
+  color: var(--text-primary); /* Ensure text is visible */
+  margin-bottom: 0.5rem;
+  color: var(--text-primary); /* Explicit color */
 }
 
 .review-source-card .highlights {
-    margin-top: 0.75rem; /* Adjusted spacing */
+  margin-top: 0.75rem; /* Adjusted spacing */
 }
 
 .review-source-card .highlights strong {
-    display: block; /* Ensure 'Highlights:' is on its own line */
-    margin-bottom: 0.25rem;
-    color: var(--text-primary); /* Ensure heading is visible */
+  display: block; /* Ensure 'Highlights:' is on its own line */
+  margin-bottom: 0.25rem;
+  color: var(--text-primary); /* Ensure heading is visible */
 }
 
 .review-source-card .highlights ul {
-    margin-top: 0.25rem;
-    margin-bottom: 0; /* Remove extra bottom margin */
-    padding-left: 20px; /* Indent list items */
-    list-style-type: disc; /* Ensure list bullets are visible */
-    color: var(--text-primary); /* Ensure list item text is visible */
+  margin-top: 0.25rem;
+  margin-bottom: 0; /* Remove extra bottom margin */
+  padding-left: 20px; /* Indent list items */
+  list-style-type: disc; /* Ensure list bullets are visible */
+  color: var(--text-primary); /* Ensure list item text is visible */
 }
 
 .review-source-card .highlights li {
-    color: var(--text-primary); /* Ensure list item text is visible */
+  color: var(--text-primary); /* Ensure list item text is visible */
 }
 
 .review-source-card .highlights li {
-    margin-bottom: 0.25rem; /* Space between highlights */
+  margin-bottom: 0.25rem; /* Space between highlights */
 }
 
 .review-source-link {
-    display: inline-block;
-    margin-top: 0.75rem; /* Adjusted spacing */
-    font-size: 0.9em;
-    color: var(--link-color);
+  display: inline-block;
+  margin-top: 0.75rem; /* Adjusted spacing */
+  font-size: 0.9em;
+  color: var(--link-color);
 }
 
 /* Use Case Example Styling */
@@ -1072,70 +1109,75 @@ html[data-theme='dark'] .search-bar button:hover {
 
 /* Tool Details Page Styles */
 .review-sources {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 1.5rem;
-    margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .review-source-card {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1rem;
-    background-color: var(--card-background);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    color: var(--text-primary) !important; /* Force text color inheritance */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: var(--card-background);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  color: var(--text-primary) !important; /* Force text color inheritance */
 }
 
 .review-source-card h5 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
 }
 
 .review-source-card p {
-    color: var(--text-primary); /* Ensure text is visible */
-    margin-bottom: 0.5rem;
+  color: var(--text-primary); /* Ensure text is visible */
+  margin-bottom: 0.5rem;
 }
 
 .review-source-card .highlights {
-    margin-top: 0.75rem; /* Adjusted spacing */
-    /* Optional styling for the highlights container */
-    /* border: 1px solid var(--border-color); */
-    /* padding: 0.5rem; */
-    /* border-radius: 4px; */
+  margin-top: 0.75rem; /* Adjusted spacing */
+  /* Optional styling for the highlights container */
+  /* border: 1px solid var(--border-color); */
+  /* padding: 0.5rem; */
+  /* border-radius: 4px; */
 }
 
 .review-source-card .highlights strong {
-    display: block; /* Ensure 'Highlights:' is on its own line */
-    margin-bottom: 0.25rem;
-    color: var(--text-primary); /* Ensure heading is visible */
+  display: block; /* Ensure 'Highlights:' is on its own line */
+  margin-bottom: 0.25rem;
+  color: var(--text-primary); /* Ensure heading is visible */
 }
 
 .review-source-card .highlights ul {
-    margin-top: 0.25rem;
-    margin-bottom: 0; /* Remove extra bottom margin */
-    padding-left: 20px; /* Indent list items */
-    list-style-type: disc; /* Ensure list bullets are visible */
-    color: var(--text-primary); /* Ensure list item text is visible */
+  margin-top: 0.25rem;
+  margin-bottom: 0; /* Remove extra bottom margin */
+  padding-left: 20px; /* Indent list items */
+  list-style-type: disc; /* Ensure list bullets are visible */
+  color: var(--text-primary); /* Ensure list item text is visible */
 }
 
 .review-source-card .highlights li {
-    margin-bottom: 0.25rem; /* Space between highlights */
+  margin-bottom: 0.25rem; /* Space between highlights */
 }
 
 .review-source-link {
-    display: inline-block;
-    margin-top: 0.75rem; /* Adjusted spacing */
-    font-size: 0.9em;
-    color: var(--link-color);
+  display: inline-block;
+  margin-top: 0.75rem; /* Adjusted spacing */
+  font-size: 0.9em;
+  color: var(--link-color);
 }
 
 .review-source-link {
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-size: 0.9em;
-    color: var(--link-color);
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+  color: var(--link-color);
 }
 
 /* Tool Details Page Styles */
@@ -1179,7 +1221,9 @@ html[data-theme='dark'] .search-bar button:hover {
   border: none;
   border-bottom: 3px solid transparent; /* Placeholder for active indicator */
   margin-bottom: -1px; /* Overlap the container border */
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
   cursor: pointer;
 }
 
@@ -1231,8 +1275,8 @@ html[data-theme='dark'] .search-bar button:hover {
 
 .tool-header {
   display: flex;
-    align-items: center;
-    margin-bottom: var(--space-md); /* 24px */
+  align-items: center;
+  margin-bottom: var(--space-md); /* 24px */
 }
 
 .tool-header h1 {
@@ -1242,8 +1286,8 @@ html[data-theme='dark'] .search-bar button:hover {
 .tool-logo {
   max-width: 100px;
   height: auto;
-    max-height: 50px; /* Keep max-height */
-    margin-right: var(--space-md); /* 24px */
+  max-height: 50px; /* Keep max-height */
+  margin-right: var(--space-md); /* 24px */
   vertical-align: middle;
 }
 
@@ -1253,7 +1297,6 @@ html[data-theme='dark'] .search-bar button:hover {
   background-color: var(--secondary-color);
   border-radius: 5px;
 }
-
 
 .feature-grid {
   display: grid;
@@ -1308,7 +1351,7 @@ html[data-theme='dark'] .search-bar button:hover {
 .specs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-xs); /* 8px */
+  gap: var(--space-xs); /* 8px */
 }
 
 .use-cases-list {
@@ -1346,8 +1389,6 @@ html[data-theme='dark'] .search-bar button:hover {
   border: 1px solid var(--border-color);
   border-radius: 5px;
 }
-
-
 
 /* --- Styles for Tool Details Page Enhancements --- */
 
@@ -1397,9 +1438,9 @@ html[data-theme='dark'] .search-bar button:hover {
   opacity: 1; /* Show hint text on hover */
 }
 
-
 /* General Styling for New Sections Below Tabs */
-.tool-section { /* Add some base styling if not already sufficient */
+.tool-section {
+  /* Add some base styling if not already sufficient */
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-color); /* Separator line */
@@ -1407,17 +1448,16 @@ html[data-theme='dark'] .search-bar button:hover {
 
 /* Ensure summary section doesn't get double top border */
 .tool-summary.tool-section {
-    margin-top: 1.5rem; /* Keep its original margin */
-    border-top: none;
+  margin-top: 1.5rem; /* Keep its original margin */
+  border-top: none;
 }
 
 /* Ensure first section *after* tabs gets the top border */
 .tabs-container + .tool-section {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
 }
-
 
 .tool-section h2 {
   margin-top: 0; /* Remove top margin for section headings */
@@ -1496,53 +1536,63 @@ html[data-theme='dark'] .search-bar button:hover {
 }
 
 .tool-section h4 {
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 }
 
 /* Code Block Styles - Use Theme Variables */
 .code-block {
-    position: relative;
-    margin: var(--space-sm) 0; /* 16px */
-    padding: var(--space-sm); /* 16px */
-    font-family: var(--font-family-monospace); /* Use variable */
-    color: var(--code-text); /* Use variable */
-    background-color: var(--code-bg); /* Use variable */
-    border: 1px solid var(--border-color); /* Add subtle border */
-    border-radius: 6px; /* Match other elements */
-    box-shadow: var(--code-shadow); /* Use variable */
-    overflow: auto;
+  position: relative;
+  margin: var(--space-sm) 0; /* 16px */
+  padding: var(--space-sm); /* 16px */
+  font-family: var(--font-family-monospace); /* Use variable */
+  color: var(--code-text); /* Use variable */
+  background-color: var(--code-bg); /* Use variable */
+  border: 1px solid var(--border-color); /* Add subtle border */
+  border-radius: 6px; /* Match other elements */
+  box-shadow: var(--code-shadow); /* Use variable */
+  overflow: auto;
 }
 
 /* Removed pseudo-element header for cleaner look */
 /* .code-block::before { ... } */
 
 .code-block pre {
-    margin: 0;
-    white-space: pre-wrap;
+  margin: 0;
+  white-space: pre-wrap;
 }
 
 /* Syntax Highlighting - Use Theme Variables */
-.code-block .keyword { color: var(--code-keyword); }
-.code-block .string { color: var(--code-string); }
-.code-block .comment { color: var(--code-comment); }
-.code-block .number { color: var(--code-number); }
-.code-block .function { color: var(--code-function); }
+.code-block .keyword {
+  color: var(--code-keyword);
+}
+.code-block .string {
+  color: var(--code-string);
+}
+.code-block .comment {
+  color: var(--code-comment);
+}
+.code-block .number {
+  color: var(--code-number);
+}
+.code-block .function {
+  color: var(--code-function);
+}
 /* Add more syntax classes if needed */
 
 .tool-section ul {
-    margin-bottom: 1rem;
-    margin-left: 1.5rem;
-    list-style: disc;
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+  list-style: disc;
 }
 
 .tool-section li {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .tool-section p {
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Specific Section Styles (can add more if needed) */
@@ -1580,12 +1630,13 @@ html[data-theme='dark'] .search-bar button:hover {
   background-color: var(--card-background); /* Use standard card background */
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  transition: background-color 0.3s, border-color 0.3s; /* Add theme transition */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Add theme transition */
 }
 
 /* No specific light theme override needed if using card-background */
 /* html[data-theme='light'] .review-source { ... } */
-
 
 .review-source h4 {
   margin-top: 0;
@@ -1594,32 +1645,31 @@ html[data-theme='dark'] .search-bar button:hover {
 }
 
 .review-source ul {
-    margin-bottom: 0;
-    margin-left: 1rem;
+  margin-bottom: 0;
+  margin-left: 1rem;
 }
 
 /* Technical Section */
 .technical-section ul {
-    margin-left: 0;
-    padding-left: 0;
-    list-style: none; /* Remove bullets for spec list */
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none; /* Remove bullets for spec list */
 }
 
 .technical-section li {
-    margin-bottom: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 /* Resources Section */
 .resources-section ul {
-    margin-left: 0;
-    padding-left: 0;
-    list-style: none; /* Remove bullets for resource lists */
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none; /* Remove bullets for resource lists */
 }
 
 .resources-section li {
-    margin-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
 }
-
 
 /* Responsive adjustments for Pros/Cons grid */
 @media (width <= 768px) {
@@ -1628,8 +1678,6 @@ html[data-theme='dark'] .search-bar button:hover {
     gap: 1.5rem;
   }
 }
-
-
 
 /* ==========================================================================
    Modern Table Styles (Added March 2025)
@@ -1690,9 +1738,9 @@ html[data-theme='light'] .table-wrapper tbody tr:hover {
 
 /* Dark theme table header and hover */
 html[data-theme='dark'] .table-wrapper thead th {
-   background-color: var(--bg-secondary); /* Use variable */
-   color: var(--text-secondary); /* Use variable */
-   border-bottom-color: var(--border-color);
+  background-color: var(--bg-secondary); /* Use variable */
+  color: var(--text-secondary); /* Use variable */
+  border-bottom-color: var(--border-color);
 }
 html[data-theme='dark'] .table-wrapper tbody tr:hover {
   background-color: var(--bg-secondary); /* Use variable */
@@ -1700,42 +1748,43 @@ html[data-theme='dark'] .table-wrapper tbody tr:hover {
 
 /* Spotify theme table header and hover */
 html[data-theme='spotify'] .table-wrapper thead th {
-   background-color: #282828; /* Spotify header */
-   color: var(--text-primary);
-   border-bottom-color: var(--border-color);
+  background-color: #282828; /* Spotify header */
+  color: var(--text-primary);
+  border-bottom-color: var(--border-color);
 }
 html[data-theme='spotify'] .table-wrapper tbody tr:hover {
   background-color: #282828; /* Spotify hover */
 }
 
 /* Ensure tables directly in tab-content also get basic wrapper behavior if needed */
-.tab-content > table:not(:only-child) { /* Apply only if table isn't the only element */
-   display: block; /* Needed for overflow-x */
-   overflow-x: auto;
-   margin-bottom: 1.5em;
+.tab-content > table:not(:only-child) {
+  /* Apply only if table isn't the only element */
+  display: block; /* Needed for overflow-x */
+  overflow-x: auto;
+  margin-bottom: 1.5em;
 }
 .tab-content > table {
-    /* Apply core styles if not already wrapped */
-    width: 100%;
-    border-collapse: collapse;
-    /* Add other core styles if necessary, duplicating from .table-wrapper table */
+  /* Apply core styles if not already wrapped */
+  width: 100%;
+  border-collapse: collapse;
+  /* Add other core styles if necessary, duplicating from .table-wrapper table */
 }
 /* Apply cell styles if not wrapped */
 .tab-content > table th,
 .tab-content > table td {
-     padding: var(--space-xs) var(--space-sm);
-     text-align: left;
-     border-bottom: 1px solid var(--border-color);
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
 }
 /* Apply header styles if not wrapped */
 .tab-content > table thead th {
-    font-weight: 600;
-    background-color: var(--bg-secondary);
-    border-bottom-width: 2px;
+  font-weight: 600;
+  background-color: var(--bg-secondary);
+  border-bottom-width: 2px;
 }
 /* Apply body styles if not wrapped */
 .tab-content > table tbody tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 /* Remove striping for unwrapped tables */
 /* .tab-content > table tbody tr:nth-child(even) {
@@ -1746,15 +1795,27 @@ html[data-theme='spotify'] .table-wrapper tbody tr:hover {
 }
 /* Add theme adjustments for unwrapped tables too */
 /* Light theme unwrapped table hover */
-html[data-theme='light'] .tab-content > table tbody tr:hover { background-color: #f1f3f5; }
+html[data-theme='light'] .tab-content > table tbody tr:hover {
+  background-color: #f1f3f5;
+}
 /* Dark theme unwrapped table header/hover */
-html[data-theme='dark'] .tab-content > table thead th { background-color: var(--bg-secondary); color: var(--text-secondary); border-bottom-color: var(--border-color); }
-html[data-theme='dark'] .tab-content > table tbody tr:hover { background-color: var(--bg-secondary); }
+html[data-theme='dark'] .tab-content > table thead th {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-bottom-color: var(--border-color);
+}
+html[data-theme='dark'] .tab-content > table tbody tr:hover {
+  background-color: var(--bg-secondary);
+}
 /* Spotify theme unwrapped table header/hover */
-html[data-theme='spotify'] .tab-content > table thead th { background-color: #282828; color: var(--text-primary); border-bottom-color: var(--border-color); }
-html[data-theme='spotify'] .tab-content > table tbody tr:hover { background-color: #282828; }
-
-
+html[data-theme='spotify'] .tab-content > table thead th {
+  background-color: #282828;
+  color: var(--text-primary);
+  border-bottom-color: var(--border-color);
+}
+html[data-theme='spotify'] .tab-content > table tbody tr:hover {
+  background-color: #282828;
+}
 
 /* --- Breadcrumb Styles --- */
 /* Breadcrumbs */
@@ -1791,7 +1852,11 @@ html[data-theme='spotify'] .tab-content > table tbody tr:hover { background-colo
 }
 
 .breadcrumb-item a:hover {
-  color: color-mix(in srgb, var(--link-color) 80%, white); /* Lighten on hover */
+  color: color-mix(
+    in srgb,
+    var(--link-color) 80%,
+    white
+  ); /* Lighten on hover */
   text-decoration: underline;
 }
 
@@ -1799,8 +1864,6 @@ html[data-theme='spotify'] .tab-content > table tbody tr:hover { background-colo
   color: var(--text-primary); /* Use primary text color for active item */
   font-weight: 600; /* Slightly bolder */
 }
-
-
 
 /* ==========================================================================
    Pricing Tab Styles (Merged from tool-details/tabs.css)
@@ -1864,7 +1927,9 @@ html[data-theme='spotify'] .tab-content > table tbody tr:hover { background-colo
   border: 1px solid var(--border-color); /* Use standard border */
   border-left: 4px solid var(--primary-color); /* Keep accent border */
   border-radius: 6px; /* Consistent radius */
-  transition: background-color 0.3s, border-color 0.3s; /* Theme transition */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Theme transition */
 }
 
 .pricing-notes h3 {

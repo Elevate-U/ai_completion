@@ -41,15 +41,15 @@
   "user_reviews": {
     "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
   },
-    "benchmark_scores": {
-      "overall_performance": "Varies by task (e.g., ~97.3% POS Tagging Accuracy)",
-      "accuracy": "~97.3% (POS Tagging)",
-      "speed": "Not typically measured",
-      "task_specific": {
-        "NER_F1": "~89.9%",
-        "Dependency_Parsing_Accuracy": "~92.1%"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "Varies by task (e.g., ~97.3% POS Tagging Accuracy)",
+    "accuracy": "~97.3% (POS Tagging)",
+    "speed": "Not typically measured",
+    "task_specific": {
+      "NER_F1": "~89.9%",
+      "Dependency_Parsing_Accuracy": "~92.1%"
+    }
+  },
   "integration_capabilities": [
     "Can be integrated with various programming languages via third-party APIs or web service"
   ],

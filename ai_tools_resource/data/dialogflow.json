@@ -229,16 +229,16 @@
       }
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "84% (Intent Classification F1)",
-      "accuracy": "84% (Intent Classification F1)",
-      "speed": "Real-time",
-      "task_specific": {
-        "intent_classification_chatbot_f1": "92%",
-        "intent_classification_askubuntu_f1": "81%",
-        "intent_classification_webapps_f1": "69%"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "84% (Intent Classification F1)",
+    "accuracy": "84% (Intent Classification F1)",
+    "speed": "Real-time",
+    "task_specific": {
+      "intent_classification_chatbot_f1": "92%",
+      "intent_classification_askubuntu_f1": "81%",
+      "intent_classification_webapps_f1": "69%"
+    }
+  },
   "integration_capabilities": [
     "Google Cloud services (Speech-to-Text, Text-to-Speech, AI Platform, etc.)",
     "Google Assistant",

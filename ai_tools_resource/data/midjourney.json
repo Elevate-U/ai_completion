@@ -57,42 +57,29 @@
     "api_type": "None (No public API)",
     "sdks": "None",
     "platforms": "Discord, Web (Alpha interface for subscribers)",
-    "input_methods": [
-      "Text prompt",
-      "Image upload (for references, blending)"
-    ],
-    "supported_languages": [
-      "English (primarily for prompts)"
-    ],
+    "input_methods": ["Text prompt", "Image upload (for references, blending)"],
+    "supported_languages": ["English (primarily for prompts)"],
     "performance_metrics": {
       "latency": "Depends on mode (Fast/Relax/Turbo) and subscription",
       "accuracy": "High visual quality, prompt adherence varies",
       "throughput": "Managed service, scales internally"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "1200 (Intelligence ELO)",
-      "accuracy": "15.4 (FID, Face Generation)",
-      "speed": "25 sec/image",
-      "task_specific": {
-        "face_generation_fid": 15.4
-      }
-    },
-  "integration_capabilities": [
-    "Discord Bot"
-  ],
+  "benchmark_scores": {
+    "overall_performance": "1200 (Intelligence ELO)",
+    "accuracy": "15.4 (FID, Face Generation)",
+    "speed": "25 sec/image",
+    "task_specific": {
+      "face_generation_fid": 15.4
+    }
+  },
+  "integration_capabilities": ["Discord Bot"],
   "scalability": "Managed service, scales internally",
-  "support_options": [
-    "Discord community channels",
-    "Official documentation"
-  ],
+  "support_options": ["Discord community channels", "Official documentation"],
   "security_compliance": {
     "certifications": [],
     "data_protection": "Governed by Terms of Service. Generated images typically public unless using Stealth Mode (paid feature)."
   },
-  "data_source_urls": [
-    "https://midjourney.com",
-    "https://docs.midjourney.com"
-  ],
+  "data_source_urls": ["https://midjourney.com", "https://docs.midjourney.com"],
   "last_updated": "2025-04-01"
 }

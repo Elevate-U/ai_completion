@@ -1,22 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <link rel="stylesheet" href="website/css/style.css">
-</head>
-<body>
-  <div class="code-block">
-    <pre><code class="keyword">function</code> <code class="function">example</code>() {
+  <head>
+    <link rel="stylesheet" href="website/css/style.css" />
+  </head>
+  <body>
+    <div class="code-block">
+      <pre><code class="keyword">function</code> <code class="function">example</code>() {
   <code class="string">"test string"</code>
   <code class="comment">// comment</code>
   <code class="number">42</code>
 }</pre>
-  </div>
-  <script src="node_modules/axe-core/axe.min.js"></script>
-  <script>
-    axe.run().then(results => {
-      console.log(results);
-      require('fs').writeFileSync('a11y-results.json', JSON.stringify(results, null, 2));
-    });
-  </script>
-</body>
+    </div>
+    <script src="node_modules/axe-core/axe.min.js"></script>
+    <script>
+      axe.run().then((results) => {
+        console.log(results);
+        require('fs').writeFileSync(
+          'a11y-results.json',
+          JSON.stringify(results, null, 2)
+        );
+      });
+    </script>
+  </body>
 </html>

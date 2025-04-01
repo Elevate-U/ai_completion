@@ -45,25 +45,20 @@
     "api_type": "REST (primarily for enterprise/partners)",
     "sdks": "JavaScript SDK (primarily for enterprise/partners)",
     "platforms": "Web (firefly.adobe.com), Creative Cloud Desktop Apps, Adobe Stock, API",
-    "input_methods": [
-      "Text prompt",
-      "Image upload/selection"
-    ],
-    "supported_languages": [
-      "Over 100 languages for prompts"
-    ],
+    "input_methods": ["Text prompt", "Image upload/selection"],
+    "supported_languages": ["Over 100 languages for prompts"],
     "performance_metrics": {
       "latency": "Generally fast (cloud service)",
       "accuracy": "High quality, good prompt adherence",
       "throughput": "Scalable cloud service"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "Not available (user reviews suggest competitive)",
-      "accuracy": "Not available",
-      "speed": "Not available",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not available (user reviews suggest competitive)",
+    "accuracy": "Not available",
+    "speed": "Not available",
+    "task_specific": {}
+  },
   "integration_capabilities": [
     "Adobe Photoshop",
     "Adobe Illustrator",

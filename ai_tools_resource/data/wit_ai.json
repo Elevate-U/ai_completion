@@ -33,12 +33,12 @@
   "user_reviews": {
     "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
   },
-    "benchmark_scores": {
-      "overall_performance": "Not available (provides confidence scores)",
-      "accuracy": "Not available",
-      "speed": "Real-time",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not available (provides confidence scores)",
+    "accuracy": "Not available",
+    "speed": "Real-time",
+    "task_specific": {}
+  },
   "integration_capabilities": [
     "Messaging platforms (Facebook Messenger, etc.)",
     "Mobile apps",

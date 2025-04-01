@@ -15,8 +15,10 @@ const PORT = 3000;
 // Serve static files from the project root
 app.use(express.static(path.join(__dirname, '..')));
 // Serve static files from ai_tools_resource directory
-app.use('/ai_tools_resource', express.static(path.join(__dirname, '../ai_tools_resource')));
-
+app.use(
+  '/ai_tools_resource',
+  express.static(path.join(__dirname, '../ai_tools_resource'))
+);
 
 // Proxy endpoint to bypass CORS for external fetches
 app.get('/proxy', async (req, res) => {
@@ -32,9 +34,9 @@ app.get('/proxy', async (req, res) => {
       headers: {
         // Forward some basic headers, avoid host/cookie related ones
         'User-Agent': req.headers['user-agent'] || 'NodeFetchProxy/1.0',
-        'Accept': req.headers['accept'] || '*/*',
+        Accept: req.headers['accept'] || '*/*',
         'Accept-Language': req.headers['accept-language'] || 'en-US,en;q=0.9',
-      }
+      },
     };
 
     const response = await fetch(targetUrl, fetchOptions);
@@ -52,7 +54,6 @@ app.get('/proxy', async (req, res) => {
 
     // Stream the response body back to the client
     Readable.fromWeb(response.body).pipe(res); // Convert Web Stream to Node Stream before piping
-
   } catch (error) {
     console.error(`Proxy error fetching ${targetUrl}:`, error);
     res.status(500).send(`Error fetching URL: ${error.message}`);
@@ -65,13 +66,13 @@ app.get('/list-tool-files', async (req, res) => {
   const excludedFiles = new Set([
     'ai_tool_schema_template.json',
     'ai_updates_review.json',
-    'tool_analysis_results.json' // Add other non-tool JSONs if needed
+    'tool_analysis_results.json', // Add other non-tool JSONs if needed
   ]);
 
   try {
     const files = await fs.readdir(dataDir);
-    const toolFiles = files.filter(file =>
-      file.endsWith('.json') && !excludedFiles.has(file)
+    const toolFiles = files.filter(
+      (file) => file.endsWith('.json') && !excludedFiles.has(file)
     );
     res.json(toolFiles);
   } catch (error) {
@@ -81,6 +82,8 @@ app.get('/list-tool-files', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Development server running at http://localhost:${PORT}/website/index.html`);
+  console.log(
+    `Development server running at http://localhost:${PORT}/website/index.html`
+  );
   console.log('Access your files through this server to avoid CORS issues');
 });

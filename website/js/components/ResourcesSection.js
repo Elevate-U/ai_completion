@@ -64,16 +64,15 @@ export function renderResourcesSection(tool) {
       `;
     }
     if (data_source_urls && data_source_urls.length > 0) {
-       content += `
+      content += `
         <p><strong>Data Sources:</strong></p>
         <ul>
-            ${data_source_urls.map(url => `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a></li>`).join('')}
+            ${data_source_urls.map((url) => `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a></li>`).join('')}
         </ul>
        `;
     }
     return content;
   };
-
 
   return `
     <section class="tool-section resources-section">

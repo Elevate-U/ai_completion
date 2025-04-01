@@ -444,7 +444,8 @@ function setupComparisonEventListeners() {
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', async () => { // Make listener async
+document.addEventListener('DOMContentLoaded', async () => {
+  // Make listener async
   console.log('[comparison.js] DOMContentLoaded event fired.');
 
   // Load data specifically for this page
@@ -454,7 +455,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Make listener asy
 
   // Now that data is loaded (or failed), initialize the page
   initComparisonPage();
-
 });
 
 // Function to fetch all tool data for the comparison page
@@ -470,16 +470,18 @@ async function loadAllToolDataForComparison() {
     console.log(`[comparison.js] Fetched ${filenames.length} tool filenames.`);
 
     // 2. Fetch each tool's data file concurrently
-    const fetchPromises = filenames.map(filename =>
+    const fetchPromises = filenames.map((filename) =>
       fetch(`/ai_tools_resource/data/${filename}`) // Construct path relative to server root
-        .then(response => {
+        .then((response) => {
           if (!response.ok) {
-            console.warn(`[comparison.js] Failed to fetch ${filename}: ${response.statusText}`);
+            console.warn(
+              `[comparison.js] Failed to fetch ${filename}: ${response.statusText}`
+            );
             return null; // Return null for failed fetches
           }
           return response.json();
         })
-        .catch(error => {
+        .catch((error) => {
           console.warn(`[comparison.js] Error fetching ${filename}:`, error);
           return null; // Return null on network error
         })
@@ -488,10 +490,11 @@ async function loadAllToolDataForComparison() {
     const toolDataResults = await Promise.all(fetchPromises);
 
     // 3. Filter out null results (failed fetches) and assign to a local variable
-    const loadedTools = toolDataResults.filter(data => data !== null);
-    console.log(`[comparison.js] Successfully loaded data for ${loadedTools.length} tools.`);
+    const loadedTools = toolDataResults.filter((data) => data !== null);
+    console.log(
+      `[comparison.js] Successfully loaded data for ${loadedTools.length} tools.`
+    );
     return loadedTools; // Return the loaded data
-
   } catch (error) {
     console.error('[comparison.js] Error loading tool data:', error);
     // Display error on the page

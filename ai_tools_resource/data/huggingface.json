@@ -4,24 +4,24 @@
   "category": "AI/ML Platform",
   "description": "Hugging Face is a prominent company and community-driven platform focused on democratizing Artificial Intelligence (AI) and Machine Learning (ML), particularly in the field of Natural Language Processing (NLP). Founded in 2016, it initially started as a chatbot app for teenagers before pivoting to become a central hub for the ML community. It's often called the 'GitHub of Machine Learning' because it provides a space for developers, researchers, and organizations to openly share, discover, train, deploy, and collaborate on ML models, datasets, and applications. Its core mission is to make advanced AI more accessible to everyone.",
   "features": [
-   "Hugging Face Hub: A massive repository of pre-trained models, datasets, and code. Think of it as GitHub for AI.",
-   "Spaces: Allows users to build, host, and showcase interactive ML demo applications directly in the browser.",
-   "Inference Endpoints: A service to easily deploy models as production-ready APIs on secure, scalable infrastructure.",
-   "Transformers Library: The go-to Python library for using pre-trained transformer models (BERT, GPT, etc.).",
-   "Datasets Library: Simplifies accessing and processing large datasets, making it efficient to load and prepare data for model training and evaluation.",
-   "Accelerate: Helps simplify running PyTorch training scripts across various distributed setups (multi-GPU, TPU) with minimal code changes.",
-   "PEFT (Parameter-Efficient Fine-Tuning): Techniques for fine-tuning models efficiently, using fewer resources.",
-   "TRL (Transformer Reinforcement Learning): Tools for fine-tuning models using reinforcement learning.",
-   "Diffusers Library: A library for diffusion models, used for generating images, audio, and more.",
-   "Safetensors Library: A safe and fast format for storing tensors (the building blocks of ML models).",
-   "Hub Python Library: A Python library for interacting with the Hugging Face Hub.",
-   "Tokenizers Library: Offers highly optimized and customizable tokenizers, crucial for preparing text data for NLP models.",
-   "Transformers.js: Run transformer models directly in the browser using JavaScript.",
-   "smolagents: Framework for building small, specialized AI agents.",
-   "AutoTrain: Allows users to train state-of-the-art models automatically on their own data without writing code.",
-   "Pipelines: High-level abstractions within the transformers library that make performing inference incredibly simple.",
-   "HUGS (Hugging Face Generative AI Services): An offering optimized to run open large language models (LLMs) on various hardware accelerators with zero configuration."
- ],
+    "Hugging Face Hub: A massive repository of pre-trained models, datasets, and code. Think of it as GitHub for AI.",
+    "Spaces: Allows users to build, host, and showcase interactive ML demo applications directly in the browser.",
+    "Inference Endpoints: A service to easily deploy models as production-ready APIs on secure, scalable infrastructure.",
+    "Transformers Library: The go-to Python library for using pre-trained transformer models (BERT, GPT, etc.).",
+    "Datasets Library: Simplifies accessing and processing large datasets, making it efficient to load and prepare data for model training and evaluation.",
+    "Accelerate: Helps simplify running PyTorch training scripts across various distributed setups (multi-GPU, TPU) with minimal code changes.",
+    "PEFT (Parameter-Efficient Fine-Tuning): Techniques for fine-tuning models efficiently, using fewer resources.",
+    "TRL (Transformer Reinforcement Learning): Tools for fine-tuning models using reinforcement learning.",
+    "Diffusers Library: A library for diffusion models, used for generating images, audio, and more.",
+    "Safetensors Library: A safe and fast format for storing tensors (the building blocks of ML models).",
+    "Hub Python Library: A Python library for interacting with the Hugging Face Hub.",
+    "Tokenizers Library: Offers highly optimized and customizable tokenizers, crucial for preparing text data for NLP models.",
+    "Transformers.js: Run transformer models directly in the browser using JavaScript.",
+    "smolagents: Framework for building small, specialized AI agents.",
+    "AutoTrain: Allows users to train state-of-the-art models automatically on their own data without writing code.",
+    "Pipelines: High-level abstractions within the transformers library that make performing inference incredibly simple.",
+    "HUGS (Hugging Face Generative AI Services): An offering optimized to run open large language models (LLMs) on various hardware accelerators with zero configuration."
+  ],
   "feature_visualization_mermaid": "```mermaid\ngraph LR\n    A[Hugging Face] --> B(Hub);\n    A --> C(Libraries);\n    A --> D(Tools & Services);\n\n    B --> B1(Models);\n    B --> B2(Datasets);\n    B --> B3(Spaces);\n\n    C --> C1(Transformers);\n    C --> C2(Datasets);\n    C --> C3(Tokenizers);\n    C --> C4(Accelerate);\n    C --> C5(Diffusers);\n    C --> C6(Safetensors);\n    C --> C7(TRL);\n    C --> C8(Transformers.js);\n    C --> C9(PEFT);\n    C --> C10(Hub Python Library);\n    C --> C11(smolagents);\n\n    D --> D1(Inference Endpoints);\n    D --> D2(AutoTrain);\n    D --> D3(Pipelines);\n    D --> D4(HUGS);\n\n    style B fill:#f9f,stroke:#333,stroke-width:2px;\n    style C fill:#ccf,stroke:#333,stroke-width:2px;\n    style D fill:#9cf,stroke:#333,stroke-width:2px;\n```",
   "pricing": {
     "model": "It's a mix of free and paid. The Hub is free, but you'll pay for things like a Pro account, Enterprise Hub, the hardware you use for Spaces, and Inference Endpoints.",
@@ -960,30 +960,27 @@
       }
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "84.52% (Avg GLUE Accuracy, bert-base-uncased)",
-      "accuracy": "90.5% (QNLI, bert-base-uncased)",
-      "speed": "Real-time",
-      "task_specific": {
-        "GLUE_MNLI_matched": "84.6%",
-        "GLUE_MNLI_mismatched": "83.4%",
-        "GLUE_QQP": "87.9%",
-        "GLUE_SST-2": "91.2%",
-        "GLUE_CoLA": "52.1%",
-        "GLUE_STS-B": "85.8%",
-        "GLUE_MRPC": "86.5%",
-        "GLUE_RTE": "66.4%"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "84.52% (Avg GLUE Accuracy, bert-base-uncased)",
+    "accuracy": "90.5% (QNLI, bert-base-uncased)",
+    "speed": "Real-time",
+    "task_specific": {
+      "GLUE_MNLI_matched": "84.6%",
+      "GLUE_MNLI_mismatched": "83.4%",
+      "GLUE_QQP": "87.9%",
+      "GLUE_SST-2": "91.2%",
+      "GLUE_CoLA": "52.1%",
+      "GLUE_STS-B": "85.8%",
+      "GLUE_MRPC": "86.5%",
+      "GLUE_RTE": "66.4%"
+    }
+  },
   "integration_capabilities": [
     "Integrates with various ML frameworks (PyTorch, TensorFlow, JAX)",
     "Integrates with cloud platforms (AWS, Azure, GCP)"
   ],
   "scalability": "Scalable infrastructure for model deployment (Inference Endpoints), dataset handling, and distributed training support (Accelerate library).",
-  "support_options": [
-    "Community forum",
-    "Enterprise support plans (paid)"
-  ],
+  "support_options": ["Community forum", "Enterprise support plans (paid)"],
   "data_source_urls": [
     "https://huggingface.co/",
     "https://huggingface.co/pricing"

@@ -2,7 +2,7 @@
 import {
   calculateInitialTheme,
   updateThemeAttribute,
-  getNextTheme
+  getNextTheme,
 } from './theme.js';
 import { renderToolHeader } from './components/ToolHeader.js';
 // Removed TabSystem imports
@@ -63,7 +63,6 @@ function renderBreadcrumbs(tool) {
     </nav>
   `;
 }
-
 
 // Main rendering function - Enhanced Hybrid Approach
 async function renderToolDetails(tool) {

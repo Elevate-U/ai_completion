@@ -12,14 +12,14 @@ module.exports = {
       features: {
         'nesting-rules': true,
         'custom-media-queries': true,
-        'color-mod-function': { unresolved: 'warn' }
-      }
+        'color-mod-function': { unresolved: 'warn' },
+      },
     }),
     require('postcss-combine-duplicated-selectors'),
     require('autoprefixer'),
-    process.env.NODE_ENV === 'production' ? require('cssnano') : false
-  ].filter(Boolean)
-}
+    process.env.NODE_ENV === 'production' ? require('cssnano') : false,
+  ].filter(Boolean),
+};
 ```
 
 ## Stylelint Configuration
@@ -27,19 +27,13 @@ module.exports = {
 ```javascript
 // .stylelintrc.js
 module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-recommended'
-  ],
+  extends: ['stylelint-config-standard', 'stylelint-config-recommended'],
   plugins: [
     'stylelint-order',
-    'stylelint-declaration-block-no-ignored-properties'
+    'stylelint-declaration-block-no-ignored-properties',
   ],
   rules: {
-    'order/order': [
-      'custom-properties',
-      'declarations'
-    ],
+    'order/order': ['custom-properties', 'declarations'],
     'order/properties-order': [
       'position',
       'top',
@@ -49,14 +43,15 @@ module.exports = {
       // ...full property order list
     ],
     'declaration-block-no-duplicate-properties': true,
-    'no-descending-specificity': null
-  }
-}
+    'no-descending-specificity': null,
+  },
+};
 ```
 
 ## Setup Instructions
 
 1. Install required dependencies:
+
 ```bash
 npm install --save-dev \
   postcss \
@@ -71,6 +66,7 @@ npm install --save-dev \
 ```
 
 2. Add scripts to package.json:
+
 ```json
 "scripts": {
   "lint:css": "stylelint '**/*.css'",
@@ -81,6 +77,7 @@ npm install --save-dev \
 ## Next Steps
 
 To implement these configurations:
+
 1. Switch to Code mode
 2. Create the configuration files
 3. Run the setup commands

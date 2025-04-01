@@ -10,12 +10,8 @@ export function renderBenchmarkScoresSection(tool) {
     return ''; // Return empty if no benchmark data exists
   }
 
-  const {
-    overall_performance,
-    accuracy,
-    speed,
-    task_specific
-  } = tool.benchmark_scores;
+  const { overall_performance, accuracy, speed, task_specific } =
+    tool.benchmark_scores;
 
   let taskSpecificHtml = '';
   if (task_specific && Object.keys(task_specific).length > 0) {
@@ -23,7 +19,10 @@ export function renderBenchmarkScoresSection(tool) {
       <h5>Task-Specific Scores:</h5>
       <ul class="list-unstyled">
         ${Object.entries(task_specific)
-          .map(([key, value]) => `<li><strong>${formatKey(key)}:</strong> ${value || 'N/A'}</li>`)
+          .map(
+            ([key, value]) =>
+              `<li><strong>${formatKey(key)}:</strong> ${value || 'N/A'}</li>`
+          )
           .join('')}
       </ul>
     `;
@@ -59,6 +58,6 @@ export function renderBenchmarkScoresSection(tool) {
 function formatKey(key) {
   return key
     .split('_')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }

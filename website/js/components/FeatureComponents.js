@@ -10,48 +10,52 @@ import { escapeHtml } from '../utils/htmlUtils.js'; // Import shared escape func
  * @returns {string} HTML string of the feature grid or error message
  */
 export function renderFeatureList(features) {
-    try {
-        // Validate input
-        if (!features) {
-            console.warn('renderFeatureList: No features provided');
-            return '<div class="no-features">No feature information available</div>';
-        }
+  try {
+    // Validate input
+    if (!features) {
+      console.warn('renderFeatureList: No features provided');
+      return '<div class="no-features">No feature information available</div>';
+    }
 
-        // Normalize input to array if needed
-        const featuresArray = Array.isArray(features) ? features : [features];
+    // Normalize input to array if needed
+    const featuresArray = Array.isArray(features) ? features : [features];
 
-        if (featuresArray.length === 0) {
-            return '<div class="no-features">No features to display</div>';
-        }
+    if (featuresArray.length === 0) {
+      return '<div class="no-features">No features to display</div>';
+    }
 
-        // Process each feature
-        const featureCards = featuresArray.map(feature => {
-            const { name, description } = normalizeFeature(feature);
-            const isAvailable = checkFeatureAvailability(feature);
-            
-            return `
+    // Process each feature
+    const featureCards = featuresArray.map((feature) => {
+      const { name, description } = normalizeFeature(feature);
+      const isAvailable = checkFeatureAvailability(feature);
+
+      return `
                 <div class="feature-card">
                     <h5>${escapeHtml(name)}</h5>
-                    ${description ? `
+                    ${
+                      description
+                        ? `
                    <div class="feature-description">
                        ${escapeHtml(description)}
-                   </div>` : ''}
+                   </div>`
+                        : ''
+                    }
                     <span class="${isAvailable ? 'available' : 'unavailable'}">
                         ${isAvailable ? '✓ Available' : '✗ Not available'}
                     </span>
                 </div>
             `;
-        });
+    });
 
-        return `
+    return `
             <div class="feature-grid">
                 ${featureCards.join('')}
             </div>
         `;
-    } catch (error) {
-        console.error('Error rendering feature list:', error);
-        return '<div class="error">Error displaying features</div>';
-    }
+  } catch (error) {
+    console.error('Error rendering feature list:', error);
+    return '<div class="error">Error displaying features</div>';
+  }
 }
 
 /**
@@ -60,17 +64,17 @@ export function renderFeatureList(features) {
  * @returns {Object} Normalized feature {name, description}
  */
 function normalizeFeature(feature) {
-    if (typeof feature === 'string') {
-        return {
-            name: feature,
-            description: ''
-        };
-    }
-    
+  if (typeof feature === 'string') {
     return {
-        name: feature.name || 'Unnamed Feature',
-        description: feature.description || ''
+      name: feature,
+      description: '',
     };
+  }
+
+  return {
+    name: feature.name || 'Unnamed Feature',
+    description: feature.description || '',
+  };
 }
 
 /**
@@ -79,11 +83,11 @@ function normalizeFeature(feature) {
  * @returns {boolean} Feature availability status
  */
 function checkFeatureAvailability(feature) {
-    // Strings are always considered available
-    if (typeof feature === 'string') return true;
-    
-    // Objects are available unless explicitly marked false
-    return feature.available !== false;
+  // Strings are always considered available
+  if (typeof feature === 'string') return true;
+
+  // Objects are available unless explicitly marked false
+  return feature.available !== false;
 }
 
 // Removed local escapeHtml function definition
@@ -94,15 +98,15 @@ function checkFeatureAvailability(feature) {
  * @returns {string} HTML string of comparison table
  */
 export function renderFeatureComparison(comparisonData) {
-    try {
-        if (!comparisonData) {
-            return '<div class="error">No comparison data provided</div>';
-        }
-        
-        // Actual implementation would process comparisonData here
-        return '<div class="feature-comparison">Feature comparison will be rendered here</div>';
-    } catch (error) {
-        console.error('Error rendering feature comparison:', error);
-        return '<div class="error">Error displaying feature comparison</div>';
+  try {
+    if (!comparisonData) {
+      return '<div class="error">No comparison data provided</div>';
     }
+
+    // Actual implementation would process comparisonData here
+    return '<div class="feature-comparison">Feature comparison will be rendered here</div>';
+  } catch (error) {
+    console.error('Error rendering feature comparison:', error);
+    return '<div class="error">Error displaying feature comparison</div>';
+  }
 }

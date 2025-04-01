@@ -123,14 +123,14 @@
       "https://www.capterra.com/"
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "86.4% (MMLU, GPT-4)",
-      "accuracy": "67.0% (HumanEval, GPT-4)",
-      "speed": "Real-time",
-      "task_specific": {
-        "notes": "Other task-specific scores not detailed."
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "86.4% (MMLU, GPT-4)",
+    "accuracy": "67.0% (HumanEval, GPT-4)",
+    "speed": "Real-time",
+    "task_specific": {
+      "notes": "Other task-specific scores not detailed."
+    }
+  },
   "integration_capabilities": [
     "Widely used and integrated with various platforms and tools"
   ],

@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <!-- Link to the updated stylesheet -->
-    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <style>
       /* Apply Inter font where system font isn't specified */
@@ -56,7 +56,7 @@
         text-decoration: underline;
       }
     </style>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="data:," />
   </head>
   <body>
     <header class="site-header">
@@ -99,10 +99,11 @@
         <article id="blog-post-content">
           <!-- Post content will be loaded here -->
           <div class="post-header">
-             <h1 id="post-title">Loading Post...</h1>
-             <p class="post-meta-full">
-               Published on <span id="post-date">...</span> by <span id="post-author">...</span>
-             </p>
+            <h1 id="post-title">Loading Post...</h1>
+            <p class="post-meta-full">
+              Published on <span id="post-date">...</span> by
+              <span id="post-author">...</span>
+            </p>
           </div>
           <div class="post-content" id="post-body">
             <p>Please wait while the content loads.</p>
@@ -133,7 +134,9 @@
           const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
           navToggle.setAttribute('aria-expanded', !isExpanded);
           navLinks.classList.toggle('active');
-          navToggle.querySelector('span').textContent = !isExpanded ? '✕' : '☰';
+          navToggle.querySelector('span').textContent = !isExpanded
+            ? '✕'
+            : '☰';
         });
       }
     </script>

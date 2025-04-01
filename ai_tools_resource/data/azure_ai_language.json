@@ -249,12 +249,12 @@
     ],
     "azure_ai_foundry": "Totally supported! You can play around with features there."
   },
-    "benchmark_scores": {
-      "overall_performance": "Not available (provides confidence scores)",
-      "accuracy": "Not available",
-      "speed": "Real-time",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not available (provides confidence scores)",
+    "accuracy": "Not available",
+    "speed": "Real-time",
+    "task_specific": {}
+  },
   "user_reviews": {
     "summary": "The Bottom Line: Azure AI Language has matured into a robust, versatile, and genuinely useful NLP platform. Its biggest wins are the sheer breadth of high-quality, pre-built features combined with the accessible power of customization via Language Studio and solid APIs. The tight integration within the Azure ecosystem is a significant force multiplier for teams already invested there. Yes, you need to plan for costs and understand that customization requires effort. But the ability to quickly add sophisticated language understanding – from sentiment analysis to complex conversational AI and domain-specific entity extraction – significantly lowers the barrier to entry for building truly intelligent applications. For developers looking to leverage NLP in the cloud, especially within a Microsoft-centric environment, Azure AI Language is a top-tier contender that continues to evolve in meaningful ways. It empowers you to build applications that don't just process text, but truly understand it.",
     "sources": [

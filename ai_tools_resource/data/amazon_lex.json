@@ -104,12 +104,12 @@
       "https://www.gartner.com/reviews/market/enterprise-conversational-ai-platforms/vendor/amazon-web-services/product/amazon-lex"
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "Not available (provides confidence scores)",
-      "accuracy": "Not available",
-      "speed": "Real-time",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not available (provides confidence scores)",
+    "accuracy": "Not available",
+    "speed": "Real-time",
+    "task_specific": {}
+  },
   "integration_capabilities": [
     "Amazon Connect",
     "Facebook Messenger",

@@ -42,26 +42,22 @@
     "api_type": "None (inherent to model); Interaction via libraries/engines. Hosted versions have APIs.",
     "sdks": "Python libraries (Hugging Face Transformers), C++ (llama.cpp), etc.",
     "platforms": "Local (CPU/GPU), On-premise, Cloud Platforms",
-    "input_methods": [
-      "Text prompt"
-    ],
-    "supported_languages": [
-      "Multiple languages"
-    ],
+    "input_methods": ["Text prompt"],
+    "supported_languages": ["Multiple languages"],
     "performance_metrics": {
       "latency": "Dependent on model size and hardware",
       "accuracy": "High, competitive with closed models",
       "throughput": "Dependent on deployment scale"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "78.9% (MMLU, Llama 3 70B Pre-trained)",
-      "accuracy": "70.0% (HumanEval, Llama 3 70B Pre-trained)",
-      "speed": "Real-time",
-      "task_specific": {
-        "GSM8K": "75.0% (Llama 3 70B Pre-trained)"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "78.9% (MMLU, Llama 3 70B Pre-trained)",
+    "accuracy": "70.0% (HumanEval, Llama 3 70B Pre-trained)",
+    "speed": "Real-time",
+    "task_specific": {
+      "GSM8K": "75.0% (Llama 3 70B Pre-trained)"
+    }
+  },
   "integration_capabilities": [
     "Hugging Face ecosystem",
     "Integration via libraries into custom applications",

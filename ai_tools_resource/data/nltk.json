@@ -32,22 +32,22 @@
   "user_reviews": {
     "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
   },
-    "benchmark_scores": {
-      "overall_performance": "87% (Approx. POS Tagging Accuracy)",
-      "accuracy": "87% (Approx. POS Tagging Accuracy)",
-      "speed": "Not typically measured",
-      "task_specific": {
-        "notes": "Scores for NER and dependency parsing not detailed."
-      }
-    },
-    "benchmark_scores": {
-      "overall_performance": "87% (Approx. POS Tagging Accuracy)",
-      "accuracy": "87% (Approx. POS Tagging Accuracy)",
-      "speed": "Not typically measured",
-      "task_specific": {
-        "notes": "Scores for NER and dependency parsing not detailed."
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "87% (Approx. POS Tagging Accuracy)",
+    "accuracy": "87% (Approx. POS Tagging Accuracy)",
+    "speed": "Not typically measured",
+    "task_specific": {
+      "notes": "Scores for NER and dependency parsing not detailed."
+    }
+  },
+  "benchmark_scores": {
+    "overall_performance": "87% (Approx. POS Tagging Accuracy)",
+    "accuracy": "87% (Approx. POS Tagging Accuracy)",
+    "speed": "Not typically measured",
+    "task_specific": {
+      "notes": "Scores for NER and dependency parsing not detailed."
+    }
+  },
   "integration_capabilities": ["Integrates with various Python libraries"],
   "scalability": "Scalability depends on the specific implementation and hardware",
   "support_options": ["Extensive documentation", "Community forum"],

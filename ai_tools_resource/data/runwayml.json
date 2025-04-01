@@ -53,26 +53,20 @@
     "api_type": "Not prominently featured for public use (potentially enterprise)",
     "sdks": "None prominently featured",
     "platforms": "Web, Mobile App (iOS)",
-    "input_methods": [
-      "Text prompt",
-      "Image upload",
-      "Video upload"
-    ],
-    "supported_languages": [
-      "English (primarily)"
-    ],
+    "input_methods": ["Text prompt", "Image upload", "Video upload"],
+    "supported_languages": ["English (primarily)"],
     "performance_metrics": {
       "latency": "Varies by task and server load",
       "accuracy": "High potential quality, depends on input/settings",
       "throughput": "Scalable cloud-based service"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "~12.3 (FID, similar to Stable Diffusion)",
-      "accuracy": "Not detailed",
-      "speed": "Varies by GPU",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "~12.3 (FID, similar to Stable Diffusion)",
+    "accuracy": "Not detailed",
+    "speed": "Varies by GPU",
+    "task_specific": {}
+  },
   "integration_capabilities": [
     "Web platform integrations (e.g., frame interpolation)"
   ],

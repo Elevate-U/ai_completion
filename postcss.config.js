@@ -6,11 +6,11 @@ module.exports = {
       features: {
         'nesting-rules': true,
         'custom-media-queries': true,
-        'color-mod-function': { unresolved: 'warn' }
-      }
+        'color-mod-function': { unresolved: 'warn' },
+      },
     }),
     require('postcss-combine-duplicated-selectors'),
     require('autoprefixer'),
-    process.env.NODE_ENV === 'production' ? require('cssnano') : false
-  ].filter(Boolean)
-}
+    process.env.NODE_ENV === 'production' ? require('cssnano') : false,
+  ].filter(Boolean),
+};

@@ -15,7 +15,7 @@
     "support_options",
     "security_compliance",
     "data_source_urls",
-      "benchmark_scores",
+    "benchmark_scores",
     "last_updated"
   ],
   "properties": {
@@ -169,9 +169,18 @@
       "type": "object",
       "description": "Standardized benchmark test scores for the tool. Scale and interpretation (e.g., higher is better, 0-100) should be documented separately.",
       "properties": {
-        "overall_performance": { "type": ["number", "string"], "description": "Composite score representing overall benchmark performance (numeric or descriptive)." },
-        "accuracy": { "type": ["number", "string"], "description": "Benchmark score for accuracy (numeric or descriptive)." },
-        "speed": { "type": ["number", "string"], "description": "Benchmark score for processing speed (numeric or descriptive, e.g., 'real-time')." },
+        "overall_performance": {
+          "type": ["number", "string"],
+          "description": "Composite score representing overall benchmark performance (numeric or descriptive)."
+        },
+        "accuracy": {
+          "type": ["number", "string"],
+          "description": "Benchmark score for accuracy (numeric or descriptive)."
+        },
+        "speed": {
+          "type": ["number", "string"],
+          "description": "Benchmark score for processing speed (numeric or descriptive, e.g., 'real-time')."
+        },
         "task_specific": {
           "type": "object",
           "description": "Scores for specific benchmark tasks relevant to the tool's category.",

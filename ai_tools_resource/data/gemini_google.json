@@ -40,30 +40,23 @@
     "api_type": "REST (via Google Cloud Vertex AI)",
     "sdks": "Python, Java, Node.js, Go, Web",
     "platforms": "Web (AI Studio, Google products), API (Vertex AI)",
-    "input_methods": [
-      "Text",
-      "Images",
-      "Audio",
-      "Video"
-    ],
-    "supported_languages": [
-      "Broad language support"
-    ],
+    "input_methods": ["Text", "Images", "Audio", "Video"],
+    "supported_languages": ["Broad language support"],
     "performance_metrics": {
       "latency": "Varies by model (Flash optimized)",
       "accuracy": "Varies by model (Ultra highest)",
       "throughput": "Massive (Google Cloud)"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "87.6% (MMLU, Ultra)",
-      "accuracy": "82.2% (GPQA, Ultra)",
-      "speed": "Real-time",
-      "task_specific": {
-        "MATH": "Not detailed",
-        "HumanEval": "Not detailed"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "87.6% (MMLU, Ultra)",
+    "accuracy": "82.2% (GPQA, Ultra)",
+    "speed": "Real-time",
+    "task_specific": {
+      "MATH": "Not detailed",
+      "HumanEval": "Not detailed"
+    }
+  },
   "integration_capabilities": [
     "Google Search",
     "Google Workspace (Docs, Sheets, etc.)",
@@ -78,11 +71,7 @@
     "Community forums"
   ],
   "security_compliance": {
-    "certifications": [
-      "SOC 2",
-      "ISO 27001",
-      "HIPAA"
-    ],
+    "certifications": ["SOC 2", "ISO 27001", "HIPAA"],
     "data_protection": "Follows Google Cloud policies; API data generally not used for training without consent."
   },
   "data_source_urls": [

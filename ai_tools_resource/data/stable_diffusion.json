@@ -45,10 +45,7 @@
     "api_type": "REST (via Stability AI API and other platforms, not inherent to model)",
     "sdks": "Python libraries (e.g., Diffusers), various community tools",
     "platforms": "Local Desktop (Win/Mac/Linux), Web Services, APIs",
-    "input_methods": [
-      "Text prompt",
-      "Image upload"
-    ],
+    "input_methods": ["Text prompt", "Image upload"],
     "supported_languages": [
       "English (primarily)",
       "Multilingual capabilities growing"
@@ -59,14 +56,14 @@
       "throughput": "Dependent on hardware/deployment scale"
     }
   },
-    "benchmark_scores": {
-      "overall_performance": "12.3 (FID, COCO2014, v1.5)",
-      "accuracy": "Not applicable",
-      "speed": "~15 sec/image",
-      "task_specific": {
-        "face_generation_fid": 12.3
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "12.3 (FID, COCO2014, v1.5)",
+    "accuracy": "Not applicable",
+    "speed": "~15 sec/image",
+    "task_specific": {
+      "face_generation_fid": 12.3
+    }
+  },
   "integration_capabilities": [
     "Plugins for GIMP, Krita, Photoshop, Blender",
     "Integration via APIs from various platforms",

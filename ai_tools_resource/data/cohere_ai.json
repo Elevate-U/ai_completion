@@ -85,14 +85,14 @@
       }
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "Not detailed (see documentation)",
-      "accuracy": "Not detailed (see documentation)",
-      "speed": "Not detailed (see documentation)",
-      "task_specific": {
-        "notes": "Varies by model, see Cohere documentation for specific benchmarks."
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not detailed (see documentation)",
+    "accuracy": "Not detailed (see documentation)",
+    "speed": "Not detailed (see documentation)",
+    "task_specific": {
+      "notes": "Varies by model, see Cohere documentation for specific benchmarks."
+    }
+  },
   "integration_capabilities": [
     "REST API for broad integration",
     "SDKs (Python, TS/JS, Go)",

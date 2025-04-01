@@ -89,7 +89,8 @@ export async function renderTabContents(tool) {
   if (useCasesTab) useCasesTab.innerHTML = await renderUseCasesTabContent(tool);
   if (analysisTab) analysisTab.innerHTML = renderProsConsSection(tool); // Render Pros/Cons here
   if (communityTab) communityTab.innerHTML = renderReviewsSection(tool); // Render Reviews here
-  if (integrationsTab) integrationsTab.innerHTML = renderIntegrationsSection(tool); // Render Integrations here
+  if (integrationsTab)
+    integrationsTab.innerHTML = renderIntegrationsSection(tool); // Render Integrations here
   if (technicalTab) technicalTab.innerHTML = renderTechnicalSection(tool); // Render Technical here
   if (resourcesTab) resourcesTab.innerHTML = renderResourcesSection(tool); // Render Resources here
 

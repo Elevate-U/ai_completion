@@ -8,14 +8,14 @@ describe('fetchPricingData', () => {
 
   it('should fetch and parse pricing data from a valid URL', async () => {
     const mockResponse = {
-      price: "$10", 
-      currency: "USD"
+      price: '$10',
+      currency: 'USD',
     };
-    
-    global.fetch = jest.fn(() => 
+
+    global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,
-        json: async () => mockResponse
+        json: async () => mockResponse,
       })
     );
 
@@ -27,9 +27,7 @@ describe('fetchPricingData', () => {
   });
 
   it('should handle errors when fetching data', async () => {
-    global.fetch = jest.fn(() => 
-      Promise.reject('Failed to fetch')
-    );
+    global.fetch = jest.fn(() => Promise.reject('Failed to fetch'));
 
     const url = 'https://example.com/pricing';
     const pricingData = await fetchPricingData(url);
@@ -42,7 +40,9 @@ describe('fetchPricingData', () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,
-        json: async () => { throw new Error('Invalid JSON') }
+        json: async () => {
+          throw new Error('Invalid JSON');
+        },
       })
     );
 

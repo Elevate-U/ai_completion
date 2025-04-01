@@ -16,9 +16,10 @@ function renderCategoryBreadcrumbs(category) {
     <nav aria-label="breadcrumb" class="breadcrumbs-container">
       <ol class="breadcrumbs">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        ${category === 'all' ? 
-          '<li class="breadcrumb-item active" aria-current="page">Categories</li>' : 
-          `<li class="breadcrumb-item"><a href="categories.html">Categories</a></li>
+        ${
+          category === 'all'
+            ? '<li class="breadcrumb-item active" aria-current="page">Categories</li>'
+            : `<li class="breadcrumb-item"><a href="categories.html">Categories</a></li>
            <li class="breadcrumb-item active" aria-current="page">${categoryName}</li>`
         }
       </ol>
@@ -26,24 +27,27 @@ function renderCategoryBreadcrumbs(category) {
   `;
 }
 
-
 // Current state
 let currentCategory = 'all'; // Default to 'all'
 let currentSearchTerm = '';
 
 // Initialize categories page with loaded data
-function initCategoriesPage(loadedData) { // Accept loaded data
+function initCategoriesPage(loadedData) {
+  // Accept loaded data
   console.log('Initializing Categories Page with data:', loadedData);
   // Data is now passed directly, no need for global check here.
   // Error handling for loading is done before calling this function.
   if (!loadedData || loadedData.length === 0) {
-      console.error('initCategoriesPage called with invalid or empty data.');
-      // Display error messages (similar to before, but based on passed data)
-      if (categorySidebarList) categorySidebarList.innerHTML = '<p>Error: No tool data loaded.</p>';
-      if (toolsContainer) toolsContainer.innerHTML = '<p>Error: Could not display tools.</p>';
-      if (categoryTitle) categoryTitle.textContent = 'Error';
-      if (categoryDescription) categoryDescription.textContent = 'Failed to load tool information.';
-      return; // Stop initialization
+    console.error('initCategoriesPage called with invalid or empty data.');
+    // Display error messages (similar to before, but based on passed data)
+    if (categorySidebarList)
+      categorySidebarList.innerHTML = '<p>Error: No tool data loaded.</p>';
+    if (toolsContainer)
+      toolsContainer.innerHTML = '<p>Error: Could not display tools.</p>';
+    if (categoryTitle) categoryTitle.textContent = 'Error';
+    if (categoryDescription)
+      categoryDescription.textContent = 'Failed to load tool information.';
+    return; // Stop initialization
   }
   // Assign to a scope accessible by other functions if needed, or pass down
   // For now, let's pass it down.
@@ -63,13 +67,14 @@ function initCategoriesPage(loadedData) { // Accept loaded data
 
   displayCategorySidebar(loadedData); // Pass data
   displayTools(loadedData); // Pass data
-  setupCategoriesEventListeners(loadedData); // Pass data
+  setupCategoriesEventListeners(); // Pass data
   console.log('Categories Page Initialized.');
   // console.log('aiToolsData:', loadedData); // Log the passed data
 }
 
 // Display all categories in sidebar
-function displayCategorySidebar(toolsData) { // Accept data
+function displayCategorySidebar(toolsData) {
+  // Accept data
   if (!categorySidebarList) {
     console.warn('Category sidebar list element not found.');
     return;
@@ -151,17 +156,27 @@ function getCategoryIconClass(category) {
 }
 
 // Display tools based on current category and search term
-function displayTools(toolsData) { // Accept data
+function displayTools(toolsData) {
+  // Accept data
   const mainContentContainer = document.querySelector('.tools-main-content'); // Get the main container
-  if (!mainContentContainer || !toolsContainer || !categoryTitle || !categoryDescription) {
-    console.warn('Required elements for displaying tools (container, title, description, tools) are missing.');
+  if (
+    !mainContentContainer ||
+    !toolsContainer ||
+    !categoryTitle ||
+    !categoryDescription
+  ) {
+    console.warn(
+      'Required elements for displaying tools (container, title, description, tools) are missing.'
+    );
     return;
   }
 
   // --- Add Breadcrumbs ---
   const breadcrumbHtml = renderCategoryBreadcrumbs(currentCategory);
   // Remove existing breadcrumbs first to prevent duplication on updates
-  const existingBreadcrumbs = mainContentContainer.querySelector('.breadcrumbs-container');
+  const existingBreadcrumbs = mainContentContainer.querySelector(
+    '.breadcrumbs-container'
+  );
   if (existingBreadcrumbs) {
     existingBreadcrumbs.remove();
   }
@@ -201,7 +216,10 @@ function displayTools(toolsData) { // Accept data
           tool.features.some((feature) =>
             typeof feature === 'string'
               ? feature.toLowerCase().includes(searchTerm)
-              : Object.values(feature).join(' ').toLowerCase().includes(searchTerm)
+              : Object.values(feature)
+                  .join(' ')
+                  .toLowerCase()
+                  .includes(searchTerm)
           )) // Search features
     );
   }
@@ -258,7 +276,8 @@ function displayTools(toolsData) { // Accept data
 }
 
 // Setup event listeners for categories page
-function setupCategoriesEventListeners(toolsData) { // Accept data (for consistency/future use)
+function setupCategoriesEventListeners() {
+  // Accept data (for consistency/future use)
   console.log('[categories.js] Setting up event listeners...'); // Log setup start
   console.log('[categories.js] toolsContainer element:', toolsContainer); // Log the element
 
@@ -292,7 +311,7 @@ function setupCategoriesEventListeners(toolsData) { // Accept data (for consiste
       }
     });
   } else {
-     console.warn('Category sidebar list not found for event listener setup.');
+    console.warn('Category sidebar list not found for event listener setup.');
   }
 
   // Search functionality (Moved inside this function)
@@ -313,26 +332,29 @@ function setupCategoriesEventListeners(toolsData) { // Accept data (for consiste
   }
 
   // Add listener for tool cards and "View Details" buttons
-  if (toolsContainer) { // Added check for toolsContainer existence
-      toolsContainer.addEventListener('click', (e) => {
-        const toolCard = e.target.closest('.tool-card[data-tool-id]');
-        const toolButton = e.target.closest('.btn[data-tool-id]');
-        
-        if (toolCard || toolButton) {
-          e.preventDefault();
-          const toolId = toolCard ? toolCard.dataset.toolId : toolButton.dataset.toolId;
-          console.log(`Navigate to details for tool: ${toolId}`);
-          window.location.href = `tool-details.html?id=${encodeURIComponent(toolId)}`;
-        }
-      });
-  } else {
-      console.warn('Tools container not found for event listener setup.');
-  }
+  if (toolsContainer) {
+    // Added check for toolsContainer existence
+    toolsContainer.addEventListener('click', (e) => {
+      const toolCard = e.target.closest('.tool-card[data-tool-id]');
+      const toolButton = e.target.closest('.btn[data-tool-id]');
 
+      if (toolCard || toolButton) {
+        e.preventDefault();
+        const toolId = toolCard
+          ? toolCard.dataset.toolId
+          : toolButton.dataset.toolId;
+        console.log(`Navigate to details for tool: ${toolId}`);
+        window.location.href = `tool-details.html?id=${encodeURIComponent(toolId)}`;
+      }
+    });
+  } else {
+    console.warn('Tools container not found for event listener setup.');
+  }
 } // Correct closing brace for setupCategoriesEventListeners
 
 // Initialize when DOM is loaded by fetching all tool data
-document.addEventListener('DOMContentLoaded', async () => { // Make async
+document.addEventListener('DOMContentLoaded', async () => {
+  // Make async
   console.log('[categories.js] DOMContentLoaded event fired.');
 
   try {
@@ -349,9 +371,11 @@ document.addEventListener('DOMContentLoaded', async () => { // Make async
     if (toolsContainer)
       toolsContainer.innerHTML =
         '<p>Error loading tool data. Please refresh.</p>';
-     if (categoryTitle) categoryTitle.textContent = 'Error Loading Data';
-     if (categoryDescription) categoryDescription.textContent = 'Could not retrieve tool information. Please try again later.';
-     // Optionally call initCategoriesPage with empty data to show consistent error state
-     initCategoriesPage([]);
+    if (categoryTitle) categoryTitle.textContent = 'Error Loading Data';
+    if (categoryDescription)
+      categoryDescription.textContent =
+        'Could not retrieve tool information. Please try again later.';
+    // Optionally call initCategoriesPage with empty data to show consistent error state
+    initCategoriesPage([]);
   }
 });

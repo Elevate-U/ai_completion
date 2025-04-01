@@ -1,7 +1,5 @@
 // Features tab content rendering - moved from tool-details.js
-import {
-  renderFeatureList,
-} from './FeatureComponents.js';
+import { renderFeatureList } from './FeatureComponents.js';
 
 export function renderFeaturesTabContent(tool) {
   console.log('renderFeaturesTabContent called');

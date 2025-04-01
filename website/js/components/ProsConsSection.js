@@ -18,7 +18,7 @@ export function renderProsConsSection(tool) {
       <div class="pros-cons-list ${className}">
         <h4>${title}</h4>
         <ul>
-          ${items.map(item => `<li>${item}</li>`).join('')}
+          ${items.map((item) => `<li>${item}</li>`).join('')}
         </ul>
       </div>
     `;

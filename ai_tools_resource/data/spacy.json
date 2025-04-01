@@ -52,15 +52,15 @@
   "user_reviews": {
     "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
   },
-    "benchmark_scores": {
-      "overall_performance": "96.4% (POS Tagging Accuracy, en_core_web_lg)",
-      "accuracy": "96.4% (POS Tagging Accuracy, en_core_web_lg)",
-      "speed": "Not typically measured",
-      "task_specific": {
-        "NER_F1": "87.3% (en_core_web_lg)",
-        "Dependency_Parsing_Accuracy": "93.9% (en_core_web_lg)"
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "96.4% (POS Tagging Accuracy, en_core_web_lg)",
+    "accuracy": "96.4% (POS Tagging Accuracy, en_core_web_lg)",
+    "speed": "Not typically measured",
+    "task_specific": {
+      "NER_F1": "87.3% (en_core_web_lg)",
+      "Dependency_Parsing_Accuracy": "93.9% (en_core_web_lg)"
+    }
+  },
   "integration_capabilities": [
     "PyTorch",
     "TensorFlow",

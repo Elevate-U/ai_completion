@@ -1,4 +1,4 @@
- // Theme management module
+// Theme management module
 const themes = ['light', 'dark', 'spotify'];
 
 export function calculateInitialTheme() {

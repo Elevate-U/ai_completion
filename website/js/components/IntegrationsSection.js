@@ -8,7 +8,10 @@
 export function renderIntegrationsSection(tool) {
   const { integration_capabilities, scalability } = tool;
 
-  if ((!integration_capabilities || integration_capabilities.length === 0) && !scalability) {
+  if (
+    (!integration_capabilities || integration_capabilities.length === 0) &&
+    !scalability
+  ) {
     return ''; // Don't render if no data
   }
 
@@ -17,7 +20,7 @@ export function renderIntegrationsSection(tool) {
     return `
       <h4>Integration Capabilities</h4>
       <ul>
-        ${items.map(item => `<li>${item}</li>`).join('')}
+        ${items.map((item) => `<li>${item}</li>`).join('')}
       </ul>
     `;
   };

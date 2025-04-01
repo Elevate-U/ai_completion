@@ -47,12 +47,12 @@
   "user_reviews": {
     "summary": "Mixed reviews on pricing. User-friendly platform with good features, but can be expensive for startups. Requires further research from external review sites (G2, Capterra, TrustRadius) for detailed reviews of Medallia Text Analytics."
   },
-    "benchmark_scores": {
-      "overall_performance": "Not available (depends on custom models)",
-      "accuracy": "Not available (depends on custom models)",
-      "speed": "Not available (depends on custom models)",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not available (depends on custom models)",
+    "accuracy": "Not available (depends on custom models)",
+    "speed": "Not available (depends on custom models)",
+    "task_specific": {}
+  },
   "integration_capabilities": [
     "Integrates with various platforms and data sources (surveys, social media, etc.)"
   ],

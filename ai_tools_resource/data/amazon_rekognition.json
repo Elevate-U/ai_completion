@@ -102,12 +102,12 @@
       "Face Matching & Verification: A common application mentioned is using Rekognition's facial analysis for identity verification or searching for specific individuals within large image collections."
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "Not available (task-dependent)",
-      "accuracy": "Not available (task-dependent)",
-      "speed": "Not available (task-dependent)",
-      "task_specific": {}
-    },
+  "benchmark_scores": {
+    "overall_performance": "Not available (task-dependent)",
+    "accuracy": "Not available (task-dependent)",
+    "speed": "Not available (task-dependent)",
+    "task_specific": {}
+  },
   "scalability": "Designed for high scalability, leveraging AWS infrastructure",
   "integration_capabilities": [],
   "use_cases": [

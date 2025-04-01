@@ -86,14 +86,14 @@
       }
     ]
   },
-    "benchmark_scores": {
-      "overall_performance": "59.81% (Balanced Accuracy, Conversational AI Benchmark)",
-      "accuracy": "Not detailed",
-      "speed": "Real-time",
-      "task_specific": {
-        "notes": "Other task-specific scores not available."
-      }
-    },
+  "benchmark_scores": {
+    "overall_performance": "59.81% (Balanced Accuracy, Conversational AI Benchmark)",
+    "accuracy": "Not detailed",
+    "speed": "Real-time",
+    "task_specific": {
+      "notes": "Other task-specific scores not available."
+    }
+  },
   "integration_capabilities": ["IBM Cloud services"],
   "scalability": "Designed for scalability",
   "support_options": ["Documentation", "IBM Support plans (paid)"],
