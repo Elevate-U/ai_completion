@@ -1,0 +1,95 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Stable Diffusion",
+  "category": "Image Generation",
+  "description": "Stable Diffusion is a powerful open-source text-to-image generation model. Developed initially with support from Stability AI, its open nature has fostered a massive ecosystem of tools, interfaces, and custom models.",
+  "features": [
+    "Text-to-image generation",
+    "Image-to-image translation",
+    "Inpainting",
+    "Outpainting",
+    "Highly customizable (models, LoRAs, ControlNet)",
+    "Open-source base model",
+    "Large community ecosystem",
+    "Improved prompt understanding (SDXL, SD3)",
+    "Improved in-image text rendering (SDXL, SD3)",
+    "AI Video generation support (via ecosystem tools like Deforum)"
+  ],
+  "pricing": {
+    "model": "Open-source base model (free). Costs arise from compute (local GPU/cloud) or using commercial platforms/APIs built on it.",
+    "free_tier": "Base model is free to download/use locally (subject to license). Many popular UIs (Automatic1111, ComfyUI) are free.",
+    "paid_tiers": [
+      {
+        "name": "Cloud Platforms/APIs",
+        "description": "Various providers (e.g., Stability AI API, cloud GPU instances) offer pay-per-use or subscription access."
+      }
+    ],
+    "notes": "Primary cost is hardware/cloud compute resources unless using a paid service."
+  },
+  "pros": [
+    "Open-source and highly customizable",
+    "Can be run locally for privacy/cost control",
+    "Vast community support and ecosystem",
+    "No inherent censorship (implementations may add filters)",
+    "Potentially free to use (excluding compute costs)",
+    "Permissive licenses often allow commercial use (check specific model)"
+  ],
+  "cons": [
+    "Requires technical knowledge for local setup/use",
+    "Needs powerful hardware (GPU with VRAM)",
+    "Output quality depends heavily on setup/prompting",
+    "Can generate artifacts without careful control (improving)",
+    "User responsible for ethical use/filtering"
+  ],
+  "technical_specifications": {
+    "api_type": "REST (via Stability AI API and other platforms, not inherent to model)",
+    "sdks": "Python libraries (e.g., Diffusers), various community tools",
+    "platforms": "Local Desktop (Win/Mac/Linux), Web Services, APIs",
+    "input_methods": [
+      "Text prompt",
+      "Image upload"
+    ],
+    "supported_languages": [
+      "English (primarily)",
+      "Multilingual capabilities growing"
+    ],
+    "performance_metrics": {
+      "latency": "Highly dependent on hardware/configuration",
+      "accuracy": "High potential quality, depends on setup/prompting",
+      "throughput": "Dependent on hardware/deployment scale"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "12.3 (FID, COCO2014, v1.5)",
+      "accuracy": "Not applicable",
+      "speed": "~15 sec/image",
+      "task_specific": {
+        "face_generation_fid": 12.3
+      }
+    },
+  "integration_capabilities": [
+    "Plugins for GIMP, Krita, Photoshop, Blender",
+    "Integration via APIs from various platforms",
+    "Hugging Face ecosystem"
+  ],
+  "scalability": "Dependent on deployment infrastructure (local or cloud)",
+  "support_options": [
+    "Community forums (Reddit, Discord)",
+    "GitHub repositories",
+    "Documentation for specific tools/platforms",
+    "Support from paid service providers (e.g., Stability AI)"
+  ],
+  "security_compliance": {
+    "certifications": [
+      "N/A (for base model)",
+      "Depends on hosting platform/API provider"
+    ],
+    "data_protection": "High privacy when run locally. Depends on API provider terms otherwise. Trained on large datasets like LAION."
+  },
+  "data_source_urls": [
+    "https://stability.ai",
+    "https://github.com/Stability-AI/generative-models",
+    "https://platform.stability.ai/docs"
+  ],
+  "last_updated": "2025-04-01"
+}

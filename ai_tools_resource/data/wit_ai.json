@@ -33,6 +33,12 @@
   "user_reviews": {
     "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
   },
+    "benchmark_scores": {
+      "overall_performance": "Not available (provides confidence scores)",
+      "accuracy": "Not available",
+      "speed": "Real-time",
+      "task_specific": {}
+    },
   "integration_capabilities": [
     "Messaging platforms (Facebook Messenger, etc.)",
     "Mobile apps",
@@ -45,9 +51,50 @@
     "Documentation",
     "Community forum (Facebook Group, GitHub Forum)"
   ],
-  "data_source_urls": [
-    "https://wit.ai/",
-    "https://wit.ai/faq"
+  "data_source_urls": ["https://wit.ai/", "https://wit.ai/faq"],
+  "last_updated": "2025-03-30",
+  "description": "Wit.ai is a free, natural language understanding platform from Meta that makes it easy for developers to build applications and devices that users can talk or text to. It focuses on extracting structured data (intents and entities) from user messages, enabling the creation of conversational interfaces for various platforms. Wit.ai learns from labeled examples provided by the community and developers, improving its understanding over time.",
+  "use_cases": [
+    {
+      "title": "Chatbots for Messaging Platforms",
+      "description": "Build chatbots that understand user requests on platforms like Facebook Messenger. Wit.ai extracts intent and entities to trigger appropriate bot responses.",
+      "example": "Create a Messenger bot for ordering food, understanding commands like 'Order a large pizza with pepperoni'."
+    },
+    {
+      "title": "Voice Control for Smart Devices",
+      "description": "Enable voice commands for smart home devices, wearables, or other hardware. Wit.ai processes speech input to understand user commands.",
+      "example": "Develop voice controls for a smart light system, recognizing commands like 'Turn off the living room lights'."
+    },
+    {
+      "title": "Mobile App Voice Interfaces",
+      "description": "Integrate voice navigation and control into mobile applications. This allows users to interact with the app hands-free.",
+      "example": "Add voice search functionality to a mobile e-commerce app, allowing users to say 'Search for running shoes'."
+    },
+    {
+      "title": "Automated Customer Service",
+      "description": "Handle simple customer service queries automatically using NLU. This can deflect common questions from human agents.",
+      "example": "Create a simple bot to answer frequently asked questions about business hours or locations."
+    }
   ],
-  "last_updated": "2025-03-29"
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://wit.ai/docs/intro",
+      "description": "Official Wit.ai documentation covering concepts, quickstart guides, and API references. This is the primary resource for learning how to use the platform."
+    },
+    {
+      "type": "Community Forum",
+      "url": "https://github.com/wit-ai/wit/discussions",
+      "description": "The GitHub Discussions forum serves as the community hub for asking questions, sharing projects, and getting help from other developers and the Wit.ai team."
+    }
+  ],
+  "documentation_url": "https://wit.ai/docs",
+  "api_url": "https://wit.ai/api",
+  "sdk_url": "https://wit.ai/sdk",
+  "security_compliance": {
+    "certifications": [
+      "N/A (Free Platform - Relies on Meta's infrastructure compliance)"
+    ],
+    "data_protection": "Subject to Meta's data policies. User data submitted for training may be used to improve the service. Review Meta's terms and data policy for specifics."
+  }
 }

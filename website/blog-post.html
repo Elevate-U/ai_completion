@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title will be set dynamically -->
+    <title>Blog Post - ThinkStack</title>
+    <!-- Add Google Font 'Inter' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to the updated stylesheet -->
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Apply Inter font where system font isn't specified */
+      body {
+        font-family: 'Inter', var(--font-family-sans-serif);
+      }
+      .blog-post-full {
+        padding: var(--spacing-unit) 0; /* Add some padding */
+      }
+      .post-header h1 {
+        margin-bottom: calc(var(--spacing-unit) * 0.5);
+      }
+      .post-meta-full {
+        font-size: 0.9rem;
+        color: var(--secondary-text-color);
+        margin-bottom: calc(var(--spacing-unit) * 1.5);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: calc(var(--spacing-unit) * 1);
+      }
+      .post-content {
+        line-height: 1.7; /* Improve readability */
+      }
+      .post-content h2,
+      .post-content h3 {
+        margin-top: calc(var(--spacing-unit) * 2);
+        margin-bottom: var(--spacing-unit);
+      }
+      .post-content ul,
+      .post-content ol {
+        margin-left: calc(var(--spacing-unit) * 1.5);
+        margin-bottom: var(--spacing-unit);
+      }
+      .back-to-blog {
+        display: inline-block;
+        margin-bottom: calc(var(--spacing-unit) * 2);
+        color: var(--link-color);
+        text-decoration: none;
+      }
+      .back-to-blog:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <link rel="icon" href="data:,">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <nav class="main-nav">
+          <a class="logo" href="index.html">ThinkStack</a>
+          <ul class="nav-links" id="nav-links">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="categories.html">Categories</a></li>
+            <li><a class="nav-link" href="comparison.html">Comparison</a></li>
+            <li><a class="nav-link active" href="blog.html">Blog</a></li>
+          </ul>
+          <div class="header-controls">
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              <i class="fas fa-sun theme-icon sun-icon"></i>
+              <i class="fas fa-moon theme-icon moon-icon"></i>
+              <i class="fas fa-music theme-icon spotify-icon"></i>
+              <span class="visually-hidden">Toggle theme</span>
+            </button>
+            <button
+              class="mobile-nav-toggle"
+              id="mobile-nav-toggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+            >
+              <span>&#9776;</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <main class="blog-post-full">
+        <a href="blog.html" class="back-to-blog">&larr; Back to Blog List</a>
+        <article id="blog-post-content">
+          <!-- Post content will be loaded here -->
+          <div class="post-header">
+             <h1 id="post-title">Loading Post...</h1>
+             <p class="post-meta-full">
+               Published on <span id="post-date">...</span> by <span id="post-author">...</span>
+             </p>
+          </div>
+          <div class="post-content" id="post-body">
+            <p>Please wait while the content loads.</p>
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>
+          ThinkStack &copy; 2025 | Data last updated:
+          <span id="last-updated">Loading...</span>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <!-- Script to load the specific blog post -->
+    <script src="js/blog-post.js"></script>
+    <!-- Mobile Nav Toggle Script (Consider moving to main.js) -->
+    <script>
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const navLinks = document.getElementById('nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+          const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !isExpanded);
+          navLinks.classList.toggle('active');
+          navToggle.querySelector('span').textContent = !isExpanded ? '✕' : '☰';
+        });
+      }
+    </script>
+  </body>
+</html>

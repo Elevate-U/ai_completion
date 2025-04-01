@@ -1,0 +1,98 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Midjourney",
+  "category": "Image Generation",
+  "description": "Midjourney is a highly acclaimed AI image generation service renowned for its unique, artistic, and often surreal visual style. It operates primarily through the Discord chat platform, though a dedicated web interface is increasingly available.",
+  "features": [
+    "Text-to-image generation",
+    "High-fidelity, artistic visuals",
+    "Image variations",
+    "Upscaling",
+    "Image blending",
+    "Style reference (--sref)",
+    "Character reference (--cref)",
+    "Prompt parameters (aspect ratio, style, chaos)",
+    "Outpainting (Zoom Out, Pan)",
+    "Region modification (Vary Region)",
+    "/describe command (image-to-prompt)"
+  ],
+  "pricing": {
+    "model": "Subscription-based",
+    "free_tier": "None (occasional limited trials may occur)",
+    "paid_tiers": [
+      {
+        "name": "Basic Plan",
+        "description": "Limited 'Fast' GPU time per month."
+      },
+      {
+        "name": "Standard Plan",
+        "description": "More 'Fast' GPU time, access to 'Relax' mode."
+      },
+      {
+        "name": "Pro Plan",
+        "description": "Even more 'Fast' GPU time, higher concurrent jobs, Stealth Mode."
+      },
+      {
+        "name": "Mega Plan",
+        "description": "Highest amount of 'Fast' GPU time."
+      }
+    ],
+    "notes": "Plans offer varying amounts of Fast GPU hours and concurrent job limits. Relax mode offers unlimited, slower generations on higher tiers."
+  },
+  "pros": [
+    "Produces highly artistic and detailed images",
+    "Unique aesthetic",
+    "Excellent style and character consistency features",
+    "Relatively easy prompts yield impressive results",
+    "Active and helpful community"
+  ],
+  "cons": [
+    "Requires paid subscription for significant use",
+    "Discord-centric interface can be unintuitive",
+    "Less granular control than some tools (e.g., Stable Diffusion)",
+    "No official public API",
+    "Can struggle with legible text in images"
+  ],
+  "technical_specifications": {
+    "api_type": "None (No public API)",
+    "sdks": "None",
+    "platforms": "Discord, Web (Alpha interface for subscribers)",
+    "input_methods": [
+      "Text prompt",
+      "Image upload (for references, blending)"
+    ],
+    "supported_languages": [
+      "English (primarily for prompts)"
+    ],
+    "performance_metrics": {
+      "latency": "Depends on mode (Fast/Relax/Turbo) and subscription",
+      "accuracy": "High visual quality, prompt adherence varies",
+      "throughput": "Managed service, scales internally"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "1200 (Intelligence ELO)",
+      "accuracy": "15.4 (FID, Face Generation)",
+      "speed": "25 sec/image",
+      "task_specific": {
+        "face_generation_fid": 15.4
+      }
+    },
+  "integration_capabilities": [
+    "Discord Bot"
+  ],
+  "scalability": "Managed service, scales internally",
+  "support_options": [
+    "Discord community channels",
+    "Official documentation"
+  ],
+  "security_compliance": {
+    "certifications": [],
+    "data_protection": "Governed by Terms of Service. Generated images typically public unless using Stealth Mode (paid feature)."
+  },
+  "data_source_urls": [
+    "https://midjourney.com",
+    "https://docs.midjourney.com"
+  ],
+  "last_updated": "2025-04-01"
+}

@@ -1,16 +1,18 @@
 {
   "name": "IBM Watson Natural Language Understanding",
+  "image_url": "https://www.ibm.com/products/natural-language-understanding",
   "category": "Natural Language Processing",
+  "description": "IBM Watson Natural Language Understanding is a cloud-based service that uses deep learning to extract metadata from text such as entities, relationships, keywords, categories, sentiment, emotion, and syntax. It allows users to analyze unstructured text data to understand context and meaning. The service offers pre-trained models and the ability to create custom models for specific domains or requirements, integrating with the IBM Cloud ecosystem.",
   "features": [
-    "Entities",
-    "Categories (Beta)",
-    "Classifications",
-    "Concepts",
-    "Emotions",
-    "Sentiment (Beta)",
-    "Relations",
-    "Metadata",
-    "Semantic Roles"
+    "Entities: Detect and extract named entities (people, places, organizations, etc.) from text.",
+    "Categories (Beta): Categorize text using a hierarchical classification system.",
+    "Classifications: Classify text into predefined categories.",
+    "Concepts: Identify high-level concepts that are not explicitly mentioned in the text.",
+    "Emotions: Detect emotions (joy, sadness, anger, etc.) expressed in the text.",
+    "Sentiment (Beta): Determine the overall sentiment (positive, negative, neutral) of the text.",
+    "Relations: Identify relationships between entities in the text.",
+    "Metadata: Extract metadata from web pages, such as author, title, and publication date.",
+    "Semantic Roles: Parse sentences into subject-action-object form and identify entities and keywords that are subjects or objects of an action."
   ],
   "pricing": {
     "model": "Tiered pricing based on NLU items (text unit + feature). Separate costs for custom models.",
@@ -19,10 +21,7 @@
       "custom_models": "1 free custom model"
     },
     "standard": {
-      "tier_1": {
-        "range": "1-250,000 NLU items",
-        "price_per_item": 0.003
-      },
+      "tier_1": { "range": "1-250,000 NLU items", "price_per_item": 0.003 },
       "tier_2": {
         "range": "250,001 - 5,000,000 NLU items",
         "price_per_item": 0.001
@@ -55,19 +54,110 @@
     "api_type": "REST"
   },
   "user_reviews": {
-    "summary": "Requires further research from external review sites (e.g., Capterra)."
+    "summary": "User reviews for IBM Watson Natural Language Understanding are limited. G2 reviewers give it 4.2/5 stars (34 reviews), while Capterra (under the older name 'AlchemyLanguage') gives it 4.0/5 stars (4 reviews). Reddit sentiment is mixed. For example, one Reddit user said it looks like it's just a suite of AI tools with really strong natural language processing capabilities, while another said it sure looks like it's not up to the task, even on the following simple case.",
+    "sources": [
+      {
+        "name": "G2",
+        "rating": "4.2/5",
+        "review_count": 34,
+        "highlights": [
+          "Full of features and customization",
+          "Excellent interface and easy to use software"
+        ],
+        "source_url": "https://www.g2.com/products/ibm-watson-natural-language-understanding/reviews"
+      },
+      {
+        "name": "Capterra (AlchemyLanguage)",
+        "rating": "4.0/5",
+        "review_count": 4,
+        "highlights": ["Limited data available"],
+        "source_url": "https://www.capterra.com/p/152136/AlchemyLanguage/"
+      },
+      {
+        "name": "Reddit",
+        "highlights": [
+          "Some users praise its strong NLP capabilities",
+          "Some users express concerns about API inconsistencies",
+          "Some suggest it's being oversold"
+        ],
+        "example_positive": "Reddit user /u/powerbi said it looks like it's just a suite of AI tools with really strong natural language processing capabilities.",
+        "example_negative": "Reddit user /u/LanguageTechnology said it sure looks like it's not up to the task, even on the following simple case.",
+        "source_url": "https://www.reddit.com/r/LanguageTechnology/"
+      }
+    ]
   },
-  "integration_capabilities": [
-    "IBM Cloud services"
-  ],
+    "benchmark_scores": {
+      "overall_performance": "59.81% (Balanced Accuracy, Conversational AI Benchmark)",
+      "accuracy": "Not detailed",
+      "speed": "Real-time",
+      "task_specific": {
+        "notes": "Other task-specific scores not available."
+      }
+    },
+  "integration_capabilities": ["IBM Cloud services"],
   "scalability": "Designed for scalability",
-  "support_options": [
-    "Documentation",
-    "IBM Support plans (paid)"
-  ],
+  "support_options": ["Documentation", "IBM Support plans (paid)"],
   "data_source_urls": [
     "https://www.ibm.com/products/natural-language-understanding",
     "https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-pricing"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "description": "IBM Watson Natural Language Understanding is a cloud-based service that uses deep learning to extract metadata from text such as entities, relationships, keywords, categories, sentiment, emotion, and syntax. It allows users to analyze unstructured text data to understand context and meaning. The service offers pre-trained models and the ability to create custom models for specific domains or requirements, integrating with the IBM Cloud ecosystem.",
+  "use_cases": [
+    {
+      "title": "Customer Feedback Analysis",
+      "description": "Analyze customer reviews, surveys, and support tickets for sentiment, emotion, and key topics",
+      "example": "Identify common pain points and satisfaction drivers from customer feedback"
+    },
+    {
+      "title": "Content Recommendation",
+      "description": "Understand user interests by analyzing browsing history and content consumption",
+      "example": "Recommend relevant articles or products based on extracted concepts and categories"
+    },
+    {
+      "title": "Business Intelligence",
+      "description": "Extract insights from large volumes of unstructured text data",
+      "example": "Analyze news articles and financial reports to identify market trends and competitor activities"
+    },
+    {
+      "title": "Custom Text Classification",
+      "description": "Train custom models to classify text according to specific business needs",
+      "example": "Automatically categorize incoming emails based on urgency or topic"
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://cloud.ibm.com/docs/natural-language-understanding",
+      "description": "Official IBM Watson NLU documentation"
+    },
+    {
+      "type": "Quickstart",
+      "url": "https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-getting-started",
+      "description": "Getting started guide for Watson NLU"
+    },
+    {
+      "type": "Tutorial",
+      "url": "https://developer.ibm.com/tutorials/analyze-text-with-watson-natural-language-understanding/",
+      "description": "IBM Developer tutorial on analyzing text"
+    },
+    {
+      "type": "Course",
+      "url": "https://www.ibm.com/training/search?query=Watson%20Natural%20Language%20Understanding",
+      "description": "IBM Training courses related to Watson NLU"
+    }
+  ],
+  "documentation_url": "https://www.ibm.com/products/natural-language-understanding/docs",
+  "api_url": "https://www.ibm.com/products/natural-language-understanding/api",
+  "sdk_url": "https://www.ibm.com/products/natural-language-understanding/sdk",
+  "security_compliance": {
+    "certifications": [
+      "ISO 27001, 27017, 27018",
+      "SOC 1, 2, 3",
+      "HIPAA",
+      "GDPR",
+      "FedRAMP Moderate"
+    ],
+    "data_protection": "Data encrypted in transit and at rest. Supports customer-managed keys via IBM Key Protect. Offers private network endpoints."
+  }
 }

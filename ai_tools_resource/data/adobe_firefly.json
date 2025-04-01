@@ -1,0 +1,92 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Adobe Firefly",
+  "category": "Image Generation",
+  "description": "Adobe Firefly is Adobe's family of creative generative AI models, designed specifically for commercial safety and seamless integration into Adobe's Creative Cloud ecosystem.",
+  "features": [
+    "Text-to-image generation",
+    "Generative Fill (in Photoshop)",
+    "Text Effects",
+    "Generative Recolor (in Illustrator)",
+    "Trained on commercially safe data (Adobe Stock, open license, public domain)",
+    "Deep integration with Creative Cloud (Photoshop, Illustrator, Express)",
+    "Style reference from uploaded images",
+    "Content Credentials (C2PA) support"
+  ],
+  "pricing": {
+    "model": "Freemium based on generative credits",
+    "free_tier": "Small monthly generative credit allocation with free Adobe account.",
+    "paid_tiers": [
+      {
+        "name": "Creative Cloud Subscriptions",
+        "description": "Paid CC plans include a larger monthly credit allowance. Higher tiers offer more credits."
+      },
+      {
+        "name": "Credit Packs",
+        "description": "Additional generative credits can be purchased."
+      }
+    ],
+    "notes": "Credits are consumed for most generative actions. Heavy use may require higher CC tiers or credit packs."
+  },
+  "pros": [
+    "Designed for commercial safety (reduced copyright risk)",
+    "Seamless integration into Adobe Creative Cloud workflows",
+    "High-quality, often photorealistic results",
+    "User-friendly interface within familiar Adobe apps",
+    "Adobe may offer indemnification for enterprise users"
+  ],
+  "cons": [
+    "Significant usage requires Creative Cloud subscription",
+    "Generative credit system can be limiting/costly",
+    "May offer less stylistic range than some competitors",
+    "Core model capabilities might lag cutting-edge research"
+  ],
+  "technical_specifications": {
+    "api_type": "REST (primarily for enterprise/partners)",
+    "sdks": "JavaScript SDK (primarily for enterprise/partners)",
+    "platforms": "Web (firefly.adobe.com), Creative Cloud Desktop Apps, Adobe Stock, API",
+    "input_methods": [
+      "Text prompt",
+      "Image upload/selection"
+    ],
+    "supported_languages": [
+      "Over 100 languages for prompts"
+    ],
+    "performance_metrics": {
+      "latency": "Generally fast (cloud service)",
+      "accuracy": "High quality, good prompt adherence",
+      "throughput": "Scalable cloud service"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "Not available (user reviews suggest competitive)",
+      "accuracy": "Not available",
+      "speed": "Not available",
+      "task_specific": {}
+    },
+  "integration_capabilities": [
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "Adobe Express",
+    "Adobe Stock",
+    "API for custom integrations"
+  ],
+  "scalability": "High (Adobe cloud infrastructure)",
+  "support_options": [
+    "Adobe Help Center",
+    "Adobe Community Forums",
+    "Subscription-based support"
+  ],
+  "security_compliance": {
+    "certifications": [
+      "Adheres to Adobe's compliance standards (details on Adobe Trust Center)"
+    ],
+    "data_protection": "Follows Adobe policies; user content generally not used for retraining without opt-in. Supports Content Authenticity Initiative (C2PA)."
+  },
+  "data_source_urls": [
+    "https://adobe.com/sensei/generative-ai/firefly.html",
+    "https://firefly.adobe.com",
+    "https://helpx.adobe.com/firefly/using/generative-credits.html"
+  ],
+  "last_updated": "2025-04-01"
+}

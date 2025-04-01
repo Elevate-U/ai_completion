@@ -1,0 +1,90 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Llama (Meta)",
+  "category": "Large Language Model",
+  "description": "Llama is a family of foundational large language models developed by Meta AI. Known for their strong performance and openly available weights (under a custom license), Llama models are widely used for research, development, and self-hosted AI applications.",
+  "features": [
+    "Openly available model weights",
+    "Multiple model sizes (e.g., 8B, 70B, 405B parameters)",
+    "Pre-trained and instruction-tuned versions",
+    "Competitive performance",
+    "Large context windows (e.g., 128K tokens)",
+    "Multilingual support",
+    "Strong coding capabilities",
+    "Can be fine-tuned",
+    "Associated safety tools (e.g., Llama Guard)"
+  ],
+  "pricing": {
+    "model": "Model weights are free (subject to license). Costs arise from compute infrastructure (local hardware/cloud).",
+    "free_tier": "Model weights are free to download and use.",
+    "paid_tiers": [
+      {
+        "name": "Cloud/API Hosting",
+        "description": "Major cloud providers (AWS, Google Cloud, Azure) and API platforms offer hosted Llama endpoints with pay-per-use or instance-based pricing."
+      }
+    ],
+    "notes": "Primary cost is compute infrastructure for hosting/running the model."
+  },
+  "pros": [
+    "Openly available weights empower customization/research/local deployment",
+    "State-of-the-art performance for open models",
+    "Multiple model sizes offer flexibility",
+    "No direct cost for the model itself",
+    "Thriving community and ecosystem (e.g., llama.cpp)",
+    "Allows building applications with data privacy (if self-hosted)"
+  ],
+  "cons": [
+    "Requires significant technical expertise and resources",
+    "Custom Meta Llama license has restrictions (not strictly OSI 'Open Source')",
+    "Requires careful implementation for safety/bias mitigation"
+  ],
+  "technical_specifications": {
+    "api_type": "None (inherent to model); Interaction via libraries/engines. Hosted versions have APIs.",
+    "sdks": "Python libraries (Hugging Face Transformers), C++ (llama.cpp), etc.",
+    "platforms": "Local (CPU/GPU), On-premise, Cloud Platforms",
+    "input_methods": [
+      "Text prompt"
+    ],
+    "supported_languages": [
+      "Multiple languages"
+    ],
+    "performance_metrics": {
+      "latency": "Dependent on model size and hardware",
+      "accuracy": "High, competitive with closed models",
+      "throughput": "Dependent on deployment scale"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "78.9% (MMLU, Llama 3 70B Pre-trained)",
+      "accuracy": "70.0% (HumanEval, Llama 3 70B Pre-trained)",
+      "speed": "Real-time",
+      "task_specific": {
+        "GSM8K": "75.0% (Llama 3 70B Pre-trained)"
+      }
+    },
+  "integration_capabilities": [
+    "Hugging Face ecosystem",
+    "Integration via libraries into custom applications",
+    "Hosted versions on major cloud platforms"
+  ],
+  "scalability": "Dependent on deployment infrastructure",
+  "support_options": [
+    "Meta research papers",
+    "GitHub repositories",
+    "Hugging Face community forums",
+    "Cloud provider support (for hosted versions)"
+  ],
+  "security_compliance": {
+    "certifications": [
+      "N/A (for base model)",
+      "Depends on hosting environment"
+    ],
+    "data_protection": "High privacy when self-hosted. License includes Acceptable Use Policy. Meta provides safety tools."
+  },
+  "data_source_urls": [
+    "https://llama.meta.com",
+    "https://github.com/meta-llama/llama-models",
+    "https://ai.meta.com/blog/"
+  ],
+  "last_updated": "2025-04-01"
+}

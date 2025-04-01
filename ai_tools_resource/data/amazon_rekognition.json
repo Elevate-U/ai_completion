@@ -1,0 +1,134 @@
+{
+  "name": "Amazon Rekognition",
+  "image_url": "https://icon.icepanel.io/AWS/svg/Machine-Learning/Rekognition.svg",
+  "category": "Computer Vision",
+  "features": [
+    "Face detection and analysis",
+    "Custom labels (object detection)",
+    "Text detection in images",
+    "Content moderation",
+    "Celebrity recognition",
+    "Video segment detection",
+    "Face comparison and search"
+  ],
+  "pricing": {
+    "model": "Pay-as-you-go based on usage",
+    "last_updated": "2025-03-31",
+    "pricing_table": [
+      {
+        "feature": "Image Analysis (Labels, Faces, Content Moderation, Text) - Tier 1 (0 - 1M images)",
+        "price": "$0.001 per image / $1000.00 per million images"
+      },
+      {
+        "feature": "Image Analysis (Labels, Faces, Content Moderation, Text) - Tier 2 (1M - 10M images)",
+        "price": "$0.0008 per image / $800.00 per million images"
+      },
+      {
+        "feature": "Image Analysis (Labels, Faces, Content Moderation, Text) - Tier 3 (10M - 100M images)",
+        "price": "$0.0006 per image / $600.00 per million images"
+      },
+      {
+        "feature": "Image Analysis (Labels, Faces, Content Moderation, Text) - Tier 4 (Over 100M images)",
+        "price": "$0.0004 per image / $400.00 per million images"
+      },
+      {
+        "feature": "Face Comparison and Search - Tier 1 (0 - 1M images)",
+        "price": "$0.001 per image / $1000.00 per million images"
+      },
+      {
+        "feature": "Face Storage",
+        "price": "$0.00001 per 1,000 Face Metadata vectors stored per month"
+      },
+      {
+        "feature": "Video Analysis (various features)",
+        "price": "$0.10 per minute"
+      },
+      {
+        "feature": "Custom Labels (Training)",
+        "price": "$1.00 per Compute Hour"
+      },
+      {
+        "feature": "Custom Labels (Inference)",
+        "price": "$4.00 per Compute Hour (min 1 hour)"
+      }
+    ],
+    "overall_notes": "Prices verified against US East (N. Virginia) region on 2025-03-31. Free tier includes processing 5,000 images per month and storing 1,000 face metadata vectors for the first 12 months. Pricing varies significantly by specific feature (e.g., PPE detection, Celebrity Recognition have different rates). Check official pricing page. Pricing source: https://aws.amazon.com/rekognition/pricing/"
+  },
+  "pros": [
+    "Highly accurate computer vision models",
+    "Easy integration with other AWS services",
+    "Scalable for high-volume workloads",
+    "No upfront costs or minimum fees"
+  ],
+  "cons": [
+    "Can become expensive at scale",
+    "Limited customization compared to some competitors",
+    "Requires AWS ecosystem knowledge"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "sdks": ["AWS SDKs for various languages"],
+    "max_image_size": "15 MB",
+    "supported_formats": ["JPEG", "PNG", "BMP", "GIF"]
+  },
+  "user_reviews": {
+    "summary": "Amazon Rekognition generally earns positive feedback for its powerful and accurate computer vision capabilities. Users frequently praise its ease of integration within the AWS ecosystem and its effectiveness in tasks like facial recognition and content moderation. G2 reviewers (4.3/5 stars, 28 reviews) specifically commend the quality of support and documentation. Capterra users (4.5/5 stars, 2 reviews) highlight its strong performance in object detection, including timestamping in videos. However, a recurring concern revolves around cost, with some users finding the pricing complex and potentially expensive for high-volume applications. While customization is possible, some reviewers feel it's less flexible than certain alternatives.",
+    "sources": [
+      {
+        "name": "G2",
+        "rating": "4.3/5",
+        "review_count": 28,
+        "highlights": [
+          "Excellent for facial recognition tasks",
+          "Good documentation and SDKs",
+          "Quality of Support: 9.1/10"
+        ],
+        "source_url": "https://www.g2.com/products/amazon-rekognition/reviews"
+      },
+      {
+        "name": "Capterra",
+        "rating": "4.5/5",
+        "review_count": 2,
+        "highlights": [
+          "Best objects detection with proper timestamps in video",
+          "Good object detection with labels"
+        ],
+        "source_url": "https://www.capterra.com/p/180745/Amazon-Rekognition/"
+      }
+    ],
+    "common_uses_from_reviews": [
+      "Automated Content Moderation: Reviewers often use Rekognition to automatically flag inappropriate or harmful content in user-generated images and videos, reducing manual review workload.",
+      "Enhanced Video Analysis: Users leverage the service to analyze video streams, detecting specific activities, tracking people's movement, and identifying objects or celebrities.",
+      "Face Matching & Verification: A common application mentioned is using Rekognition's facial analysis for identity verification or searching for specific individuals within large image collections."
+    ]
+  },
+    "benchmark_scores": {
+      "overall_performance": "Not available (task-dependent)",
+      "accuracy": "Not available (task-dependent)",
+      "speed": "Not available (task-dependent)",
+      "task_specific": {}
+    },
+  "scalability": "Designed for high scalability, leveraging AWS infrastructure",
+  "integration_capabilities": [],
+  "use_cases": [
+    {
+      "title": "Content Moderation",
+      "description": "Automatically detect inappropriate content in images/videos",
+      "example": "Filter user-uploaded content for social platforms"
+    },
+    {
+      "title": "Retail Analytics",
+      "description": "Analyze shelf inventory and product placement",
+      "example": "Track product availability in stores"
+    },
+    {
+      "title": "Security Applications",
+      "description": "Facial recognition for authentication and surveillance",
+      "example": "Employee access control systems"
+    }
+  ],
+  "documentation_url": "https://docs.aws.amazon.com/rekognition/",
+  "api_url": "https://aws.amazon.com/rekognition/",
+  "last_updated": "2025-03-30",
+  "description": "Amazon Rekognition offers deep learning-based image and video analysis. It can identify objects, people, text, scenes, and activities in media, as well as detect inappropriate content. As part of AWS's AI services, it provides accurate computer vision capabilities without requiring machine learning expertise."
+}

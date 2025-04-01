@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tool Details</title>
+    <link rel="stylesheet" href="/website/css/style.css" />
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <style>
+      .loading-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top-color: var(--primary-color);
+        animation: spin 1s ease-in-out infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .error-message {
+        padding: 2rem;
+        text-align: center;
+        color: var(--error-color);
+      }
+    </style>
+    <link rel="icon" href="data:,">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <nav class="main-nav">
+          <a class="logo" href="index.html">ThinkStack</a> <!-- Adjusted logo text -->
+          <ul class="nav-links" id="nav-links">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="categories.html">Categories</a></li>
+            <li><a class="nav-link" href="comparison.html">Comparison</a></li>
+            <li><a class="nav-link" href="blog.html">Blog</a></li>
+          </ul>
+          <div class="header-controls">
+            <!-- Wrapper for controls -->
+            <!-- Theme Switcher Button -->
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              <!-- Icons are now static HTML, controlled by CSS -->
+              <i class="fas fa-sun theme-icon sun-icon"></i>
+              <i class="fas fa-moon theme-icon moon-icon"></i>
+              <i class="fas fa-music theme-icon spotify-icon"></i>
+              <span class="visually-hidden">Toggle theme</span>
+            </button>
+            <!-- Mobile Navigation Toggle Button -->
+            <button
+              class="mobile-nav-toggle"
+              id="mobile-nav-toggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+            >
+              <!-- Icon for menu (e.g., hamburger icon) - can use SVG or font icon -->
+              <span>&#9776;</span> <!-- Using index.html's icon -->
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+<main class="tool-details-container">
+  <div class="breadcrumbs-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumbs">
+        <!-- Breadcrumbs populated by JS -->
+      </ol>
+    </nav>
+  </div>
+
+  <div id="tool-details-content">
+    <div class="loading-indicator">
+      <div class="spinner"></div>
+      <p>Loading tool details...</p>
+    </div>
+  </div>
+</main>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>
+          ThinkStack &copy; 2025 | Data last updated:
+          <span id="last-updated">Loading...</span>
+        </p>
+        <!-- Optional: Add footer navigation or other links -->
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Ensure main.js is loaded first -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="js/tool-details.js?v=1" type="module"></script>
+    <!-- Mobile navigation toggle script -->
+    <script>
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const navLinks = document.getElementById('nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+          const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !isExpanded);
+          navLinks.classList.toggle('active');
+          navToggle.querySelector('span').textContent = !isExpanded
+            ? '✕'
+            : '☰';
+        });
+      }
+      // Global last updated span
+      const lastUpdatedSpanDetails = document.querySelector('#last-updated');
+      function updateFooterTimestampDetails() {
+        if (
+          lastUpdatedSpanDetails &&
+          typeof lastDataUpdateTimestamp !== 'undefined' &&
+          lastDataUpdateTimestamp
+        ) {
+          lastUpdatedSpanDetails.textContent =
+            lastDataUpdateTimestamp.toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+        } else if (lastUpdatedSpanDetails) {
+          lastUpdatedSpanDetails.textContent = 'N/A';
+        }
+      }
+      if (typeof lastDataUpdateTimestamp !== 'undefined') {
+        updateFooterTimestampDetails();
+      } else {
+        const checkTimestampDetails = setInterval(() => {
+          if (typeof lastDataUpdateTimestamp !== 'undefined') {
+            clearInterval(checkTimestampDetails);
+            updateFooterTimestampDetails();
+          }
+        }, 200);
+      }
+    </script>
+  </body>
+</html>

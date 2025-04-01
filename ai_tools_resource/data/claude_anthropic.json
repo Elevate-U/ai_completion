@@ -1,0 +1,158 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Claude (Anthropic)",
+  "category": "Large Language Model",
+  "description": "Developed by Anthropic, Claude is a sophisticated Large Language Model (LLM) family designed for safe, helpful, and honest AI interaction. It stands out for its strong performance in complex reasoning, creativity, coding, and its exceptionally large context window.",
+  "features": [
+    "Powerful conversational AI",
+    "Text generation",
+    "200K token context window",
+    "Multimodal capabilities (image analysis)",
+    "Constitutional AI safety approach",
+    "API access",
+    "Web interface (claude.ai)",
+    "Multiple model tiers (Haiku, Sonnet, Opus)"
+  ],
+  "pricing": {
+    "model": "Hybrid: Pay-per-use API (token-based, model-dependent) and Subscription web interface (Claude Pro)",
+    "free_tier": "Limited usage on claude.ai web interface",
+    "paid_tiers": [
+      {
+        "name": "Claude Pro",
+        "description": "Monthly subscription for priority access, higher usage limits, early feature access on claude.ai"
+      },
+      {
+        "name": "API",
+        "description": "Pay-per-use based on input/output tokens for Haiku, Sonnet, Opus models"
+      }
+    ],
+    "notes": "API costs vary significantly by model."
+  },
+  "use_cases": [
+    {
+      "title": "Summarizing Long Research Papers",
+      "description": "Leverage Claude's large context window to quickly summarize key findings from lengthy academic documents, making research more accessible.",
+      "example": "Prompt: 'Please provide a concise summary of the key contributions in this 50-page research paper on quantum computing.'"
+    },
+    {
+      "title": "Customer Support Automation",
+      "description": "Deploy Claude to handle customer queries by automating responses, reducing wait times and enhancing support efficiency.",
+      "example": "Prompt: 'Respond to a customer complaint about a delayed shipment with empathy and provide actionable steps.'"
+    },
+    {
+      "title": "Content Generation for Marketing",
+      "description": "Utilize Claude to create engaging blog posts, social media updates, or ad copy based on provided guidelines and tone.",
+      "example": "Prompt: 'Generate a creative social media post for a new product launch in a friendly and professional tone.'"
+    }
+  ],
+  "pros": [
+    "State-of-the-art performance",
+    "Industry-leading large context window",
+    "Strong commitment to AI safety and ethics",
+    "Flexible model tiers",
+    "Excellent reasoning, coding, and creative writing skills"
+  ],
+  "cons": [
+    "Can be overly cautious/refuse prompts",
+    "Opus API costs can be high",
+    "Web interface features might lag API"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "sdks": "Python, TypeScript/JavaScript",
+    "platforms": "Web, API",
+    "input_methods": [
+      "Text prompt",
+      "Image upload",
+      "Document upload"
+    ],
+    "supported_languages": [
+      "English (strongest)",
+      "Many major languages"
+    ],
+    "performance_metrics": {
+      "Haiku": "Optimized for lower latency and real-time interactions with moderate throughput and accuracy suitable for conversational tasks.",
+      "Sonnet": "Balances higher accuracy with moderate latency, ideal for detailed text analysis and complex queries.",
+      "Opus": "Delivers the highest accuracy with robust contextual understanding, though with higher latency and lower throughput compared to other variants."
+    }
+  },
+  "user_reviews": {
+    "summary": "",
+    "average_rating": 4.7,
+    "sentiment_analysis": {
+      "positive": 85,
+      "neutral": 10,
+      "negative": 5
+    },
+    "sources": [
+      {
+        "name": "G2",
+        "rating": "4.6 / 5",
+        "review_count": 49,
+        "highlights": [
+           "Users praise its contextual understanding and creative outputs, though some note occasional latency issues."
+        ],
+        "source_url": "https://www.g2.com/products/anthropic-claude/reviews"
+      },
+      {
+        "name": "TrustRadius",
+        "rating": "4.8 / 5",
+        "review_count": 16,
+        "highlights": [
+           "Commended for its nuanced responses and robust performance in enterprise applications."
+        ],
+        "source_url": "https://www.trustradius.com/products/anthropic-claude/reviews"
+      }
+    ]
+  },
+    "benchmark_scores": {
+      "overall_performance": "86.8% (MMLU, Opus)",
+      "accuracy": "82.2% (GPQA, Opus)",
+      "speed": "Real-time",
+      "task_specific": {
+        "HumanEval": "74.0% (Opus)",
+        "MATH": "53.2% (Opus)",
+        "GSM8K": "93.8% (Opus)"
+      }
+    },
+  "integration_capabilities": [
+    "API integration"
+  ],
+  "scalability": "High (cloud-native architecture)",
+  "support_options": [
+    "Documentation",
+    "Community forum",
+    "Enterprise options"
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://docs.anthropic.com/en/docs/welcome",
+      "description": "Official Claude documentation outlining usage, capabilities, and integration details."
+    },
+    {
+      "type": "Tutorial",
+      "url": "https://www.anthropic.com/customers",
+      "description": "Step-by-step tutorials for getting started with Claude, including example projects and best practices."
+    },
+    {
+      "type": "API Reference",
+      "url": "https://docs.anthropic.com/en/api/getting-startedx",
+      "description": "Comprehensive API reference for developers integrating Claude into their applications."
+    }
+  ],
+  "security_compliance": {
+    "certifications": [
+      "SOC 2 Type II"
+    ],
+    "data_protection": "API data not used for training by default. Emphasizes data privacy."
+  },
+  "documentation_url": "https://docs.anthropic.com/en/docs/welcome",
+  "api_url": "https://docs.anthropic.com/en/api/getting-started",
+  "sdk_url": "https://docs.anthropic.com/en/api/client-sdks",
+  "data_source_urls": [
+    "https://anthropic.com/claude",
+    "https://anthropic.com/pricing"
+  ],
+  "last_updated": "2025-04-01"
+}

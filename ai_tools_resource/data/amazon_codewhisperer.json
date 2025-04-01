@@ -1,0 +1,91 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Amazon CodeWhisperer",
+  "category": "Code Generation",
+  "description": "Amazon CodeWhisperer is an AI coding assistant integrated into the broader Amazon Q Developer service. It provides real-time code suggestions, security scanning, and reference tracking within various IDEs, with a strong focus on supporting AWS development.",
+  "features": [
+    "Real-time code suggestions (single line to full functions)",
+    "Natural language comment-to-code generation",
+    "Support for many programming languages (Python, Java, JS, C#, etc.)",
+    "IDE integration (VS Code, JetBrains, Cloud9, Lambda, JupyterLab)",
+    "Reference tracker for open-source code resemblance and licenses",
+    "Built-in security scanning (powered by Amazon CodeGuru)",
+    "Optimized for AWS APIs and services",
+    "Customization based on private codebase (Professional tier)"
+  ],
+  "pricing": {
+    "model": "Freemium (within Amazon Q Developer)",
+    "free_tier": "Individual tier is free with AWS Builder ID (core suggestions, limited scans).",
+    "paid_tiers": [
+      {
+        "name": "Professional Tier (Amazon Q Developer Pro)",
+        "description": "Per user per month pricing. Higher limits, organizational controls, customization, extensive security scanning."
+      }
+    ],
+    "notes": "Part of the broader Amazon Q Developer service."
+  },
+  "pros": [
+    "Generous free tier for individuals",
+    "Seamless integration with AWS ecosystem",
+    "Valuable built-in security scanning",
+    "Useful license reference tracking",
+    "Broad language and IDE support"
+  ],
+  "cons": [
+    "Advanced features (customization) require paid tier",
+    "Optimized for AWS, potentially less ideal for non-AWS stacks",
+    "Part of the larger AWS ecosystem complexity"
+  ],
+  "technical_specifications": {
+    "api_type": "Delivered as IDE extensions (Amazon Q has APIs)",
+    "sdks": "N/A (IDE extensions)",
+    "platforms": "IDE Extensions (VS Code, JetBrains, AWS Cloud9, Lambda, JupyterLab, SageMaker Studio, EMR Studio)",
+    "input_methods": [
+      "Code context",
+      "Natural language comments"
+    ],
+    "supported_languages": [
+      "Python", "Java", "JavaScript", "C#", "TypeScript", "Go", "Rust", "PHP", "Ruby", "SQL", "C/C++", "Shell", "Terraform", "CloudFormation", "etc."
+    ],
+    "performance_metrics": {
+      "latency": "Real-time suggestions",
+      "accuracy": "High relevance, especially for AWS APIs",
+      "throughput": "Managed AWS service"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "31.1%",
+      "accuracy": "31.1%",
+      "speed": "Not available",
+      "task_specific": {
+        "code_validity": "94.2%"
+      }
+    },
+  "integration_capabilities": [
+    "VS Code",
+    "JetBrains IDEs",
+    "AWS Cloud9",
+    "AWS Lambda Console",
+    "JupyterLab",
+    "Amazon SageMaker Studio",
+    "Amazon EMR Studio",
+    "Deep integration with AWS services"
+  ],
+  "scalability": "Managed, scalable AWS service",
+  "support_options": [
+    "AWS Support plans",
+    "AWS Documentation",
+    "AWS Forums"
+  ],
+  "security_compliance": {
+    "certifications": [
+      "Leverages AWS compliance framework"
+    ],
+    "data_protection": "Governed by AWS terms. Options to control telemetry/data sharing (especially Pro tier)."
+  },
+  "data_source_urls": [
+    "https://aws.amazon.com/q/developer/",
+    "https://aws.amazon.com/q/pricing/"
+  ],
+  "last_updated": "2025-04-01"
+}

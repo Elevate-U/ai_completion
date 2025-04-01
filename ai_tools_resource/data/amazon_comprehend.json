@@ -1,5 +1,6 @@
 {
   "name": "Amazon Comprehend",
+  "image_url": "img/amazon_comprehend.png",
   "category": "Natural Language Processing",
   "features": [
     "Entity Recognition",
@@ -16,81 +17,49 @@
     "Prompt Safety Classification"
   ],
   "pricing": {
-    "model": "Usage-based, per 100 characters (unit). Varies by feature. Custom models have training and management costs.",
-    "free_tier": "50K units of text (5M characters) per API per month for some APIs (Key Phrase Extraction, Sentiment, Targeted Sentiment, Entity Recognition, Language Detection, Event Detection, Syntax Analysis, Detect PII, Contains PII, and Prompt Safety Classification). No free tier for Custom Comprehend.",
-    "paid_tiers": [
-      {
-        "feature": "Key Phrase Extraction, Sentiment Analysis, Targeted Sentiment, Entity Recognition, Language Detection",
-        "unit_size": 100,
-        "tiers": [
-          { "range": "Up to 10M units", "price_per_unit": 0.0001 },
-          { "range": "10M - 50M units", "price_per_unit": 0.00005 },
-          { "range": "Over 50M units", "price_per_unit": 0.000025 }
-        ]
-      },
-      {
-        "feature": "Event Detection",
-        "unit_size": 100,
-        "tiers": [
-          { "range": "Up to 10M units", "price_per_unit": 0.003 },
-          { "range": "10M - 50M units", "price_per_unit": 0.0015 },
-          { "range": "Over 50M units", "price_per_unit": 0.00075 }
-        ]
-      },
-      {
-        "feature": "Syntax Analysis",
-        "unit_size": 100,
-        "tiers": [
-          { "range": "Up to 10M units", "price_per_unit": 0.00005 },
-          { "range": "10M - 50M units", "price_per_unit": 0.000025 },
-          { "range": "Over 50M units", "price_per_unit": 0.0000125 }
-        ]
-      },
-      {
-        "feature": "Detect PII",
-        "unit_size": 100,
-        "tiers": [
-          { "range": "Up to 10M units", "price_per_unit": 0.0001 },
-          { "range": "10M - 50M units", "price_per_unit": 0.00005 },
-          { "range": "50M - 100M units", "price_per_unit": 0.000025 },
-          { "range": "Over 100M units", "price_per_unit": 0.000005 }
-        ]
-      },
-      {
-        "feature": "Contains PII",
-        "unit_size": 100,
-        "tiers": [
-          { "range": "Up to 10M units", "price_per_unit": 0.000002 },
-          { "range": "10M - 50M units", "price_per_unit": 0.000001 },
-          { "range": "50M - 100M units", "price_per_unit": 0.0000005 },
-          { "range": "Over 100M units", "price_per_unit": 0.0000001 }
-        ]
-      },
-      {
-        "feature": "Custom Entities & Classification (asynchronous)",
-        "unit_size": 100,
-        "tiers": [
-          { "range": "All", "price_per_unit": 0.0005 }
-        ]
-      },
-      {
-        "feature": "Custom Entities & Classification (synchronous)",
-        "unit_size": "Inference Unit (IU)",
-        "tiers": [
-          { "range": "All", "price_per_unit": "0.0005 per IU per second" }
-        ],
-        "notes": "Inference Unit provides 100 characters/second throughput"
-      }
-    ],
-    "custom_model_costs": {
-      "training": "$3 per hour",
-      "management": "$0.50 per month"
+    "model": "Pay-as-you-go based on text units (1 unit = 100 characters), 3 unit minimum per request. Free tier available.",
+    "last_updated": "2025-03-31",
+    "Real-time Analysis (Standard)": {
+      "Unit Size": "100 characters",
+      "Minimum Charge per Request": "3 units (300 characters)",
+      "Price per 1M Units (First 10M/month)": "$100.00 (Calculated: $0.0001 / unit)",
+      "Price per 1M Units (Next 90M/month)": "$50.00 (Calculated: $0.00005 / unit)",
+      "Price per 1M Units (Over 100M/month)": "$25.00 (Calculated: $0.000025 / unit)",
+      "Applies To": "Entity Recognition, Sentiment Analysis, Key Phrase Extraction, Language Detection, PII Detection, Event Detection (per type), Targeted Sentiment"
     },
-    "topic_modeling": {
-      "first_100mb": "$1.00",
-      "per_mb_over_100mb": "$0.004"
+    "Real-time Analysis (Syntax)": {
+      "Unit Size": "100 characters",
+      "Minimum Charge per Request": "3 units (300 characters)",
+      "Price per 1M Units (First 10M/month)": "$50.00 (Calculated: $0.00005 / unit)",
+      "Price per 1M Units (Next 90M/month)": "$25.00 (Calculated: $0.000025 / unit)",
+      "Price per 1M Units (Over 100M/month)": "$12.50 (Calculated: $0.0000125 / unit)"
     },
-    "notes": "Minimum 3 units (300 characters) per request. Pricing varies by region. See AWS Pricing Calculator for details."
+    "Trust and Safety": {
+      "Unit Size": "100 characters",
+      "Minimum Charge per Request": "3 units (300 characters)",
+      "Price per 1M Units (First 10M/month)": "$100.00 (Calculated: $0.0001 / unit)",
+      "Price per 1M Units (Next 90M/month)": "$50.00 (Calculated: $0.00005 / unit)",
+      "Price per 1M Units (Over 100M/month)": "$25.00 (Calculated: $0.000025 / unit)",
+      "Applies To": "Toxicity Detection, Prompt Safety Classification"
+    },
+    "Comprehend Custom (Training)": {
+      "Price per Hour": "$3.00",
+      "Notes": "For Custom Classification and Custom Entity Recognition models."
+    },
+    "Comprehend Custom (Inference - Async)": {
+      "Unit Size": "100 characters",
+      "Price per 1M Units": "$500.00 (Calculated: $0.0005 / unit)",
+      "Minimum Charge per Request": "3 units (300 characters)"
+    },
+    "Comprehend Custom (Inference - Real-time Endpoint)": {
+      "Price per Endpoint Hour": "Varies by instance type (Starts around $0.50/hr + data processing costs based on traffic, requires provisioned capacity). Contact AWS Sales for details.",
+      "Notes": "Pricing involves endpoint uptime cost plus per-character processing cost similar to async, scaled by endpoint configuration."
+    },
+    "Topic Modeling": {
+      "Price per Job (First 100MB)": "$1.00 (Flat rate)",
+      "Price per MB (Above 100MB)": "$0.004"
+    },
+    "overall_notes": "Prices verified against US East (N. Virginia) region on 2025-03-31. Free tier: 50K units (5M chars) per month for 12 months for several standard APIs. Custom Comprehend has separate training/inference costs. Check official pricing page for specifics, regional variations, and potential volume discounts beyond listed tiers. Pricing source: https://aws.amazon.com/comprehend/pricing/"
   },
   "pros": [
     "Comprehensive set of NLP features",
@@ -107,25 +76,108 @@
   ],
   "technical_specifications": {
     "api_type": "REST",
-    "input_methods": ["Direct text upload in request", "PDF and Word documents (for some APIs)"],
-    "supported_languages": ["German", "English", "Spanish", "Italian", "Portuguese", "French", "Japanese", "Korean", "Hindi", "Arabic", "Chinese (simplified)", "Chinese (traditional)"]
+    "input_methods": [
+      "Direct text upload in request",
+      "PDF and Word documents (for some APIs)"
+    ],
+    "supported_languages": [
+      "German",
+      "English",
+      "Spanish",
+      "Italian",
+      "Portuguese",
+      "French",
+      "Japanese",
+      "Korean",
+      "Hindi",
+      "Arabic",
+      "Chinese (simplified)",
+      "Chinese (traditional)"
+    ]
   },
   "user_reviews": {
-    "summary": "Capterra reviews for Amazon Comprehend indicate an average rating of 4.3 out of 5 stars (based on the listing title). More detailed user feedback, including specific pros and cons, requires further investigation due to scraping limitations.",
-    "sources_to_check": ["https://www.g2.com/products/amazon-comprehend/reviews", "https://www.capterra.com/p/144359/Amazon-Comprehend/"]
+    "summary": "Amazon Comprehend has an average rating of 4.2 out of 5 stars on G2 (based on 71 reviews) and 4.3 out of 5 stars on Capterra (based on listing title). Detailed user feedback requires further investigation due to scraping limitations.",
+    "average_rating_g2": 4.2,
+    "rating_count_g2": 71,
+    "average_rating_capterra": 4.3,
+    "sources": [
+      "https://www.g2.com/products/amazon-comprehend/reviews",
+      "https://www.capterra.com/p/234576/Amazon-Comprehend/"
+    ]
   },
-  "integration_capabilities": [
-    "Other AWS services"
-  ],
+    "benchmark_scores": {
+      "overall_performance": "74%",
+      "accuracy": "74%",
+      "speed": "Real-time",
+      "task_specific": {
+        "sentiment_analysis_imdb_accuracy": "78%",
+        "sentiment_analysis_sentiment140_accuracy": "76%",
+        "sentiment_analysis_twitter_accuracy": "69%"
+      }
+    },
+  "integration_capabilities": ["Other AWS services"],
   "scalability": "Designed for high scalability, leveraging AWS infrastructure",
   "support_options": [
     "Extensive online documentation",
     "AWS Support plans (paid)"
   ],
+  "security_compliance": {
+    "certifications": ["PCI", "FedRAMP", "HIPAA"],
+    "data_protection": "AWS KMS encryption for data at rest, TLS 1.2+ for data in transit"
+  },
   "data_source_urls": [
     "https://aws.amazon.com/comprehend/",
     "https://aws.amazon.com/comprehend/features/",
-    "https://aws.amazon.com/comprehend/pricing/"
+    "https://aws.amazon.com/comprehend/pricing/",
+    "https://docs.aws.amazon.com/comprehend/latest/dg/comp-compliance.html"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "description": "Amazon Comprehend is a natural language processing (NLP) service that uses machine learning to uncover insights and relationships in text. It provides pre-trained models for common NLP tasks like entity recognition, sentiment analysis, key phrase extraction, language detection, topic modeling, and PII redaction. The service also offers custom model capabilities through AutoML, allowing users to train specialized models for document classification and custom entity recognition without ML expertise. Comprehend integrates with other AWS services and can process documents in various formats including PDF and Word files.",
+  "use_cases": [
+    {
+      "title": "Customer Sentiment Analysis",
+      "description": "Detect customer sentiment, analyze customer interactions, and automatically categorize inbound support requests",
+      "example": "Extract insights from customer surveys to improve products and services"
+    },
+    {
+      "title": "Document Processing Automation",
+      "description": "Simplify document processing workflows by extracting text, key phrases, topics, and sentiment",
+      "example": "Process insurance claims by automatically extracting relevant information"
+    },
+    {
+      "title": "Legal Document Analysis",
+      "description": "Automate extraction of insights from legal documents like contracts and court records",
+      "example": "Identify and redact PII from legal briefs while extracting key entities"
+    },
+    {
+      "title": "Financial Document Processing",
+      "description": "Classify and extract entities from financial documents",
+      "example": "Process mortgage applications by extracting relevant financial information"
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html",
+      "description": "Official AWS Comprehend Developer Guide"
+    },
+    {
+      "type": "Tutorial",
+      "url": "https://docs.aws.amazon.com/comprehend/latest/dg/getting-started.html",
+      "description": "Getting Started with Amazon Comprehend"
+    },
+    {
+      "type": "Course",
+      "url": "https://www.aws.training/Details/eLearning?id=60697",
+      "description": "AWS Machine Learning Foundations: Natural Language Processing"
+    },
+    {
+      "type": "Workshop",
+      "url": "https://workshops.aws/categories/Amazon%20Comprehend",
+      "description": "Hands-on Amazon Comprehend Workshop"
+    }
+  ],
+  "documentation_url": "https://docs.aws.amazon.com/comprehend/",
+  "api_url": "https://docs.aws.amazon.com/comprehend/latest/APIReference/welcome.html",
+  "sdk_url": "https://docs.aws.amazon.com/comprehend/latest/dg/sdk-general-information-section.html"
 }

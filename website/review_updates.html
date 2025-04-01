@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tool Updates Review</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Assuming you have a basic stylesheet -->
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .update-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .update-item h3 {
+        margin-top: 0;
+      }
+      .status-pending {
+        color: orange;
+      }
+      .status-approved {
+        color: green;
+      }
+      .status-rejected {
+        color: red;
+      }
+    </style>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  </head>
+  <body>
+    <h1>AI Tool Updates Review</h1>
+
+    <div id="updates-container">
+      <!-- Updates will be loaded here by JavaScript -->
+      <p>Loading updates...</p>
+    </div>
+
+    <script>
+      const updatesContainer = document.getElementById('updates-container');
+
+      async function loadUpdates() {
+        updatesContainer.innerHTML = '<p>Loading updates...</p>'; // Reset loading message
+        try {
+          const response = await fetch('updates_data.json'); // Create a new endpoint to serve updates_review.json
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const updates = await response.json();
+          displayUpdates(updates);
+        } catch (error) {
+          console.error('Could not fetch updates:', error);
+          updatesContainer.innerHTML =
+            '<p class="error">Error loading updates.</p>';
+        }
+      }
+
+      function displayUpdates(updates) {
+        if (!updates || updates.length === 0) {
+          updatesContainer.innerHTML = '<p>No updates pending review.</p>';
+          return;
+        }
+
+        const updatesHTML = updates
+          .map(
+            (update) => `
+                <div class="update-item">
+                    <h3>${update.name} (${update.update_type})</h3>
+                    <p>Category: ${update.category}</p>
+                    <p>Status: <span class="status-${update.status}">${update.status}</span></p>
+                    <button onclick="updateStatus('${update.name}', 'approved')">Approve</button>
+                    <button onclick="updateStatus('${update.name}', 'rejected')">Reject</button>
+                    <details>
+                        <summary>View Details</summary>
+                        <pre>${JSON.stringify(update, null, 2)}</pre>
+                    </details>
+                </div>
+            `
+          )
+          .join('');
+        updatesContainer.innerHTML = updatesHTML;
+      }
+
+      async function updateStatus(toolName, newStatus) {
+        try {
+          const response = await fetch('update_status', {
+            // New endpoint to handle status updates
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: toolName, status: newStatus }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const result = await response.json();
+          if (result.success) {
+            console.log('Status updated for ${toolName} to ${newStatus}');
+            loadUpdates(); // Reload updates to refresh the list
+          } else {
+            console.error('Failed to update status for ${toolName}', result);
+            alert(
+              'Failed to update status for ${toolName}. See console for details.'
+            );
+          }
+        } catch (error) {
+          console.error('Could not update status:', error);
+          alert('Could not update status. See console for details.');
+        }
+      }
+
+      // Load updates on page load
+      window.onload = loadUpdates;
+    </script>
+  </body>
+</html>

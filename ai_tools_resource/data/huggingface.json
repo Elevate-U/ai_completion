@@ -1,31 +1,36 @@
 {
   "name": "Hugging Face",
-  "category": "Natural Language Processing",
+  "image_url": "https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg",
+  "category": "AI/ML Platform",
+  "description": "Hugging Face is a prominent company and community-driven platform focused on democratizing Artificial Intelligence (AI) and Machine Learning (ML), particularly in the field of Natural Language Processing (NLP). Founded in 2016, it initially started as a chatbot app for teenagers before pivoting to become a central hub for the ML community. It's often called the 'GitHub of Machine Learning' because it provides a space for developers, researchers, and organizations to openly share, discover, train, deploy, and collaborate on ML models, datasets, and applications. Its core mission is to make advanced AI more accessible to everyone.",
   "features": [
-    "Hugging Face Hub (Model and Dataset Repository)",
-    "Spaces (ML Application Hosting)",
-    "Inference Endpoints (Managed Model Deployment)",
-    "Transformers Library",
-    "Diffusers Library",
-    "Safetensors Library",
-    "Hub Python Library",
-    "Tokenizers Library",
-    "TRL (Transformer Reinforcement Learning)",
-    "Transformers.js",
-    "smolagents",
-    "PEFT (Parameter-Efficient Fine-Tuning)",
-    "Datasets Library",
-    "Text Generation Inference (TGI)",
-    "Accelerate"
-  ],
+   "Hugging Face Hub: A massive repository of pre-trained models, datasets, and code. Think of it as GitHub for AI.",
+   "Spaces: Allows users to build, host, and showcase interactive ML demo applications directly in the browser.",
+   "Inference Endpoints: A service to easily deploy models as production-ready APIs on secure, scalable infrastructure.",
+   "Transformers Library: The go-to Python library for using pre-trained transformer models (BERT, GPT, etc.).",
+   "Datasets Library: Simplifies accessing and processing large datasets, making it efficient to load and prepare data for model training and evaluation.",
+   "Accelerate: Helps simplify running PyTorch training scripts across various distributed setups (multi-GPU, TPU) with minimal code changes.",
+   "PEFT (Parameter-Efficient Fine-Tuning): Techniques for fine-tuning models efficiently, using fewer resources.",
+   "TRL (Transformer Reinforcement Learning): Tools for fine-tuning models using reinforcement learning.",
+   "Diffusers Library: A library for diffusion models, used for generating images, audio, and more.",
+   "Safetensors Library: A safe and fast format for storing tensors (the building blocks of ML models).",
+   "Hub Python Library: A Python library for interacting with the Hugging Face Hub.",
+   "Tokenizers Library: Offers highly optimized and customizable tokenizers, crucial for preparing text data for NLP models.",
+   "Transformers.js: Run transformer models directly in the browser using JavaScript.",
+   "smolagents: Framework for building small, specialized AI agents.",
+   "AutoTrain: Allows users to train state-of-the-art models automatically on their own data without writing code.",
+   "Pipelines: High-level abstractions within the transformers library that make performing inference incredibly simple.",
+   "HUGS (Hugging Face Generative AI Services): An offering optimized to run open large language models (LLMs) on various hardware accelerators with zero configuration."
+ ],
+  "feature_visualization_mermaid": "```mermaid\ngraph LR\n    A[Hugging Face] --> B(Hub);\n    A --> C(Libraries);\n    A --> D(Tools & Services);\n\n    B --> B1(Models);\n    B --> B2(Datasets);\n    B --> B3(Spaces);\n\n    C --> C1(Transformers);\n    C --> C2(Datasets);\n    C --> C3(Tokenizers);\n    C --> C4(Accelerate);\n    C --> C5(Diffusers);\n    C --> C6(Safetensors);\n    C --> C7(TRL);\n    C --> C8(Transformers.js);\n    C --> C9(PEFT);\n    C --> C10(Hub Python Library);\n    C --> C11(smolagents);\n\n    D --> D1(Inference Endpoints);\n    D --> D2(AutoTrain);\n    D --> D3(Pipelines);\n    D --> D4(HUGS);\n\n    style B fill:#f9f,stroke:#333,stroke-width:2px;\n    style C fill:#ccf,stroke:#333,stroke-width:2px;\n    style D fill:#9cf,stroke:#333,stroke-width:2px;\n```",
   "pricing": {
-    "model": "Varied pricing structure. Free Hub access. Paid options for Pro account, Enterprise Hub, Spaces hardware, and Inference Endpoints.",
+    "model": "It's a mix of free and paid. The Hub is free, but you'll pay for things like a Pro account, Enterprise Hub, the hardware you use for Spaces, and Inference Endpoints.",
     "huggingface_hub": "Free",
     "pro_account": "$9/month",
     "enterprise_hub": "Starting at $20 per user per month",
     "spaces_hardware": {
       "cpu_basic": {
-        "hourly_price": 0.00,
+        "hourly_price": 0.0,
         "vcpu": 2,
         "memory": "16 GB"
       },
@@ -35,91 +40,91 @@
         "memory": "32 GB"
       },
       "nvidia_t4_small": {
-        "hourly_price": 0.40,
+        "hourly_price": 0.4,
         "vcpu": 4,
         "memory": "15 GB",
         "accelerator": "Nvidia T4",
         "vram": "16 GB"
       },
       "nvidia_t4_medium": {
-        "hourly_price": 0.60,
+        "hourly_price": 0.6,
         "vcpu": 8,
         "memory": "30 GB",
         "accelerator": "Nvidia T4",
         "vram": "16 GB"
       },
       "nvidia_l4": {
-        "hourly_price": 0.80,
+        "hourly_price": 0.8,
         "vcpu": 8,
         "memory": "30 GB",
         "accelerator": "Nvidia L4",
         "vram": "24 GB"
       },
       "nvidia_4xl4": {
-        "hourly_price": 3.80,
+        "hourly_price": 3.8,
         "vcpu": 48,
         "memory": "186 GB",
         "accelerator": "Nvidia L4",
         "vram": "96 GB"
       },
       "nvidia_l40s": {
-        "hourly_price": 1.80,
+        "hourly_price": 1.8,
         "vcpu": 8,
         "memory": "62 GB",
         "accelerator": "Nvidia L40S",
         "vram": "48 GB"
       },
       "nvidia_4xl40s": {
-        "hourly_price": 8.30,
+        "hourly_price": 8.3,
         "vcpu": 48,
         "memory": "382 GB",
         "accelerator": "Nvidia L40S",
         "vram": "192 GB"
       },
       "nvidia_8xl40s": {
-        "hourly_price": 23.50,
+        "hourly_price": 23.5,
         "vcpu": 192,
         "memory": "1534 GB",
         "accelerator": "Nvidia L40S",
         "vram": "384 GB"
       },
       "nvidia_a10g_small": {
-        "hourly_price": 1.00,
+        "hourly_price": 1.0,
         "vcpu": 4,
         "memory": "15 GB",
         "accelerator": "Nvidia A10G",
         "vram": "24 GB"
       },
       "nvidia_a10g_large": {
-        "hourly_price": 1.50,
+        "hourly_price": 1.5,
         "vcpu": 12,
         "memory": "46 GB",
         "accelerator": "Nvidia A10G",
         "vram": "24 GB"
       },
       "nvidia_2xa10g_large": {
-        "hourly_price": 3.00,
+        "hourly_price": 3.0,
         "vcpu": 24,
         "memory": "92 GB",
         "accelerator": "Nvidia A10G",
         "vram": "48 GB"
       },
       "nvidia_4xa10g_large": {
-        "hourly_price": 5.00,
+        "hourly_price": 5.0,
         "vcpu": 48,
         "memory": "184 GB",
         "accelerator": "Nvidia A10G",
         "vram": "96 GB"
       },
       "nvidia_a100_large": {
-        "hourly_price": 4.00,
+        "hourly_price": 4.0,
         "vcpu": 12,
         "memory": "142 GB",
         "accelerator": "Nvidia A100",
         "vram": "80 GB"
       },
       "tpu_v5e_1x1": {
-        "hourly_price": 1.20,
+        "hourly_price": 1.2,
         "vcpu": 22,
         "memory": "44 GB",
         "accelerator": "Google TPU v5e",
@@ -133,7 +138,7 @@
         "vram": "64 GB"
       },
       "tpu_v5e_2x4": {
-        "hourly_price": 9.50,
+        "hourly_price": 9.5,
         "vcpu": 220,
         "memory": "380 GB",
         "accelerator": "Google TPU v5e",
@@ -218,34 +223,6 @@
           "vcpu": 8,
           "memory": "16GB",
           "hourly_rate": 0.48
-        },
-        {
-          "provider": "gcp",
-          "architecture": "Intel Sapphire Rapids",
-          "vcpu": 1,
-          "memory": "2GB",
-          "hourly_rate": 0.05
-        },
-        {
-          "provider": "gcp",
-          "architecture": "Intel Sapphire Rapids",
-          "vcpu": 2,
-          "memory": "4GB",
-          "hourly_rate": 0.10
-        },
-        {
-          "provider": "gcp",
-          "architecture": "Intel Sapphire Rapids",
-          "vcpu": 4,
-          "memory": "8GB",
-          "hourly_rate": 0.20
-        },
-        {
-          "provider": "gcp",
-          "architecture": "Intel Sapphire Rapids",
-          "vcpu": 8,
-          "memory": "16GB",
-          "hourly_rate": 0.40
         }
       ],
       "gpu_instances": [
@@ -254,168 +231,168 @@
           "architecture": "NVIDIA T4",
           "gpus": 1,
           "gpu_memory": "14GB",
-          "hourly_rate": 0.50
+          "hourly_rate": 0.5
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA T4",
           "gpus": 4,
           "gpu_memory": "56GB",
-          "hourly_rate": 3.00
+          "hourly_rate": 3.0
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA L4",
           "gpus": 1,
           "gpu_memory": "24GB",
-          "hourly_rate": 0.80
+          "hourly_rate": 0.8
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA L4",
           "gpus": 4,
           "gpu_memory": "96GB",
-          "hourly_rate": 3.80
+          "hourly_rate": 3.8
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA L40S",
           "gpus": 1,
           "gpu_memory": "48GB",
-          "hourly_rate": 1.80
+          "hourly_rate": 1.8
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA L40S",
           "gpus": 4,
           "gpu_memory": "192GB",
-          "hourly_rate": 8.30
+          "hourly_rate": 8.3
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA L40S",
           "gpus": 8,
           "gpu_memory": "384GB",
-          "hourly_rate": 23.50
+          "hourly_rate": 23.5
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA A10G",
           "gpus": 1,
           "gpu_memory": "24GB",
-          "hourly_rate": 1.00
+          "hourly_rate": 1.0
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA A10G",
           "gpus": 4,
           "gpu_memory": "96GB",
-          "hourly_rate": 5.00
+          "hourly_rate": 5.0
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA A100",
           "gpus": 1,
           "gpu_memory": "80GB",
-          "hourly_rate": 4.00
+          "hourly_rate": 4.0
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA A100",
           "gpus": 2,
           "gpu_memory": "160GB",
-          "hourly_rate": 8.00
+          "hourly_rate": 8.0
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA A100",
           "gpus": 4,
           "gpu_memory": "320GB",
-          "hourly_rate": 16.00
+          "hourly_rate": 16.0
         },
         {
           "provider": "aws",
           "architecture": "NVIDIA A100",
           "gpus": 8,
           "gpu_memory": "640GB",
-          "hourly_rate": 32.00
+          "hourly_rate": 32.0
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA T4",
           "gpus": 1,
           "gpu_memory": "16GB",
-          "hourly_rate": 0.50
+          "hourly_rate": 0.5
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA L4",
           "gpus": 1,
           "gpu_memory": "24GB",
-          "hourly_rate": 0.70
+          "hourly_rate": 0.7
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA L4",
           "gpus": 4,
           "gpu_memory": "96GB",
-          "hourly_rate": 3.80
+          "hourly_rate": 3.8
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA A100",
           "gpus": 1,
           "gpu_memory": "80GB",
-          "hourly_rate": 3.60
+          "hourly_rate": 3.6
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA A100",
           "gpus": 2,
           "gpu_memory": "160GB",
-          "hourly_rate": 7.20
+          "hourly_rate": 7.2
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA A100",
           "gpus": 4,
           "gpu_memory": "320GB",
-          "hourly_rate": 14.40
+          "hourly_rate": 14.4
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA A100",
           "gpus": 8,
           "gpu_memory": "640GB",
-          "hourly_rate": 28.80
+          "hourly_rate": 28.8
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA H100",
           "gpus": 1,
           "gpu_memory": "80GB",
-          "hourly_rate": 10.00
+          "hourly_rate": 10.0
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA H100",
           "gpus": 2,
           "gpu_memory": "160GB",
-          "hourly_rate": 20.00
+          "hourly_rate": 20.0
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA H100",
           "gpus": 4,
           "gpu_memory": "320GB",
-          "hourly_rate": 40.00
+          "hourly_rate": 40.0
         },
         {
           "provider": "gcp",
           "architecture": "NVIDIA H100",
           "gpus": 8,
           "gpu_memory": "640GB",
-          "hourly_rate": 80.00
+          "hourly_rate": 80.0
         }
       ],
       "accelerator_instances": [
@@ -431,14 +408,14 @@
           "architecture": "Inf2 Neuron",
           "topology": "x12",
           "accelerator_memory": "760GB",
-          "hourly_rate": 12.00
+          "hourly_rate": 12.0
         },
         {
           "provider": "gcp",
           "architecture": "TPU v5e",
           "topology": "1x1",
           "accelerator_memory": "16GB",
-          "hourly_rate": 1.20
+          "hourly_rate": 1.2
         },
         {
           "provider": "gcp",
@@ -452,22 +429,509 @@
           "architecture": "TPU v5e",
           "topology": "2x4",
           "accelerator_memory": "128GB",
-          "hourly_rate": 9.50
+          "hourly_rate": 9.5
         }
       ]
     },
-    "notes": "See Hugging Face website for detailed pricing and instance availability. Prices vary by region and provider."
+    "notes": "See Hugging Face website for detailed pricing and instance availability. Prices vary by region and provider. Pricing information is subject to change; please refer to the official Hugging Face pricing page for the most up-to-date details.",
+    "scraped_pricing_tables": [
+      {
+        "title": "Pricing Table 1",
+        "data": [
+          {
+            "Name": "CPU Basic",
+            "CPU": "2 vCPU",
+            "Memory": "16 GB",
+            "Accelerator": "-",
+            "VRAM": "-",
+            "Hourly price": "FREE"
+          },
+          {
+            "Name": "CPU Upgrade",
+            "CPU": "8 vCPU",
+            "Memory": "32 GB",
+            "Accelerator": "-",
+            "VRAM": "-",
+            "Hourly price": "$0.03"
+          },
+          {
+            "Name": "Nvidia T4 - small",
+            "CPU": "4 vCPU",
+            "Memory": "15 GB",
+            "Accelerator": "Nvidia T4",
+            "VRAM": "16 GB",
+            "Hourly price": "$0.40"
+          },
+          {
+            "Name": "Nvidia T4 - medium",
+            "CPU": "8 vCPU",
+            "Memory": "30 GB",
+            "Accelerator": "Nvidia T4",
+            "VRAM": "16 GB",
+            "Hourly price": "$0.60"
+          },
+          {
+            "Name": "1x Nvidia L4",
+            "CPU": "8 vCPU",
+            "Memory": "30 GB",
+            "Accelerator": "Nvidia L4",
+            "VRAM": "24 GB",
+            "Hourly price": "$0.80"
+          },
+          {
+            "Name": "4x Nvidia L4",
+            "CPU": "48 vCPU",
+            "Memory": "186 GB",
+            "Accelerator": "Nvidia L4",
+            "VRAM": "96 GB",
+            "Hourly price": "$3.80"
+          },
+          {
+            "Name": "1x Nvidia L40S",
+            "CPU": "8 vCPU",
+            "Memory": "62 GB",
+            "Accelerator": "Nvidia L4",
+            "VRAM": "48 GB",
+            "Hourly price": "$1.80"
+          },
+          {
+            "Name": "4x Nvidia L40S",
+            "CPU": "48 vCPU",
+            "Memory": "382 GB",
+            "Accelerator": "Nvidia L4",
+            "VRAM": "192 GB",
+            "Hourly price": "$8.30"
+          },
+          {
+            "Name": "8x Nvidia L40S",
+            "CPU": "192 vCPU",
+            "Memory": "1534 GB",
+            "Accelerator": "Nvidia L4",
+            "VRAM": "384 GB",
+            "Hourly price": "$23.50"
+          },
+          {
+            "Name": "Nvidia A10G - small",
+            "CPU": "4 vCPU",
+            "Memory": "15 GB",
+            "Accelerator": "Nvidia A10G",
+            "VRAM": "24 GB",
+            "Hourly price": "$1.00"
+          },
+          {
+            "Name": "Nvidia A10G - large",
+            "CPU": "12 vCPU",
+            "Memory": "46 GB",
+            "Accelerator": "Nvidia A10G",
+            "VRAM": "24 GB",
+            "Hourly price": "$1.50"
+          },
+          {
+            "Name": "2x Nvidia A10G - large",
+            "CPU": "24 vCPU",
+            "Memory": "92 GB",
+            "Accelerator": "Nvidia A10G",
+            "VRAM": "48 GB",
+            "Hourly price": "$3.00"
+          },
+          {
+            "Name": "4x Nvidia A10G - large",
+            "CPU": "48 vCPU",
+            "Memory": "184 GB",
+            "Accelerator": "Nvidia A10G",
+            "VRAM": "96 GB",
+            "Hourly price": "$5.00"
+          },
+          {
+            "Name": "Nvidia A100 - large",
+            "CPU": "12 vCPU",
+            "Memory": "142 GB",
+            "Accelerator": "Nvidia A100",
+            "VRAM": "80 GB",
+            "Hourly price": "$4.00"
+          },
+          {
+            "Name": "TPU v5e 1x1",
+            "CPU": "22 vCPU",
+            "Memory": "44 GB",
+            "Accelerator": "Google TPU v5e",
+            "VRAM": "16 GB",
+            "Hourly price": "$1.20"
+          },
+          {
+            "Name": "TPU v5e 2x2",
+            "CPU": "110 vCPU",
+            "Memory": "186 GB",
+            "Accelerator": "Google TPU v5e",
+            "VRAM": "64 GB",
+            "Hourly price": "$4.75"
+          },
+          {
+            "Name": "TPU v5e 2x4",
+            "CPU": "220 vCPU",
+            "Memory": "380 GB",
+            "Accelerator": "Google TPU v5e",
+            "VRAM": "128 GB",
+            "Hourly price": "$9.50"
+          },
+          {
+            "Name": "Custom",
+            "CPU": "on demand",
+            "Memory": "on demand",
+            "Accelerator": "on demand",
+            "VRAM": "on demand",
+            "Hourly price": "on demand"
+          }
+        ]
+      },
+      {
+        "title": "Pricing Table 2",
+        "data": [
+          {
+            "Name": "Small",
+            "Storage": "20 GB",
+            "Monthly price": "$5"
+          },
+          {
+            "Name": "Medium",
+            "Storage": "150 GB",
+            "Monthly price": "$25"
+          },
+          {
+            "Name": "Large",
+            "Storage": "1 TB",
+            "Monthly price": "$100"
+          }
+        ]
+      },
+      {
+        "title": "Pricing Table 3",
+        "data": [
+          {
+            "Provider": "aws",
+            "Architecture": "Intel Sapphire Rapids",
+            "vCPUs": "1",
+            "Memory": "2GB",
+            "Hourly rate": "$0.03"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "2",
+            "Memory": "4GB",
+            "Hourly rate": "$0.07"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "4",
+            "Memory": "8GB",
+            "Hourly rate": "$0.13"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "8",
+            "Memory": "16GB",
+            "Hourly rate": "$0.27"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "16",
+            "Memory": "32GB",
+            "Hourly rate": "$0.54"
+          },
+          {
+            "Provider": "azure",
+            "Architecture": "Intel Xeon",
+            "vCPUs": "1",
+            "Memory": "2GB",
+            "Hourly rate": "$0.06"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "2",
+            "Memory": "4GB",
+            "Hourly rate": "$0.12"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "4",
+            "Memory": "8GB",
+            "Hourly rate": "$0.24"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "8",
+            "Memory": "16GB",
+            "Hourly rate": "$0.48"
+          },
+          {
+            "Provider": "gcp",
+            "Architecture": "Intel Sapphire Rapids",
+            "vCPUs": "1",
+            "Memory": "2GB",
+            "Hourly rate": "$0.05"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "2",
+            "Memory": "4GB",
+            "Hourly rate": "$0.10"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "4",
+            "Memory": "8GB",
+            "Hourly rate": "$0.20"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "vCPUs": "8",
+            "Memory": "16GB",
+            "Hourly rate": "$0.40"
+          }
+        ]
+      },
+      {
+        "title": "Pricing Table 4",
+        "data": [
+          {
+            "Provider": "aws",
+            "Architecture": "Inf2 Neuron",
+            "Topology": "x1",
+            "Accelerator Memory": "14.5GB",
+            "Hourly rate": "$0.75"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "Topology": "x12",
+            "Accelerator Memory": "760GB",
+            "Hourly rate": "$12.00"
+          },
+          {
+            "Provider": "gcp",
+            "Architecture": "TPU v5e",
+            "Topology": "1x1",
+            "Accelerator Memory": "16GB",
+            "Hourly rate": "$1.20"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "Topology": "2x2",
+            "Accelerator Memory": "64GB",
+            "Hourly rate": "$4.75"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "Topology": "2x4",
+            "Accelerator Memory": "128GB",
+            "Hourly rate": "$9.50"
+          }
+        ]
+      },
+      {
+        "title": "Pricing Table 5",
+        "data": [
+          {
+            "Provider": "aws",
+            "Architecture": "NVIDIA T4",
+            "GPUs": "1",
+            "GPU Memory": "14GB",
+            "Hourly rate": "$0.50"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "56GB",
+            "Hourly rate": "$3.00"
+          },
+          {
+            "Provider": "aws",
+            "Architecture": "NVIDIA L4",
+            "GPUs": "1",
+            "GPU Memory": "24GB",
+            "Hourly rate": "$0.80"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "96GB",
+            "Hourly rate": "$3.80"
+          },
+          {
+            "Provider": "aws",
+            "Architecture": "NVIDIA L40S",
+            "GPUs": "1",
+            "GPU Memory": "48GB",
+            "Hourly rate": "$1.80"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "192GB",
+            "Hourly rate": "$8.30"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "8",
+            "GPU Memory": "384GB",
+            "Hourly rate": "$23.50"
+          },
+          {
+            "Provider": "aws",
+            "Architecture": "NVIDIA A10G",
+            "GPUs": "1",
+            "GPU Memory": "24GB",
+            "Hourly rate": "$1.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "96GB",
+            "Hourly rate": "$5.00"
+          },
+          {
+            "Provider": "aws",
+            "Architecture": "NVIDIA A100",
+            "GPUs": "1",
+            "GPU Memory": "80GB",
+            "Hourly rate": "$4.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "2",
+            "GPU Memory": "160GB",
+            "Hourly rate": "$8.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "320GB",
+            "Hourly rate": "$16.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "8",
+            "GPU Memory": "640GB",
+            "Hourly rate": "$32.00"
+          },
+          {
+            "Provider": "gcp",
+            "Architecture": "NVIDIA T4",
+            "GPUs": "1",
+            "GPU Memory": "16GB",
+            "Hourly rate": "$0.50"
+          },
+          {
+            "Provider": "gcp",
+            "Architecture": "NVIDIA L4",
+            "GPUs": "1",
+            "GPU Memory": "24GB",
+            "Hourly rate": "$0.70"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "96GB",
+            "Hourly rate": "$3.80"
+          },
+          {
+            "Provider": "gcp",
+            "Architecture": "NVIDIA A100",
+            "GPUs": "1",
+            "GPU Memory": "80GB",
+            "Hourly rate": "$3.60"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "2",
+            "GPU Memory": "160GB",
+            "Hourly rate": "$7.20"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "320GB",
+            "Hourly rate": "$14.40"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "8",
+            "GPU Memory": "640GB",
+            "Hourly rate": "$28.80"
+          },
+          {
+            "Provider": "gcp",
+            "Architecture": "NVIDIA H100",
+            "GPUs": "1",
+            "GPU Memory": "80GB",
+            "Hourly rate": "$10.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "2",
+            "GPU Memory": "160GB",
+            "Hourly rate": "$20.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "4",
+            "GPU Memory": "320GB",
+            "Hourly rate": "$40.00"
+          },
+          {
+            "Provider": "",
+            "Architecture": "",
+            "GPUs": "8",
+            "GPU Memory": "640GB",
+            "Hourly rate": "$80.00"
+          }
+        ]
+      }
+    ],
+    "last_scraped_utc": "2025-04-01T00:43:50Z"
   },
   "pros": [
     "Large and active community",
     "Extensive collection of pre-trained models",
     "Open-source libraries and tools",
     "Flexible deployment options (Spaces, Inference Endpoints)",
-    "Wide range of hardware options"
+    "Wide range of hardware options",
+    "Democratization of AI / Accessibility",
+    "Ease of Use (via Libraries/Pipelines)"
   ],
   "cons": [
     "Can be complex to navigate the various services and pricing options",
-    "Reliance on community-contributed models may require careful evaluation"
+    "Reliance on community-contributed models may require careful evaluation",
+    "Learning Curve / Complexity",
+    "Potential for Model Bias",
+    "Variable Quality of Community Assets",
+    "Computational Costs"
   ],
   "technical_specifications": {
     "api_type": "REST (for Inference Endpoints)",
@@ -475,12 +939,47 @@
     "git_based_collaboration": "Supported"
   },
   "user_reviews": {
-    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+    "summary": "Hugging Face is a prominent company and community-driven platform focused on democratizing Artificial Intelligence (AI) and Machine Learning (ML), particularly in the field of Natural Language Processing (NLP).",
+    "sources": [
+      {
+        "name": "Reddit",
+        "highlights": [
+          "HuggingFace seems like a great library. Lots of access to great pretrained models, an easy hub, and a bunch of utilities.",
+          "HuggingFace is an entirely independent company that builds practical AI tools"
+        ],
+        "source_url": "https://www.reddit.com/r/MachineLearning/"
+      },
+      {
+        "name": "Gartner",
+        "highlights": [
+          "Hugging Face has delivered significant value for our organization"
+        ],
+        "rating": "4.2/5",
+        "review_count": 9,
+        "source_url": "https://www.gartner.com/reviews/market/generative-ai-apps/vendor/hugging-face/product/hugging-face"
+      }
+    ]
   },
+    "benchmark_scores": {
+      "overall_performance": "84.52% (Avg GLUE Accuracy, bert-base-uncased)",
+      "accuracy": "90.5% (QNLI, bert-base-uncased)",
+      "speed": "Real-time",
+      "task_specific": {
+        "GLUE_MNLI_matched": "84.6%",
+        "GLUE_MNLI_mismatched": "83.4%",
+        "GLUE_QQP": "87.9%",
+        "GLUE_SST-2": "91.2%",
+        "GLUE_CoLA": "52.1%",
+        "GLUE_STS-B": "85.8%",
+        "GLUE_MRPC": "86.5%",
+        "GLUE_RTE": "66.4%"
+      }
+    },
   "integration_capabilities": [
-    "Integrates with various ML frameworks (PyTorch, TensorFlow, JAX)"
+    "Integrates with various ML frameworks (PyTorch, TensorFlow, JAX)",
+    "Integrates with cloud platforms (AWS, Azure, GCP)"
   ],
-  "scalability": "Scalable infrastructure for model deployment (Inference Endpoints)",
+  "scalability": "Scalable infrastructure for model deployment (Inference Endpoints), dataset handling, and distributed training support (Accelerate library).",
   "support_options": [
     "Community forum",
     "Enterprise support plans (paid)"
@@ -489,5 +988,67 @@
     "https://huggingface.co/",
     "https://huggingface.co/pricing"
   ],
-  "last_updated": "2025-03-29"
+  "review_references": [
+    "https://huggingface.co/",
+    "https://www.reddit.com/r/MachineLearning/comments/113m1ly/d_huggingface_considered_harmful_to_the_community/",
+    "https://www.reddit.com/r/MachineLearning/comments/160ts9g/d_is_it_me_or_huggingface_do_too_many_things/",
+    "https://www.reddit.com/r/learnmachinelearning/comments/1bjer33/is_working_at_huggingface_worth_it/",
+    "https://www.reddit.com/r/huggingface/",
+    "https://www.reddit.com/r/MachineLearning/comments/1eu3auv/d_huggingface_transformers_bad_design/",
+    "https://huggingface.co/brand"
+  ],
+  "last_updated": "2025-03-30",
+  "use_cases": [
+    {
+      "title": "Custom NLP Model Deployment",
+      "description": "Deploy fine-tuned NLP models for specific business needs",
+      "example": "Create a sentiment analysis API for customer support tickets"
+    },
+    {
+      "title": "Multimodal AI Applications",
+      "description": "Build applications combining text, image, and audio models",
+      "example": "Develop an image captioning system with text-to-speech output"
+    },
+    {
+      "title": "AI Research and Experimentation",
+      "description": "Access and experiment with state-of-the-art models",
+      "example": "Compare performance of different LLMs on specific tasks"
+    },
+    {
+      "title": "Enterprise AI Solutions",
+      "description": "Implement scalable AI solutions with enterprise-grade infrastructure",
+      "example": "Deploy a private model hub for internal company use"
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Course",
+      "url": "https://huggingface.co/learn/nlp-course",
+      "description": "Official Hugging Face NLP course covering Transformers, Datasets, Tokenizers, and the ecosystem."
+    },
+    {
+      "type": "Documentation",
+      "url": "https://huggingface.co/docs",
+      "description": "Comprehensive documentation for all libraries and the platform."
+    },
+    {
+      "type": "Tutorials",
+      "url": "https://huggingface.co/docs/transformers/main/en/tasks/overview",
+      "description": "Task-specific guides and tutorials within the documentation."
+    },
+    {
+      "type": "Blog",
+      "url": "https://huggingface.co/blog",
+      "description": "Updates, tutorials, and articles on the Hugging Face blog."
+    }
+  ],
+  "documentation_url": "https://huggingface.co/docs",
+  "api_url": "https://huggingface.co/api",
+  "sdk_url": "https://huggingface.co/sdk",
+  "security_compliance": {
+    "certifications": [
+      "SOC 2 Type II (for Enterprise Hub and other paid services - verify scope)"
+    ],
+    "data_protection": "Features include Role-Based Access Control (RBAC), Audit Logs (Enterprise), options for private models/datasets/Spaces, malware scanning for models, support for secure 'safetensors' format. (Verify details on their security page)."
+  }
 }

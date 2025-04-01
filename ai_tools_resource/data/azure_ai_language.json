@@ -1,122 +1,399 @@
 {
   "name": "Microsoft Azure AI Language",
+  "image_url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/351317-Icon-CustomerStories-AzureAILanguage%20-20x20?resMode=sharp2&op_usm=1.5,0.65,15,0&qlt=85",
   "category": "Natural Language Processing",
+  "description": "Azure AI Language is Microsoft's cloud-based NLP service that combines text analytics, conversational AI, and custom language understanding. It provides pre-built models for tasks like sentiment analysis, entity recognition, and summarization, along with tools to train custom models. The service integrates with Azure's AI ecosystem and supports multiple programming languages through SDKs.",
   "features": [
-    "Sentiment Analysis",
-    "Key Phrase Extraction",
-    "Language Detection",
-    "Named Entity Recognition",
-    "PII Detection",
-    "Summarization (all types)",
-    "Custom Text Classification",
-    "Custom Named Entity Recognition",
-    "Conversational Language Understanding (CLU)",
-    "Orchestration Workflow",
-    "Text Analytics for Health"
+    "Named Entity Recognition (NER): Spotting the Key Players: Automatically pulls out names, places, companies, dates, and more. Got industry-specific terms? Custom NER lets you teach it to recognize your unique entities. Here's an example using Python: \\n```python\\nfrom azure.ai.textanalytics import TextAnalyticsClient\\nfrom azure.core.credentials import AzureKeyCredential\\nimport os\\n\\nkey = os.environ[\\\"LANGUAGE_KEY\\\"]\\nendpoint = os.environ[\\\"LANGUAGE_ENDPOINT\\\"]\\n\\ntext_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(key))\\n\\ndocuments = [\\\"Microsoft was founded by Bill Gates and Paul Allen.\\\"]\\nresult = text_analytics_client.recognize_entities(documents = documents)[0].entities\\n\\nfor entity in result:\\n    print(f\\\"\\\\tEntity: {entity.text}, Category: {entity.category}\\\")\\n```",
+    "Key Phrase Extraction: Getting the Gist: Identifies the main topics or talking points in a block of text. Here's an example using Python:\\n```python\\nfrom azure.ai.textanalytics import TextAnalyticsClient\\nfrom azure.core.credentials import AzureKeyCredential\\nimport os\\n\\nkey = os.environ[\\\"LANGUAGE_KEY\\\"]\\nendpoint = os.environ[\\\"LANGUAGE_ENDPOINT\\\"]\\n\\ntext_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(key))\\n\\ndocuments = [\\\"The weather today is sunny and warm.\\\"]\\nresult = text_analytics_client.extract_key_phrases(documents = documents)[0].key_phrases\\n\\nprint(result)\\n```",
+    "PII Detection & Redaction: Handling Sensitive Data: Finds and masks personal details (names, addresses) or health information (PHI), which is absolutely critical for privacy and compliance. It even works on conversation transcripts.",
+    "Entity Linking: Making Connections: Figures out which 'Paris' you mean and links it to a knowledge base like Wikipedia.",
+    "Text Analytics for Health: Decoding Medical Jargon: Specifically designed to pull out diagnoses, medications, dosages, etc., from clinical notes – a huge deal for healthcare tech.",
+    "Sentiment Analysis & Opinion Mining: Gauging the Mood: Goes beyond just positive/negative/neutral to pinpoint opinions about specific aspects within the text (e.g., 'The battery life [negative] is bad, but the screen [positive] is great').",
+    "Language Detection: What Language is This?: Reliably identifies the language used, supporting a wide array of languages and dialects (over 120 reported). Here's an example using Python:\\n```python\\nfrom azure.ai.textanalytics import TextAnalyticsClient\\nfrom azure.core.credentials import AzureKeyCredential\\nimport os\\n\\nkey = os.environ[\\\"LANGUAGE_KEY\\\"]\\nendpoint = os.environ[\\\"LANGUAGE_ENDPOINT\\\"]\\n\\ntext_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(key))\\n\\ndocuments = [\\\"This is a test.\\\"]\\nresult = text_analytics_client.detect_language(documents = documents)[0].primary_language.name\\n\\nprint(result)\\n```",
+    "Custom Text Classification: Sorting Your Content: Train a model to automatically categorize documents or feedback based on your defined labels (e.g., 'Support Ticket,' 'Sales Lead,' 'Complaint').",
+    "Summarization (Extractive & Abstractive): Cutting Through the Noise: Either pulls key sentences directly (extractive) or generates fresh, concise summaries (abstractive) capturing the core meaning. Includes conversation/meeting summarization with chaptering.",
+    "Conversational Language Understanding (CLU): Understanding What Users Mean: The brain behind modern chatbots. You train it to recognize user intents ('book a flight,' 'check order status') and pull out the necessary details (destination, date, order number). Successor to LUIS.",
+    "Question Answering: Finding Answers: Lets your application find precise answers within documents or a knowledge base you provide. Custom Question Answering (evolution of QnA Maker) lets you build tailored FAQ bots.",
+    "Orchestration Workflow: Juggling Complex Chats: Need to combine CLU, Question Answering, and maybe even older LUIS apps? This helps route user requests to the right component seamlessly.",
+    "Translation Integration: Bridging Language Barriers: Smoothly integrates with Azure AI Translator for robust text translation capabilities."
   ],
+  "feature_visualization_mermaid": "```mermaid\ngraph LR\n    A[Azure AI Language] --> B(Pre-built Features);\n    A --> C(Customizable Features);\n    A --> D(Industry Specific);\n\n    B --> B1(Sentiment Analysis);\n    B --> B2(Key Phrase Extraction);\n    B --> B3(Language Detection);\n    B --> B4(Named Entity Recognition);\n    B --> B5(PII Detection);\n    B --> B6(Summarization);\n    B --> B7(Entity Linking);\n\n    C --> C1(Custom Text Classification);\n    C --> C2(Custom NER);\n    C --> C3(Conversational Language Understanding);\n    C --> C4(Orchestration Workflow);\n    C --> C5(Question Answering);\n\n    D --> D1(Text Analytics for Health);\n\n    style B fill:#f9f,stroke:#333,stroke-width:2px;\n    style C fill:#ccf,stroke:#333,stroke-width:2px;\n    style D fill:#9cf,stroke:#333,stroke-width:2px;\n```",
   "pricing": {
-    "model": "Tiered pricing based on text records (1,000 characters per record). Separate costs for training and hosting custom models. Commitment tiers and disconnected containers available.",
-    "free_tier": "5,000 text records per month shared across Sentiment Analysis, Key Phrase Extraction, Language Detection, Custom Question Answering, Prebuilt Question Answering, Named Entity Recognition, PII Detection, and Summarization.",
-    "paid_tiers": [
+    "model": "It's mostly pay-as-you-go, based on how many 'text records' (1k characters each) you process. Training custom models costs extra. You can also get discounts with commitment tiers or run it yourself using containers.",
+    "last_updated": "2025-03-31",
+    "pricing_table": [
       {
-        "feature": "Sentiment Analysis, Key Phrase Extraction, Language Detection, Named Entity Recognition, PII Detection",
-        "unit_size": "1,000 text records",
-        "tiers": [
-          { "range": "0 - 0.5M text records", "price_per_unit": 1.00 },
-          { "range": "0.5M - 2.5M text records", "price_per_unit": 0.75 },
-          { "range": "2.5M - 10M text records", "price_per_unit": 0.30 },
-          { "range": "Over 10M text records", "price_per_unit": 0.25 }
+        "Service": "Feature",
+        "Price": "Price"
+      },
+      {
+        "Service": "Sentiment Analysis, Key Phrase Extraction, Language Detection, Named Entity Recognition, PII Detection (S0 Tier)",
+        "Price": "$1.00 per 1,000 Text Records"
+      },
+      {
+        "Service": "Conversational Language Understanding, Orchestration Workflow (S0 Tier)",
+        "Price": "$2.00 per 1,000 Text Records"
+      },
+      {
+        "Service": "Custom Text Classification, Custom Named Entity Recognition (S0 Tier)",
+        "Price": "$5.00 per 1,000 Text Records"
+      },
+      {
+        "Service": "Text Analytics for Health (S0 Tier)",
+        "Price": "$5.50 per 1,000 Text Records"
+      },
+      {
+        "Service": "Custom Question Answering, Prebuilt Question Answering (Standard Tier)",
+        "Price": "$1.50 per 1,000 Text Records"
+      },
+      {
+        "Service": "Summarization (all types)",
+        "Price": "$2.00 per 1,000 Text Records"
+      },
+      {
+        "Service": "Commitment Tier - Sentiment Analysis, Key Phrase Extraction, Language Detection, Named Entity Recognition, PII Detection (1M records/month)",
+        "Price": "$700"
+      },
+      {
+        "Service": "Commitment Tier - Sentiment Analysis, Key Phrase Extraction, Language Detection, Named Entity Recognition, PII Detection (3M records/month)",
+        "Price": "$1375"
+      },
+      {
+        "Service": "Commitment Tier - Sentiment Analysis, Key Phrase Extraction, Language Detection, Named Entity Recognition, PII Detection (10M records/month)",
+        "Price": "$3500"
+      },
+      {
+        "Service": "Commitment Tier - Summarization (all types) (3M records/month)",
+        "Price": "$3300"
+      },
+      {
+        "Service": "Commitment Tier - Summarization (all types) (10M records/month)",
+        "Price": "$7000"
+      }
+    ],
+    "overall_notes": "Prices shown are USD. Check the Azure Pricing Calculator for the latest details and regional differences. Heads up: the old S0-S4 tiers are gone.",
+    "scraped_pricing_tables": [
+      {
+        "title": "Pricing Table 1",
+        "data": [
+          {
+            "Instance": "Free - Web",
+            "Features": "Sentiment analysis (available in containers) Key phrase extraction (available in containers) Language detection (available in containers) Custom question answering1 Prebuilt question answering Named entity recognition (available in containers) PII detection (available in containers) Summarization (all types)",
+            "Inferencing Per 1,000 text records": "5,000 text records free2 per month"
+          },
+          {
+            "Instance": "Conversational language understanding Orchestration workflow",
+            "Features": "",
+            "Inferencing Per 1,000 text records": ""
+          },
+          {
+            "Instance": "Custom text classification Custom named entity recognition2",
+            "Features": "",
+            "Inferencing Per 1,000 text records": ""
+          },
+          {
+            "Instance": "Standard (S) - Web",
+            "Features": "Sentiment analysis (available in containers) Key phrase extraction (available in containers) Language detection (available in containers) Named entity recognition (available in containers) PII detection (available in containers)",
+            "Inferencing Per 1,000 text records": "0.0M-0.50M - $- 0.5M-2.50M - $- 2.5M-10M - $- 10M+ - $-"
+          },
+          {
+            "Instance": "Conversational language understanding Orchestration workflow",
+            "Features": "$-",
+            "Inferencing Per 1,000 text records": ""
+          },
+          {
+            "Instance": "Custom text classification Custom named entity recognition (available in containers)",
+            "Features": "$-",
+            "Inferencing Per 1,000 text records": ""
+          },
+          {
+            "Instance": "Text analytics for health (available in containers)",
+            "Features": "0M-0M - Included 0.005M-0.01M - $- 0.01M-0.50M - $- 0.505M-2.50M - $- 2.505M-10.01M - $- 10.01M+3 - $-",
+            "Inferencing Per 1,000 text records": ""
+          },
+          {
+            "Instance": "Custom question answering4 Prebuilt question answering",
+            "Features": "0-2.5M - $- 2.5M+ - $-",
+            "Inferencing Per 1,000 text records": ""
+          },
+          {
+            "Instance": "Summarization (all types)",
+            "Features": "$-",
+            "Inferencing Per 1,000 text records": ""
+          }
         ]
       },
       {
-        "feature": "Conversational Language Understanding, Orchestration Workflow",
-        "unit_size": "1,000 text records",
-        "tiers": [
-          { "range": "All", "price_per_unit": 2.00 }
+        "title": "Pricing Table 2",
+        "data": [
+          {
+            "Instance": "Free - Web",
+            "Features": "Conversational language understanding Orchestration workflow",
+            "Training and model endpoint hosting": "Standard training: free Advanced training: up to 1 hour free Model endpoint hosting: free"
+          },
+          {
+            "Instance": "Custom text classification Custom named entity recognition2",
+            "Features": "Training: up to 1 hour free Model endpoint hosting: up to 1 model free",
+            "Training and model endpoint hosting": ""
+          },
+          {
+            "Instance": "Standard (S) - Web",
+            "Features": "Conversational language understanding",
+            "Training and model endpoint hosting": "Standard training: free Advanced training: $- per hour Endpoint hosting: free"
+          },
+          {
+            "Instance": "Custom text classification Custom named entity recognition",
+            "Features": "Training: $- per hour Endpoint hosting: $- per model per month",
+            "Training and model endpoint hosting": ""
+          }
         ]
       },
       {
-        "feature": "Custom Text Classification, Custom Named Entity Recognition",
-        "unit_size": "1,000 text records",
-        "tiers": [
-          { "range": "All", "price_per_unit": 5.00 }
+        "title": "Pricing Table 3",
+        "data": [
+          {
+            "Instance": "Azure – standard",
+            "Features": "Sentiment analysis (and opinion mining) Key phrase extraction Language detection Named entity recognition PII detection",
+            "Price (per month)": "$- per 1M text records $- per 3M text records $- per 10M text records",
+            "Overage": "$- per 1,000 text records $- per 1,000 text records $- per 1,000 text records"
+          },
+          {
+            "Instance": "Azure – standard",
+            "Features": "Summarization",
+            "Price (per month)": "$- per 3M text records",
+            "Overage": "$- per 1,000 text records"
+          },
+          {
+            "Instance": "$- per 10M text records",
+            "Features": "$- per 1,000 text records",
+            "Price (per month)": "",
+            "Overage": ""
+          },
+          {
+            "Instance": "Connected container – standard",
+            "Features": "Sentiment analysis (and opinion mining) Key phrase extraction Language detection Named entity recognition PII detection",
+            "Price (per month)": "$- per 1M text records $- per 3M text records $- per 10M text records",
+            "Overage": "$- per 1,000 text records $- per 1,000 text records $- per 1,000 text records"
+          },
+          {
+            "Instance": "Connected container – standard",
+            "Features": "Summarization",
+            "Price (per month)": "$- per 3M text records",
+            "Overage": "$- per 1,000 text records"
+          },
+          {
+            "Instance": "$- per 10M text records",
+            "Features": "$- per 1,000 text records",
+            "Price (per month)": "",
+            "Overage": ""
+          }
         ]
       },
       {
-        "feature": "Text Analytics for Health",
-        "unit_size": "1,000 text records",
-        "tiers": [
-          { "range": "0 - 0.005M text records", "price_per_unit": "Included" },
-          { "range": "0.005M - 0.01M text records", "price_per_unit": 25.00 },
-          { "range": "0.01M - 0.50M text records", "price_per_unit": 20.00 },
-          { "range": "0.505M - 2.50M text records", "price_per_unit": 15.00 },
-          { "range": "2.505M - 10.01M text records", "price_per_unit": 6.00 },
-          { "range": "Over 10.01M text records", "price_per_unit": 5.00 }
-        ]
-      },
-      {
-        "feature": "Custom Question Answering, Prebuilt Question Answering",
-        "unit_size": "1,000 text records",
-        "tiers": [
-          { "range": "0 - 2.5M text records", "price_per_unit": 1.50 },
-          { "range": "Over 2.5M text records", "price_per_unit": 1.0001 }
-        ]
-      },
-      {
-        "feature": "Summarization (all types)",
-        "unit_size": "1,000 text records",
-        "tiers": [
-          { "range": "All", "price_per_unit": 2.00 }
+        "title": "Pricing Table 4",
+        "data": [
+          {
+            "Features": "Sentiment analysis (and opinion mining), Key phrase extraction, Language detection, Named entity recognition, PII detection",
+            "Price per year": "$-",
+            "Max usage per year": "120M text records",
+            "Projected usage per month": "10M text records"
+          },
+          {
+            "Features": "$-",
+            "Price per year": "36M text records",
+            "Max usage per year": "3M text records",
+            "Projected usage per month": ""
+          },
+          {
+            "Features": "Summarization",
+            "Price per year": "$-",
+            "Max usage per year": "120M text records",
+            "Projected usage per month": "10M text records"
+          },
+          {
+            "Features": "$-",
+            "Price per year": "36M text records",
+            "Max usage per year": "3M text records",
+            "Projected usage per month": ""
+          }
         ]
       }
     ],
-    "commitment_tiers": {
-      "sentiment_analysis_etc": [
-        { "records_per_month": "1M", "price": 700, "overage_per_1k_records": 0.70 },
-        { "records_per_month": "3M", "price": 1375, "overage_per_1k_records": 0.55 },
-        { "records_per_month": "10M", "price": 3500, "overage_per_1k_records": 0.35 }
-      ],
-      "summarization": [
-        { "records_per_month": "3M", "price": 3300, "overage_per_1k_records": 1.10 },
-        { "records_per_month": "10M", "price": 7000, "overage_per_1k_records": 0.70 }
-      ]
-    },
-    "notes": "Pricing is based on US dollars. See Azure Pricing Calculator for details. S0-S4 pricing tiers have been deprecated."
+    "last_scraped_utc": "2025-04-01T00:43:49Z"
   },
   "pros": [
-    "Comprehensive set of NLP features",
-    "Integration with other Azure services",
-    "Customizable AI models",
-    "Option for on-premises deployment with disconnected containers",
-    "Uses state-of-the-art transformer models"
+    "Seriously Smart Models: High-quality, pre-trained AI that performs well out-of-the-box.",
+    "Surprisingly Approachable: Language Studio lets you experiment and build custom models without much code.",
+    "One-Stop Shop: Bundles NER, sentiment, summarization, CLU, etc., simplifying development.",
+    "Handles the Load: Built on Azure, it scales automatically.",
+    "Make It Your Own: Train custom models (NER, classification, CLU) on your specific data.",
+    "Speaks Your Users' Language: Strong multilingual support is baked in.",
+    "Plays Well with Others: Deep integration with Azure (OpenAI, AI Search) and Microsoft tools.",
+    "Deploy Where You Need It: Option to run some features in Docker containers on-premises."
   ],
   "cons": [
-    "Complex pricing structure",
-    "Requires integration within the Azure ecosystem"
+    "Navigating the Costs: Pay-as-you-go pricing can get complex and potentially expensive, especially for high volumes or custom models. Use the calculator!",
+    "The Customization Curve: Language Studio helps, but building good custom models still takes effort and understanding.",
+    "Hitting the Ceiling (API Limits): High-throughput might require planning or containers.",
+    "The Azure Embrace: Great if you're in the ecosystem, but potential vendor lock-in.",
+    "Garbage In, Garbage Out: Performance depends heavily on input text quality.",
+    "Language Gaps Still Exist: Might lag for less common languages or specific features."
   ],
   "technical_specifications": {
-    "api_type": "REST",
-    "sdks": "Available",
-    "azure_ai_foundry": "Supported"
+    "api_type": "REST (so you can talk to it from pretty much anywhere)",
+    "sdks": "C#, Java, JavaScript, Python",
+    "deployment_options": [
+      "Run it in the Azure cloud (standard way)",
+      "Run some features yourself using Docker containers (Sentiment, Language Detection, Key Phrase Extraction, Custom NER, Health Analytics, Summarization)"
+    ],
+    "azure_ai_foundry": "Totally supported! You can play around with features there."
   },
+    "benchmark_scores": {
+      "overall_performance": "Not available (provides confidence scores)",
+      "accuracy": "Not available",
+      "speed": "Real-time",
+      "task_specific": {}
+    },
   "user_reviews": {
-    "summary": "User reviews from G2 (4.3/5 stars, 77 reviews) and Capterra (4.0/5 stars, 6 reviews) suggest a generally positive experience with Azure AI Language. Users highlight its easy integration with Azure, scalability, intuitive API, and useful features like sentiment analysis and entity recognition. Specific cons were not readily available in search snippets, and the low review count on Capterra limits the representativeness of that rating. Further investigation is needed for detailed feedback.",
-    "sources_to_check": ["https://www.g2.com/products/azure-ai-language/reviews", "https://www.capterra.com/p/233979/Azure-Cognitive-Services/"]
+    "summary": "The Bottom Line: Azure AI Language has matured into a robust, versatile, and genuinely useful NLP platform. Its biggest wins are the sheer breadth of high-quality, pre-built features combined with the accessible power of customization via Language Studio and solid APIs. The tight integration within the Azure ecosystem is a significant force multiplier for teams already invested there. Yes, you need to plan for costs and understand that customization requires effort. But the ability to quickly add sophisticated language understanding – from sentiment analysis to complex conversational AI and domain-specific entity extraction – significantly lowers the barrier to entry for building truly intelligent applications. For developers looking to leverage NLP in the cloud, especially within a Microsoft-centric environment, Azure AI Language is a top-tier contender that continues to evolve in meaningful ways. It empowers you to build applications that don't just process text, but truly understand it.",
+    "sources": [
+      {
+        "name": "G2",
+        "rating": "4.3/5",
+        "highlights": [
+          "Easy integration with Azure",
+          "Scalable",
+          "Intuitive API",
+          "Potential Cons: Expensive, Difficult Learning Curve, Limited Language Support, Poor Customer Support"
+        ],
+        "source_url": "https://www.g2.com/products/azure-ai-language/reviews",
+        "review_count": 77
+      },
+      {
+        "name": "Capterra",
+        "rating": "4.0/5",
+        "highlights": [
+          "Good experience with Text-to-Speech (part of Cognitive Services)",
+          "Fast and easy conversion"
+        ],
+        "source_url": "https://www.capterra.com/p/233979/Azure-Cognitive-Services/",
+        "review_count": 6
+      }
+    ]
   },
   "integration_capabilities": [
     "Azure OpenAI Service",
     "Azure AI Foundry",
     "Azure AI Speech",
-    "Azure AI Translator"
+    "Azure AI Translator",
+    "Power Automate",
+    "Power BI",
+    "Azure Functions",
+    "Azure Logic Apps",
+    "Azure AI Search",
+    "Dynamics 365"
   ],
-  "scalability": "Designed for scalability, leveraging Azure infrastructure",
+  "scalability": "Built on Azure, so yeah, it's designed to scale up (or down) as you need.",
   "support_options": [
-    "Documentation",
-    "Azure Support plans (paid)"
+    "Tons of official docs on Microsoft Learn",
+    "Quickstarts and tutorials to get you going",
+    "Detailed SDK and REST API references",
+    "Paid Azure Support plans if you need more help",
+    "Microsoft Q&A community forums"
   ],
   "data_source_urls": [
     "https://azure.microsoft.com/en-us/products/ai-services/ai-language",
-    "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/language-service/"
+    "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/language-service/",
+    "https://learn.microsoft.com/en-us/azure/ai-services/language-service/"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "use_cases": [
+    {
+      "title": "Listening to Customers",
+      "description": "Analyze reviews, surveys, support calls, and social media for sentiment and feedback.",
+      "example": "Automatically tag customer support tickets based on the sentiment expressed."
+    },
+    {
+      "title": "Smarter Search",
+      "description": "Extract entities and key phrases to improve internal document search relevance.",
+      "example": "Find all documents mentioning 'Project Phoenix' and 'Q3 budget'."
+    },
+    {
+      "title": "Helpful Chatbots & Virtual Assistants",
+      "description": "Build bots that understand user intent and provide useful answers using CLU and Question Answering.",
+      "example": "Create an internal HR bot to answer questions about company policies."
+    },
+    {
+      "title": "Taming Document Overload",
+      "description": "Automatically extract key info, summarize reports, and route documents.",
+      "example": "Summarize daily news articles relevant to your industry."
+    },
+    {
+      "title": "Staying Compliant (PII/PHI Redaction)",
+      "description": "Automatically find and mask sensitive personal or health information.",
+      "example": "Redact patient names from clinical trial notes before sharing."
+    },
+    {
+      "title": "Healthcare Insights",
+      "description": "Extract valuable information from medical notes using Text Analytics for Health.",
+      "example": "Identify potential adverse drug events mentioned in patient records."
+    },
+    {
+      "title": "Content Moderation & Global Reach",
+      "description": "Identify potentially harmful text or translate content for different regions.",
+      "example": "Filter user comments for toxic language before they're posted."
+    },
+    {
+      "title": "Workflow Automation",
+      "description": "Trigger actions based on email or document content.",
+      "example": "Use Power Automate to create a task when an email with 'urgent complaint' is received."
+    },
+    {
+      "title": "Grounding Generative AI",
+      "description": "Provide factual context from NER or Health Analytics to Azure OpenAI prompts.",
+      "example": "Use extracted entities from a document to ensure a generated summary is factually accurate."
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/",
+      "description": "The official go-to guide from Microsoft."
+    },
+    {
+      "type": "Quickstart",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/quickstart",
+      "description": "Fastest way to get something basic up and running."
+    },
+    {
+      "type": "Tutorial",
+      "url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-with-text-analytics-service/",
+      "description": "Hands-on learning module from Microsoft Learn."
+    },
+    {
+      "type": "Workshop",
+      "url": "https://microsoft.github.io/ai-fundamentals/",
+      "description": "Broader AI workshop that covers NLP concepts."
+    }
+  ],
+  "documentation_url": "https://azure.microsoft.com/en-us/products/ai-services/ai-language/docs",
+  "api_url": "https://azure.microsoft.com/en-us/products/ai-services/ai-language/api",
+  "sdk_url": "https://azure.microsoft.com/en-us/products/ai-services/ai-language/sdk",
+  "security_compliance": {
+    "certifications": [
+      "ISO 27001, 27017, 27018",
+      "SOC 1, 2, 3",
+      "HIPAA",
+      "GDPR",
+      "FedRAMP High"
+    ],
+    "data_protection": "Your data's encrypted while traveling (TLS 1.2+) and while stored (Azure Storage Service Encryption). You can even use your own keys via Azure Key Vault and set up private network connections."
+  },
+  "testing": {
+    "overview": "You can test Azure AI Language features directly within VS Code using extensions like REST Client or by writing unit tests with frameworks like Jest (for JavaScript/TypeScript) or pytest (for Python).",
+    "example": "Here's an example of using the Azure SDK for Python to test sentiment analysis:",
+    "code_example": "```python\nfrom azure.ai.textanalytics import TextAnalyticsClient\nfrom azure.core.credentials import AzureKeyCredential\nimport os\n\nkey = os.environ[\"LANGUAGE_KEY\"]\nendpoint = os.environ[\"LANGUAGE_ENDPOINT\"]\n\ntext_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(key))\n\ndef analyze_sentiment(text):\n    documents = [text]\n    response = text_analytics_client.analyze_sentiment(documents = documents)[0]\n    print(\"Document Sentiment: {}\".format(response.sentiment))\n    return response.sentiment\n\n# Example usage and testing\nresult = analyze_sentiment(\"I had a wonderful experience today!\")\nassert result == \"positive\"\n\nresult = analyze_sentiment(\"This is the worst thing ever.\")\nassert result == \"negative\"\n```"
+  },
+  "call_to_action": "Explore the [Azure AI Language documentation](https://azure.microsoft.com/en-us/products/ai-services/ai-language) for detailed information, pricing, and advanced features."
 }

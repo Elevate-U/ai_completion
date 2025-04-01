@@ -1,0 +1,96 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Leonardo Ai",
+  "category": "Image Generation",
+  "description": "Leonardo Ai is a versatile creative AI platform focused on image generation, particularly popular for game assets, concept art, and diverse artistic styles. It offers a suite of tools including model training and an interactive canvas.",
+  "features": [
+    "Text-to-image generation",
+    "Image-to-image generation",
+    "Wide array of fine-tuned models (photorealism, anime, fantasy, etc.)",
+    "Custom model training",
+    "AI Canvas (inpainting, outpainting, editing)",
+    "3D texture generation",
+    "Prompt assistance tools",
+    "Real-time generation modes",
+    "Character reference feature",
+    "Video generation (Motion)",
+    "API access"
+  ],
+  "pricing": {
+    "model": "Freemium, token-based system",
+    "free_tier": "Daily allocation of tokens (e.g., 150) for basic usage.",
+    "paid_tiers": [
+      {
+        "name": "Apprentice",
+        "description": "Increased monthly tokens, faster speeds, more features."
+      },
+      {
+        "name": "Artisan",
+        "description": "More tokens, premium features, API access."
+      },
+      {
+        "name": "Maestro",
+        "description": "Highest token allocation, all features."
+      },
+      {
+        "name": "Team Plans",
+        "description": "Custom plans for teams."
+      }
+    ],
+    "notes": "Tokens consumed for generation and specific features. Heavy use requires paid plans. Potential token rollover on some plans."
+  },
+  "pros": [
+    "Wide variety of high-quality, specialized models",
+    "Excellent custom model training capability",
+    "Strong feature set for game asset creation",
+    "Generous free tier for experimentation",
+    "User-friendly interface with integrated editing tools",
+    "Provides API access"
+  ],
+  "cons": [
+    "Token system can be complex; heavy use needs paid plans",
+    "Output quality consistency depends on model/prompt",
+    "Some advanced features require higher tiers/more tokens"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "sdks": "None explicitly mentioned, but API available",
+    "platforms": "Web, Mobile App (iOS), API",
+    "input_methods": [
+      "Text prompt",
+      "Image upload"
+    ],
+    "supported_languages": [
+      "English (primarily)"
+    ],
+    "performance_metrics": {
+      "latency": "Depends on subscription tier and settings",
+      "accuracy": "High quality potential, model/prompt dependent",
+      "throughput": "Scalable cloud platform"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "~12.3 (FID, similar to Stable Diffusion)",
+      "accuracy": "Not detailed",
+      "speed": "Varies by GPU",
+      "task_specific": {}
+    },
+  "integration_capabilities": [
+    "API integration"
+  ],
+  "scalability": "Scalable cloud platform",
+  "support_options": [
+    "Discord community",
+    "Documentation",
+    "Email support (likely for subscribers)"
+  ],
+  "security_compliance": {
+    "certifications": [],
+    "data_protection": "Governed by standard ToS and Privacy Policy. Paid tiers offer private generations. User control over image use for training."
+  },
+  "data_source_urls": [
+    "https://leonardo.ai",
+    "https://docs.leonardo.ai"
+  ],
+  "last_updated": "2025-04-01"
+}

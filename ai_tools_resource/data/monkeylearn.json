@@ -47,18 +47,68 @@
   "user_reviews": {
     "summary": "Mixed reviews on pricing. User-friendly platform with good features, but can be expensive for startups. Requires further research from external review sites (G2, Capterra, TrustRadius) for detailed reviews of Medallia Text Analytics."
   },
+    "benchmark_scores": {
+      "overall_performance": "Not available (depends on custom models)",
+      "accuracy": "Not available (depends on custom models)",
+      "speed": "Not available (depends on custom models)",
+      "task_specific": {}
+    },
   "integration_capabilities": [
     "Integrates with various platforms and data sources (surveys, social media, etc.)"
   ],
   "scalability": "Scalable platform",
-  "support_options": [
-    "Documentation",
-    "Support resources from Medallia"
-  ],
+  "support_options": ["Documentation", "Support resources from Medallia"],
   "data_source_urls": [
     "https://www.capterra.com/p/166580/MonkeyLearn/",
     "https://www.trustradius.com/products/monkeylearn/pricing",
     "https://www.medallia.com/platform/text-analytics/?utm_campaign=monkeylearnmigration"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "description": "MonkeyLearn, now part of Medallia Text Analytics, is a platform for analyzing unstructured text data from various customer feedback channels. It offers features like sentiment analysis, topic extraction, keyword extraction, and text classification using pre-built and customizable models. The platform aims to provide actionable insights from customer feedback to improve customer experience, integrating with Medallia's broader experience management suite.",
+  "use_cases": [
+    {
+      "title": "Voice of the Customer Analysis",
+      "description": "Analyze feedback from surveys, reviews, social media, and support interactions",
+      "example": "Identify key themes and sentiment drivers in customer feedback across all channels"
+    },
+    {
+      "title": "Support Ticket Automation",
+      "description": "Classify and route incoming support tickets automatically",
+      "example": "Tag tickets based on topic (e.g., billing, technical issue) and urgency"
+    },
+    {
+      "title": "Product Feedback Analysis",
+      "description": "Extract insights from product reviews and feature requests",
+      "example": "Identify frequently mentioned features or bugs in user reviews"
+    },
+    {
+      "title": "Market Research",
+      "description": "Analyze online conversations and news articles for market trends",
+      "example": "Track competitor mentions and sentiment in online forums"
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://developer.medallia.com/api-reference/",
+      "description": "Medallia Developer Documentation (includes Text Analytics)"
+    },
+    {
+      "type": "University",
+      "url": "https://university.medallia.com/",
+      "description": "Medallia University for training courses (requires login)"
+    }
+  ],
+  "documentation_url": "https://www.capterra.com/p/166580/MonkeyLearn/docs",
+  "api_url": "https://www.capterra.com/p/166580/MonkeyLearn/api",
+  "sdk_url": "https://www.capterra.com/p/166580/MonkeyLearn/sdk",
+  "security_compliance": {
+    "certifications": [
+      "SOC 2 Type II",
+      "ISO 27001",
+      "GDPR compliant",
+      "HIPAA compliant"
+    ],
+    "data_protection": "Data encrypted in transit and at rest. Follows Medallia's security standards."
+  }
 }

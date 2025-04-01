@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Tool Data Schema",
+  "description": "Standardized schema for AI tool data files",
+  "type": "object",
+  "required": [
+    "name",
+    "category",
+    "features",
+    "pricing",
+    "pros",
+    "cons",
+    "technical_specifications",
+    "integration_capabilities",
+    "support_options",
+    "security_compliance",
+    "data_source_urls",
+      "benchmark_scores",
+    "last_updated"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the AI tool"
+    },
+    "category": {
+      "type": "string",
+      "description": "Primary category of the tool (e.g., Natural Language Processing)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the tool's purpose and capabilities"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": ["string", "object"]
+      },
+      "description": "List of key features"
+    },
+    "pricing": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string",
+          "description": "Description of pricing model"
+        },
+        "free_tier": {
+          "type": ["string", "object"],
+          "description": "Details of free tier if available"
+        },
+        "paid_tiers": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "Detailed pricing tiers"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional pricing notes"
+        }
+      }
+    },
+    "use_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "example": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Detailed use cases with examples"
+    },
+    "pros": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of advantages"
+    },
+    "cons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of disadvantages"
+    },
+    "technical_specifications": {
+      "type": "object",
+      "properties": {
+        "api_type": {
+          "type": "string"
+        },
+        "sdks": {
+          "type": ["string", "array"]
+        },
+        "platforms": {
+          "type": "string"
+        },
+        "input_methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supported_languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "performance_metrics": {
+          "type": "object",
+          "properties": {
+            "latency": {
+              "type": "string"
+            },
+            "throughput": {
+              "type": "string"
+            },
+            "accuracy": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "user_reviews": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": ["string", "null"]
+        },
+        "average_rating": {
+          "type": ["number", "string"]
+        },
+        "sentiment_analysis": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "number"
+            },
+            "neutral": {
+              "type": "number"
+            },
+            "negative": {
+              "type": "number"
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": ["string", "object"]
+          }
+        }
+      }
+    },
+    "benchmark_scores": {
+      "type": "object",
+      "description": "Standardized benchmark test scores for the tool. Scale and interpretation (e.g., higher is better, 0-100) should be documented separately.",
+      "properties": {
+        "overall_performance": { "type": ["number", "string"], "description": "Composite score representing overall benchmark performance (numeric or descriptive)." },
+        "accuracy": { "type": ["number", "string"], "description": "Benchmark score for accuracy (numeric or descriptive)." },
+        "speed": { "type": ["number", "string"], "description": "Benchmark score for processing speed (numeric or descriptive, e.g., 'real-time')." },
+        "task_specific": {
+          "type": "object",
+          "description": "Scores for specific benchmark tasks relevant to the tool's category.",
+          "additionalProperties": { "type": ["number", "string"] }
+        }
+      },
+      "required": ["overall_performance"]
+    },
+    "integration_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of supported integrations"
+    },
+    "scalability": {
+      "type": "string",
+      "description": "Description of scalability features"
+    },
+    "support_options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of support options"
+    },
+    "training_resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "security_compliance": {
+      "type": "object",
+      "properties": {
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "data_protection": {
+          "type": "string"
+        }
+      }
+    },
+    "documentation_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "api_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sdk_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "data_source_urls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

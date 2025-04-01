@@ -1,0 +1,46 @@
+{
+  "name": "ai_completion",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "lint:css": "stylelint \"**/*.css\" --config .stylelintrc.cjs",
+    "format": "prettier --write \"**/*.{js,css,html,md,json}\"",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "build:css": "postcss website/css/style.css -o website/css/style.min.css",
+    "watch:css": "postcss website/css/style.css -o website/css/style.min.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.14",
+    "autoprefixer": "^10.4.19",
+    "axe-core": "^4.10.3",
+    "cssnano": "^6.0.1",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.5",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^10.1.0",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-import": "^16.0.1",
+    "postcss-preset-env": "^9.3.0",
+    "prettier": "^3.5.3",
+    "stylelint": "^16.6.0",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.7.0",
+    "stylelint-order": "^6.0.3"
+  },
+  "dependencies": {
+    "@types/jest": "^29.5.14",
+    "express": "^5.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

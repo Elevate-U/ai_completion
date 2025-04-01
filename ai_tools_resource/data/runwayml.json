@@ -1,0 +1,96 @@
+{
+  "$schema": "./ai_tool_schema_template.json",
+  "name": "Runway (RunwayML)",
+  "category": "Video Generation",
+  "description": "Runway is a web-based creative suite powered by AI, best known for its pioneering work in AI video generation. It offers a wide range of tools for creators working with video, images, and audio.",
+  "features": [
+    "AI Video Generation (Text-to-Video, Image-to-Video, Video-to-Video - Gen-1, Gen-2)",
+    "AI Magic Tools for Video Editing (Background Removal, Object Removal, Slow Motion, Motion Tracking)",
+    "AI Magic Tools for Image Editing (Infinite Image/Outpainting, Background Removal, Erase/Replace)",
+    "Custom AI Model Training",
+    "3D Texture Generation",
+    "Audio Cleanup",
+    "Text-to-Speech",
+    "Real-time Collaboration"
+  ],
+  "pricing": {
+    "model": "Freemium, credit-based system",
+    "free_tier": "Limited credits, projects, lower export resolutions, watermarks.",
+    "paid_tiers": [
+      {
+        "name": "Standard",
+        "description": "Increased monthly credits, higher resolution exports, more storage."
+      },
+      {
+        "name": "Pro",
+        "description": "More credits, higher limits, watermark removal, access to advanced features."
+      },
+      {
+        "name": "Unlimited",
+        "description": "Highest credit allocation, all features."
+      },
+      {
+        "name": "Enterprise",
+        "description": "Custom plans for large teams."
+      }
+    ],
+    "notes": "Credits consumed for generation and specific AI tools. Video generation is credit-intensive."
+  },
+  "pros": [
+    "Leader and innovator in AI video generation",
+    "Comprehensive suite of AI creative tools",
+    "User-friendly interface simplifies complex tasks",
+    "Accessible via web and mobile app (iOS)",
+    "Includes collaboration features"
+  ],
+  "cons": [
+    "Video generation is credit-intensive and can be costly",
+    "AI video quality may still show artifacts/inconsistencies",
+    "Free tier is very limited for practical work",
+    "Sheer number of features can be overwhelming"
+  ],
+  "technical_specifications": {
+    "api_type": "Not prominently featured for public use (potentially enterprise)",
+    "sdks": "None prominently featured",
+    "platforms": "Web, Mobile App (iOS)",
+    "input_methods": [
+      "Text prompt",
+      "Image upload",
+      "Video upload"
+    ],
+    "supported_languages": [
+      "English (primarily)"
+    ],
+    "performance_metrics": {
+      "latency": "Varies by task and server load",
+      "accuracy": "High potential quality, depends on input/settings",
+      "throughput": "Scalable cloud-based service"
+    }
+  },
+    "benchmark_scores": {
+      "overall_performance": "~12.3 (FID, similar to Stable Diffusion)",
+      "accuracy": "Not detailed",
+      "speed": "Varies by GPU",
+      "task_specific": {}
+    },
+  "integration_capabilities": [
+    "Web platform integrations (e.g., frame interpolation)"
+  ],
+  "scalability": "Scalable cloud-based service",
+  "support_options": [
+    "Documentation",
+    "Help Center",
+    "Community Discord",
+    "Email support (likely for paid tiers)"
+  ],
+  "security_compliance": {
+    "certifications": [],
+    "data_protection": "Governed by standard Terms of Service and Privacy Policy."
+  },
+  "data_source_urls": [
+    "https://runwayml.com",
+    "https://runwayml.com/pricing/",
+    "https://runwayml.com/ai-magic-tools/"
+  ],
+  "last_updated": "2025-04-01"
+}

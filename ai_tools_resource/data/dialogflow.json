@@ -1,100 +1,325 @@
 {
   "name": "Dialogflow (Google Conversational AI)",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/c/c7/Dialogflow_logo.svg",
   "category": "Natural Language Processing",
+  "description": "Dialogflow is Google's platform for building chatbots and voice bots – basically, ways for people to talk naturally with your apps. It's got two main flavors: Dialogflow CX, which is the newer, more powerful version with a cool visual builder for complex conversations, and Dialogflow ES (Essentials), which is simpler for more straightforward bots. Under the hood, it uses Google's strong AI for understanding language (NLU) and recognizing speech, supporting over 30 languages. It's designed to work across different channels like websites, mobile apps, messaging platforms (like Facebook Messenger), and even phone lines, all powered by the Google Cloud.",
   "features": [
-    "Conversational Agents (Dialogflow CX)",
-    "Dialogflow ES (Essentials)",
-    "Prebuilt Agents",
-    "Visual Flow Builder (CX)",
-    "Form-based Bot Builder (ES)",
-    "Multilingual Support (30+ languages)",
-    "Omnichannel Integration",
-    "Advanced AI Models (BERT-based NLU in CX)",
-    "Analytics Dashboards",
-    "Integrations with Google Cloud and other platforms",
-    "Agent Assist (add-on)"
+    "Dialogflow CX: The advanced edition for building complex, stateful conversational agents using a visual flow builder and advanced NLU.",
+    "Dialogflow ES (Essentials): The standard edition, good for simpler chatbots using intents and contexts, often with a form-based approach.",
+    "Visual Flow Builder (CX): A graphical interface in CX for designing and managing complex conversation paths.",
+    "Prebuilt Agents: Templates to kickstart development for common use cases.",
+    "Multilingual Support: Handles conversations in over 30 languages.",
+    "Omnichannel Integration: Connects to web chat, mobile apps, Google Assistant, telephony, and various messaging platforms.",
+    "Advanced AI Models: Leverages Google's NLU (including BERT-based models in CX) for understanding user intent.",
+    "Analytics: Dashboards to monitor agent performance and conversation quality.",
+    "Agent Assist: An add-on feature (primarily for CX) that provides real-time suggestions to human agents during conversations."
   ],
+  "feature_visualization_mermaid": "```mermaid\ngraph LR\n    A[Dialogflow] --> B(Dialogflow CX); subgraph CX Features\n    B --> B1(Visual Flow Builder);\n    B --> B2(State Handlers);\n    B --> B3(Advanced NLU);\n    B --> B4(Agent Assist);\n    end\n    A --> C(Dialogflow ES);\n    subgraph ES Features\n    C --> C1(Intents & Contexts);\n    C --> C2(Form Filling);\n    C --> C3(Simpler Bots);\n    end\n    A --> D(Core Capabilities);\n    subgraph Core Capabilities\n    D --> D1(Multilingual Support);\n    D --> D2(Omnichannel Integration);\n    D --> D3(Analytics);\n    D --> D4(Prebuilt Agents);\n    end\n\n    style B fill:#cce,stroke:#333,stroke-width:2px;\n    style C fill:#fec,stroke:#333,stroke-width:2px;\n    style D fill:#cfc,stroke:#333,stroke-width:2px;\n```",
   "pricing": {
-    "model": "Monthly pricing based on edition and requests. Different pricing for CX and ES editions.",
+    "model": "You pay monthly based on which edition (CX or ES) you use and how many requests you make. Audio processing and some ES features cost extra. Prices updated on 2025-03-31 from https://cloud.google.com/dialogflow/pricing",
     "dialogflow_cx": {
-      "text_request": 0.007,
-      "audio_input_output": 0.001,
-      "unit": "USD per request (text) or second (audio)",
-      "generative_requests": "See Generative AI App Builder pricing",
-      "design_time_requests": "No charge",
-      "session_requests": "No charge",
-      "free_trial": "600 USD credit for new customers"
+      "text_request_unit": "USD per text request: $0.007",
+      "audio_input_output_unit": "USD per second of audio: $0.001",
+      "generative_requests": "Check Generative AI App Builder pricing",
+      "notes": "Design time and session requests are generally free. Free trial credits available for new Google Cloud customers."
     },
     "dialogflow_es": {
-      "text_request": 0.002,
-      "audio_input": 0.0065,
-      "audio_output_standard_voice": 4,
-      "audio_output_wavenet_voice": 16,
-      "sentiment_analysis": {
-        "tier_1": {
-          "range": "0-1 million requests",
-          "price_per_1k_requests": 1.00
-        },
-        "tier_2": {
-          "range": "1-5 million requests",
-          "price_per_1k_requests": 0.50
-        },
-        "tier_3": {
-          "range": "5-20 million requests",
-          "price_per_1k_requests": 0.25
-        }
-      },
-      "phone_gateway_tolled": 0.05,
-      "phone_gateway_toll_free": 0.06,
-      "mega_agent_less_than_2k_intents": 0.002,
-      "mega_agent_more_than_2k_intents": 0.006,
-      "unit_text_request": "USD per request",
-      "unit_audio_input": "USD per 15 seconds of audio",
-      "unit_audio_output_standard_voice": "USD per 1 million characters",
-      "unit_audio_output_wavenet_voice": "USD per 1 million characters",
-      "unit_phone_gateway": "USD per minute of phone call processed",
-      "unit_mega_agent_request": "USD per request",
-      "design_time_requests": "No charge",
-      "session_requests": "No charge"
+      "text_request_unit": "USD per text request: $0.002",
+      "audio_input_unit": "USD per 15 seconds of audio: $0.0065",
+      "audio_output_standard_voice_unit": "USD per 1 million characters",
+      "audio_output_wavenet_voice_unit": "USD per 1 million characters",
+      "sentiment_analysis_unit": "USD per 1k requests (tiered)",
+      "phone_gateway_unit": "USD per minute",
+      "mega_agent_unit": "USD per request (tiered by intent count)",
+      "notes": "Design time and session requests are generally free."
     },
-    "notes": "Pricing varies based on edition (CX vs ES) and usage. See Google Cloud Dialogflow pricing page for detailed information and volume discounts."
+    "overall_notes": "Pricing can get complicated, especially with ES add-ons. Always check the official Google Cloud Dialogflow pricing page for current rates and volume discounts.",
+    "scraped_pricing_tables": [
+      {
+        "title": "Conversational Agents (Dialogflow CX) Agent",
+        "data": [
+          {
+            "Feature": "Text (includes all DetectIntent, StreamingDetectIntent, and FulfillIntent requests that do not contain audio)",
+            "Conversational Agents (Dialogflow CX) Edition": "$0.007 per request"
+          },
+          {
+            "Feature": "Audio input/output (speech recognition, speech-to-text, STT, speech synthesis, text-to-speech, TTS, telephony)",
+            "Conversational Agents (Dialogflow CX) Edition": "$0.001 per second *"
+          },
+          {
+            "Feature": "Generative requests",
+            "Conversational Agents (Dialogflow CX) Edition": "See generative pricing"
+          },
+          {
+            "Feature": "Design-time write requests For example, calls to build or update an agent.",
+            "Conversational Agents (Dialogflow CX) Edition": "no charge"
+          },
+          {
+            "Feature": "Design-time read requests For example, calls to list or get agent resources.",
+            "Conversational Agents (Dialogflow CX) Edition": "no charge"
+          },
+          {
+            "Feature": "Other session requests For example, setting or getting session entities.",
+            "Conversational Agents (Dialogflow CX) Edition": "no charge"
+          }
+        ]
+      },
+      {
+        "title": "Conversational Agents (Dialogflow CX) Agent",
+        "data": [
+          {
+            "Symbol": "*",
+            "Description": "Each voice session is charged $0.001 per second of audio, with a minimum of one second. For example, a 15 second voice session is charged at $0.015, while a 61 second voice session is charged at $0.061. The previous minimum billed duration of one minute has been removed effective June 30, 2023. The total audio used for a voice session is the sum of both TTS and STT used by all requests and responses for the voice session. The total billed audio processing duration is independent of any no-charge, non-audio processing (API latency, webhook processing, and so on) which may occur before, during, or after audio processing. Voice session requests that make use of TTS or STT contribute to the total cost for the session, but these requests do not incur a per-request charge. If a voice session has any requests that do not use TTS or STT, these requests are charged per-request as defined above."
+          }
+        ]
+      },
+      {
+        "title": "Dialogflow ES Agent",
+        "data": [
+          {
+            "Feature": "Text (includes all DetectIntent and StreamingDetectIntent requests that do not contain audio)",
+            "Trial Edition": "no charge",
+            "Essentials Edition": "$0.002 per request ¶"
+          },
+          {
+            "Feature": "Audio input (also known as speech recognition, speech-to-text, STT)",
+            "Trial Edition": "no charge *",
+            "Essentials Edition": "$0.0065 per 15 seconds of audio †"
+          },
+          {
+            "Feature": "Audio output (also known as speech synthesis, text-to-speech, TTS)",
+            "Trial Edition": "no charge *",
+            "Essentials Edition": "Standard voices:$4 per 1 million charactersWaveNet voices:$16 per 1 million characters"
+          },
+          {
+            "Feature": "Knowledge connectors (Beta)",
+            "Trial Edition": "no charge *",
+            "Essentials Edition": "no charge"
+          },
+          {
+            "Feature": "Sentiment analysis",
+            "Trial Edition": "Not available",
+            "Essentials Edition": "0-1 million requests:$1.00 per 1,000 requests1-5 million requests:$0.50 per 1,000 requests5-20 million requests:$0.25 per 1,000 requests"
+          },
+          {
+            "Feature": "Dialogflow ES phone gateway Includes audio input and output.",
+            "Trial Edition": "Tolled number:no charge *Toll-free number:Not available",
+            "Essentials Edition": "Tolled number:$0.05 per minute of phone call processed ‡Toll-free number:$0.06 per minute of phone call processed ‡"
+          },
+          {
+            "Feature": "Mega agent",
+            "Trial Edition": "no charge *",
+            "Essentials Edition": "<=2k intents:$0.002 per request §>2k intents:$0.006 per request §"
+          },
+          {
+            "Feature": "Design-time write requests For example, calls to build or update an agent.",
+            "Trial Edition": "no charge",
+            "Essentials Edition": "$0 per request"
+          },
+          {
+            "Feature": "Design-time read requests For example, calls to list or get agent resources.",
+            "Trial Edition": "no charge",
+            "Essentials Edition": "$0 per request"
+          },
+          {
+            "Feature": "Other session requests For example, setting or getting session entities or updating/querying context.",
+            "Trial Edition": "no charge",
+            "Essentials Edition": "$0 per request"
+          }
+        ]
+      },
+      {
+        "title": "Dialogflow ES Agent",
+        "data": [
+          {
+            "Symbol": "*",
+            "Description": "While use of the Dialogflow ES Trial Edition is available at no charge, there are limits on the amount of requests that you can make. For details, see Quotas & Limits."
+          },
+          {
+            "Symbol": "†",
+            "Description": "Each request is rounded up to the nearest increment of 15 seconds. For example, if you make three separate requests, each containing 7 seconds of audio, you are billed for 45 seconds (3 × 15 seconds) of audio. Fractions of seconds are included when rounding up to the nearest increment of 15 seconds. That is, 15.14 seconds are rounded up and billed as 30 seconds."
+          },
+          {
+            "Symbol": "‡",
+            "Description": "Call duration time is rounded up to whole minutes. For example, if your call takes 61 seconds, you are billed for 2 minutes."
+          },
+          {
+            "Symbol": "§",
+            "Description": "When a request is made with a potential for any one of N intents as a match, Dialogflow ES searches through all N of those intents. When N is large, the processing cost is increased. The number of intents used for mega agent pricing is determined by the number of intents searched for a request. If a request explicitly specifies sub-agents, this is the sum of all intents for the supplied sub-agents. If a request does not specify sub-agents, this is the sum of all intents for all sub-agents of the mega agent."
+          },
+          {
+            "Symbol": "¶",
+            "Description": "All Google Assistant requests, including audio input and output, are not billed. Google Assistant audio input and output is considered a text request."
+          }
+        ]
+      },
+      {
+        "title": "Agent Assist",
+        "data": [
+          {
+            "Feature": "Agent Assist conversation other operations Includes all requests that manage Conversations and Participants.",
+            "Trial Edition": "Not available",
+            "Essentials Edition": "no charge"
+          },
+          {
+            "Feature": "Agent Assist analyze text/audio operations Includes all AnalyzeContent or StreamingAnalyzeContent requests for any conversation stage. This includes all such requests involving text, speech synthesis, and/or speech recognition.",
+            "Trial Edition": "Not available",
+            "Essentials Edition": "Charged according to underlying operations described in the Conversational Agents (Dialogflow CX) Agent and Dialogflow ES Agent tabs."
+          }
+        ]
+      }
+    ],
+    "last_scraped_utc": "2025-04-01T00:43:52Z"
   },
   "pros": [
-    "Comprehensive conversational AI platform",
-    "Two editions to suit different needs (CX for advanced, ES for simpler use cases)",
-    "Powerful NLU and speech recognition from Google",
-    "Visual flow builder (CX) simplifies development",
-    "Prebuilt agents and templates accelerate development",
-    "Integrates with Google Cloud and other channels"
+    "It's a really comprehensive platform from Google, covering lots of conversational AI needs.",
+    "Having two editions (CX and ES) gives flexibility for simple or complex projects.",
+    "Leverages Google's powerful NLU and speech tech – it's generally good at understanding people.",
+    "The visual builder in CX is pretty slick for mapping out conversations.",
+    "Lots of integrations, especially within the Google ecosystem (Cloud, Assistant) but also other channels.",
+    "Good scalability since it runs on Google Cloud."
   ],
   "cons": [
-    "Pricing can be complex, especially for ES edition with add-on features",
-    "May require familiarity with Google Cloud Platform",
-    "Advanced features (e.g., Speaker ID, advanced analytics) are limited to CX edition"
+    "The pricing, particularly for ES with all its potential add-ons (audio, sentiment, phone gateway), can be a headache to figure out.",
+    "You're pretty much tied into the Google Cloud ecosystem.",
+    "Some advanced features are only available in the more complex (and potentially more expensive) CX edition.",
+    "Some Reddit users question its long-term competitiveness against newer, pure-LLM approaches like GPT-4 for certain tasks."
   ],
   "technical_specifications": {
-    "api_type": "REST API",
-    "sdks": "Available in various languages",
+    "api_type": "REST",
+    "sdks": "Available for various languages (Java, Node.js, Python, Go, C#, PHP, Ruby)",
     "platforms": "Google Cloud Platform"
   },
   "user_reviews": {
-    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+    "summary": "Dialogflow generally gets good marks from users, scoring 4.4/5 on both G2 (130 reviews) and Capterra (28 reviews). People often praise its ease of use, especially the user-friendly interface that makes building bots feel intuitive – 'like chatting with a real person,' as one G2 reviewer put it. Its ability to deploy across multiple platforms is also a plus. Capterra reviews mention it's great for managing tasks like appointment booking. However, it's not without its critics. The pricing structure, especially for the ES edition with various add-ons, can be confusing. And naturally, it works best if you're already comfortable with Google Cloud. Some developers on Reddit also debate whether its intent-based system holds up against the flexibility of newer large language models like GPT-4 for some tasks, though others point out its reliability and strong language recognition for structured tasks.",
+    "sources": [
+      {
+        "name": "G2",
+        "rating": "4.4/5",
+        "review_count": 130,
+        "highlights": [
+          "Ease of use",
+          "User-friendly interface",
+          "Cross-platform deployment",
+          "Good data security and reliability"
+        ],
+        "source_url": "https://www.g2.com/products/google-cloud-dialogflow/reviews"
+      },
+      {
+        "name": "Capterra",
+        "rating": "4.4/5",
+        "review_count": 28,
+        "highlights": [
+          "Impressive conversational AI platform",
+          "Ease of use",
+          "Good for appointment booking and info delivery"
+        ],
+        "source_url": "https://www.capterra.com/p/180853/Dialogflow/reviews/"
+      },
+      {
+        "name": "Reddit Discussions",
+        "rating": "Mixed/Contextual",
+        "review_count": "N/A",
+        "highlights": [
+          "Good language recognition",
+          "Used by large companies",
+          "Debate on competitiveness vs. pure LLMs (like GPT-4) for some tasks"
+        ],
+        "source_url": "https://www.reddit.com/search/?q=dialogflow"
+      }
+    ]
   },
+    "benchmark_scores": {
+      "overall_performance": "84% (Intent Classification F1)",
+      "accuracy": "84% (Intent Classification F1)",
+      "speed": "Real-time",
+      "task_specific": {
+        "intent_classification_chatbot_f1": "92%",
+        "intent_classification_askubuntu_f1": "81%",
+        "intent_classification_webapps_f1": "69%"
+      }
+    },
   "integration_capabilities": [
-    "Google Cloud services",
+    "Google Cloud services (Speech-to-Text, Text-to-Speech, AI Platform, etc.)",
     "Google Assistant",
-    "Various messaging platforms and channels",
-    "Telephony integrations"
+    "Web Chat (Dialogflow Messenger)",
+    "Facebook Messenger",
+    "Slack",
+    "Telegram",
+    "LINE",
+    "Twilio (SMS, Voice)",
+    "Avaya",
+    "Genesys",
+    "AudioCodes",
+    "Many other third-party platforms via API/webhooks"
   ],
-  "scalability": "Designed for high scalability, leveraging Google Cloud infrastructure",
+  "scalability": "Built on Google Cloud, so it's designed to handle large volumes.",
   "support_options": [
-    "Documentation",
+    "Official Documentation",
     "Google Cloud Support plans (paid)",
-    "Community support"
+    "Community forums (like Stack Overflow, Reddit r/Dialogflow)"
   ],
   "data_source_urls": [
     "https://cloud.google.com/products/conversational-agents",
-    "https://cloud.google.com/dialogflow/pricing"
+    "https://cloud.google.com/dialogflow/pricing",
+    "https://cloud.google.com/dialogflow/docs"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "use_cases": [
+    {
+      "title": "Customer Self-Service Bots",
+      "description": "Handle common questions, track orders, book appointments automatically.",
+      "example": "A retail bot answering 'Where's my order?' or helping schedule a delivery."
+    },
+    {
+      "title": "Multilingual Contact Center Agents",
+      "description": "Provide support across different languages without needing human agents for everything.",
+      "example": "A travel bot assisting customers in Spanish and English."
+    },
+    {
+      "title": "Voice-Enabled IVR & Apps",
+      "description": "Let users interact with phone systems or apps using their voice.",
+      "example": "A voice-controlled banking app for checking balances."
+    },
+    {
+      "title": "Omnichannel Engagement",
+      "description": "Offer a consistent bot experience whether users are on your website, app, or Facebook.",
+      "example": "Starting a support chat on the web and continuing it in a mobile app."
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://cloud.google.com/dialogflow/docs",
+      "description": "The official Google Cloud docs - essential reading."
+    },
+    {
+      "type": "Quickstart",
+      "url": "https://cloud.google.com/dialogflow/docs/quick",
+      "description": "Get your first agent running quickly."
+    },
+    {
+      "type": "Tutorials",
+      "url": "https://cloud.google.com/dialogflow/docs/tutorials",
+      "description": "Step-by-step guides for specific tasks."
+    },
+    {
+      "type": "Course",
+      "url": "https://www.cloudskillsboost.google/course_templates/56",
+      "description": "Official Google Cloud training course."
+    }
+  ],
+  "documentation_url": "https://cloud.google.com/products/conversational-agents/docs",
+  "api_url": "https://cloud.google.com/products/conversational-agents/api",
+  "sdk_url": "https://cloud.google.com/products/conversational-agents/sdk",
+  "security_compliance": {
+    "certifications": [
+      "ISO 27001, 27017, 27018",
+      "SOC 1, 2, 3",
+      "HIPAA",
+      "GDPR",
+      "FedRAMP High"
+    ],
+    "data_protection": "Data encrypted on the move (TLS 1.2+) and at rest. Options for customer-managed keys and VPC Service Controls for network security."
+  }
 }

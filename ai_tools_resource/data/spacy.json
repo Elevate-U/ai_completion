@@ -52,20 +52,68 @@
   "user_reviews": {
     "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
   },
+    "benchmark_scores": {
+      "overall_performance": "96.4% (POS Tagging Accuracy, en_core_web_lg)",
+      "accuracy": "96.4% (POS Tagging Accuracy, en_core_web_lg)",
+      "speed": "Not typically measured",
+      "task_specific": {
+        "NER_F1": "87.3% (en_core_web_lg)",
+        "Dependency_Parsing_Accuracy": "93.9% (en_core_web_lg)"
+      }
+    },
   "integration_capabilities": [
     "PyTorch",
     "TensorFlow",
     "Hugging Face Transformers"
   ],
   "scalability": "Designed for scalability",
-  "support_options": [
-    "Extensive documentation",
-    "Community forum"
-  ],
+  "support_options": ["Extensive documentation", "Community forum"],
   "data_source_urls": [
     "https://spacy.io/",
     "https://explosion.ai/tailored-solutions",
     "https://prodi.gy/"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "description": "spaCy is an open-source software library for advanced Natural Language Processing (NLP) in Python. It's designed specifically for production use and helps build applications that process and \"understand\" large volumes of text. It provides features like tokenization, part-of-speech tagging, named entity recognition, dependency parsing, and more, with pre-trained statistical models and word vectors for over 75 languages.",
+  "use_cases": [
+    {
+      "title": "Information Extraction",
+      "description": "Extract structured information from unstructured text",
+      "example": "Identify names of people, organizations, and locations in news articles"
+    },
+    {
+      "title": "Text Classification",
+      "description": "Categorize documents based on their content",
+      "example": "Classify customer support tickets into predefined categories (e.g., billing, technical)"
+    },
+    {
+      "title": "Chatbot Development",
+      "description": "Understand user intent and extract entities from user messages",
+      "example": "Parse user requests in a chatbot to identify actions and parameters"
+    },
+    {
+      "title": "Preprocessing for Deep Learning",
+      "description": "Prepare text data for training deep learning models",
+      "example": "Tokenize and lemmatize text before feeding it into a transformer model"
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://spacy.io/usage",
+      "description": "Official spaCy usage guides and documentation"
+    },
+    {
+      "type": "Course",
+      "url": "https://course.spacy.io/",
+      "description": "Advanced NLP with spaCy online course"
+    }
+  ],
+  "documentation_url": "https://spacy.io/docs",
+  "api_url": "https://spacy.io/api",
+  "sdk_url": "https://spacy.io/sdk",
+  "security_compliance": {
+    "certifications": ["N/A (Open Source Library)"],
+    "data_protection": "N/A (Data processing happens locally or within user's environment)"
+  }
 }

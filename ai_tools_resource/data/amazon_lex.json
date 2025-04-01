@@ -10,32 +10,68 @@
     "Pre-built Connectors",
     "Streaming Conversations",
     "Request and Response Interaction Models",
-    "Multilingual Support" 
+    "Multilingual Support"
   ],
   "pricing": {
-    "model": "Pay-per-use, request-based pricing. Different rates for speech and text requests, and for streaming vs. request-response interactions. Separate training cost for Automated Chatbot Designer.",
-    "request_response_interaction": {
-      "speech_request": 0.004,
-      "text_request": 0.00075,
-      "unit_speech_request": "USD per request",
-      "unit_text_request": "USD per request"
-    },
-    "streaming_conversation": {
-      "speech_interval": 0.0065,
-      "text_request": 0.0020,
-      "unit_speech_interval": "USD per 15-second interval",
-      "unit_text_request": "USD per request"
-    },
-    "automated_chatbot_designer": {
-      "training_fee": 0.50,
-      "unit_training": "USD per minute"
-    },
-    "free_tier": {
-      "text_requests": "10,000 requests per month (first 12 months)",
-      "speech_requests": "5,000 requests per month (first 12 months)",
-      "chatbot_designer_training": "2 hours per month (first 2 months)"
-    },
-    "notes": "Pay-as-you-go pricing, no upfront commitments. See AWS website for detailed pricing and regional variations."
+    "model": "Pay-per-use, request-based pricing. Different rates for speech and text requests. Free tier available.",
+    "last_updated": "2025-03-31",
+    "pricing_table": [
+      {
+        "feature": "Speech Requests (V2)",
+        "price": "$0.004 per request / $4000.00 per million requests"
+      },
+      {
+        "feature": "Text Requests (V2)",
+        "price": "$0.00075 per request / $750.00 per million requests"
+      }
+    ],
+    "overall_notes": "Prices verified against US East (N. Virginia) region on 2025-03-31. Lex V1 has different pricing. Free tier: 10,000 text requests and 5,000 speech requests per month for the first year. Check official pricing page for specifics. Pricing source: https://aws.amazon.com/lex/pricing/",
+    "scraped_pricing_tables": [
+      {
+        "title": "Pricing Table 1",
+        "data": [
+          {
+            "Input requests": "8,000 speech requests",
+            "Cost per request": "$0.004",
+            "Number of requests": "8,000 requests",
+            "Total": "$32.00"
+          },
+          {
+            "Input requests": "2,000 text requests",
+            "Cost per request": "$0.00075",
+            "Number of requests": "2,000 requests",
+            "Total": "$1.50"
+          },
+          {
+            "Input requests": "Total Amazon Lex charges for the month",
+            "Cost per request": "Total Amazon Lex charges for the month",
+            "Number of requests": "Total Amazon Lex charges for the month",
+            "Total": "$33.50"
+          }
+        ]
+      },
+      {
+        "title": "Pricing Table 2",
+        "data": [
+          {
+            "Total training time": "300 minutes",
+            "Charges per minute": "$0.50",
+            "Total charges": "$150.00"
+          }
+        ]
+      },
+      {
+        "title": "Pricing Table 3",
+        "data": [
+          {
+            "Total training time": "1,000 minutes",
+            "Charges per minute": "$0.50",
+            "Total charges": "$500.00"
+          }
+        ]
+      }
+    ],
+    "last_scraped_utc": "2025-04-01T00:43:31Z"
   },
   "pros": [
     "Comprehensive AI chat builder service",
@@ -55,8 +91,25 @@
     "platforms": "AWS Cloud"
   },
   "user_reviews": {
-    "summary": "Requires further research from external review sites (e.g., G2, Capterra)."
+    "summary": "Amazon Lex has an average rating of 4.2 out of 5 stars on G2 (based on 37 reviews), 4.0 out of 5 stars on Capterra (based on 2 reviews), and 4.4 out of 5 stars on Gartner (based on 45 reviews).",
+    "average_rating_g2": 4.2,
+    "rating_count_g2": 37,
+    "average_rating_capterra": 4.0,
+    "rating_count_capterra": 2,
+    "average_rating_gartner": 4.4,
+    "rating_count_gartner": 45,
+    "sources": [
+      "https://www.g2.com/products/amazon-lex/reviews",
+      "https://www.capterra.com/p/234437/Amazon-Lex/",
+      "https://www.gartner.com/reviews/market/enterprise-conversational-ai-platforms/vendor/amazon-web-services/product/amazon-lex"
+    ]
   },
+    "benchmark_scores": {
+      "overall_performance": "Not available (provides confidence scores)",
+      "accuracy": "Not available",
+      "speed": "Real-time",
+      "task_specific": {}
+    },
   "integration_capabilities": [
     "Amazon Connect",
     "Facebook Messenger",
@@ -75,5 +128,63 @@
     "https://aws.amazon.com/lex/",
     "https://aws.amazon.com/lex/pricing/"
   ],
-  "last_updated": "2025-03-29"
+  "last_updated": "2025-03-30",
+  "description": "Amazon Lex is a service for building conversational interfaces into applications using voice and text. It provides advanced deep learning functionalities of automatic speech recognition (ASR) and natural language understanding (NLU) to recognize user intent. Lex powers Amazon Alexa and allows developers to build sophisticated, natural language chatbots with lifelike conversational interactions. The service includes an automated chatbot designer that accelerates development by analyzing conversation transcripts and suggesting bot designs.",
+  "use_cases": [
+    {
+      "title": "Customer Self-Service Chatbots",
+      "description": "Provide automated answers to common customer questions using conversational AI",
+      "example": "Implement a chatbot for customer support that handles FAQs and basic troubleshooting"
+    },
+    {
+      "title": "Voice-Enabled Applications",
+      "description": "Create voice interfaces for applications using Lex's speech recognition",
+      "example": "Build a voice-controlled hotel booking system"
+    },
+    {
+      "title": "Automated Data Collection",
+      "description": "Use conversational interfaces to collect structured data from users",
+      "example": "Create an insurance claims bot that gathers necessary information through conversation"
+    },
+    {
+      "title": "Omnichannel Customer Engagement",
+      "description": "Deploy consistent conversational experiences across multiple channels",
+      "example": "Implement a chatbot that works on website, mobile app, and Facebook Messenger"
+    }
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://docs.aws.amazon.com/lex/latest/dg/what-is.html",
+      "description": "Official AWS Lex Developer Guide"
+    },
+    {
+      "type": "Tutorial",
+      "url": "https://aws.amazon.com/lex/getting-started/",
+      "description": "Getting Started with Amazon Lex"
+    },
+    {
+      "type": "Workshop",
+      "url": "https://workshops.aws/categories/AI%2FML?tag=Amazon%20Lex",
+      "description": "Hands-on Amazon Lex Workshop"
+    },
+    {
+      "type": "Course",
+      "url": "https://www.aws.training/Details/eLearning?id=34250",
+      "description": "Building Chatbots with Amazon Lex"
+    }
+  ],
+  "documentation_url": "https://docs.aws.amazon.com/lex/",
+  "api_url": "https://docs.aws.amazon.com/lex/latest/dg/API_Reference.html",
+  "sdk_url": "https://aws.amazon.com/lex/sdk",
+  "security_compliance": {
+    "certifications": [
+      "HIPAA",
+      "PCI DSS",
+      "SOC 1/2/3",
+      "ISO 9001, 27001, 27017, 27018",
+      "FedRAMP Moderate"
+    ],
+    "data_protection": "Data encrypted in transit with TLS 1.2+ and at rest using AWS KMS. Supports customer-managed CMKs for additional control."
+  }
 }
