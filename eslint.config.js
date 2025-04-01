@@ -3,54 +3,71 @@ import eslint from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import globals from 'globals';
-import jestPlugin from 'eslint-plugin-jest'; // Import Jest plugin
+import jestPlugin from 'eslint-plugin-jest';
 
 export default [
   {
-    // Ignoring node_modules, virtual environments, and build output
+    // Global ignores
     ignores: ['**/node_modules/**', '**/.venv/**', 'dist/**'],
   },
 
-  // Base recommended rules + Prettier plugin setup (applied broadly)
-  eslint.configs.recommended,
+  // --- Specific File Configurations FIRST ---
+
+  // Config for ROOT CJS files (Gruntfile, postcss, stylelintrc, css-order)
   {
+    files: [
+      'Gruntfile.cjs',
+      'postcss.config.js',
+      '.stylelintrc.cjs',
+      'css-property-order.cjs',
+      // REMOVED jest.config.js
+    ],
+    languageOptions: {
+      globals: { ...globals.node },
+      sourceType: 'commonjs',
+    },
     plugins: {
       prettier: prettierPlugin,
     },
     rules: {
-      ...prettierConfig.rules, // Apply prettier rules
-      'prettier/prettier': ['warn', {}, { usePrettierrc: true }], // Show prettier diffs as warnings
-      'no-empty': 'warn', // Warn on empty blocks
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // Error on unused vars unless they start with _
-      'no-console': 'warn', // Warn about console logs
-      eqeqeq: 'error', // Enforce strict equality (===)
+      'no-unused-vars': 'off',
+      'no-console': 'warn',
+      eqeqeq: 'error',
+      ...prettierConfig.rules,
+      'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
     },
   },
 
-  // Configuration for root-level JS/CJS files (CommonJS/Node environment)
-  // EXCLUDING eslint.config.js itself
+  // Config for TEST files (Jest + Node env, ES Modules)
   {
-    files: ['*.js', '*.cjs'], // Target root .js and .cjs files
-    ignores: ['eslint.config.js'], // Explicitly ignore eslint.config.js here
+    files: ['**/*.test.js'],
+    ...jestPlugin.configs['flat/recommended'],
     languageOptions: {
       globals: {
-        ...globals.node, // Use Node.js globals (includes module, require, process)
+        ...globals.jest,
+        ...globals.node,
       },
-      sourceType: 'commonjs', // Specify CommonJS module system
+      sourceType: 'module', // Tests are likely ESM
+    },
+    plugins: {
+      prettier: prettierPlugin,
     },
     rules: {
-       'no-unused-vars': 'off', // Often okay to have unused vars in configs
-    }
+      'no-console': 'off',
+      ...prettierConfig.rules,
+      'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
+    },
   },
 
-  // Configuration for website JS files (Browser environment)
+  // --- Broader Configurations LAST ---
+
+  // Config for website BROWSER JS files (ES Modules)
   {
-    files: ['website/js/**/*.js'], // Target JS files within website/js
-    ignores: ['**/*.test.js'], // Exclude test files from this browser config
+    files: ['website/js/**/*.js'],
+    ignores: ['**/*.test.js', 'website/local-dev-server.js'], // Keep ignoring server here
     languageOptions: {
       globals: {
-        ...globals.browser, // Use Browser globals
-        // Add back any custom/third-party globals needed for website JS
+        ...globals.browser,
         mermaid: 'readonly',
         Chart: 'readonly',
         aiToolsData: 'writable',
@@ -59,38 +76,48 @@ export default [
       },
       sourceType: 'module',
     },
-    rules: {
-       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    }
-  },
-
-  // Configuration for website local dev server (Node environment)
-  {
-     files: ['website/local-dev-server.js'],
-     languageOptions: {
-        globals: {
-           ...globals.node, // Use Node.js globals
-        },
-        sourceType: 'commonjs', // Assuming it's CommonJS
-     },
-     rules: {
-        'no-console': 'off', // Allow console logs in dev server
-        'no-unused-vars': 'off',
-     }
-  },
-
-  // Configuration for Test files (Jest environment)
-  {
-    files: ['**/*.test.js'],
-    ...jestPlugin.configs['flat/recommended'], // Apply Jest recommended rules
-    languageOptions: {
-      globals: {
-        ...globals.jest, // Use Jest globals
-      },
+    plugins: {
+      prettier: prettierPlugin,
     },
     rules: {
-      // Add/override any specific rules for tests
-      'no-console': 'off', // Allow console logs in tests
-    }
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-console': 'warn',
+      eqeqeq: 'error',
+      ...prettierConfig.rules,
+      'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
+    },
+  },
+
+  // Base recommended rules (applied broadly, potentially overridden by specifics above)
+  // Includes rules for root-level ESM files like jest.config.js, eslint.config.js
+  // and also website/local-dev-server.js (which uses Node globals but is ESM)
+  eslint.configs.recommended,
+  {
+    // Apply Node globals for any remaining JS files (like local-dev-server.js)
+    files: ['**/*.js'], // Apply broadly but will be overridden for browser/test/root CJS
+    ignores: [
+      'website/js/**/*.js',
+      '**/*.test.js',
+      'eslint.config.js',
+      'jest.config.js',
+    ], // Avoid re-applying to browser/test/configs
+    languageOptions: {
+      globals: { ...globals.node }, // Add Node globals
+      // sourceType defaults to 'module' due to package.json
+    },
+    rules: {
+      'no-console': 'off', // Allow console in Node scripts like the server
+    },
+  },
+
+  // Apply prettier formatting broadly as a final step
+  {
+    plugins: {
+      prettier: prettierPlugin,
+    },
+    rules: {
+      ...prettierConfig.rules,
+      'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
+    },
   },
 ];
