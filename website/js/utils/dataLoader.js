@@ -64,16 +64,7 @@ function constructFilename(toolId) {
 // ai_tools_resource/scripts/update_pricing_data.py and stored in the JSON files
 // under the 'scraped_pricing_tables' key within the 'pricing' object.
 
-// --- Text Normalization Helper (kept in case needed elsewhere) ---
-function normalizeText(text) {
-  if (typeof text !== 'string') return '';
-  // Simplify: Replace newlines/tabs with a single space, collapse multiple spaces, and trim.
-  // Avoid complex regex that might strip currency symbols inadvertently.
-  return text
-    .replace(/[\r\n\t]+/g, ' ') // Replace newlines/tabs with spaces
-    .replace(/\s{2,}/g, ' ') // Collapse multiple spaces
-    .trim();
-}
+// --- Text Normalization Helper removed (unused) ---
 
 // Main function to load tool data
 export async function loadToolData() {

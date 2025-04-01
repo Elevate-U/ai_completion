@@ -2,7 +2,8 @@
 import eslint from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
-import globals from 'globals'; // Import the globals package
+import globals from 'globals';
+import jestPlugin from 'eslint-plugin-jest'; // Import Jest plugin
 
 export default [
   {
@@ -27,40 +28,69 @@ export default [
   },
 
   // Configuration for root-level JS/CJS files (CommonJS/Node environment)
+  // EXCLUDING eslint.config.js itself
   {
     files: ['*.js', '*.cjs'], // Target root .js and .cjs files
+    ignores: ['eslint.config.js'], // Explicitly ignore eslint.config.js here
     languageOptions: {
       globals: {
         ...globals.node, // Use Node.js globals (includes module, require, process)
       },
       sourceType: 'commonjs', // Specify CommonJS module system
     },
-    // Override rules specifically for config files if needed
     rules: {
-      'no-unused-vars': 'off', // Often okay to have unused vars in configs
-    },
+       'no-unused-vars': 'off', // Often okay to have unused vars in configs
+    }
   },
 
   // Configuration for website JS files (Browser environment)
   {
     files: ['website/js/**/*.js'], // Target JS files within website/js
+    ignores: ['**/*.test.js'], // Exclude test files from this browser config
     languageOptions: {
       globals: {
-        ...globals.browser, // Use Browser globals (includes setTimeout, document, window, fetch etc.)
+        ...globals.browser, // Use Browser globals
         // Add back any custom/third-party globals needed for website JS
         mermaid: 'readonly',
         Chart: 'readonly',
         aiToolsData: 'writable',
         initCategoriesPage: 'readonly',
         initComparisonPage: 'readonly',
-        // Add other specific globals if needed
       },
-      sourceType: 'module', // Assuming website JS uses ES Modules
+      sourceType: 'module',
     },
-    // Override rules specifically for browser code if needed
     rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // Keep unused var check active here
-      // 'no-console': 'off', // Example: Allow console logs in browser code if desired
+       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    }
+  },
+
+  // Configuration for website local dev server (Node environment)
+  {
+     files: ['website/local-dev-server.js'],
+     languageOptions: {
+        globals: {
+           ...globals.node, // Use Node.js globals
+        },
+        sourceType: 'commonjs', // Assuming it's CommonJS
+     },
+     rules: {
+        'no-console': 'off', // Allow console logs in dev server
+        'no-unused-vars': 'off',
+     }
+  },
+
+  // Configuration for Test files (Jest environment)
+  {
+    files: ['**/*.test.js'],
+    ...jestPlugin.configs['flat/recommended'], // Apply Jest recommended rules
+    languageOptions: {
+      globals: {
+        ...globals.jest, // Use Jest globals
+      },
     },
+    rules: {
+      // Add/override any specific rules for tests
+      'no-console': 'off', // Allow console logs in tests
+    }
   },
 ];

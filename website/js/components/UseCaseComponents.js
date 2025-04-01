@@ -25,7 +25,7 @@ export function renderUseCaseCards(useCases) {
     `;
 }
 
-export function renderUseCaseDiagram(diagramData) {
+export function renderUseCaseDiagram(/* diagramData */) {
   // Implementation for use case diagrams
   return '<div class="use-case-diagram">Diagram will be rendered here</div>';
 }
@@ -50,7 +50,7 @@ export function renderUserReviews(reviews) {
 
     const score = parseFloat(ratingMatch[1]);
     const maxScore = parseInt(ratingMatch[3], 10);
-    const percentage = (score / maxScore) * 100;
+    // const percentage = (score / maxScore) * 100; // Unused variable
     // Simple star representation (could be enhanced with icons)
     const filledStars = Math.round(score);
     const emptyStars = maxScore - filledStars;
