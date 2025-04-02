@@ -1,0 +1,3523 @@
+/* Base button styles */
+
+/* Base button styles - Adjusted for target design */
+
+.button {
+  display: inline-block;
+  padding: 10px 20px; /* Slightly larger padding */
+  font-size: 1rem;
+  font-weight: 600; /* Bolder */
+  text-align: center;
+  text-decoration: none; /* Ensure no underline */
+  color: #fff; /* White text by default */
+  background-color: #0056b3;
+  background-color: var(--primary-color);
+  border: 1px solid transparent; /* Add border for structure */
+  border-radius: 6px; /* Consistent radius */
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    transform 0.15s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: color-mix(
+    in srgb,
+    #0056b3 85%,
+    black
+  ); /* Darken primary */
+
+  border-color: color-mix(in srgb, #0056b3 80%, black);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 5px var(--shadow-color); /* Subtle shadow */
+  transform: translateY(-1px);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--primary-color) 85%,
+    black
+  );
+
+  border-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Updated stylesheet - style.css */
+
+/* Root variables for colors and typography */
+
+:root {
+  --primary-color: #0056b3; /* Refined primary color */
+  --secondary-color: #6c757d; /* Example secondary color */
+  --accent-color: #fc0; /* Refined accent color */
+  --text-primary: #212529; /* Sharper dark text color */
+  --text-secondary: #f8f9fa; /* Light text color */
+  --bg-primary: #f8f9fa; /* Light background color */
+  --bg-secondary: #343a40; /* Dark background color */
+  --border-color: #dee2e6; /* Border color */
+  --font-family-sans-serif: sans-serif; /* Default sans-serif font */
+  --font-family-monospace: monospace; /* Default monospace font */
+  --site-max-width: 1200px; /* Maximum site width */
+
+  /* Spacing scale (8px base) */
+  --space-xxs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+  --space-xxl: 4rem; /* 64px */
+
+  /* Code block variables */
+  --code-bg: #121212;
+  --code-text: #4af626;
+  --code-accent: #4af626;
+  --code-keyword: #4d4dff;
+  --code-string: #ffa724;
+  --code-comment: #a0a0a0;
+  --code-number: #f4f;
+  --code-function: #00bfff;
+  --code-shadow: 0 0 10px rgb(74 246 38 / 20%);
+
+  /* Default (Light Theme) Variables - Moved from implicit body style */
+  --color-bg: var(--bg-primary);
+  --color-fg: var(--text-primary);
+  --card-background: var(--bg-primary); /* Default card background */
+  --shadow-color: rgb(0 0 0 / 10%); /* Default shadow */
+  --link-color: var(--primary-color); /* Default link color */
+  --success-color: #28a745; /* Default success color */
+  --error-color: #dc3545; /* Default error color */
+}
+
+/* Light theme explicit definition (can also be merged into :root if light is the absolute default) */
+
+html[data-theme='light'] {
+  --primary-color: #0056b3;
+  --secondary-color: #6c757d;
+  --accent-color: #fc0;
+  --text-primary: #212529;
+  --text-secondary: #212529; /* Match primary text color */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #e9ecef; /* Slightly different secondary bg for light */
+  --border-color: #dee2e6;
+  --card-background: #fff; /* White cards for light theme */
+  --shadow-color: rgb(0 0 0 / 10%);
+  --link-color: #0056b3;
+  --code-bg: #f8f8f8;
+  --code-text: #333;
+  --code-accent: #1db954;
+  --code-keyword: #06c;
+  --code-string: #d64200;
+  --code-comment: #757575;
+  --code-number: #a0a;
+  --code-function: #06c;
+  --code-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  --success-color: #218838; /* Slightly darker green for light theme */
+  --error-color: #c82333; /* Slightly darker red for light theme */
+}
+
+/* Dark theme variables */
+
+/* Dark theme variables - Updated to match Behance style */
+
+html[data-theme='dark'] {
+  --primary-color: #007aff; /* Bright blue accent */
+  --secondary-color: #8b949e; /* Medium gray for secondary text/elements */
+  --accent-color: var(--primary-color); /* Use primary blue as accent */
+  --text-primary: #e6edf3; /* Light gray/off-white text */
+  --text-secondary: #8b949e; /* Medium gray secondary text */
+  --bg-primary: #1a1d21; /* Dark blue/gray main background */
+  --bg-secondary: #2c3036; /* Slightly lighter dark background for cards/sections */
+  --border-color: #30363d; /* Subtle dark border */
+  --card-background: var(--bg-secondary); /* Use secondary bg for cards */
+  --shadow-color: rgb(0 0 0 / 30%); /* Darker shadow */
+  --link-color: var(--primary-color); /* Use primary blue for links */
+  --code-bg: #22272e; /* Darker code background */
+  --code-text: #cdd9e5; /* Light code text */
+  --code-accent: #58a6ff; /* Blue accent for code */
+  --code-keyword: #f47067; /* Coral keyword */
+  --code-string: #96d0ff; /* Light blue string */
+  --code-comment: #768390; /* Gray comment */
+  --code-number: #f0a350; /* Orange number */
+  --code-function: #d2a8ff; /* Purple function */
+  --code-shadow: 0 0 10px rgb(0 0 0 / 40%);
+  --success-color: #34c759; /* Keep bright green */
+  --error-color: #ff453a; /* Keep bright red */
+
+  /* Add a subtle gradient background for better glass effect */
+  --body-background-image: linear-gradient(135deg, #1a1d21 0%, #2c3036 100%);
+}
+
+html[data-theme='dark'] .logo img {
+    filter: invert(1); /* Invert logo colors for dark theme */
+  }
+
+/* Spotify theme variables */
+
+html[data-theme='spotify'] {
+  --primary-color: #1db954;
+  --secondary-color: #b3b3b3; /* Adjusted for consistency */
+  --accent-color: #1ed760;
+  --text-primary: #fff;
+  --text-secondary: #fff; /* Match primary text color */
+  --bg-primary: #121212;
+  --bg-secondary: #181818;
+  --border-color: #282828;
+  --card-background: #181818; /* Spotify card bg */
+  --shadow-color: rgb(0 0 0 / 30%);
+  --link-color: #1ed760; /* Spotify green links */
+  --code-bg: #181818;
+  --code-text: #fff;
+  --code-accent: #1ed760;
+  --code-keyword: #1db954;
+  --code-string: #ff9a56;
+  --code-comment: #7a9f7a;
+  --code-number: #b5cea8;
+  --code-function: #dcdcaa;
+  --code-shadow: 0 0 10px rgb(0 0 0 / 40%);
+  --success-color: #30d158; /* Spotify-adjacent green */
+  --error-color: #ff3b30; /* Spotify-adjacent red */
+}
+
+html[data-theme='spotify'] .logo img {
+    filter: invert(1); /* Invert logo colors for spotify theme */
+  }
+
+/* Base styles */
+
+html {
+  scroll-padding-top: 4rem; /* Offset for sticky header */
+
+  /* Apply base colors from variables */
+  color: #212529;
+  color: var(--text-primary);
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary);
+  transition:
+    background-color 0.3s,
+    color 0.3s; /* Smooth theme transitions on html */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    Inter, sans-serif;
+  font-family:
+    Inter, var(--font-family-sans-serif); /* Ensure Inter is primary */
+
+  line-height: 1.6;
+  color: #212529;
+  color: var(--text-primary); /* Use theme variable */
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary); /* Use theme variable */
+
+  /* Apply background image if defined by theme */
+  background-image: none;
+  background-image: var(--body-background-image, none);
+  background-attachment: fixed; /* Keep gradient fixed during scroll */
+  transition:
+    background-color 0.3s,
+    background-image 0.3s, /* Add transition for image */
+    color 0.3s; /* Smooth theme transitions */
+}
+
+/* Layout System */
+
+.container {
+  --gutter: var(--space-md);
+
+  width: 100%;
+  max-width: 1200px;
+  max-width: var(--site-max-width);
+  margin-top: 0; /* Ensure container has no top margin */
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 0; /* Ensure container has no top padding */
+  padding-right: 1.5rem;
+  padding-right: var(--gutter);
+  padding-left: 1.5rem;
+  padding-left: var(--gutter);
+}
+
+.main-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: single column for mobile */
+  grid-gap: 1.5rem 3rem;
+  grid-gap: var(--space-md) var(--space-xl);
+  gap: 1.5rem 3rem;
+  gap: var(--space-md) var(--space-xl); /* Add some row gap for mobile stacking */ /* Keep column gap for larger screens */
+  align-content: start; /* Align grid lines to the start */
+  width: 100%; /* Ensure it takes full width */
+  margin-top: 0; /* Explicitly remove any top margin */
+  padding-top: 0; /* Explicitly remove any top padding */
+}
+
+/* Ensure main content area has no top margin/padding */
+
+.main-content {
+ margin-top: 0;
+ padding-top: 0; /* Revert padding */
+}
+
+/* Force first element in main content to have no top margin */
+
+.main-content > *:first-child {
+  margin-top: 0;
+}
+
+/* Apply two-column layout for medium screens and up */
+
+@media (min-width: 992px) { /* Changed from 'width >=' to 'min-width:' */
+  .main-content-wrapper {
+    display: grid; /* Re-affirm display: grid */
+
+    /* Default layout with sidebar */
+    grid-template-columns: 250px 1fr; /* Sidebar first (250px), then Main content (1fr) */
+    grid-row-gap: 0;
+    row-gap: 0; /* No row gap needed in two-column layout */
+    align-items: start; /* Align items to the top */
+  }
+ 
+  /* --- Homepage Layout Adjustment for Sidebar --- */
+
+  /* Override the default homepage single-column layout */
+  .home-page .main-content-wrapper {
+    grid-template-columns: 900px 1fr; /* Sidebar (220px) + Main Content (1fr) */
+    gap: 3rem;
+    gap: var(--space-xl); /* Restore gap */
+  }
+ 
+  /* Explicitly assign columns in the default layout */
+
+  /* No need to explicitly assign grid-column anymore, order matches template */
+
+  /* .main-content-wrapper > .main-content { ... } */
+
+  /* .main-content-wrapper > .sidebar { ... } */
+ 
+  /* Hide sidebar on homepage */
+
+  /* Override the rule hiding the sidebar on the homepage */
+  .home-page .main-content-wrapper > .sidebar {
+    position: sticky; /* Make sidebar sticky */
+    top: calc(4.5rem + 1.5rem);
+    top: calc(4.5rem + var(--space-md)); /* Position below sticky header */
+    display: block; /* Make sidebar visible */
+    align-self: start; /* Align to top */
+    max-height: calc(100vh - (5rem + 1.5rem) - 2rem);
+    max-height: calc(100vh - (5rem + var(--space-md)) - var(--space-lg)); /* Limit height */
+    overflow-y: auto; /* Allow scrolling */
+  }
+
+  /* Ensure tools grid applies within this layout */
+  .tools-grid {
+    display: grid; /* Re-affirm display grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 1.5rem;
+    grid-gap: var(--space-md);
+    gap: 1.5rem;
+    gap: var(--space-md);
+  }
+}
+
+/* Typography */
+
+h1,
+h2,
+h3 {
+  margin-top: 2rem;
+  margin-top: var(--space-lg); /* Use spacing variable */
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* Use spacing variable */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem); /* Responsive font size */
+  color: #0056b3;
+  color: var(--primary-color);
+}
+
+/* Keep primary color for H1 */
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.2rem); /* Responsive font size */
+}
+
+h3 {
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem); /* Responsive font size */
+}
+
+/* Remove top margin from main page titles */
+
+.main-content > h1:first-child,
+.main-content > h2:first-child {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* Use spacing variable */
+
+  /* color: var(--text-primary); Inherits from body/html */
+
+  /* color: var(--text-primary); Inherits from body/html */
+}
+
+/* Override default top margin for category page title */
+
+.tools-main-content h2 {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0056b3;
+  color: var(--link-color); /* Use theme-specific link color */
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline on hover for clarity */
+  color: color-mix(
+    in srgb,
+    #0056b3 80%,
+    white
+  ); /* Slightly lighten link color on hover */
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+a:hover {
+  color: color-mix(
+    in srgb,
+    var(--link-color) 80%,
+    white
+  );
+}
+}
+
+/* Ensure category title has no top margin */
+
+#category-title {
+ margin-top: 0;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky; /* Sticky header */
+  z-index: 100; /* Ensure it's above other content */
+  top: 0;
+  padding: 0.25rem 0;
+  padding: var(--space-xxs) 0; /* 4px */
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary); /* Use variable */
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Smooth theme transition */
+}
+
+/* Specific theme overrides for header if needed */
+
+/* Dark theme header */
+
+html[data-theme='dark'] .site-header {
+  background-color: #343a40;
+  background-color: var(
+    --bg-secondary
+  ); /* Use slightly lighter dark bg for header */
+
+  border-bottom-color: #dee2e6;
+
+  border-bottom-color: var(--border-color);
+}
+
+/* Spotify theme header */
+
+html[data-theme='spotify'] .site-header {
+  background-color: #000; /* Black header for Spotify theme */
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-block; /* Treat as block for sizing */
+  height: 60px; /* Set desired logo height */
+  line-height: 40px; /* Helps vertical alignment */
+  vertical-align: middle; /* Align with other nav items */
+  overflow: hidden; /* Hide parts of SVG outside this box */
+}
+
+.logo img {
+  display: block; /* Remove extra space under image */
+  width: auto; /* Maintain aspect ratio */
+  height: 95%; /* Fill the container height */
+  -o-object-fit: cover;
+     object-fit: cover; /* Scale image to cover container */
+
+  /* Vertically center the SVG content (approx 307-720 range in 1024 viewbox) */
+  -o-object-position: center 50%;
+     object-position: center 50%;
+}
+
+.nav-links {
+  /* Mobile styles first */
+  position: absolute;
+  top: 100%; /* Position just below the header */
+  left: 0;
+  display: none; /* Initially hide nav links on mobile */
+  flex-direction: column;
+  width: 100%;
+
+  margin: 0;
+  padding: 1.5rem 0;
+  padding: var(--space-md) 0; /* 24px */
+  text-align: center;
+  list-style: none;
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary);
+  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+
+  /* Common styles */
+
+/* Responsive Logo Cropping */
+}
+
+@media (max-width: 767px) {
+  .nav-links .logo {
+    width: 35px; /* Adjust width to show only the icon part */
+
+    /* Height is already set to 40px */
+  }
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-sm); /* 8px 16px */
+  color: #212529;
+  color: var(--text-primary);
+  border-radius: 6px; /* Match button radius */
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #fff; /* White text on active/hover */
+  background-color: #0056b3;
+  background-color: var(--primary-color);
+}
+
+/* Specific theme overrides for nav links if needed */
+
+/* Dark theme nav link active/hover */
+
+html[data-theme='dark'] .nav-link.active,
+html[data-theme='dark'] .nav-link:hover {
+  color: #fff; /* Ensure white text */
+  background-color: #0056b3;
+  background-color: var(--primary-color); /* Use bright blue */
+}
+
+/* Spotify theme nav link active/hover */
+
+html[data-theme='spotify'] .nav-link.active,
+html[data-theme='spotify'] .nav-link:hover {
+  color: #000; /* Black text on Spotify green */
+}
+
+/* Header controls - theme toggle and mobile nav toggle */
+
+.header-controls {
+  display: flex; /* Flex container for header controls */
+  gap: 0.5rem;
+  gap: var(--space-xs); /* 8px */ /* Spacing between controls */
+  align-items: center;
+}
+
+/* Theme Toggle Button */
+
+.theme-toggle {
+  position: relative; /* For icon positioning */
+  display: flex; /* Use flex to align icons */
+  align-items: center;
+  justify-content: center; /* Center icons horizontally */
+  width: 2rem;
+  width: var(--space-lg); /* 32px */ /* Adjust as needed */
+  height: 2rem;
+  height: var(--space-lg); /* 32px */ /* Adjust as needed */
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%; /* Circular button */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background-color: rgb(128 128 128 / 10%); /* Subtle gray hover */
+}
+
+html[data-theme='dark'] .theme-toggle:hover {
+  background-color: rgb(255 255 255 / 10%); /* Lighter hover for dark */
+}
+
+html[data-theme='spotify'] .theme-toggle:hover {
+  background-color: rgb(29 185 84 / 20%); /* Spotify green tint hover */
+}
+
+.theme-icon {
+  position: absolute; /* Position icons within the button */
+  font-size: 1.2rem; /* Ensure icons have a size */
+  line-height: 1; /* Prevent extra space */
+
+  /* Icons start hidden by default, except the one for the initial theme */
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease; /* Smooth transitions */
+
+  transform: scale(0.5);
+}
+
+/* --- Table Wrapper for Scrolling --- */
+
+.table-wrapper {
+  overflow-x: auto; /* Enable horizontal scroll on overflow */
+  margin-bottom: 1.5em; /* Add some space below the wrapper */
+
+  /* Optional: Add some visual indication that scrolling is possible */
+
+  /* border: 1px dashed #ccc; */
+
+  /* padding-bottom: 5px; */
+}
+
+/* Default state (light theme) */
+
+html[data-theme='light'] .sun-icon {
+  color: #f59e0b; /* Slightly different sun color */
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark theme state */
+
+html[data-theme='dark'] .moon-icon {
+  color: #e2e8f0; /* Lighter moon color */
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Spotify theme state */
+
+html[data-theme='spotify'] .spotify-icon {
+  color: #1db954; /* Spotify green */
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile Navigation Toggle Button */
+
+.mobile-nav-toggle {
+  padding: 0.5rem;
+  padding: var(--space-xs); /* 8px */
+  font-size: 1.5rem;
+  color: #212529;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hero Section */
+
+.hero-section {
+  position: relative;
+  padding: 5rem 0 7.5rem; /* 80px 120px - Kept specific rem values */
+  text-align: center;
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary);
+  transform-style: preserve-3d;
+  perspective: 1px;
+  overflow: hidden;
+}
+
+.hero-section h1,
+.hero-section .subtitle,
+.hero-section .hero-cta {
+  position: relative; /* Ensure text/button are above the overlay */
+  z-index: 2;
+}
+
+.hero-section h1 {
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* 24px */
+  font-size: 3rem;
+  text-shadow: none; /* Remove shadow in dark mode */
+  color: #212529;
+  color: var(--text-primary); /* Use primary text in dark mode */
+}
+
+html[data-theme='light'] .hero-section h1 {
+  text-shadow: 0 1px 4px rgb(0 0 0 / 60%);
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Keep light text on image for light theme */
+}
+
+.hero-section .subtitle {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  margin: 0 auto var(--space-xl); /* 48px */
+  font-size: 1.2rem;
+  text-shadow: none; /* Remove shadow in dark mode */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text in dark mode */
+}
+
+html[data-theme='light'] .hero-section .subtitle {
+  text-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Keep light text on image for light theme */
+}
+
+.hero-cta {
+  margin-top: 1.5rem;
+  margin-top: var(--space-md); /* Add some space above the button */
+
+  /* Inherits base .button styles */
+}
+
+.hero-section::before { /* Existing gradient overlay */
+  position: absolute;
+  z-index: 1; /* Below text, above image */
+  inset: 0;
+  background: linear-gradient( 
+    to bottom,
+    #f8f9fa 0%,
+    transparent 20%,
+    transparent 60%,
+    #f8f9fa 100%
+  );
+  background: linear-gradient( /* Keep the gradient for fading edges */
+    to bottom,
+    var(--bg-primary) 0%,
+    transparent 20%,
+    transparent 60%,
+    var(--bg-primary) 100%
+  );
+  content: '';
+}
+
+.hero-section::after { /* New dark overlay */
+    position: absolute;
+    z-index: 1; /* Same level as gradient, below text */
+    inset: 0;
+    background-color: rgb(0 0 0 / 30%); /* Adjust darkness (0.3 = 30% black) */
+    content: '';
+
+    /* Optional: Add transition if needed */
+
+    /* transition: background-color 0.3s ease; */
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding: 7.5rem 0 11.25rem; /* 120px 180px - Kept specific rem values */
+    padding: 5rem 0; /* 80px - Kept specific rem value */
+    text-align: left; /* Align hero text to the left on larger screens */
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+    font-size: 3.5rem;
+  }
+
+  .hero-section .subtitle {
+    font-size: 1.5rem;
+    margin-left: 0; /* Remove auto margins for left alignment */
+    font-size: 1.3rem;
+    text-align: left;
+  }
+}
+
+/* Search, Filter, and AI Tools Sections */
+
+.search-filter-section,
+.ai-tools-section {
+  margin-top: 2rem;
+  margin-top: var(--space-lg); /* Add space between sections */
+  padding: 2rem 0;
+  padding: var(--space-lg) 0; /* 32px */
+}
+
+.search-controls {
+  display: flex;
+  gap: 1rem;
+  gap: var(--space-sm);
+  margin-top: 1.5rem;
+  margin-top: var(--space-md);
+
+  /* Add more styles for filters later */
+}
+
+#tool-search-input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #212529;
+  color: var(--text-primary); /* Ensure text color matches theme */
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary); /* Use theme variable */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#tool-search-input:focus {
+    border-color: #0056b3;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb, 0, 122, 255), 0.25); /* Use primary color for focus */
+    outline: none;
+}
+
+/* Styles for the tools grid placeholder */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  grid-gap: 1.5rem;
+  grid-gap: var(--space-md);
+  gap: 1.5rem;
+  gap: var(--space-md);
+  margin-top: 1.5rem;
+  margin-top: var(--space-md);
+}
+
+/* Removed Featured Categories Section styles */
+
+/* .featured-categories { ... } */
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  grid-gap: 1.5rem;
+  grid-gap: var(--space-md);
+  gap: 1.5rem;
+  gap: var(--space-md);
+  margin-top: 1.5rem;
+  margin-top: var(--space-md);
+  padding: 0 1rem;
+  padding: 0 var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .categories-grid {
+    gap: 2rem;
+    gap: var(--space-lg);
+    margin-top: 2rem;
+    margin-top: var(--space-lg);
+  }
+}
+
+.category-card {
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm);
+  padding: 1.5rem;
+  padding: var(--space-md);
+  text-align: center;
+  border-radius: 8px; /* Slightly larger radius */
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  overflow: hidden; /* Clip content/effects */
+
+  /* background-color: var(--card-background); */
+
+ /* Handled below */
+
+  /* border: 1px solid var(--border-color); */
+
+ /* Handled below */
+
+  /* box-shadow: 0 1px 3px var(--shadow-color); */
+
+ /* Handled below */
+}
+
+/* --- Glassmorphism Card Theme Styles --- */
+
+/* Base hover for all glass cards */
+
+.category-card:hover,
+.feature-card:hover,
+.tool-card:hover,
+.review-source-card:hover,
+.pricing-tier:hover {
+  /* Keep transform, shadow is handled per theme */
+  transform: translateY(-3px); /* Subtle lift */
+}
+
+/* Light Theme Cards */
+
+html[data-theme='light'] .category-card,
+html[data-theme='light'] .feature-card,
+html[data-theme='light'] .tool-card,
+html[data-theme='light'] .review-source-card,
+html[data-theme='light'] .pricing-tier {
+  background-color: rgb(255 255 255 / 65%); /* Semi-transparent white */
+  border: 1px solid rgb(222 226 230 / 40%); /* Subtle light border */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 20%), /* Inner highlight */
+    0 4px 15px rgb(0 0 0 / 5%); /* Softer outer shadow */
+}
+
+html[data-theme='light'] .category-card:hover,
+html[data-theme='light'] .feature-card:hover,
+html[data-theme='light'] .tool-card:hover,
+html[data-theme='light'] .review-source-card:hover,
+html[data-theme='light'] .pricing-tier:hover {
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 20%),
+    0 6px 20px rgb(0 0 0 / 10%); /* Enhanced hover shadow */
+}
+
+/* Dark Theme Cards */
+
+html[data-theme='dark'] .category-card,
+html[data-theme='dark'] .feature-card,
+html[data-theme='dark'] .tool-card,
+html[data-theme='dark'] .review-source-card,
+html[data-theme='dark'] .pricing-tier {
+  background-color: rgb(44 48 54 / 65%); /* Semi-transparent dark */
+  border: 1px solid rgb(48 54 61 / 40%); /* Subtle dark border */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%), /* Inner highlight */
+    0 4px 15px rgb(0 0 0 / 20%); /* Darker outer shadow */
+}
+
+html[data-theme='dark'] .category-card:hover,
+html[data-theme='dark'] .feature-card:hover,
+html[data-theme='dark'] .tool-card:hover,
+html[data-theme='dark'] .review-source-card:hover,
+html[data-theme='dark'] .pricing-tier:hover {
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%),
+    0 6px 20px rgb(0 0 0 / 30%); /* Enhanced hover shadow */
+}
+
+/* Spotify Theme Cards */
+
+html[data-theme='spotify'] .category-card,
+html[data-theme='spotify'] .feature-card,
+html[data-theme='spotify'] .tool-card,
+html[data-theme='spotify'] .review-source-card,
+html[data-theme='spotify'] .pricing-tier {
+  background-color: rgb(24 24 24 / 65%); /* Semi-transparent spotify dark */
+  border: 1px solid rgb(40 40 40 / 40%); /* Subtle spotify border */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%), /* Inner highlight */
+    0 4px 15px rgb(0 0 0 / 25%); /* Spotify outer shadow */
+}
+
+html[data-theme='spotify'] .category-card:hover,
+html[data-theme='spotify'] .feature-card:hover,
+html[data-theme='spotify'] .tool-card:hover,
+html[data-theme='spotify'] .review-source-card:hover,
+html[data-theme='spotify'] .pricing-tier:hover {
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%),
+    0 6px 20px rgb(0 0 0 / 35%); /* Enhanced hover shadow */
+}
+
+/* --- End Glassmorphism Card Theme Styles --- */
+
+.category-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-xs);
+  font-size: 1.3rem;
+  color: #0056b3;
+  color: var(--primary-color); /* Use theme primary color */
+}
+
+.category-card p {
+  margin: 0;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use theme secondary text color */
+}
+
+/* Sidebar */
+
+/* --- Glassmorphism Sidebar --- */
+
+.sidebar {
+  /* Base styles for glass effect */
+  padding: 1.5rem;
+  padding: var(--space-md); /* Consistent padding */
+  border-radius: 8px; /* Consistent corner radius */
+  box-shadow: 0 4px 15px rgb(0 0 0 / 10%); /* Soft outer shadow for depth */ /* Safari compatibility */
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px); /* Frosted glass blur */
+
+  /* Transition for theme changes */
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  /* Ensure content within doesn't overflow weirdly */
+  overflow: hidden; /* Clip content to rounded corners */
+
+  /* Remove specific padding-bottom from original rule */
+
+  /* padding-bottom: var(--space-lg); */
+
+ /* Replaced by consistent padding above */
+}
+
+/* Light Theme Sidebar */
+
+html[data-theme='light'] .sidebar {
+  /* Use a slightly darker, semi-transparent white/gray for contrast with light text */
+  background-color: rgb(248 249 250 / 75%); /* Based on --bg-primary with alpha */
+  border: 1px solid rgb(222 226 230 / 40%); /* Based on --border-color with alpha */
+
+  /* Subtle inner highlight for light theme */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 20%),
+    0 4px 15px rgb(0 0 0 / 10%);
+}
+
+/* Dark Theme Sidebar */
+
+html[data-theme='dark'] .sidebar {
+  background-color: rgb(44 48 54 / 75%); /* Based on --bg-secondary with alpha */
+  border: 1px solid rgb(48 54 61 / 40%); /* Based on --border-color with alpha */
+
+  /* Subtle inner highlight for dark theme */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%),
+    0 4px 15px rgb(0 0 0 / 20%);
+}
+
+/* Spotify Theme Sidebar */
+
+html[data-theme='spotify'] .sidebar {
+  background-color: rgb(24 24 24 / 75%); /* Based on --bg-secondary with alpha */
+  border: 1px solid rgb(40 40 40 / 40%); /* Based on --border-color with alpha */
+
+  /* Subtle inner highlight for spotify theme */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%),
+    0 4px 15px rgb(0 0 0 / 25%);
+}
+
+/* --- End Glassmorphism Sidebar --- */
+
+/* Adjustments to existing sidebar widget styles to fit glass background */
+
+.recent-updates-widget,
+.ad-placeholder,
+.social-links-widget,
+.category-sidebar-nav /* Apply to category nav too */ {
+  /* Keep padding and margin */
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md);
+  padding: 0; /* Remove padding here, rely on parent .sidebar padding */
+
+  /* Remove individual backgrounds/borders as the parent .sidebar now handles the effect */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Add padding back specifically if needed for structure inside widgets */
+
+/* Removed .social-links-widget h3 from this rule as it's moved */
+
+.recent-updates-widget h3,
+.ad-placeholder h3, /* Assuming ad might have a title */
+.category-sidebar-nav h3 {
+   margin-bottom: 1rem;
+   margin-bottom: var(--space-sm);
+   padding-top: 0.5rem;
+   padding-top: var(--space-xs); /* Add some space above title if padding removed */
+   padding-bottom: 0.5rem;
+   padding-bottom: var(--space-xs);
+   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+   border-bottom: 1px solid rgba(var(--border-rgb, 128, 128, 128), 0.2); /* Use a subtle border */
+}
+
+/* Define --border-rgb for themes */
+
+/* Duplicates removed by linter fix */
+
+.update-list,
+.social-links-list {
+  padding: 0;
+  list-style: none;
+}
+
+.update-list li {
+  padding: 0.5rem 0;
+  padding: var(--space-xs) 0; /* 8px */
+  border-bottom: 1px dotted #dee2e6;
+  border-bottom: 1px dotted var(--border-color);
+}
+
+.update-list li:last-child {
+  border-bottom: none;
+}
+
+.hero-image {
+  position: absolute; /* Keep absolute for layering */
+  z-index: 0;
+  top: 0;
+  left: 0; /* Reset left */
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  filter: blur(1px);
+  transition: transform 0.2s ease-out;
+  transform: translateZ(-1px) scale(2); /* Keep original parallax transform */
+  will-change: transform;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center; /* Center the image content */
+}
+
+/* Footer Social Links Specific Styles */
+
+.footer-social-links {
+  margin-top: 1rem;
+  margin-top: var(--space-sm); /* Add space above social links in footer */
+}
+
+.footer-social-links .social-links-list {
+  display: flex; /* Arrange icons horizontally */
+  gap: 1.5rem;
+  gap: var(--space-md); /* Space between icons */
+  justify-content: center; /* Center icons in the footer */
+  margin: 0; /* Reset default ul margin */
+  padding: 0; /* Reset default ul padding */
+  list-style: none; /* Remove list bullets */
+}
+
+.footer-social-links .social-links-list li {
+  margin-bottom: 0; /* Remove bottom margin from list items */
+}
+
+.footer-social-links .social-links-list a {
+  font-size: 1.5rem; /* Make icons larger */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text color */
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.footer-social-links .social-links-list a:hover {
+  text-decoration: none; /* Remove underline from icon links */
+  color: #212529;
+  color: var(--text-primary); /* Use primary text color on hover */
+  transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
+
+.ad-placeholder {
+  /* Adjust ad placeholder style for transparent background */
+   padding: 3rem 1.5rem;
+   padding: var(--space-xl) var(--space-md); /* Restore padding */
+   text-align: center;
+   color: #f8f9fa;
+   color: var(--text-secondary);
+   border: 1px dashed rgba(128, 128, 128, 0.3);
+   border: 1px dashed rgba(var(--border-rgb, 128, 128, 128), 0.3); /* Dashed border */
+   border-radius: 6px;
+}
+
+/* Social Links Widget */
+
+.social-links-widget h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* 16px */
+}
+
+.social-links-list li {
+  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-xs); /* 8px */
+}
+
+.social-links-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer */
+
+.site-footer {
+  padding: 1.5rem 0;
+  padding: var(--space-md) 0; /* 24px */
+  text-align: center;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text */
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use secondary background */
+  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s; /* Theme transition */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column; /* Stack items vertically on smaller screens if needed */
+  align-items: center; /* Vertically align items in the center */
+  justify-content: center; /* Center content horizontally */
+}
+
+.footer-content p {
+  margin-bottom: 0; /* Remove default paragraph margin */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Ensure footer text uses secondary color */
+}
+
+.footer-nav {
+  margin-top: 0.5rem;
+  margin-top: var(--space-xs); /* Space between copyright and nav */
+}
+
+.footer-nav a {
+  margin: 0 0.5rem;
+  margin: 0 var(--space-xs); /* Space out links */
+  font-size: 0.9rem;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Match footer text color */
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+  color: #212529;
+  color: var(--text-primary); /* Slightly lighter on hover */
+}
+
+/* Footer Social Links Specific Styles */
+
+/* Category Features Summary */
+
+.category-features-summary {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  background-color: var(--card-background);
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.category-features-summary h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #0056b3;
+  color: var(--primary-color);
+}
+
+.feature-highlights {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-highlights li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+  white-space: normal;
+  text-overflow: clip;
+  overflow: visible;
+}
+
+.feature-highlights i {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: #0056b3;
+  color: var(--primary-color);
+}
+
+.cta-section {
+  padding: 0.75rem;
+  text-align: center;
+  background-color: #343a40;
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+}
+
+.cta-section p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* --- Glassmorphism Search Bar --- */
+
+.search-bar {
+  position: relative; /* Needed for potential pseudo-elements if desired */
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  padding: var(--space-xs); /* Add padding for the glass effect */
+  border-radius: 8px; /* Consistent radius */
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Light Theme Search Bar Background */
+
+html[data-theme='light'] .search-bar {
+  background-color: rgb(255 255 255 / 60%); /* Semi-transparent white */
+  border: 1px solid rgb(222 226 230 / 40%); /* Subtle border */
+}
+
+/* Dark Theme Search Bar Background */
+
+html[data-theme='dark'] .search-bar {
+  background-color: rgb(44 48 54 / 60%); /* Semi-transparent dark */
+  border: 1px solid rgb(48 54 61 / 40%); /* Subtle border */
+}
+
+/* Spotify Theme Search Bar Background */
+
+html[data-theme='spotify'] .search-bar {
+  background-color: rgb(24 24 24 / 60%); /* Semi-transparent spotify dark */
+  border: 1px solid rgb(40 40 40 / 40%); /* Subtle border */
+}
+
+/* --- End Glassmorphism Search Bar --- */
+
+.search-bar input[type='search'] {
+  flex-grow: 1;
+  padding: 0.6rem 1rem; /* Adjust padding slightly */
+  font-size: 1rem;
+  color: #212529;
+  color: var(--text-primary);
+  background-color: transparent; /* Make input background transparent */
+  border: none; /* Remove default border */
+  border-radius: 6px;
+  transition: box-shadow 0.2s ease-in-out; /* Only transition shadow */
+  outline: none; /* Remove default outline */
+}
+
+.search-bar input[type='search']::-moz-placeholder {
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text color for placeholder */
+}
+
+.search-bar input[type='search']::placeholder {
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text color for placeholder */
+}
+
+.search-bar input[type='search']:focus {
+  /* Add a subtle inner shadow or glow on focus instead of border */
+  box-shadow: inset 0 0 0 2px #0056b3;
+  box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+.search-bar button {
+  flex-shrink: 0; /* Prevent button from shrinking */
+
+  /* Style button to complement glassmorphism */
+  padding: 0.6rem 1rem; /* Match input padding */
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff; /* White text */
+  background-color: #0056b3;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px; /* Match input radius */
+  transition:
+    background-color 0.2s ease-in-out,
+    transform 0.15s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #fc0;
+  background-color: var(--accent-color); /* Use accent color for hover */
+
+  /* Ensure text color contrasts well with accent color, might need adjustment */
+
+  /* color: var(--text-primary); /* Example: if accent is light */
+}
+
+/* Theme adjustments for buttons */
+
+html[data-theme='spotify'] .button,
+html[data-theme='spotify'] .search-bar button {
+  color: #000; /* Black text on Spotify green */
+}
+
+/* Dark theme button text color */
+
+html[data-theme='dark'] .button,
+html[data-theme='dark'] .search-bar button {
+  color: #fff; /* Ensure white text on blue buttons */
+  border-color: #0056b3;
+  border-color: var(--primary-color); /* Match background */
+}
+
+/* Base button hover (already updated above, this block might be redundant but ensures consistency) */
+
+.button:hover,
+.search-bar button:hover {
+  background-color: color-mix(in srgb, #0056b3 85%, black);
+  border-color: color-mix(in srgb, #0056b3 80%, black);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.button:hover,
+.search-bar button:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 85%, black);
+  border-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+}
+
+/* Dark theme button hover */
+
+html[data-theme='dark'] .button:hover,
+html[data-theme='dark'] .search-bar button:hover {
+  color: #fff; /* Keep text white on hover */
+  background-color: color-mix(
+    in srgb,
+    #0056b3 85%,
+    black
+  ); /* Darken primary */
+
+  border-color: color-mix(in srgb, #0056b3 80%, black);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+html[data-theme='dark'] .button:hover,
+html[data-theme='dark'] .search-bar button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--primary-color) 85%,
+    black
+  );
+
+  border-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+}
+
+/* Code Block Styles - Use Theme Variables */
+
+.code-block {
+  position: relative;
+  margin: 1rem 0;
+  margin: var(--space-sm) 0; /* 16px */
+  padding: 1rem;
+  padding: var(--space-sm); /* 16px */
+  font-family: monospace;
+  font-family: var(--font-family-monospace); /* Use variable */
+  color: #4af626;
+  color: var(--code-text); /* Use variable */
+  background-color: #121212;
+  background-color: var(--code-bg); /* Use variable */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color); /* Add subtle border */
+  border-radius: 6px; /* Match other elements */
+  box-shadow: 0 0 10px rgb(74 246 38 / 20%);
+  box-shadow: var(--code-shadow); /* Use variable */
+  overflow: auto;
+}
+
+/* Remove pseudo-element header for cleaner look */
+
+/* .code-block::before { ... } */
+
+.code-block pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* Syntax Highlighting - Use Theme Variables */
+
+.code-block .keyword {
+  color: #4d4dff;
+  color: var(--code-keyword);
+}
+
+.code-block .string {
+  color: #ffa724;
+  color: var(--code-string);
+}
+
+.code-block .comment {
+  color: #a0a0a0;
+  color: var(--code-comment);
+}
+
+.code-block .number {
+  color: #f4f;
+  color: var(--code-number);
+}
+
+.code-block .function {
+  color: #00bfff;
+  color: var(--code-function);
+}
+
+/* Add more syntax classes if needed */
+
+/* Utility Classes */
+
+.category-image-placeholder {
+  display: inline-flex; /* Use flex to center icon easily */
+  align-items: center;
+  justify-content: center;
+
+  /* Removed fixed width, height, background, margin-right */
+
+  /* Let the icon's size and parent's gap control spacing */
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Mobile Styles (default styles are mobile-first) */
+
+/* Tablet and larger screens */
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 2rem;
+    padding-right: var(--space-lg); /* 32px */
+    padding-left: 2rem;
+    padding-left: var(--space-lg); /* 32px */
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    gap: 2rem;
+    gap: var(--space-lg); /* 32px */
+    position: static;
+    display: flex !important; /* Override display: none for desktop */
+    flex-direction: row;
+    width: auto;
+    padding: 0;
+    border-top: none;
+    box-shadow: none;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1.5rem;
+    padding: var(--space-xs) var(--space-md); /* 8px 24px */
+  }
+}
+
+/* Desktop and larger screens */
+
+@media (min-width: 1200px) {
+  .container {
+    padding-right: 3rem;
+    padding-right: var(--space-xl); /* 48px */
+    padding-left: 3rem;
+    padding-left: var(--space-xl); /* 48px */
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+
+  /* .main-content column assignment moved to the media query at line 225 */
+
+  /* Ensure sticky positioning still works (adjust top offset if header height changed) */
+  .sidebar {
+    position: sticky;
+    top: calc(4.5rem + 1.5rem);
+    top: calc(4.5rem + var(--space-md)); /* Position below sticky header (approx 4.5rem) + medium gap */
+    max-height: calc(100vh - (5rem + 1.5rem) - 2rem);
+    max-height: calc(100vh - (5rem + var(--space-md)) - var(--space-lg)); /* Adjust max-height based on new top */
+    overflow-y: auto; /* Allow scrolling within sidebar if needed */
+  }
+
+  /* Sidebar is hidden on homepage via .home-page .main-content-wrapper > .sidebar { display: none; } */
+
+  /* Removed specific .home-page .sidebar overrides */
+
+  /* Nicer scrollbar for sticky sidebar */
+  .sidebar::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .sidebar::-webkit-scrollbar-track {
+      background: transparent; /* Transparent track */
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+      background-color: rgb(128 128 128 / 30%); /* Semi-transparent thumb */
+      border-radius: 3px;
+  }
+
+  html[data-theme='dark'] .sidebar::-webkit-scrollbar-thumb,
+  html[data-theme='spotify'] .sidebar::-webkit-scrollbar-thumb {
+      background-color: rgb(255 255 255 / 20%); /* Lighter thumb for dark themes */
+  }
+
+  .footer-content {
+    flex-direction: row; /* Align footer content in a row */
+    justify-content: space-between; /* Distribute space between footer items */
+    width: 100%; /* Ensure it takes full width for space-between */
+  }
+}
+
+/* Mobile navigation styles - hidden by default on larger screens, shown on mobile */
+
+/* Duplicate .nav-links block removed */
+
+.nav-links.active {
+  display: flex; /* Show nav links when active class is applied */
+}
+
+.nav-links.active .nav-link {
+  padding: 1rem 1.5rem;
+  padding: var(--space-sm) var(--space-md); /* 16px 24px */ /* Increase padding for better touch area on mobile */
+  color: #212529;
+  color: var(--text-primary);
+}
+
+.nav-links.active .nav-link.active,
+.nav-links.active .nav-link:hover {
+  color: #f8f9fa;
+  color: var(--text-secondary);
+  background-color: #0056b3;
+  background-color: var(--primary-color);
+}
+
+/* Hide mobile nav toggle on desktop */
+
+@media (min-width: 768px) {
+  .mobile-nav-toggle {
+    display: none;
+  }
+}
+
+/* User Reviews Section Styles */
+
+.review-sources {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+
+  grid-gap: 1.5rem;
+
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.review-source-card {
+  padding: 1rem;
+  color: #212529 !important;
+  color: var(--text-primary) !important; /* Force text color inheritance */
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  overflow: hidden; /* Clip content/effects */
+
+  /* background-color: var(--card-background); */
+
+ /* Handled by theme */
+
+  /* border: 1px solid var(--border-color); */
+
+ /* Handled by theme */
+}
+
+.review-source-card h5 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #0056b3;
+  color: var(--primary-color);
+}
+
+.review-source-card p {
+  margin-bottom: 0.5rem; /* Ensure text is visible */
+  color: #212529;
+  color: var(--text-primary); /* Explicit color */
+}
+
+.review-source-card .highlights {
+  margin-top: 0.75rem; /* Adjusted spacing */
+}
+
+.review-source-card .highlights strong {
+  display: block; /* Ensure 'Highlights:' is on its own line */
+  margin-bottom: 0.25rem;
+  color: #212529;
+  color: var(--text-primary); /* Ensure heading is visible */
+}
+
+.review-source-card .highlights ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0; /* Remove extra bottom margin */
+  padding-left: 20px; /* Indent list items */
+  list-style-type: disc; /* Ensure list bullets are visible */
+  color: #212529;
+  color: var(--text-primary); /* Ensure list item text is visible */
+}
+
+.review-source-card .highlights li {
+  margin-bottom: 0.25rem; /* Space between highlights */
+  color: #212529;
+  color: var(--text-primary); /* Ensure list item text is visible */
+}
+
+/* Duplicate rule removed */
+
+.review-source-link {
+  display: inline-block;
+  margin-top: 0.75rem; /* Adjusted spacing */
+  font-size: 0.9em;
+  color: #0056b3;
+  color: var(--link-color);
+}
+
+/* Duplicate .review-source-link removed */
+
+/* Tool Details Page Styles */
+
+/* Use Case Example Styling */
+
+.use-case-card .example pre {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  white-space: pre-wrap; /* Allow wrapping */
+  color: #4af626;
+  color: var(--code-text);
+  background-color: #121212;
+  background-color: var(--code-bg);
+  border-radius: 4px;
+  overflow-x: auto;
+  word-wrap: break-word; /* Break long words */
+}
+
+.use-case-card .example code {
+  font-family: monospace;
+  font-family: var(--font-family-monospace);
+  font-size: 0.9em;
+}
+
+/* Consolidated tab styles from tabs.css */
+
+.tabs-container {
+  margin-top: 2rem;
+}
+
+.tab-nav {
+  display: flex;
+  margin-bottom: 0; /* Remove bottom margin, border handles separation */
+  white-space: nowrap; /* Prevent wrapping */
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color); /* Thinner border */
+  overflow-x: auto; /* Ensure horizontal scroll on overflow */
+}
+
+.tool-tab {
+  position: relative; /* For pseudo-element */
+  margin-bottom: -1px; /* Overlap the container border */
+  padding: 0.8rem 1.5rem; /* Adjust padding */
+  font-weight: 500; /* Slightly less bold */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use theme secondary text */
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent; /* Placeholder for active indicator */
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.tool-tab:hover {
+  color: #212529;
+  color: var(--text-primary); /* Use theme primary text on hover */
+  border-bottom-color: #6c757d;
+  border-bottom-color: var(--secondary-color); /* Indicate hover with border */
+}
+
+.tool-tab.active {
+  font-weight: 600; /* Make active tab bolder */
+  color: #0056b3;
+  color: var(--primary-color); /* Use theme primary color for active text */
+  border-bottom-color: #0056b3;
+  border-bottom-color: var(--primary-color); /* Active indicator */
+}
+
+.tab-content {
+  display: none;
+  padding: 1.5rem 0;
+  animation: fade-in 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments for tabs */
+
+@media (max-width: 768px) {
+  .tab-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tool-tab {
+    padding: 0.75rem 1rem;
+  }
+}
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* 24px */
+}
+
+.tool-header h1 {
+  margin-right: 1.5rem;
+  margin-right: var(--space-md); /* 24px */
+}
+
+.tool-logo {
+  max-width: 100px;
+  height: auto;
+  max-height: 50px; /* Keep max-height */
+  margin-right: 1.5rem;
+  margin-right: var(--space-md); /* 24px */
+  vertical-align: middle;
+}
+
+.category-badge {
+  padding: 0.25rem 0.5rem;
+  padding: var(--space-xxs) var(--space-xs); /* 4px 8px */
+  color: #212529;
+  color: var(--text-primary);
+  background-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  grid-gap: var(--space-md);
+  gap: 1.5rem;
+  gap: var(--space-md); /* 24px */
+  margin: 1.5rem 0;
+  margin: var(--space-md) 0; /* 24px */
+}
+
+.feature-card {
+  padding: 1rem;
+  padding: var(--space-sm); /* 16px */
+  border-radius: 8px; /* Consistent radius */
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  overflow: hidden; /* Clip content/effects */
+
+  /* background: var(--card-background); */
+
+ /* Handled by theme */
+
+  /* border: 1px solid var(--border-color); */
+
+ /* Handled by theme */
+
+  /* box-shadow: 0 1px 3px var(--shadow-color); */
+
+ /* Handled by theme */
+}
+
+.feature-card h5 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-xs); /* 8px */
+  color: #0056b3;
+  color: var(--primary-color); /* Use theme primary color */
+}
+
+.feature-description {
+  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-xs); /* 8px */
+}
+
+.feature-description p {
+  display: -webkit-box;
+  max-height: 2.8em;
+  margin: 0;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.available {
+  color: #28a745;
+  color: var(--success-color);
+}
+
+.unavailable {
+  color: #dc3545;
+  color: var(--error-color);
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 0.5rem;
+  grid-gap: var(--space-xs);
+  gap: 0.5rem;
+  gap: var(--space-xs); /* 8px */
+}
+
+.use-cases-list {
+  padding: 0;
+  list-style: none;
+}
+
+.use-cases-list li {
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* 16px */
+}
+
+.use-cases-list h4 {
+  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-xxs); /* 4px */
+  font-size: 1.2rem;
+}
+
+.reviews-section {
+  margin-top: 1.5rem;
+  margin-top: var(--space-md); /* 24px */
+}
+
+.mermaid-section {
+  margin-top: 1.5rem;
+  margin-top: var(--space-md); /* 24px */
+}
+
+.mermaid {
+  padding: 0.5rem;
+  padding: var(--space-xs); /* 8px */
+  background-color: #f8f9fa;
+  background-color: var(--card-background);
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+/* --- Styles for Tool Details Page Enhancements --- */
+
+/* Clickable Summary Section */
+
+.tool-summary {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  background-color: var(--card-background); /* Use card background */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* Consistent radius */
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  box-shadow: 0 1px 3px var(--shadow-color); /* Consistent shadow */
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.tool-summary h2 {
+  margin-top: 0; /* Remove top margin for heading within the section */
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem; /* Slightly smaller heading */
+}
+
+.tool-summary p {
+  margin-bottom: 0.5rem;
+}
+
+.tool-summary small {
+  display: block; /* Make small text block level */
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: #6c757d;
+  color: var(--secondary-color);
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.3s ease;
+}
+
+.tool-summary.clickable {
+  cursor: pointer;
+}
+
+.tool-summary.clickable:hover {
+  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 10px var(--shadow-color); /* Consistent hover shadow */
+}
+
+.tool-summary.clickable:hover small {
+  opacity: 1; /* Show hint text on hover */
+}
+
+/* General Styling for New Sections Below Tabs */
+
+.tool-section {
+  /* Add some base styling if not already sufficient */
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color); /* Separator line */
+}
+
+/* Ensure summary section doesn't get double top border */
+
+.tool-summary.tool-section {
+  margin-top: 1.5rem; /* Keep its original margin */
+  border-top: none;
+}
+
+/* Ensure first section *after* tabs gets the top border */
+
+.tabs-container + .tool-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color);
+}
+
+.tool-section h2 {
+  margin-top: 0; /* Remove top margin for section headings */
+  margin-bottom: 1rem;
+  font-size: 1.75rem; /* Consistent heading size for these sections */
+}
+
+/* Tool Card Styles */
+
+.tool-card {
+  display: flex; /* Ensure flex display */
+  flex-direction: column; /* Stack elements vertically */
+  height: 320px; /* Set a fixed height for consistency */
+
+  /* min-height: 280px; /* Remove min-height */
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+
+  /* Add opacity and transform for filtering transitions */
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease-in-out, 
+    -webkit-backdrop-filter 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease-in-out, /* Keep opacity transition */
+    backdrop-filter 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease-in-out, 
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  overflow: hidden; /* Prevent content spill during transitions */
+
+  /* background-color: var(--card-background); */
+
+ /* Handled by theme */
+
+  /* border: 1px solid var(--border-color); */
+
+ /* Handled by theme */
+
+  /* box-shadow: 0 1px 3px var(--shadow-color); */
+
+ /* Handled by theme */
+}
+
+/* Add a state for when cards are filtered out (optional, if JS adds class) */
+
+.tool-card.hidden {
+  /* Adjust height/margin for smoother layout shift, or use grid animation */
+  height: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-width: 0;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none; /* Prevent interaction when hidden */
+  overflow: hidden;
+}
+
+/* Hover effect handled globally now */
+
+/* .tool-card:hover { ... } */
+
+.tool-card .tool-description::-webkit-scrollbar {
+  width: 5px;
+}
+
+.tool-card .tool-description::-webkit-scrollbar-thumb {
+  background-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-radius: 3px;
+}
+
+.tool-card .feature-list {
+  flex-shrink: 0; /* Don't let feature list shrink */
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+}
+
+/* Add a wrapper for the button to push it down */
+
+.tool-card .card-footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  margin-top: auto; /* Push footer to the bottom */
+  padding-top: 0.75rem; /* Add space above the button */
+}
+
+.tool-card .feature-list li {
+  /* Add truncation for feature list items */
+  display: -webkit-box;
+
+  /* Ensure a minimum height to prevent collapsing if text is short */
+  min-height: calc(1.4em * 1); /* Min height for at least 1 line */
+  margin-bottom: 0.25rem;
+
+  /* Remove potential padding that might interfere */
+  padding: 0;
+  line-height: 1.4em; /* Match description line height */
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Show max 2 lines per feature */
+  line-clamp: 2; /* Standard property */
+  overflow: hidden;
+}
+
+/* --- Richer Tool Card Element Styles --- */
+
+.tool-card-logo {
+  flex-shrink: 0; /* Prevent logo from shrinking */
+  width: 32px; /* Set logo size */
+  height: 32px;
+  background-color: rgb(128 128 128 / 10%); /* Subtle background for missing/transparent logos */
+  border-radius: 4px; /* Optional: slightly rounded corners */
+  -o-object-fit: contain;
+     object-fit: contain; /* Scale logo nicely */
+}
+
+.tool-card-category {
+  /* Style the category link like a badge */
+  display: inline-block; /* Allow setting padding/margin */
+  align-self: flex-start; /* Align to the left */
+  padding: 0.25rem 0.5rem;
+  padding: var(--space-xxs) var(--space-xs);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none; /* Remove underline from link */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text color */
+  background-color: #6c757d;
+  background-color: var(--secondary-color); /* Use secondary background */
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Ensure category badge text is visible in dark mode */
+
+html[data-theme='dark'] .tool-card-category {
+    color: #212529;
+    color: var(--text-primary); /* Use light text on gray background */
+}
+
+.tool-card-category:hover {
+  text-decoration: none; /* Keep underline off on hover */
+  color: #212529;
+  color: var(--text-primary);
+  background-color: color-mix(in srgb, #6c757d 80%, black);
+  filter: brightness(1.1); /* Slightly brighten */
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.tool-card-category:hover {
+  background-color: color-mix(in srgb, var(--secondary-color) 80%, black);
+}
+}
+
+.pricing-indicator {
+  display: inline-block;
+  align-self: flex-start; /* Align to the left */
+  padding: 0.25rem 0.5rem;
+  padding: var(--space-xxs) var(--space-xs);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: filter 0.2s ease; /* Add transition for hover */
+}
+
+/* Hover for pricing indicator (optional subtle effect) */
+
+.pricing-indicator:hover {
+    filter: brightness(1.1);
+    cursor: default; /* Indicate it's not clickable */
+}
+
+/* Specific pricing colors (adjust as needed) */
+
+.pricing-indicator.pricing-free {
+  color: #28a745;
+  color: var(--success-color);
+  background-color: color-mix(in srgb, #28a745 15%, transparent);
+  border-color: #28a745;
+  border-color: var(--success-color);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.pricing-indicator.pricing-free {
+  background-color: color-mix(in srgb, var(--success-color) 15%, transparent);
+}
+}
+
+.pricing-indicator.pricing-freemium {
+  color: #0056b3;
+  color: var(--primary-color);
+  background-color: color-mix(in srgb, #0056b3 15%, transparent);
+  border-color: #0056b3;
+  border-color: var(--primary-color);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.pricing-indicator.pricing-freemium {
+  background-color: color-mix(in srgb, var(--primary-color) 15%, transparent);
+}
+}
+
+.pricing-indicator.pricing-paid {
+  color: #fc0;
+  color: var(--accent-color); /* Example: Use accent for paid */
+  background-color: color-mix(in srgb, #fc0 20%, transparent);
+  border-color: #fc0;
+  border-color: var(--accent-color);
+
+  /* Ensure text is readable on accent bg */
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.pricing-indicator.pricing-paid {
+  background-color: color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+}
+
+html[data-theme='light'] .pricing-indicator.pricing-paid { color: #333; }
+
+/* Darker text on light yellow */
+
+.pricing-indicator.pricing-contact {
+  color: #6c757d;
+  color: var(--secondary-color);
+  background-color: color-mix(in srgb, #6c757d 15%, transparent);
+  border-color: #6c757d;
+  border-color: var(--secondary-color);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.pricing-indicator.pricing-contact {
+  background-color: color-mix(in srgb, var(--secondary-color) 15%, transparent);
+}
+}
+
+.tool-section h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Removed pseudo-element header for cleaner look */
+
+/* .code-block::before { ... } */
+
+/* Add more syntax classes if needed */
+
+.tool-section ul {
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+.tool-section li {
+  margin-bottom: 0.5rem;
+}
+
+.tool-section p {
+  margin-bottom: 0.75rem;
+}
+
+/* Specific Section Styles (can add more if needed) */
+
+/* Pros Cons Section */
+
+.pros-cons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-gap: 2rem;
+  gap: 2rem;
+}
+
+.pros-cons-list h4 {
+  margin-top: 0; /* Remove top margin for list headings */
+  color: #0056b3;
+  color: var(--primary-color); /* Use theme primary color */
+}
+
+.pros-cons-list.cons-list h4 {
+  color: #dc3545;
+  color: var(--error-color); /* Use theme error color */
+}
+
+.pros-cons-list ul {
+  margin-left: 0; /* Remove default indent if using grid */
+  list-style-position: inside; /* Keep bullets inside */
+}
+
+/* Reviews Section */
+
+.review-summary {
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.review-source {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  background-color: var(--card-background); /* Use standard card background */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Add theme transition */
+}
+
+/* No specific light theme override needed if using card-background */
+
+/* html[data-theme='light'] .review-source { ... } */
+
+.review-source h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.review-source ul {
+  margin-bottom: 0;
+  margin-left: 1rem;
+}
+
+/* Technical Section */
+
+.technical-section ul {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none; /* Remove bullets for spec list */
+}
+
+.technical-section li {
+  margin-bottom: 0.4rem;
+}
+
+/* Resources Section */
+
+.resources-section ul {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none; /* Remove bullets for resource lists */
+}
+
+.resources-section li {
+  margin-bottom: 0.6rem;
+}
+
+/* Responsive adjustments for Pros/Cons grid */
+
+@media (max-width: 768px) {
+  .pros-cons-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    gap: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Modern Table Styles (Added March 2025)
+   ========================================================================== */
+
+.table-wrapper table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* Space below table */
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.95rem; /* Slightly smaller font for tables */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color); /* Subtle outer border */
+  border-radius: 0.5rem;
+  border-radius: var(--space-xs); /* Slightly rounded corners for the table */
+  overflow: hidden; /* Ensures border-radius clips content */
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-sm); /* Consistent padding */
+  text-align: left;
+  vertical-align: top; /* Align content to the top */
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color); /* Horizontal lines for rows */
+}
+
+/* Header styles */
+
+.table-wrapper thead th {
+  font-weight: 600; /* Bolder header text */
+  white-space: nowrap; /* Prevent header text wrapping */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text for less emphasis */
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Subtle background for header */
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color); /* Match row borders */
+}
+
+/* Body row styles */
+
+.table-wrapper tbody tr {
+  transition: background-color 0.15s ease-in-out;
+}
+
+.table-wrapper tbody tr:last-child td {
+  border-bottom: none; /* Remove border from last row */
+}
+
+/* Remove default striping, rely on hover */
+
+/* .table-wrapper tbody tr:nth-child(even) {
+   background-color: var(--bg-secondary);
+} */
+
+/* Hover effect */
+
+.table-wrapper tbody tr:hover {
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use secondary bg for hover */
+}
+
+/* Theme specific adjustments for striping/hover if needed */
+
+/* Light theme table hover */
+
+html[data-theme='light'] .table-wrapper tbody tr:hover {
+  background-color: #f1f3f5; /* Lighter hover for light theme */
+}
+
+/* Dark theme table header and hover */
+
+html[data-theme='dark'] .table-wrapper thead th {
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use variable */
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use variable */
+  border-bottom-color: #dee2e6;
+  border-bottom-color: var(--border-color);
+}
+
+html[data-theme='dark'] .table-wrapper tbody tr:hover {
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use variable */
+}
+
+/* Spotify theme table header and hover */
+
+html[data-theme='spotify'] .table-wrapper thead th {
+  color: #212529;
+  color: var(--text-primary);
+  background-color: #282828; /* Spotify header */
+  border-bottom-color: #dee2e6;
+  border-bottom-color: var(--border-color);
+}
+
+html[data-theme='spotify'] .table-wrapper tbody tr:hover {
+  background-color: #282828; /* Spotify hover */
+}
+
+/* Ensure tables directly in tab-content also get basic wrapper behavior if needed */
+
+.tab-content > table:not(:only-child) {
+  /* Apply only if table isn't the only element */
+  display: block; /* Needed for overflow-x */
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+
+.tab-content > table {
+  /* Apply core styles if not already wrapped */
+  width: 100%;
+  border-collapse: collapse;
+
+  /* Add other core styles if necessary, duplicating from .table-wrapper table */
+}
+
+/* Apply cell styles if not wrapped */
+
+.tab-content > table th,
+.tab-content > table td {
+  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Apply header styles if not wrapped */
+
+.tab-content > table thead th {
+  font-weight: 600;
+  background-color: #343a40;
+  background-color: var(--bg-secondary);
+  border-bottom-width: 2px;
+}
+
+/* Apply body styles if not wrapped */
+
+.tab-content > table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Remove striping for unwrapped tables */
+
+/* .tab-content > table tbody tr:nth-child(even) {
+   background-color: var(--bg-secondary);
+} */
+
+.tab-content > table tbody tr:hover {
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use secondary bg for hover */
+}
+
+/* Add theme adjustments for unwrapped tables too */
+
+/* Light theme unwrapped table hover */
+
+html[data-theme='light'] .tab-content > table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* Dark theme unwrapped table header/hover */
+
+html[data-theme='dark'] .tab-content > table thead th {
+  color: #f8f9fa;
+  color: var(--text-secondary);
+  background-color: #343a40;
+  background-color: var(--bg-secondary);
+  border-bottom-color: #dee2e6;
+  border-bottom-color: var(--border-color);
+}
+
+html[data-theme='dark'] .tab-content > table tbody tr:hover {
+  background-color: #343a40;
+  background-color: var(--bg-secondary);
+}
+
+/* Spotify theme unwrapped table header/hover */
+
+html[data-theme='spotify'] .tab-content > table thead th {
+  color: #212529;
+  color: var(--text-primary);
+  background-color: #282828;
+  border-bottom-color: #dee2e6;
+  border-bottom-color: var(--border-color);
+}
+
+html[data-theme='spotify'] .tab-content > table tbody tr:hover {
+  background-color: #282828;
+}
+
+/* --- Breadcrumb Styles --- */
+
+/* Breadcrumbs */
+
+.breadcrumbs-container {
+  margin: 0 0 0.5rem;
+  margin: 0 0 var(--space-xs); /* Revert negative top margin */
+  padding: 0.5rem 0;
+  padding: var(--space-xs) 0;
+
+  /* border-bottom: 1px solid var(--border-color); Removed border */
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: '/';
+  display: inline-block;
+  padding: 0 0.5rem;
+  padding: 0 var(--space-xs);
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use secondary text for separator */
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #0056b3;
+  color: var(--link-color); /* Use theme link color */
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+  color: color-mix(
+    in srgb,
+    #0056b3 80%,
+    white
+  ); /* Lighten on hover */
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.breadcrumb-item a:hover {
+  color: color-mix(
+    in srgb,
+    var(--link-color) 80%,
+    white
+  );
+}
+}
+
+.breadcrumb-item.active {
+  font-weight: 600; /* Slightly bolder */
+  color: #212529;
+  color: var(--text-primary); /* Use primary text color for active item */
+}
+
+/* ==========================================================================
+   Pricing Tab Styles (Merged from tool-details/tabs.css)
+   ========================================================================== */
+
+.pricing-container {
+  padding: 1.5rem;
+  padding: var(--space-md); /* Use spacing variable */
+}
+
+.pricing-updated {
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* Use spacing variable */
+  font-size: 0.9em;
+  color: #6c757d;
+  color: var(--secondary-color); /* Use theme variable */
+}
+
+.pricing-model {
+  margin: 0.5rem 0;
+  margin: var(--space-xs) 0; /* Use spacing variable */
+  font-style: italic;
+  color: #212529;
+  color: var(--text-primary); /* Use theme variable */
+  opacity: 0.8; /* Slightly muted */
+}
+
+.pricing-chart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  gap: var(--space-md); /* Use spacing variable */
+  margin: 1.5rem 0;
+  margin: var(--space-md) 0; /* Use spacing variable */
+}
+
+.pricing-tier {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem;
+  padding: var(--space-sm); /* Use spacing variable */
+  border-radius: 8px; /* Consistent radius */
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease;
+  overflow: hidden; /* Clip content/effects */
+
+  /* background: var(--card-background); */
+
+ /* Handled by theme */
+
+  /* border: 1px solid var(--border-color); */
+
+ /* Handled by theme */
+
+  /* box-shadow: 0 1px 3px var(--shadow-color); */
+
+ /* Handled by theme */
+}
+
+/* Hover handled globally */
+
+/* .pricing-tier:hover { ... } */
+
+.pricing-tier h3 {
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-xs); /* Use spacing variable */
+  color: #0056b3;
+  color: var(--primary-color); /* Use theme variable */
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color); /* Use theme variable */
+}
+
+/* Note: .pricing-table styles are intentionally omitted here */
+
+/* as general table styling is handled by .table-wrapper */
+
+.pricing-notes {
+  margin-top: 1.5rem;
+  margin-top: var(--space-md); /* Use spacing variable */
+  padding: 1rem;
+  padding: var(--space-sm); /* Use spacing variable */
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use theme variable */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color); /* Use standard border */
+  border-left: 4px solid #0056b3;
+  border-left: 4px solid var(--primary-color); /* Keep accent border */
+  border-radius: 6px; /* Consistent radius */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s; /* Theme transition */
+}
+
+/* ==========================================================================
+   Styles moved from categories.html inline styles
+   ========================================================================== */
+
+/* .category-sidebar-nav is handled above with other widgets */
+
+.category-sidebar-nav h3 {
+  margin-top: 0; /* Ensure no top margin */
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* Use spacing variable */
+  padding-bottom: calc(0.5rem * 1.5);
+  padding-bottom: calc(var(--space-xs) * 1.5); /* Adjust based on spacing */
+  font-size: 1.1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.category-sidebar-nav .list-group-item {
+  display: flex; /* Use flex for alignment */
+  gap: 0.5rem;
+  gap: var(--space-xs); /* Use spacing variable */
+  align-items: center;
+  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-xxs); /* Use spacing variable */ /* Adjust padding */
+
+  /* Adjust padding if parent padding was removed */
+  padding: calc(0.5rem * 1.5) 1rem;
+  padding: calc(var(--space-xs) * 1.5) var(--space-sm);
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use theme variable */
+  border: none; /* Remove individual borders */
+  border-radius: 6px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.category-sidebar-nav .list-group-item:hover {
+   color: #212529;
+   color: var(--text-primary); /* Use theme variable */
+   background-color: rgba(128, 128, 128, 0.1);
+   background-color: rgba(var(--border-rgb, 128, 128, 128), 0.1); /* Subtle hover */
+}
+
+.category-sidebar-nav .list-group-item.active {
+   font-weight: 600; /* Bolder for active */
+   color: #fff; /* White text on primary color */
+   background-color: #0056b3;
+   background-color: var(--primary-color);
+   box-shadow: inset 0 0 8px rgb(0 0 0 / 10%); /* Subtle inner shadow */
+}
+
+/* Ensure text color contrasts on active item for different themes */
+
+html[data-theme='spotify'] .category-sidebar-nav .list-group-item.active {
+  color: #000; /* Black text on Spotify green */
+}
+
+html[data-theme='light'] .category-sidebar-nav .list-group-item.active {
+  color: #fff; /* White text on blue */
+}
+
+html[data-theme='dark'] .category-sidebar-nav .list-group-item.active {
+  color: #fff; /* White text on blue */
+}
+
+/* Style for category count in sidebar */
+
+.category-sidebar-nav .list-group-item .category-count {
+  margin-left: auto; /* Push count to the right */
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Safari compatibility */
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px); /* Frosted glass blur */
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.category-sidebar-nav .list-group-item:hover .category-count,
+.category-sidebar-nav .list-group-item.active .category-count {
+  color: inherit; /* Inherit color from parent link on hover/active */
+  background-color: rgb(255 255 255 / 20%); /* Slightly lighter background on hover/active */
+}
+
+.category-image-placeholder i {
+  width: 1.25rem; /* Keep fixed width for alignment consistency */
+  font-size: 1.1rem;
+  line-height: 1; /* Ensure icon vertical alignment */
+  text-align: center;
+}
+
+/* Add styles for category description */
+
+.tools-main-content .category-description {
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* Use spacing variable */
+  font-size: 1rem;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use theme variable */
+}
+
+/* Removed misplaced closing brace */
+
+.pricing-notes h3 {
+  margin-top: 0;
+  color: #0056b3;
+  color: var(--primary-color); /* Use theme variable */
+}
+
+/* --- Loading and Empty State Styles --- */
+
+.loading-indicator,
+.empty-state {
+  display: flex; /* Use flex */
+  grid-column: 1 / -1;
+  align-items: center; /* Vertically center text and spinner */
+  justify-content: center;
+  width: 100%;
+  min-height: 200px;
+  padding: 2rem;
+  padding: var(--space-lg);
+  font-size: 1.1rem;
+  text-align: center;
+  color: #f8f9fa;
+  color: var(--text-secondary);
+}
+
+/* Optional: Spinner styles */
+
+.loading-indicator::after {
+ content: '';
+ display: block;
+ width: 30px;
+ height: 30px;
+ margin-left: 1rem;
+ border: 3px solid #6c757d;
+ border: 3px solid var(--secondary-color);
+ border-top-color: #0056b3;
+ border-top-color: var(--primary-color);
+ border-radius: 50%;
+ animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+ to { transform: rotate(360deg); }
+}
+
+/* Style for the paragraph inside tools container when empty */
+
+#tools-container > p:only-child {
+  grid-column: 1 / -1; /* Span all columns */
+  padding: 3rem 0;
+  padding: var(--space-xl) 0;
+  font-style: italic;
+  text-align: center;
+  color: #f8f9fa;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Comparison Page Styles (Moved from comparison.html)
+   ========================================================================== */
+
+/* Specific styles for comparison page layout */
+
+.comparison-page-layout {
+  display: grid;
+  grid-template-columns: 1fr; /* Default mobile: single column */
+  grid-gap: 1.5rem;
+  grid-gap: var(--space-md);
+  gap: 1.5rem;
+  gap: var(--space-md); /* Use spacing variable */
+}
+
+.comparison-sidebar {
+  /* Base styles for glass effect */
+  padding: 1.5rem;
+  padding: var(--space-md); /* Consistent padding */
+  border-radius: 8px; /* Consistent corner radius */
+  box-shadow: 0 4px 15px rgb(0 0 0 / 10%); /* Soft outer shadow for depth */ /* Safari compatibility */
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px); /* Frosted glass blur */
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease; /* Added missing part of transition */
+
+  overflow: hidden; /* Clip content to rounded corners */
+
+/* Removed extra closing brace */
+
+/* Light Theme Comparison Sidebar */}
+
+.comparison-sidebar html[data-theme='light'] .comparison-sidebar {
+  background-color: rgb(248 249 250 / 75%); /* Based on --bg-primary with alpha */
+  border: 1px solid rgb(222 226 230 / 40%); /* Based on --border-color with alpha */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 20%),
+    0 4px 15px rgb(0 0 0 / 10%);
+}
+
+/* Dark Theme Comparison Sidebar */
+
+.comparison-sidebar html[data-theme='dark'] .comparison-sidebar {
+  background-color: rgb(44 48 54 / 75%); /* Based on --bg-secondary with alpha */
+  border: 1px solid rgb(48 54 61 / 40%); /* Based on --border-color with alpha */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%),
+    0 4px 15px rgb(0 0 0 / 20%);
+}
+
+/* Spotify Theme Comparison Sidebar */
+
+.comparison-sidebar html[data-theme='spotify'] .comparison-sidebar {
+  background-color: rgb(24 24 24 / 75%); /* Based on --bg-secondary with alpha */
+  border: 1px solid rgb(40 40 40 / 40%); /* Based on --border-color with alpha */
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 5%),
+    0 4px 15px rgb(0 0 0 / 25%);
+}
+
+.comparison-sidebar .comparison-sidebar h3 {
+  margin-top: 0; /* Remove potential top margin */
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* Use spacing variable */
+  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-xs); /* Use spacing variable */
+  font-size: 1.1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-sidebar .filter-group {
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm); /* Use spacing variable */
+}
+
+.comparison-sidebar .filter-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-xxs); /* Use spacing variable */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.comparison-sidebar .filter-group select,
+.comparison-sidebar .filter-group input[type='search'] {
+  width: 100%;
+  padding: calc(0.5rem * 1.2) 1rem;
+  padding: calc(var(--space-xs) * 1.2) var(--space-sm); /* Adjust padding using variables */
+  font-size: 0.95rem;
+  color: #212529;
+  color: var(--text-primary); /* Ensure text color matches theme */
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary); /* Use theme variable */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comparison-sidebar .filter-group select:focus,
+.comparison-sidebar .filter-group input[type='search']:focus {
+    border-color: #0056b3;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb, 0, 122, 255), 0.25); /* Use primary color for focus */
+    outline: none;
+}
+
+.comparison-sidebar .tool-selection-list {
+  max-height: 300px; /* Limit height and make scrollable */
+  padding: 0.5rem;
+  padding: var(--space-xs); /* Use spacing variable */
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary); /* Use theme variable */
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow-y: auto;
+}
+
+.comparison-sidebar .tool-selection-list .list-group-item {
+  display: block; /* Changed to block for label wrapping */
+  margin: 2px 0; /* Small margin between items */
+  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-sm); /* Use spacing variables */
+  border: none;
+  border-radius: 4px; /* Slightly rounded items */
+  transition: background-color 0.2s ease; /* Add hover transition */
+  cursor: pointer;
+}
+
+.comparison-sidebar .tool-selection-list .list-group-item:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+    background-color: rgba(var(--border-rgb, 128, 128, 128), 0.1); /* Subtle hover */
+}
+
+.comparison-sidebar .tool-selection-list .list-group-item input[type='checkbox'] {
+  margin-right: 0.5rem;
+  margin-right: var(--space-xs); /* Use spacing variable */
+  vertical-align: middle; /* Align checkbox better */
+}
+
+/* Style for disabled list items */
+
+.comparison-sidebar .tool-selection-list .list-group-item.disabled {
+    color: #f8f9fa;
+    color: var(--text-secondary);
+    background-color: transparent !important; /* Ensure no hover effect */
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.comparison-sidebar .comparison-main-content h2 {
+  margin-top: 0; /* Ensure no extra top margin */
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* Use spacing variable */
+}
+
+.comparison-sidebar #comparison-placeholder {
+  margin-top: 1.5rem;
+  margin-top: var(--space-md); /* Add some margin */
+  padding: 3rem;
+  padding: var(--space-xl); /* Use spacing variable */
+  text-align: center;
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use theme variable */
+  background-color: #f8f9fa;
+  background-color: var(--card-background);
+  border: 1px dashed #dee2e6;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+}
+
+.comparison-sidebar .comparison-table-container {
+  overflow-x: auto; /* Allow horizontal scrolling on small screens */
+  margin-bottom: 2rem;
+  margin-bottom: var(--space-lg); /* Use spacing variable */
+}
+
+.comparison-sidebar .comparison-table {
+  width: 100%;
+  min-width: 600px; /* Ensure table has a minimum width for horizontal scroll */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color); /* Add outer border */
+  border-radius: 6px; /* Rounded corners */
+  overflow: hidden; /* Clip content to border-radius */
+}
+
+.comparison-sidebar .comparison-table th,
+.comparison-sidebar .comparison-table td {
+  padding: 1rem;
+  padding: var(--space-sm); /* Use spacing variable */
+  text-align: left;
+  vertical-align: top;
+  border: none; /* Remove individual cell borders */
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color); /* Use bottom borders for rows */
+}
+
+.comparison-sidebar .comparison-table thead th {
+  position: sticky; /* Keep header visible when scrolling horizontally */
+  z-index: 2; /* Above sticky feature column */
+  top: 0;
+  font-weight: 600;
+  white-space: nowrap; /* Prevent header wrapping */
+  color: #f8f9fa;
+  color: var(--text-secondary); /* Use theme variable */
+  background-color: #343a40;
+  background-color: var(--bg-secondary); /* Use theme variable */
+  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid var(--border-color); /* Stronger header border */
+}
+
+.comparison-sidebar .comparison-table tbody th { /* Feature column header */
+  position: sticky; /* Make feature column sticky */
+  z-index: 1; /* Below sticky header */
+  left: 0;
+  width: 180px; /* Slightly wider fixed width for feature column */
+  font-weight: 500;
+  background-color: #f8f9fa;
+  background-color: var(--card-background); /* Use theme variable */
+  border-right: 1px solid #dee2e6;
+  border-right: 1px solid var(--border-color); /* Separator line */
+}
+
+/* Hover effect for table rows */
+
+.comparison-sidebar .comparison-table tbody tr:hover {
+    background-color: #343a40;
+    background-color: var(--bg-secondary); /* Use theme variable */
+}
+
+/* Remove bottom border from last row */
+
+.comparison-sidebar .comparison-table tbody tr:last-child th,
+.comparison-sidebar .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Style for Key Features list within table cell */
+
+.comparison-sidebar .comparison-table td ul.key-features-list {
+    max-height: 150px; /* Limit height */
+    margin: 0;
+    padding: 0 0 0 1rem; /* Indent list */
+    font-size: 0.85rem; /* Slightly smaller font for list */
+    list-style: disc;
+    overflow-y: auto; /* Allow scrolling if needed */
+}
+
+.comparison-sidebar .comparison-table td ul.key-features-list li {
+    margin-bottom: 0.25rem;
+    margin-bottom: var(--space-xxs);
+}
+
+/* Nicer scrollbar for feature list */
+
+.comparison-sidebar .comparison-table td ul.key-features-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.comparison-sidebar .comparison-table td ul.key-features-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.comparison-sidebar .comparison-table td ul.key-features-list::-webkit-scrollbar-thumb {
+    background-color: rgb(128 128 128 / 30%);
+    border-radius: 3px;
+}
+
+.comparison-sidebar html[data-theme='dark'] .comparison-table td ul.key-features-list::-webkit-scrollbar-thumb,
+.comparison-sidebar html[data-theme='spotify'] .comparison-table td ul.key-features-list::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 20%);
+}
+
+.comparison-sidebar .comparison-charts {
+  display: grid;
+  grid-template-columns: 1fr; /* Stack charts on mobile */
+  grid-gap: 2rem;
+  grid-gap: var(--space-lg);
+  gap: 2rem;
+  gap: var(--space-lg); /* Use spacing variable */
+}
+
+.comparison-sidebar .chart-container {
+    position: relative; /* Needed for Chart.js responsiveness */
+    min-height: 350px; /* Ensure charts have enough height */
+    padding: 1rem;
+    padding: var(--space-sm);
+    background-color: #f8f9fa;
+    background-color: var(--card-background);
+    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    box-shadow: 0 1px 3px var(--shadow-color); /* Use standard shadow */
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s; /* Theme transition */
+}
+
+@media (min-width: 768px) {
+  .comparison-sidebar .comparison-page-layout {
+    grid-template-columns: 300px 1fr; /* Sidebar and main content */
+  }
+
+  .comparison-sidebar .comparison-charts {
+    grid-template-columns: 1fr 1fr; /* Side-by-side charts */
+  }
+
+  /* Make sidebar sticky on larger screens */
+  .comparison-sidebar .comparison-sidebar {
+      position: sticky;
+      top: calc(4rem + 1.5rem);
+      top: calc(4rem + var(--space-md)); /* Adjust based on header height + desired gap */
+      align-self: start; /* Align to top of grid area */
+      max-height: calc(100vh - 4rem - 1.5rem * 2);
+      max-height: calc(100vh - 4rem - var(--space-md) * 2); /* Prevent overlap with footer */
+      overflow-y: auto; /* Allow scrolling within sidebar */
+  }
+
+  /* Nicer scrollbar for sticky sidebar */
+  .comparison-sidebar .comparison-sidebar::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .comparison-sidebar .comparison-sidebar::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  .comparison-sidebar .comparison-sidebar::-webkit-scrollbar-thumb {
+      background-color: rgb(128 128 128 / 30%);
+      border-radius: 3px;
+  }
+
+  .comparison-sidebar html[data-theme='dark'] .comparison-sidebar::-webkit-scrollbar-thumb,
+  .comparison-sidebar html[data-theme='spotify'] .comparison-sidebar::-webkit-scrollbar-thumb {
+      background-color: rgb(255 255 255 / 20%);
+  }
+}
+
+/* End Comparison Page Styles */
+
+/* --- Sidebar Filter Styles --- */
+
+.filter-group {
+  margin-bottom: 2rem;
+  margin-bottom: var(--space-lg); /* Space between filter groups */
+}
+
+.filter-group h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm);
+  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-xs);
+  font-size: 1.1rem;
+  color: #212529;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  border-bottom: 1px solid rgba(var(--border-rgb, 128, 128, 128), 0.2); /* Subtle border */
+}
+
+#category-filters-container,
+#pricing-filters-container,
+#feature-filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  gap: var(--space-xxs); /* Small gap between filter options */
+  max-height: 200px; /* Limit height for long lists */
+  overflow-y: auto; /* Allow scrolling */
+  padding-right: 0.5rem;
+  padding-right: var(--space-xs); /* Space for scrollbar */
+}
+
+/* Nicer scrollbar for filter containers */
+
+#category-filters-container::-webkit-scrollbar,
+#pricing-filters-container::-webkit-scrollbar,
+#feature-filters-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+#category-filters-container::-webkit-scrollbar-track,
+#pricing-filters-container::-webkit-scrollbar-track,
+#feature-filters-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#category-filters-container::-webkit-scrollbar-thumb,
+#pricing-filters-container::-webkit-scrollbar-thumb,
+#feature-filters-container::-webkit-scrollbar-thumb {
+    background-color: rgb(128 128 128 / 30%);
+    border-radius: 3px;
+}
+
+html[data-theme='dark'] #category-filters-container::-webkit-scrollbar-thumb,
+html[data-theme='dark'] #pricing-filters-container::-webkit-scrollbar-thumb,
+html[data-theme='dark'] #feature-filters-container::-webkit-scrollbar-thumb,
+html[data-theme='spotify'] #category-filters-container::-webkit-scrollbar-thumb,
+html[data-theme='spotify'] #pricing-filters-container::-webkit-scrollbar-thumb,
+html[data-theme='spotify'] #feature-filters-container::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 20%);
+}
+
+.filter-group label {
+  display: flex; /* Align checkbox/radio with text */
+  gap: 0.5rem;
+  gap: var(--space-xs);
+  align-items: center;
+  padding: 0.25rem 0;
+  padding: var(--space-xxs) 0;
+  font-size: 0.95rem;
+  color: #f8f9fa;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.filter-group label:hover {
+  color: #212529;
+  color: var(--text-primary);
+}
+
+/* Ensure filter labels have good contrast in dark mode */
+
+html[data-theme='dark'] .filter-group label {
+    color: #212529;
+    color: var(--text-primary);
+}
+
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+  cursor: pointer;
+  accent-color: #0056b3;
+  accent-color: var(--primary-color); /* Style the check/radio color */
+}
+
+#sort-select {
+  flex-shrink: 0; /* Prevent dropdown from shrinking too much */
+  min-width: 180px; /* Give dropdown some minimum width */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #212529;
+  color: var(--text-primary);
+  background-color: #f8f9fa;
+  background-color: var(--bg-primary);
+  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+#sort-select:focus {
+    border-color: #0056b3;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb, 0, 122, 255), 0.25);
+    outline: none;
+}
+
+/* Adjustments for loading/empty states within filter containers */
+
+#category-filters-container p,
+#feature-filters-container p {
+  padding: 1rem 0;
+  padding: var(--space-sm) 0;
+  font-style: italic;
+  color: #f8f9fa;
+  color: var(--text-secondary);
+}
+
