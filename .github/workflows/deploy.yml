@@ -53,6 +53,14 @@ jobs:
       - name: Build
         run: npm run build:css # Build the CSS
 
+      # --- Add this step for debugging ---
+      - name: List Website Directory Contents After Build
+        run: |
+          echo "--- Contents of ./website after build ---"
+          ls -R ./website
+          echo "--- End of directory listing ---"
+      # --- End of added step ---
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
