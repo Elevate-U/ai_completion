@@ -15,15 +15,65 @@
   ],
   "pricing": {
     "model": "Pay-per-use API via Google Cloud Vertex AI (character/token-based, model/modality dependent)",
-    "free_tier": "Generous free tier often available via Google AI Studio (rate limited). Integrated freely in some consumer Google products.",
-    "paid_tiers": [
+    "free_tier_description": "Free usage via Google AI Studio (rate limited). Also integrated freely in some consumer Google products.",
+    "tiers": [
       {
-        "name": "Vertex AI API",
-        "description": "Pay-per-use based on input/output characters or tokens for Pro and Flash models, varying by modality."
+        "tier_name": "Vertex AI - Gemini 1.5 Flash",
+        "tier_description": "Modality-based pricing (char, image, sec). Different rates for >128K context.",
+        "metrics": [
+          {"metric_name": "Image Input (<=128K)", "value": "0.00002", "unit": "per image"},
+          {"metric_name": "Video Input (<=128K)", "value": "0.00002", "unit": "per second"},
+          {"metric_name": "Text Input (<=128K)", "value": "0.00001875", "unit": "per 1k characters"},
+          {"metric_name": "Audio Input (<=128K)", "value": "0.00002", "unit": "per second"},
+          {"metric_name": "Text Output (<=128K)", "value": "0.000075", "unit": "per 1k characters"},
+          {"metric_name": "Training Token", "value": "8", "unit": "per 1M tokens"},
+          {"metric_name": "Image Input (>128K)", "value": "0.00004", "unit": "per image"},
+          {"metric_name": "Video Input (>128K)", "value": "0.00004", "unit": "per second"},
+          {"metric_name": "Text Input (>128K)", "value": "0.0000375", "unit": "per 1k characters"},
+          {"metric_name": "Audio Input (>128K)", "value": "0.00004", "unit": "per second"},
+          {"metric_name": "Text Output (>128K)", "value": "0.00015", "unit": "per 1k characters"}
+        ]
+      },
+      {
+        "tier_name": "Vertex AI - Gemini 1.5 Pro",
+        "tier_description": "Modality-based pricing (char, image, sec). Different rates for >128K context.",
+        "metrics": [
+          {"metric_name": "Image Input (<=128K)", "value": "0.00032875", "unit": "per image"},
+          {"metric_name": "Video Input (<=128K)", "value": "0.00032875", "unit": "per second"},
+          {"metric_name": "Text Input (<=128K)", "value": "0.0003125", "unit": "per 1k characters"},
+          {"metric_name": "Audio Input (<=128K)", "value": "0.0003125", "unit": "per second"},
+          {"metric_name": "Text Output (<=128K)", "value": "0.00125", "unit": "per 1k characters"},
+          {"metric_name": "Training Token", "value": "80", "unit": "per 1M tokens"},
+          {"metric_name": "Image Input (>128K)", "value": "0.0006575", "unit": "per image"},
+          {"metric_name": "Video Input (>128K)", "value": "0.0006575", "unit": "per second"},
+          {"metric_name": "Text Input (>128K)", "value": "0.000625", "unit": "per 1k characters"},
+          {"metric_name": "Audio Input (>128K)", "value": "0.000625", "unit": "per second"},
+          {"metric_name": "Text Output (>128K)", "value": "0.0025", "unit": "per 1k characters"}
+        ]
+      },
+       {
+        "tier_name": "Vertex AI - Gemini 1.0 Pro",
+        "tier_description": "Modality-based pricing (char, image, sec). Max 32K context.",
+        "metrics": [
+          {"metric_name": "Image Input", "value": "0.0025", "unit": "per image"},
+          {"metric_name": "Video Input", "value": "0.002", "unit": "per second"},
+          {"metric_name": "Text Input", "value": "0.000125", "unit": "per 1k characters"},
+          {"metric_name": "Text Output", "value": "0.000375", "unit": "per 1k characters"}
+        ]
       }
     ],
-    "notes": "Access to Ultra model may have limitations/higher costs. Tied to Google Cloud platform."
+    "notes": "Access to Ultra model may have limitations/higher costs. Tied to Google Cloud platform. Pricing subject to change; refer to official Google Cloud documentation for current rates."
   },
+  "use_cases": [
+      "Content generation (articles, summaries, creative writing)",
+      "Code generation and explanation",
+      "Image understanding and generation",
+      "Video analysis and summarization",
+      "Audio transcription and analysis",
+      "Cross-modal reasoning tasks",
+      "Chatbots and conversational AI",
+      "Data analysis and insights"
+  ],
   "pros": [
     "True multimodality from the ground up",
     "Leverages Google's vast research and infrastructure",
@@ -79,5 +129,5 @@
     "https://ai.google.dev/",
     "https://cloud.google.com/vertex-ai"
   ],
-  "last_updated": "2025-04-01"
+  "last_updated": "2025-04-02"
 }

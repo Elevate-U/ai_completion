@@ -35,21 +35,24 @@ function renderCategoryBreadcrumbs(category) {
 let currentCategory = 'all'; // Default to 'all'
 let currentSearchTerm = '';
 // Initialize categories page with loaded data
-function initCategoriesPage() { // Remove loadedData parameter
+function initCategoriesPage() {
+  // Remove loadedData parameter
   // Accept loaded data
   console.log('Initializing Categories Page...');
   // Data is now passed directly, no need for global check here.
   // Error handling for loading is done before calling this function.
-  const loadingIndicator = toolsContainer?.querySelector('.loading-indicator');
+  // const loadingIndicator = toolsContainer?.querySelector('.loading-indicator'); // Removed unused variable
 
   // Use module-level allToolsData
   if (!allToolsData || allToolsData.length === 0) {
     console.error('initCategoriesPage called with invalid or empty data.');
     if (categorySidebarList)
-      categorySidebarList.innerHTML = '<p class="error-message">Error: No category data loaded.</p>';
+      categorySidebarList.innerHTML =
+        '<p class="error-message">Error: No category data loaded.</p>';
     if (toolsContainer) {
-       // Display error within the main container, replacing loading indicator
-       toolsContainer.innerHTML = '<p class="empty-state">Error: Could not display tools. No data received.</p>';
+      // Display error within the main container, replacing loading indicator
+      toolsContainer.innerHTML =
+        '<p class="empty-state">Error: Could not display tools. No data received.</p>';
     }
     if (categoryTitle) categoryTitle.textContent = 'Error Loading Tools';
     if (categoryDescription)
@@ -84,7 +87,8 @@ function initCategoriesPage() { // Remove loadedData parameter
 }
 
 // Display all categories in sidebar
-function displayCategorySidebar() { // Remove toolsData parameter
+function displayCategorySidebar() {
+  // Remove toolsData parameter
   // Accept data
   if (!categorySidebarList) {
     console.warn('Category sidebar list element not found.');
@@ -114,10 +118,10 @@ function displayCategorySidebar() { // Remove toolsData parameter
 
   // Use module-level allToolsData
   const categoryCounts = allToolsData.reduce((counts, tool) => {
-      if (tool.category) {
-          counts[tool.category.trim()] = (counts[tool.category.trim()] || 0) + 1;
-      }
-      return counts;
+    if (tool.category) {
+      counts[tool.category.trim()] = (counts[tool.category.trim()] || 0) + 1;
+    }
+    return counts;
   }, {});
 
   const categories = Object.keys(categoryCounts).sort();
@@ -174,12 +178,13 @@ function getCategoryIconClass(category) {
 }
 
 // Display tools based on current category and search term
-function displayTools() { // Remove toolsData parameter
+function displayTools() {
+  // Remove toolsData parameter
   // Accept data
   const mainContentContainer = document.querySelector('.tools-main-content'); // Get the main container
   const loadingIndicator = toolsContainer?.querySelector('.loading-indicator');
   if (loadingIndicator) {
-      loadingIndicator.remove(); // Explicitly remove loading indicator if present
+    loadingIndicator.remove(); // Explicitly remove loading indicator if present
   }
 
   if (
@@ -193,7 +198,8 @@ function displayTools() { // Remove toolsData parameter
     );
     // Attempt to display an error message even if some elements are missing
     if (toolsContainer) {
-        toolsContainer.innerHTML = '<p class="empty-state">Error: UI elements missing, cannot display tools.</p>';
+      toolsContainer.innerHTML =
+        '<p class="empty-state">Error: UI elements missing, cannot display tools.</p>';
     }
     return;
   }
@@ -266,21 +272,23 @@ function displayTools() { // Remove toolsData parameter
     // Clear container first
     toolsContainer.innerHTML = '';
     // Use the shared renderToolCard function
-    filteredTools.forEach(tool => {
-        const toolCardElement = renderToolCard(tool);
-        // Add click listener specifically for cards on this page if needed,
-        // or rely on the button/link inside the card.
-        // For simplicity, we'll rely on the button/link inside for now.
-        toolsContainer.appendChild(toolCardElement);
+    filteredTools.forEach((tool) => {
+      const toolCardElement = renderToolCard(tool);
+      // Add click listener specifically for cards on this page if needed,
+      // or rely on the button/link inside the card.
+      // For simplicity, we'll rely on the button/link inside for now.
+      toolsContainer.appendChild(toolCardElement);
     });
   } else {
     // Use the dedicated empty state class for styling
-    toolsContainer.innerHTML = '<p class="empty-state">No tools found matching your criteria.</p>';
+    toolsContainer.innerHTML =
+      '<p class="empty-state">No tools found matching your criteria.</p>';
   }
 }
 
 // Setup event listeners for categories page
-function setupCategoriesEventListeners() { // Remove toolsData parameter
+function setupCategoriesEventListeners() {
+  // Remove toolsData parameter
   // Accept data (for consistency/future use)
   console.log('[categories.js] Setting up event listeners...'); // Log setup start
   console.log('[categories.js] toolsContainer element:', toolsContainer); // Log the element
@@ -374,8 +382,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       categorySidebarList.innerHTML =
         '<p class="error-message">Error loading categories. Please refresh.</p>';
     if (toolsContainer) {
-        // Replace loading indicator with error message
-        toolsContainer.innerHTML =
+      // Replace loading indicator with error message
+      toolsContainer.innerHTML =
         '<p class="empty-state">Error loading tool data. Please refresh.</p>';
     }
     if (categoryTitle) categoryTitle.textContent = 'Error Loading Data';

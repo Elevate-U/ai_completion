@@ -7,6 +7,7 @@ from datetime import datetime
 
 # --- Configuration ---
 DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'ai_tools.db')
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data') # Added data directory path
 BACKUP_PATH = f"{DB_PATH}.{datetime.now().strftime('%Y%m%d%H%M%S')}.bak"
 LOG_FILE = os.path.join(os.path.dirname(__file__), 'migration.log')
 
@@ -483,22 +484,36 @@ def main():
         cursor.executescript(SCHEMA)
         logging.info("New schema created successfully.")
 
-        # 4. Fetch data from old table
-        logging.info("Fetching data from old 'ai_tools' table...")
+        # 4. Find JSON files in the data directory
+        logging.info(f"Scanning for JSON files in {DATA_DIR}...")
+        json_files_to_process = []
         try:
-            cursor.execute("SELECT filename, data FROM ai_tools")
-            old_data = cursor.fetchall()
-            logging.info(f"Fetched {len(old_data)} records from old table.")
-        except sqlite3.OperationalError as e:
-             logging.error(f"Could not read from old 'ai_tools' table (maybe it doesn't exist?): {e}")
-             logging.info("Assuming this is a fresh setup or old table was already dropped.")
-             old_data = [] # Proceed assuming no old data to migrate
+            for filename in os.listdir(DATA_DIR):
+                if filename.endswith(".json") and filename != "ai_tool_schema_template.json":
+                    filepath = os.path.join(DATA_DIR, filename)
+                    json_files_to_process.append((filename, filepath))
+            logging.info(f"Found {len(json_files_to_process)} JSON files to process.")
+            if not json_files_to_process:
+                logging.warning("No JSON files found in the data directory. Database will be empty.")
+                # Optionally, you might want to exit here if no JSON files is an error
+                # return
+        except FileNotFoundError:
+            logging.error(f"Data directory not found: {DATA_DIR}")
+            return # Stop if data directory doesn't exist
+        except Exception as e:
+            logging.error(f"Error scanning data directory: {e}")
+            return # Stop on other directory scanning errors
 
-        # 5. Process and insert data into new tables
-        logging.info("Processing and inserting data into new tables...")
-        for filename, json_data_str in old_data:
+        # 5. Process and insert data from JSON files into new tables
+        logging.info("Processing and inserting data from JSON files into new tables...")
+        for filename, filepath in json_files_to_process:
             try:
-                data = json.loads(json_data_str)
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    json_data_str = f.read()
+                    # Handle potential BOM (Byte Order Mark) at the start of the file
+                    if json_data_str.startswith('\ufeff'):
+                        json_data_str = json_data_str[1:]
+                    data = json.loads(json_data_str)
                 logging.info(f"Processing {filename}...")
 
                 # --- Insert into `tools` table ---
@@ -589,14 +604,9 @@ def main():
                 logging.warning(f"Rolled back changes for {filename}")
 
 
-        # 6. Drop old table (only if data was successfully read and processed)
-        if old_data: # Only drop if we actually read data from it
-            try:
-                logging.info("Dropping old 'ai_tools' table...")
-                cursor.execute("DROP TABLE ai_tools")
-                logging.info("Old 'ai_tools' table dropped successfully.")
-            except Exception as e:
-                 logging.error(f"Failed to drop old 'ai_tools' table: {e}")
+        # 6. (Optional) Clean up or vacuum database if needed
+        # logging.info("Vacuuming database...")
+        # cursor.execute("VACUUM")
 
         # 7. Commit changes
         conn.commit()

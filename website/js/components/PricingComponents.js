@@ -35,7 +35,8 @@ function renderMetrics(metrics) {
       // Add provider/architecture details if present (for things like HF endpoints)
       if (metric.provider) displayValue += ` (${metric.provider})`;
       if (metric.architecture) displayValue += ` ${metric.architecture}`;
-      if (metric.gpus) displayValue += ` (${metric.gpus} GPU${metric.gpus > 1 ? 's' : ''})`;
+      if (metric.gpus)
+        displayValue += ` (${metric.gpus} GPU${metric.gpus > 1 ? 's' : ''})`;
       // Add other relevant metric fields as needed
 
       // Use metric_name as the term (dt) and the constructed value as the description (dd)
@@ -68,17 +69,27 @@ export function renderPricingTable(pricingData) {
     pricingData.tiers.length === 0
   ) {
     // Check if there's at least a model description or notes to show
-     if (pricingData?.model || pricingData?.notes || pricingData?.overall_notes) {
-         // If only model/notes exist, PricingTab.js handles them. Return empty here.
-         console.log('PricingComponents: No pricing tiers found, but model/notes might exist.');
-         return '';
-     } else {
-        console.warn('PricingComponents: No valid pricing tiers or other pricing info found.');
-        return '<p class="tab-no-data">No pricing information available.</p>';
-     }
+    if (
+      pricingData?.model ||
+      pricingData?.notes ||
+      pricingData?.overall_notes
+    ) {
+      // If only model/notes exist, PricingTab.js handles them. Return empty here.
+      console.log(
+        'PricingComponents: No pricing tiers found, but model/notes might exist.'
+      );
+      return '';
+    } else {
+      console.warn(
+        'PricingComponents: No valid pricing tiers or other pricing info found.'
+      );
+      return '<p class="tab-no-data">No pricing information available.</p>';
+    }
   }
 
-  console.log(`PricingComponents: Rendering ${pricingData.tiers.length} pricing tiers.`);
+  console.log(
+    `PricingComponents: Rendering ${pricingData.tiers.length} pricing tiers.`
+  );
 
   // Iterate through the tiers array from the new structure
   const tiersHtml = pricingData.tiers

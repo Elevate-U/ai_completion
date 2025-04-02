@@ -16,7 +16,9 @@ const featuresChartCtx = document
 const comparisonChart2Ctx = document
   .getElementById('pricing-chart')
   ?.getContext('2d'); // Renamed ID for clarity, use optional chaining
-const toolSelectionCounterSpan = document.getElementById('tool-selection-counter'); // Added counter span
+const toolSelectionCounterSpan = document.getElementById(
+  'tool-selection-counter'
+); // Added counter span
 
 // State
 let aiToolsData = []; // Store loaded data locally for this page
@@ -28,20 +30,26 @@ const MAX_COMPARE_TOOLS = 8; // Increased limit
 // Initialize comparison page
 function initComparisonPage() {
   console.log('Initializing Comparison Page...');
- // Check if aiToolsData is loaded (it should be by the time this runs)
- if (!aiToolsData || aiToolsData.length === 0) {
-   console.error('AI Tools data not available for comparison page initialization.');
-   // Error handling might have already happened in the loader, but double-check
-   if (comparisonPlaceholder && !comparisonPlaceholder.textContent.includes('Error')) {
-       comparisonPlaceholder.innerHTML = '<p>Tool data is empty or failed to load.</p>';
-       comparisonPlaceholder.style.display = 'block';
-   }
-   if (comparisonResults) comparisonResults.style.display = 'none';
-   // Disable filters/search if no data
-   if (categoryFilter) categoryFilter.disabled = true;
-   if (toolSearch) toolSearch.disabled = true;
-   return;
- }
+  // Check if aiToolsData is loaded (it should be by the time this runs)
+  if (!aiToolsData || aiToolsData.length === 0) {
+    console.error(
+      'AI Tools data not available for comparison page initialization.'
+    );
+    // Error handling might have already happened in the loader, but double-check
+    if (
+      comparisonPlaceholder &&
+      !comparisonPlaceholder.textContent.includes('Error')
+    ) {
+      comparisonPlaceholder.innerHTML =
+        '<p>Tool data is empty or failed to load.</p>';
+      comparisonPlaceholder.style.display = 'block';
+    }
+    if (comparisonResults) comparisonResults.style.display = 'none';
+    // Disable filters/search if no data
+    if (categoryFilter) categoryFilter.disabled = true;
+    if (toolSearch) toolSearch.disabled = true;
+    return;
+  }
 
   // Ensure chart contexts are available
   if (!featuresChartCtx || !comparisonChart2Ctx) {
@@ -172,18 +180,19 @@ function updateComparisonTable(tools) {
       key: 'features',
       format: (val) => {
         if (Array.isArray(val) && val.length > 0) {
-          const escapeHtml = (unsafe) => { // Keep escaping
+          const escapeHtml = (unsafe) => {
+            // Keep escaping
             if (typeof unsafe !== 'string') return unsafe;
             return unsafe
-                 .replace(/&/g, "&amp;")
-                 .replace(/</g, "&lt;")
-                 .replace(/>/g, "&gt;")
-                 .replace(/"/g, "&quot;")
-                 .replace(/'/g, "&#039;");
+              .replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#039;');
           };
           // Show only first 5 features
           const featuresToShow = val.slice(0, 5);
-          let html = `<ul class="key-features-list compact-list">${featuresToShow.map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ul>`;
+          let html = `<ul class="key-features-list compact-list">${featuresToShow.map((f) => `<li>${escapeHtml(f)}</li>`).join('')}</ul>`;
           if (val.length > 5) {
             html += `<small>(${val.length - 5} more...)</small>`; // Indicate more exist
           }
@@ -192,39 +201,56 @@ function updateComparisonTable(tools) {
         return '-';
       },
     },
-   { label: 'Primary Use Case', key: 'use_cases.0.title', fallback: 'N/A' }, // Added
-   {
-     label: 'Pricing Summary', // Changed label
-     key: 'pricing.tiers', // Target the new tiers array
-     format: (tiers) => { // Custom formatter
-       if (!Array.isArray(tiers) || tiers.length === 0) return 'N/A';
-       // Show first 1-2 paid tiers or indicate free/custom
-       const freeTier = tiers.find(t => t.tier_name?.toLowerCase().includes('free') || t.price_description === '$0');
-       const paidTiers = tiers.filter(t => t.price_description && t.price_description !== '$0' && !t.tier_name?.toLowerCase().includes('free'));
-       const customTier = tiers.find(t => t.price_description?.toLowerCase() === 'custom');
+    { label: 'Primary Use Case', key: 'use_cases.0.title', fallback: 'N/A' }, // Added
+    {
+      label: 'Pricing Summary', // Changed label
+      key: 'pricing.tiers', // Target the new tiers array
+      format: (tiers) => {
+        // Custom formatter
+        if (!Array.isArray(tiers) || tiers.length === 0) return 'N/A';
+        // Show first 1-2 paid tiers or indicate free/custom
+        const freeTier = tiers.find(
+          (t) =>
+            t.tier_name?.toLowerCase().includes('free') ||
+            t.price_description === '$0'
+        );
+        const paidTiers = tiers.filter(
+          (t) =>
+            t.price_description &&
+            t.price_description !== '$0' &&
+            !t.tier_name?.toLowerCase().includes('free')
+        );
+        const customTier = tiers.find(
+          (t) => t.price_description?.toLowerCase() === 'custom'
+        );
 
-       let summary = '';
-       if (freeTier) summary += 'Free Tier Available. ';
-       if (paidTiers.length > 0) {
-           summary += `Paid: ${paidTiers[0].price_description}${paidTiers[0].unit ? ` ${paidTiers[0].unit}` : ''}`;
-           if (paidTiers.length > 1) summary += ` / ${paidTiers[1].price_description}${paidTiers[1].unit ? ` ${paidTiers[1].unit}` : ''}`;
-           if (paidTiers.length > 2) summary += '...';
-       } else if (customTier) {
-           summary += 'Custom Pricing.';
-       } else if (!freeTier) {
-           summary = 'Check Website'; // If only free tier exists, this won't be hit
-       }
-       return summary.trim() || 'N/A';
-     },
-     fallback: 'N/A',
-   },
-   // Removed the old dedicated 'Free Tier' row as it's incorporated above
+        let summary = '';
+        if (freeTier) summary += 'Free Tier Available. ';
+        if (paidTiers.length > 0) {
+          summary += `Paid: ${paidTiers[0].price_description}${paidTiers[0].unit ? ` ${paidTiers[0].unit}` : ''}`;
+          if (paidTiers.length > 1)
+            summary += ` / ${paidTiers[1].price_description}${paidTiers[1].unit ? ` ${paidTiers[1].unit}` : ''}`;
+          if (paidTiers.length > 2) summary += '...';
+        } else if (customTier) {
+          summary += 'Custom Pricing.';
+        } else if (!freeTier) {
+          summary = 'Check Website'; // If only free tier exists, this won't be hit
+        }
+        return summary.trim() || 'N/A';
+      },
+      fallback: 'N/A',
+    },
+    // Removed the old dedicated 'Free Tier' row as it's incorporated above
     {
       label: 'Pros (Top 3)', // Updated label
       key: 'pros',
-      format: (val) => { // Updated format
+      format: (val) => {
+        // Updated format
         if (Array.isArray(val) && val.length > 0) {
-          return `<ul class="compact-list">${val.slice(0, 3).map(p => `<li>${p}</li>`).join('')}</ul>`;
+          return `<ul class="compact-list">${val
+            .slice(0, 3)
+            .map((p) => `<li>${p}</li>`)
+            .join('')}</ul>`;
         }
         return val || '-';
       },
@@ -232,9 +258,13 @@ function updateComparisonTable(tools) {
     {
       label: 'Cons (Top 3)', // Updated label
       key: 'cons',
-      format: (val) => { // Updated format
+      format: (val) => {
+        // Updated format
         if (Array.isArray(val) && val.length > 0) {
-          return `<ul class="compact-list">${val.slice(0, 3).map(c => `<li>${c}</li>`).join('')}</ul>`;
+          return `<ul class="compact-list">${val
+            .slice(0, 3)
+            .map((c) => `<li>${c}</li>`)
+            .join('')}</ul>`;
         }
         return val || '-';
       },
@@ -247,16 +277,25 @@ function updateComparisonTable(tools) {
     {
       label: 'SDKs', // Added
       key: 'technical_specifications.sdks',
-      format: (val) => (Array.isArray(val) ? val.join(', ') : (typeof val === 'string' ? val : '-')), // Handle array or string
+      format: (val) =>
+        Array.isArray(val)
+          ? val.join(', ')
+          : typeof val === 'string'
+            ? val
+            : '-', // Handle array or string
       fallback: 'N/A',
     },
     // Removed 'Scalability' row
     {
       label: 'Support Options (Top 3)', // Updated label
       key: 'support_options',
-      format: (val) => { // Updated format
+      format: (val) => {
+        // Updated format
         if (Array.isArray(val) && val.length > 0) {
-          return `<ul class="compact-list">${val.slice(0, 3).map(s => `<li>${s}</li>`).join('')}</ul>`;
+          return `<ul class="compact-list">${val
+            .slice(0, 3)
+            .map((s) => `<li>${s}</li>`)
+            .join('')}</ul>`;
         }
         return val || '-';
       },
@@ -415,19 +454,20 @@ function updateCharts(tools) {
           position: 'bottom',
           labels: {
             boxWidth: 12, // Smaller color box
-            padding: 15 // Spacing between legend items
+            padding: 15, // Spacing between legend items
           },
-          onClick: (e, legendItem, legend) => { // Make legend interactive
+          onClick: (e, legendItem, legend) => {
+            // Make legend interactive
             const index = legendItem.datasetIndex;
             const ci = legend.chart;
             if (ci.isDatasetVisible(index)) {
-                ci.hide(index);
-                legendItem.hidden = true;
+              ci.hide(index);
+              legendItem.hidden = true;
             } else {
-                ci.show(index);
-                legendItem.hidden = false;
+              ci.show(index);
+              legendItem.hidden = false;
             }
-          }
+          },
         },
       },
       scales: {
@@ -456,44 +496,59 @@ function getChartColor(index) {
 
 // Updated pricing score calculation (higher = better/cheaper)
 function getPricingScore(tool) {
-   const tiers = tool.pricing?.tiers;
-   if (!Array.isArray(tiers) || tiers.length === 0) {
-       // Check if it's explicitly free like NLTK/spaCy based on model description
-       const modelDesc = tool.pricing?.model?.toLowerCase() || '';
-       if (modelDesc.includes('free') || modelDesc.includes('open source')) return 10;
-       return 3; // Default score if no pricing info
-   }
+  const tiers = tool.pricing?.tiers;
+  if (!Array.isArray(tiers) || tiers.length === 0) {
+    // Check if it's explicitly free like NLTK/spaCy based on model description
+    const modelDesc = tool.pricing?.model?.toLowerCase() || '';
+    if (modelDesc.includes('free') || modelDesc.includes('open source'))
+      return 10;
+    return 3; // Default score if no pricing info
+  }
 
-   const hasFreeTier = tiers.some(t => t.tier_name?.toLowerCase().includes('free') || t.price_description === '$0');
-   if (hasFreeTier) return 10;
+  const hasFreeTier = tiers.some(
+    (t) =>
+      t.tier_name?.toLowerCase().includes('free') ||
+      t.price_description === '$0'
+  );
+  if (hasFreeTier) return 10;
 
-   // Find the lowest numerical monthly price for a rough score
-   let minMonthlyPrice = Infinity;
-   tiers.forEach(tier => {
-       if (tier.price_description && typeof tier.price_description === 'string') {
-           const priceMatch = tier.price_description.match(/\$?(\d+(\.\d+)?)\s*\/(month|mo)/i);
-           if (priceMatch && priceMatch[1]) {
-               const price = parseFloat(priceMatch[1]);
-               if (price > 0 && price < minMonthlyPrice) {
-                   minMonthlyPrice = price;
-               }
-           }
-       }
-   });
+  // Find the lowest numerical monthly price for a rough score
+  let minMonthlyPrice = Infinity;
+  tiers.forEach((tier) => {
+    if (tier.price_description && typeof tier.price_description === 'string') {
+      const priceMatch = tier.price_description.match(
+        /\$?(\d+(\.\d+)?)\s*\/(month|mo)/i
+      );
+      if (priceMatch && priceMatch[1]) {
+        const price = parseFloat(priceMatch[1]);
+        if (price > 0 && price < minMonthlyPrice) {
+          minMonthlyPrice = price;
+        }
+      }
+    }
+  });
 
-   if (minMonthlyPrice <= 10) return 9; // Very affordable tier
-   if (minMonthlyPrice <= 30) return 7; // Affordable tier
-   if (minMonthlyPrice <= 100) return 5; // Moderate tier
-   if (minMonthlyPrice < Infinity) return 3; // Expensive tier
+  if (minMonthlyPrice <= 10) return 9; // Very affordable tier
+  if (minMonthlyPrice <= 30) return 7; // Affordable tier
+  if (minMonthlyPrice <= 100) return 5; // Moderate tier
+  if (minMonthlyPrice < Infinity) return 3; // Expensive tier
 
-   // If no monthly price found, check for other indicators
-   const hasPayGo = tiers.some(t => t.unit?.includes('request') || t.unit?.includes('token') || t.unit?.includes('credits') || t.unit?.includes('item'));
-   if (hasPayGo) return 6; // Pay-as-you-go is generally good value
+  // If no monthly price found, check for other indicators
+  const hasPayGo = tiers.some(
+    (t) =>
+      t.unit?.includes('request') ||
+      t.unit?.includes('token') ||
+      t.unit?.includes('credits') ||
+      t.unit?.includes('item')
+  );
+  if (hasPayGo) return 6; // Pay-as-you-go is generally good value
 
-   const hasCustom = tiers.some(t => t.price_description?.toLowerCase() === 'custom');
-   if (hasCustom) return 2; // Custom usually implies enterprise/expensive
+  const hasCustom = tiers.some(
+    (t) => t.price_description?.toLowerCase() === 'custom'
+  );
+  if (hasCustom) return 2; // Custom usually implies enterprise/expensive
 
-   return 4; // Default if only non-monthly paid tiers exist
+  return 4; // Default if only non-monthly paid tiers exist
 }
 
 // Simplified scalability score
@@ -556,26 +611,33 @@ function setupComparisonEventListeners() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
- console.log('[comparison.js] DOMContentLoaded event fired.');
- try {
-   // Use the centralized data loader to fetch data from the API
-   console.log('[comparison.js] Attempting to load all tool data via dataLoader...');
-   aiToolsData = await loadAllToolsData(); // Assign to local variable
-   console.log(`[comparison.js] Successfully loaded data for ${aiToolsData.length} tools via API.`);
-   // Now that data is loaded (or failed), initialize the page
-   initComparisonPage();
- } catch (error) {
-     console.error('[comparison.js] Error loading tool data via dataLoader:', error);
-     // Display error on the page
-     if (comparisonPlaceholder) {
-         comparisonPlaceholder.innerHTML = `<p>Error loading tool data: ${error.message}. Please try refreshing.</p>`;
-         comparisonPlaceholder.style.display = 'block';
-     }
-     if (comparisonResults) comparisonResults.style.display = 'none';
-     // Initialize with empty data to prevent further errors
-     aiToolsData = [];
-     initComparisonPage(); // Still init to setup listeners etc., but with no data
- }
+  console.log('[comparison.js] DOMContentLoaded event fired.');
+  try {
+    // Use the centralized data loader to fetch data from the API
+    console.log(
+      '[comparison.js] Attempting to load all tool data via dataLoader...'
+    );
+    aiToolsData = await loadAllToolsData(); // Assign to local variable
+    console.log(
+      `[comparison.js] Successfully loaded data for ${aiToolsData.length} tools via API.`
+    );
+    // Now that data is loaded (or failed), initialize the page
+    initComparisonPage();
+  } catch (error) {
+    console.error(
+      '[comparison.js] Error loading tool data via dataLoader:',
+      error
+    );
+    // Display error on the page
+    if (comparisonPlaceholder) {
+      comparisonPlaceholder.innerHTML = `<p>Error loading tool data: ${error.message}. Please try refreshing.</p>`;
+      comparisonPlaceholder.style.display = 'block';
+    }
+    if (comparisonResults) comparisonResults.style.display = 'none';
+    // Initialize with empty data to prevent further errors
+    aiToolsData = [];
+    initComparisonPage(); // Still init to setup listeners etc., but with no data
+  }
 });
 
 // Removed the old loadAllToolDataForComparison function as it's replaced by loadAllToolsData from dataLoader.js
