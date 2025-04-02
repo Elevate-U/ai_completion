@@ -1,0 +1,184 @@
+{
+  "name": "ElevenLabs",
+  "category": "AI Audio Generation",
+  "description": "AI audio research and deployment company specializing in natural-sounding text-to-speech (TTS), voice cloning, sound effects generation, and AI dubbing, accessible via web interface and API.",
+  "features": [
+    "High-quality Text-to-Speech (TTS) synthesis",
+    "Voice Cloning (Instant and Professional tiers)",
+    "Speech-to-Speech conversion",
+    "AI Sound Effects Generation",
+    "AI Dubbing for video content",
+    "Projects workflow for long-form content creation",
+    "Support for multiple languages and accents",
+    "Voice Library with pre-made voices",
+    "API access (REST & Websockets)",
+    "Official Python and Node.js SDKs"
+  ],
+  "pricing": {
+    "model": "Freemium + Subscription (Credit-based)",
+    "free_tier": "10,000 characters (credits) per month, create up to 3 custom voices, non-commercial use license.",
+    "paid_tiers": [
+      {
+        "name": "Starter",
+        "price": "$5/month ($1 first month)",
+        "features": [
+          "30,000 characters/month",
+          "Create up to 10 custom voices",
+          "Commercial license",
+          "Instant Voice Cloning"
+        ]
+      },
+      {
+        "name": "Creator",
+        "price": "$22/month ($11 first month)",
+        "features": [
+          "100,000 characters/month (~2 hours audio)",
+          "Create up to 30 custom voices",
+          "Professional Voice Cloning access",
+          "Higher quality audio outputs"
+        ]
+      },
+      {
+        "name": "Pro",
+        "price": "$99/month ($49.50 first month)",
+        "features": [
+          "500,000 characters/month (~10 hours audio)",
+          "Create up to 160 custom voices"
+        ]
+      },
+      {
+        "name": "Scale",
+        "price": "$330/month ($165 first month)",
+        "features": [
+          "2,000,000 characters/month (~40 hours audio)",
+          "Create up to 660 custom voices"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "features": [
+          "Custom character quotas",
+          "Volume discounts",
+          "Dedicated support",
+          "Enterprise-grade security"
+        ]
+      }
+    ],
+    "notes": "Pricing is based on character usage (credits). API usage deducts credits from the plan allowance. Check website for current credit calculation details."
+  },
+  "use_cases": [
+    {
+      "title": "Content Creation",
+      "description": "Generate voiceovers for videos, podcasts, audiobooks, and presentations.",
+      "example": "Converting a blog post script into an audio narration using a chosen voice."
+    },
+    {
+      "title": "Accessibility",
+      "description": "Provide audio versions of written content for visually impaired users.",
+      "example": "Integrating TTS into a website to read articles aloud."
+    },
+    {
+      "title": "Chatbots & Virtual Assistants",
+      "description": "Give voice capabilities to AI agents and customer service bots.",
+      "example": "Using the API to generate spoken responses for a customer support chatbot."
+    },
+    {
+      "title": "Game Development",
+      "description": "Create character voices and sound effects for video games.",
+      "example": "Generating unique alien voices or background ambiance sounds."
+    },
+    {
+      "title": "Dubbing & Localization",
+      "description": "Translate and dub video content into different languages.",
+      "example": "Using the AI Dubbing feature to create a Spanish version of an English tutorial video."
+    }
+  ],
+  "pros": [
+    "Highly realistic and natural-sounding voices",
+    "Advanced voice cloning capabilities",
+    "API access available on all plans (including free)",
+    "Supports a wide range of languages",
+    "Continuous development and addition of new features (e.g., sound effects, dubbing)",
+    "Generous free tier for experimentation (non-commercial)"
+  ],
+  "cons": [
+    "Credit-based pricing can be complex to predict for variable usage",
+    "Free tier is limited to non-commercial use",
+    "Voice cloning technology raises potential ethical concerns if misused",
+    "Professional Voice Cloning requires higher tiers"
+  ],
+  "technical_specifications": {
+    "api_type": "REST, Websocket",
+    "sdks": ["Python", "Node.js"],
+    "platforms": "Web Interface, API",
+    "input_methods": ["Text", "Audio (Speech-to-Speech)"],
+    "supported_languages": ["29 languages (as of late 2024, check docs for current list)"],
+    "performance_metrics": {
+      "latency": "Low latency options available via API/Websocket",
+      "throughput": "Subject to API rate limits based on plan",
+      "accuracy": "High fidelity voice replication and TTS accuracy"
+    }
+  },
+  "user_reviews": {
+    "summary": null,
+    "average_rating": "N/A",
+    "sentiment_analysis": null,
+    "sources": []
+  },
+  "benchmark_scores": {
+    "overall_performance": "N/A",
+    "accuracy": "N/A",
+    "speed": "N/A",
+    "task_specific": {}
+  },
+  "integration_capabilities": [
+    "REST API",
+    "Websocket API",
+    "Python SDK",
+    "Node.js SDK"
+  ],
+  "scalability": "Designed for scalability via API and tiered plans.",
+  "support_options": [
+    "Help Center / Documentation",
+    "Community Discord",
+    "Dedicated Support (Pro, Scale, Enterprise tiers)"
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://elevenlabs.io/docs/overview",
+      "description": "Comprehensive official documentation."
+    },
+    {
+      "type": "API Reference",
+      "url": "https://elevenlabs.io/docs/api-reference/introduction",
+      "description": "Detailed API endpoint information."
+    },
+    {
+      "type": "Blog",
+      "url": "https://elevenlabs.io/blog",
+      "description": "Updates, guides, and research from ElevenLabs."
+    },
+    {
+      "type": "Quickstart Guide",
+      "url": "https://elevenlabs.io/docs/quickstart",
+      "description": "Guide to making first API requests."
+    }
+  ],
+  "security_compliance": {
+    "certifications": ["SOC2 (Mentioned for Enterprise)"],
+    "data_protection": "Standard data privacy practices. See Terms of Service and Privacy Policy."
+  },
+  "documentation_url": "https://elevenlabs.io/docs/overview",
+  "api_url": "https://elevenlabs.io/docs/api-reference/introduction",
+  "sdk_url": "https://elevenlabs.io/docs/api-reference/sdks",
+  "data_source_urls": [
+    "https://elevenlabs.io/pricing",
+    "https://elevenlabs.io/docs/overview",
+    "https://elevenlabs.io/developers",
+    "https://help.elevenlabs.io/hc/en-us/articles/28184926326033-How-much-does-it-cost-to-use-the-API",
+    "https://play.ht/blog/elevenlabs-pricing/"
+  ],
+  "last_updated": "2025-04-01"
+}

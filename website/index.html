@@ -27,11 +27,11 @@
     </style>
     <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header">
       <div class="container">
         <nav class="main-nav">
-          <a class="logo" href="index.html">ThinkStack</a>
+          <a class="logo" href="index.html"><img src="img/logo.svg" alt="ThinkStack Logo"></a>
           <ul class="nav-links" id="nav-links">
             <li><a class="nav-link active" href="index.html">Home</a></li>
             <li><a class="nav-link" href="categories.html">Categories</a></li>
@@ -74,84 +74,75 @@
       <!-- Wrapper for grid layout -->
       <main class="main-content">
         <section class="hero-section">
-          <h1>Discover the Best AI Tools</h1>
+          <h1>Find the Perfect AI Tool, Instantly</h1>
           <p class="subtitle">
-            Your curated guide to the latest and most powerful AI technologies
-            across all categories. Stay informed, compare options, and find the
-            perfect tool for your needs.
+            Explore the largest directory of AI tools. Search, filter, and compare
+            to find the exact solution for your needs.
           </p>
-          <!-- Optional: Add a subtle call-to-action button -->
-          <!-- <a href="categories.html" class="btn btn-primary hero-cta">Explore Tools</a> -->
+          <!-- Add a prominent call-to-action button -->
+          <a href="#ai-tools-grid" class="btn btn-primary hero-cta">Explore AI Tools</a>
           <img
             src="https://english.newstrack.com/h-upload/2024/02/06/1668764-ai.webp"
             alt="AI or Artificial Intelligence concept"
             class="hero-image"
           />
         </section>
-
-        <section class="featured-categories">
-          <h2>Featured Categories</h2>
-          <div id="categories-list" class="categories-grid">
-            <!-- Dynamic content: Category cards will be populated by JavaScript -->
-            <p>Loading categories...</p>
+ 
+        <section class="search-filter-section">
+          <!-- Placeholder for Search Bar and Filters (Suggestion 1) -->
+          <h2>Search & Filter Tools</h2>
+          <div class="search-controls">
+             <input type="search" id="tool-search-input" placeholder="Search for AI tools..." aria-label="Search AI tools">
+             <!-- Sorting Dropdown -->
+             <select id="sort-select" aria-label="Sort tools">
+               <option value="default">Default</option>
+               <option value="alpha-asc">Alphabetical (A-Z)</option>
+               <option value="alpha-desc">Alphabetical (Z-A)</option>
+               <!-- Add 'Recently Added' if data supports it -->
+               <!-- <option value="recent">Recently Added</option> -->
+             </select>
+          </div>
+        </section>
+ 
+        <section id="ai-tools-grid" class="ai-tools-section">
+          <h2>AI Tools Directory</h2>
+          <div id="tools-list" class="tools-grid">
+            <!-- Dynamic content: Tool cards will be populated by JavaScript (Suggestion 2) -->
+            <p>Loading tools...</p>
           </div>
         </section>
       </main>
 
       <aside class="sidebar">
-        <div class="recent-updates-widget">
-          <h3>Recently Updated</h3>
-          <ul id="recent-updates" class="update-list">
-            <!-- Dynamic content: Recent updates will be populated by JavaScript -->
-            <li>Loading updates...</li>
-          </ul>
+        <!-- Recent Updates and Ad Placeholder Removed (Suggestion 7) -->
+
+        <!-- Sidebar Filters -->
+        <div class="filter-group">
+          <h3>Categories</h3>
+          <div id="category-filters-container">
+            <!-- Category checkboxes will be loaded here by JS -->
+            <p>Loading categories...</p>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Pricing</h3>
+          <div id="pricing-filters-container">
+            <label><input type="radio" name="pricing-filter" value="all" checked> All</label>
+            <label><input type="radio" name="pricing-filter" value="free"> Free</label>
+            <label><input type="radio" name="pricing-filter" value="freemium"> Freemium</label>
+            <label><input type="radio" name="pricing-filter" value="paid"> Paid</label>
+            <!-- Add more tiers if needed -->
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Features</h3>
+          <div id="feature-filters-container">
+            <!-- Feature checkboxes will be loaded here by JS -->
+            <p>Loading features...</p>
+          </div>
         </div>
 
-        <!-- Elegant Ad Placement -->
-        <div class="ad-placeholder">
-          <p>Advertisement</p>
-          <!-- Ad content/script goes here -->
-        </div>
-
-        <!-- Social Media Links Widget -->
-        <div class="social-links-widget">
-          <h3>follow me!</h3>
-          <ul class="social-links-list">
-            <li>
-              <a
-                href="https://x.com/ttcruiserrr"
-                target="_blank"
-                rel="noopener noreferrer"
-                >X (Twitter)</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://github.com/Elevate-U"
-                target="_blank"
-                rel="noopener noreferrer"
-                >GitHub</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/evrgreenw/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Instagram</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://linktr.ee/evrgreenw"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Linktree</a
-              >
-            </li>
-            <!-- Add more social links as needed -->
-          </ul>
-        </div>
+        <!-- Social Media Links Widget (Moved to Footer) -->
       </aside>
     </div>
 
@@ -161,13 +152,59 @@
           ThinkStack &copy; 2025 | Data last updated:
           <span id="last-updated">Loading...</span>
         </p>
-        <!-- Optional: Add footer navigation or other links -->
+        <!-- Add footer navigation links here (Suggestion 9) -->
+        <nav class="footer-nav">
+          <!-- Example: <a href="/about">About</a> | <a href="/contact">Contact</a> -->
+        </nav>
+        <!-- Social Media Links Widget (Moved from Sidebar) -->
+        <div class="social-links-widget footer-social-links"> <!-- Added class for specific footer styling -->
+          <!-- <h3>follow me!</h3> Title might be redundant in footer -->
+          <ul class="social-links-list">
+            <li>
+              <a
+                href="https://x.com/ttcruiserrr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow on X (Twitter)"
+                ><i class="fab fa-twitter"></i> <span class="visually-hidden">X (Twitter)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/Elevate-U"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow on GitHub"
+                ><i class="fab fa-github"></i> <span class="visually-hidden">GitHub</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/evrgreenw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow on Instagram"
+                ><i class="fab fa-instagram"></i> <span class="visually-hidden">Instagram</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://linktr.ee/evrgreenw"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Find on Linktree"
+                ><i class="fas fa-link"></i> <span class="visually-hidden">Linktree</span></a
+              > <!-- Using a generic link icon -->
+            </li>
+            <!-- Add more social links as needed -->
+          </ul>
+        </div>
       </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js?t=${Date.now()}"></script>
+    <script type="module" src="js/main.js?t=${Date.now()}"></script>
     <!-- Add script for mobile navigation toggle -->
     <script>
       const navToggle = document.getElementById('mobile-nav-toggle');

@@ -19,87 +19,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      body {
-        font-family: 'Inter', var(--font-family-sans-serif);
-      }
-      /* Specific styles for categories page layout */
-      .categories-page-layout {
-        display: grid;
-        grid-template-columns: 1fr; /* Default mobile: single column */
-        gap: calc(var(--spacing-unit) * 2);
-        margin-top: calc(var(--spacing-unit) * 2);
-      }
-      .category-sidebar-nav {
-        background-color: var(--card-background);
-        padding: var(--spacing-unit);
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-      }
-      .category-sidebar-nav h3 {
-        font-size: 1.1rem;
-        margin-bottom: var(--spacing-unit);
-        padding-bottom: calc(var(--spacing-unit) * 0.5);
-        border-bottom: 1px solid var(--border-color);
-      }
-      .category-sidebar-nav .list-group-item {
-        display: block;
-        padding: calc(var(--spacing-unit) * 0.6) var(--spacing-unit);
-        margin-bottom: calc(var(--spacing-unit) * 0.25);
-        border: none;
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        gap: calc(var(--spacing-unit) * 0.5);
-        padding-left: calc(var(--spacing-unit) * 0.75);
-        color: var(--secondary-text-color);
-        text-decoration: none;
-        transition:
-          background-color 0.2s ease,
-          color 0.2s ease;
-        font-size: 0.95rem;
-      }
-      .category-sidebar-nav .list-group-item:hover {
-        background-color: var(--bg-secondary);
-        color: var(--text-color);
-      }
-      .category-sidebar-nav .list-group-item.active {
-        background-color: var(--link-color);
-        color: var(--text-secondary);
-        font-weight: 500;
-      }
-      .category-image-placeholder i {
-        font-size: 1.1rem;
-        width: 1.25rem;
-      }
-      .tools-main-content h2 {
-        margin-bottom: calc(var(--spacing-unit) * 0.5);
-      }
-      .tools-main-content .category-description {
-        color: var(--secondary-text-color);
-        font-size: 1rem;
-        margin-bottom: calc(var(--spacing-unit) * 1.5);
-      }
-      /* Search bar styles moved to style.css */
-      .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: calc(var(--spacing-unit) * 1.5);
-      }
-
-      @media (min-width: 768px) {
-        .categories-page-layout {
-          grid-template-columns: 250px 1fr; /* Sidebar and main content */
-        }
-      }
-    </style>
-    <link rel="icon" href="data:," />
+    <!-- Inline styles removed, managed in style.css -->
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <nav class="main-nav">
-          <a class="logo" href="index.html">ThinkStack</a>
+          <a class="logo" href="index.html"><img src="img/logo.svg" alt="ThinkStack Logo"></a>
           <ul class="nav-links" id="nav-links">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li>
@@ -197,9 +123,12 @@
             <button id="search-button">Search</button>
           </div>
 
-          <div id="tools-container" class="tools-grid">
+          <div id="tools-container" class="tools-grid" aria-live="polite">
             <!-- Tool cards will be populated by JavaScript -->
-            <p>Loading tools...</p>
+            <div class="loading-indicator">
+                <p>Loading tools...</p>
+                <!-- Optional: Add a spinner element here -->
+            </div>
           </div>
         </main>
       </div>
@@ -258,7 +187,7 @@
 
     <!-- Scripts -->
     <!-- Ensure main.js is loaded first as categories.js might depend on aiToolsData -->
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script type="module" src="js/categories.js"></script>
     <!-- Mobile navigation toggle script -->
     <script>

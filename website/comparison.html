@@ -11,128 +11,23 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Link to the updated stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
-    <style>
-      body {
-        font-family: 'Inter', var(--font-family-sans-serif);
-      }
-      /* Specific styles for comparison page layout */
-      .comparison-page-layout {
-        display: grid;
-        grid-template-columns: 1fr; /* Default mobile: single column */
-        gap: calc(var(--spacing-unit) * 2);
-        margin-top: calc(var(--spacing-unit) * 2);
-      }
-      .comparison-sidebar {
-        background-color: var(--card-background);
-        padding: var(--spacing-unit);
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-      }
-      .comparison-sidebar h3 {
-        font-size: 1.1rem;
-        margin-bottom: var(--spacing-unit);
-        padding-bottom: calc(var(--spacing-unit) * 0.5);
-        border-bottom: 1px solid var(--border-color);
-      }
-      .filter-group {
-        margin-bottom: var(--spacing-unit);
-      }
-      .filter-group label {
-        display: block;
-        font-weight: 500;
-        margin-bottom: calc(var(--spacing-unit) * 0.3);
-        font-size: 0.9rem;
-      }
-      .filter-group select,
-      .filter-group input[type='search'] {
-        width: 100%;
-        padding: calc(var(--spacing-unit) * 0.6) var(--spacing-unit);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        font-size: 0.95rem;
-        background-color: var(--background-color); /* Ensure contrast */
-      }
-      .tool-selection-list {
-        max-height: 300px; /* Limit height and make scrollable */
-        overflow-y: auto;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        padding: calc(var(--spacing-unit) * 0.5);
-        background-color: var(--background-color);
-      }
-      .tool-selection-list .list-group-item {
-        display: block;
-        padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
-        border: none;
-        cursor: pointer;
-      }
-      .tool-selection-list .list-group-item input[type='checkbox'] {
-        margin-right: calc(var(--spacing-unit) * 0.5);
-      }
-      .comparison-main-content h2 {
-        margin-bottom: var(--spacing-unit);
-      }
-      #comparison-placeholder {
-        text-align: center;
-        padding: calc(var(--spacing-unit) * 3);
-        background-color: var(--card-background);
-        border-radius: 8px;
-        border: 1px dashed var(--border-color);
-        color: var(--secondary-text-color);
-      }
-      .comparison-table-container {
-        overflow-x: auto; /* Allow horizontal scrolling on small screens */
-        margin-bottom: calc(var(--spacing-unit) * 2);
-      }
-      .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.9rem;
-      }
-      .comparison-table th,
-      .comparison-table td {
-        border: 1px solid var(--border-color);
-        padding: calc(var(--spacing-unit) * 0.75);
-        text-align: left;
-        vertical-align: top;
-      }
-      .comparison-table thead th {
-        background-color: var(--card-background);
-        font-weight: 600;
-        position: sticky; /* Keep header visible when scrolling horizontally */
-        top: 0;
-        z-index: 1;
-      }
-      .comparison-table tbody th {
-        background-color: var(--card-background);
-        font-weight: 500;
-        width: 150px; /* Fixed width for feature column */
-      }
-      .comparison-charts {
-        display: grid;
-        grid-template-columns: 1fr; /* Stack charts on mobile */
-        gap: calc(var(--spacing-unit) * 2);
-      }
-
-      @media (min-width: 768px) {
-        .comparison-page-layout {
-          grid-template-columns: 300px 1fr; /* Sidebar and main content */
-        }
-        .comparison-charts {
-          grid-template-columns: 1fr 1fr; /* Side-by-side charts */
-        }
-      }
-    </style>
-    <link rel="icon" href="data:," />
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <nav class="main-nav">
-          <a class="logo" href="index.html">ThinkStack</a>
+          <a class="logo" href="index.html"><img src="img/logo.svg" alt="ThinkStack Logo"></a>
           <ul class="nav-links" id="nav-links">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link" href="categories.html">Categories</a></li>
@@ -192,7 +87,7 @@
         </div>
 
         <div class="filter-group">
-          <label>Select Tools (up to 4):</label>
+          <label>Select Tools <span id="tool-selection-counter">(0 / 8)</span>:</label>
           <div id="tool-list" class="tool-selection-list list-group">
             <!-- Tool checkboxes populated by JS -->
             <p>Loading tools...</p>
@@ -240,7 +135,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Ensure main.js is loaded first -->
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script src="js/comparison.js"></script>
     <!-- Mobile navigation toggle script -->
     <script>

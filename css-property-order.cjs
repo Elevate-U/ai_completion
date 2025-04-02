@@ -1,12 +1,27 @@
 // Based on our cleaned-up property order
 module.exports = [
   // Positioning
-  'position', 'z-index', 'top', 'right', 'bottom', 'left',
-  'inset', 'inset-block', 'inset-inline',
+  'position',
+  'z-index',
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'inset',
+  'inset-block',
+  'inset-inline',
 
   // Layout & Flow
-  'display', 'flex', 'flex-direction', 'flex-wrap', 'flex-flow',
-  'flex-grow', 'flex-shrink', 'flex-basis', 'grid', 'grid-template',
+  'display',
+  'flex',
+  'flex-direction',
+  'flex-wrap',
+  'flex-flow',
+  'flex-grow',
+  'flex-shrink',
+  'flex-basis',
+  'grid',
+  'grid-template',
   'grid-template-areas', 'grid-template-rows', 'grid-template-columns',
   'grid-auto-rows', 'grid-auto-columns', 'grid-auto-flow', 'grid-area',
   'grid-row', 'grid-row-start', 'grid-row-end', 'grid-column',

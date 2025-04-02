@@ -11,6 +11,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Link to the updated stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
@@ -67,7 +75,7 @@
     <header class="site-header">
       <div class="container">
         <nav class="main-nav">
-          <a class="logo" href="index.html">ThinkStack</a>
+          <a class="logo" href="index.html"><img src="img/logo.svg" alt="ThinkStack Logo"></a>
           <ul class="nav-links" id="nav-links">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link" href="categories.html">Categories</a></li>
@@ -76,6 +84,7 @@
             <!-- Active Link -->
           </ul>
           <div class="header-controls">
+            <!-- Wrapper for controls -->
             <!-- Theme Switcher Button -->
             <button
               class="theme-toggle"
@@ -88,13 +97,16 @@
               <i class="fas fa-music theme-icon spotify-icon"></i>
               <span class="visually-hidden">Toggle theme</span>
             </button>
+            <!-- Mobile Navigation Toggle Button -->
             <button
               class="mobile-nav-toggle"
               id="mobile-nav-toggle"
               aria-label="Toggle navigation"
               aria-expanded="false"
             >
+              <!-- Icon for menu (e.g., hamburger icon) - can use SVG or font icon -->
               <span>&#9776;</span>
+              <!-- Basic hamburger character -->
             </button>
           </div>
         </nav>
@@ -157,7 +169,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <!-- Include main.js for theme toggle and potential future global functions -->
     <script src="js/blog.js"></script>
     <!-- Load blog posts -->

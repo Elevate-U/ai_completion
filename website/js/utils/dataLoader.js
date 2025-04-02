@@ -1,63 +1,14 @@
 // Data loading utilities - moved from tool-details.js
 
-// Configuration object for file paths and tool ID mappings
-const dataLoaderConfig = {
-  dataPath: '../../ai_tools_resource/data/',
-  toolIdToFilenameMap: {
-    'Dialogflow (Google Conversational AI)': 'dialogflow.json',
-    'Microsoft Azure AI Language': 'azure_ai_language.json',
-    'Wit.ai (Meta Conversational AI)': 'wit_ai.json',
-    'Google Cloud Natural Language API': 'google_cloud_nlp.json', // Added mapping
-  },
-};
+// Configuration for the API endpoint
+const API_ENDPOINT = 'http://localhost:3001/api/tools'; // New API server endpoint
 
-// Helper function: fetch with retry mechanism
-async function fetchWithRetry(url, retries = 3, delay = 1000) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const response = await fetch(url, {
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'text/html',
-        },
-      });
-      // Only proceed if the fetch itself was okay or opaque (CORS issue)
-      if (response.ok || response.type === 'opaque') {
-        // Return the raw text content for the caller to handle
-        // We also pass back the content type header if available
-        const contentType = response.headers.get('content-type');
-        const text = await response.text();
-        return { text, contentType };
-      }
-      if (response.status === 404) {
-        throw new Error(`File not found: ${url}`);
-      }
-      throw new Error(response.statusText);
-    } catch (err) {
-      if (i === retries - 1) {
-        throw err;
-      }
-      // Wait for 'delay' milliseconds before retrying
-      await new Promise((res) => setTimeout(res, delay));
-    }
-  }
-}
+// Global cache for all tools data to avoid multiple fetches
+let allToolsCache = null;
+let isFetchingAllTools = false;
+let fetchAllToolsPromise = null;
 
-// Function to construct filename from tool ID
-function constructFilename(toolId) {
-  const fileName =
-    dataLoaderConfig.toolIdToFilenameMap[toolId] ||
-    (() => {
-      const decodedToolId = decodeURIComponent(toolId);
-      return (
-        decodedToolId
-          .toLowerCase()
-          .replace(/[^a-z0-9\s]/gi, '')
-          .replace(/\s+/g, '_') + '.json'
-      );
-    })();
-  return fileName;
-}
+// --- Old file-based loading helpers removed ---
 
 // --- Client-side pricing extraction helpers removed ---
 // Pricing data is now expected to be pre-processed by the server-side script
@@ -68,33 +19,32 @@ function constructFilename(toolId) {
 
 // Main function to load tool data
 export async function loadToolData() {
-  console.log('loadToolData called');
+  console.log('[dataLoader] loadToolData called');
   const urlParams = new URLSearchParams(window.location.search);
-  const toolId = urlParams.get('id');
-  if (!toolId) throw new Error('Tool ID missing from URL');
+  const toolId = urlParams.get('id'); // Get the raw ID from URL
+  if (!toolId) {
+    console.error('[dataLoader] Tool ID missing from URL');
+    throw new Error('Tool ID missing from URL');
+  }
 
-  // Fetch the specific tool data directly based on ID
-
-  // 2. Fallback to direct fetch
-  const fileName = constructFilename(toolId);
-  const filePath = `${dataLoaderConfig.dataPath}${fileName}`;
-  console.log(`Attempting to load tool data from: ${filePath}`);
   try {
-    const toolDataResponse = await fetchWithRetry(filePath); // Get the response object {text, contentType}
-    console.log(`Raw tool data loaded successfully from ${filePath}`); // Log raw load
-    const toolData = JSON.parse(toolDataResponse.text); // Parse the JSON text
-    // console.log(`Tool data parsed successfully:`, toolData); // Optional: Log parsed object if needed for further debugging
+    // Ensure all data is loaded (or loading) from the API
+    const allTools = await loadAllToolsData();
 
-    // Client-side fetching logic removed.
-    // The toolData loaded from JSON should now contain the pre-processed pricing
-    // (including 'scraped_pricing_tables' if the backend script was successful).
-    console.log(
-      `Loaded tool data for "${toolData.name}" from ${filePath}. Pricing data should be pre-processed.`
-    );
+    // Find the specific tool in the cached data
+    const decodedToolId = decodeURIComponent(toolId); // Decode for comparison
+    const toolData = findToolInData(decodedToolId, allTools);
 
-    return toolData;
+    if (toolData) {
+      console.log(`[dataLoader] Found tool data for "${decodedToolId}" in cache.`);
+      return toolData;
+    } else {
+      console.error(`[dataLoader] Tool "${decodedToolId}" not found in loaded data.`);
+      throw new Error(`Tool data for "${decodedToolId}" could not be found.`);
+    }
   } catch (error) {
-    console.error(`Direct fetch failed: ${error}`);
+    console.error(`[dataLoader] Error loading tool data for "${toolId}":`, error);
+    // Re-throw the error to be handled by the caller
     throw new Error(
       `Tool data for "${toolId}" could not be loaded. ${error.message}`
     );
@@ -104,111 +54,62 @@ export async function loadToolData() {
 // Function to load data for ALL tools
 export async function loadAllToolsData() {
   console.log('[dataLoader] loadAllToolsData called');
-  let toolFilenames = [];
 
-  try {
-    // Fetch the list of tool filenames from the server endpoint
-    console.log('[dataLoader] Fetching tool file list from /list-tool-files');
-    const response = await fetch('/list-tool-files'); // Use the new endpoint
-    if (!response.ok) {
-      throw new Error(`Failed to fetch tool list: ${response.statusText}`);
-    }
-    toolFilenames = await response.json();
-    console.log(
-      `[dataLoader] Received ${toolFilenames.length} tool filenames from server.`
-    );
-    if (!Array.isArray(toolFilenames)) {
-      throw new Error('Received invalid data format for tool list.');
-    }
-  } catch (error) {
-    console.error('[dataLoader] Error fetching tool file list:', error);
-    // Optionally, fallback to a hardcoded list or throw error
-    // For now, we'll proceed with an empty list which will result in an error later or empty data
-    // throw new Error('Could not fetch the list of tool files.');
-    toolFilenames = []; // Proceed with empty list on error
+  // Return cached data if available
+  if (allToolsCache) {
+    console.log('[dataLoader] Returning cached tool data.');
+    return allToolsCache;
   }
 
-  if (toolFilenames.length === 0) {
-    console.warn(
-      '[dataLoader] No tool filenames found or fetched. Cannot load tool data.'
-    );
-    return []; // Return empty array if no filenames
+  // If a fetch is already in progress, return the existing promise
+  if (isFetchingAllTools && fetchAllToolsPromise) {
+    console.log('[dataLoader] Fetch already in progress, returning existing promise.');
+    return fetchAllToolsPromise;
   }
 
-  const fetchPromises = toolFilenames.map((fileName) => {
-    const filePath = `${dataLoaderConfig.dataPath}${fileName}`;
-    return fetchWithRetry(filePath)
-      .then((response) => {
-        try {
-          return JSON.parse(response.text);
-        } catch (parseError) {
-          console.error(
-            `[dataLoader] Failed to parse JSON from ${fileName}:`,
-            parseError,
-            'Raw text:',
-            response.text
-          );
-          return null; // Return null for files that fail to parse
-        }
-      })
-      .catch((error) => {
-        console.error(`[dataLoader] Failed to fetch ${filePath}:`, error);
-        return null; // Return null for files that fail to fetch
-      });
-  });
-
-  try {
-    const results = await Promise.all(fetchPromises);
-    // Filter out any null results from failed fetches/parses
-    const allToolsData = results.filter((data) => data !== null);
-    console.log(
-      `[dataLoader] Successfully loaded data for ${allToolsData.length} tools.`
-    );
-    // Warning message is still relevant if some fetches failed within Promise.all
-    const expectedCount = toolFilenames.length;
-    if (allToolsData.length < expectedCount) {
-      console.warn(
-        `[dataLoader] Some tool files failed to load or parse. Expected ${expectedCount}, got ${allToolsData.length}.`
-      );
+  // Start fetching
+  isFetchingAllTools = true;
+  fetchAllToolsPromise = (async () => {
+    try {
+      console.log(`[dataLoader] Fetching all tool data from API: ${API_ENDPOINT}`);
+      const response = await fetch(API_ENDPOINT);
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch tool data from API: ${response.status} ${response.statusText}`
+        );
+      }
+      const data = await response.json();
+      if (!Array.isArray(data)) {
+         throw new Error('API response is not an array.');
+      }
+      console.log(`[dataLoader] Successfully loaded data for ${data.length} tools from API.`);
+      allToolsCache = data; // Cache the data
+      return data;
+    } catch (error) {
+      console.error('[dataLoader] Error fetching or processing data from API:', error);
+      allToolsCache = null; // Clear cache on error
+      throw new Error(`Could not load tool data from API. ${error.message}`); // Re-throw
+    } finally {
+      isFetchingAllTools = false; // Reset fetching flag
+      // Don't nullify fetchAllToolsPromise here, let subsequent calls use the resolved/rejected promise
     }
-    return allToolsData;
-  } catch (error) {
-    console.error('[dataLoader] Error loading all tool data:', error);
-    throw new Error('Could not load all tool data.'); // Re-throw or handle as needed
-  }
+  })();
+
+  return fetchAllToolsPromise;
 }
 
 // Helper function to search in preloaded data
 export function findToolInData(toolId, data) {
   if (!data) return null;
-  const decodedId = decodeURIComponent(toolId);
-  return data.find(
-    (t) =>
-      t.id === decodedId ||
-      t.name === decodedId ||
-      (t.name &&
-        t.name.toLowerCase().replace(/\s+/g, '_') ===
-          decodedId.toLowerCase().replace(/\s+/g, '_'))
-  );
+  // Ensure comparison is case-insensitive and handles potential encoding differences
+  const normalizedId = toolId.toLowerCase().replace(/\s+/g, '_');
+  return data.find((tool) => {
+    if (!tool || !tool.name) return false;
+    const normalizedToolName = tool.name.toLowerCase().replace(/\s+/g, '_');
+    // Also check against the original filename stored in the DB (if we adapt the API later)
+    // const normalizedFilename = tool.filename ? tool.filename.replace('.json', '').toLowerCase() : '';
+    return normalizedToolName === normalizedId; // || normalizedFilename === normalizedId;
+  });
 }
 
-// Unit test for filename construction
-function testFilenameConstruction(toolId) {
-  const fileName = constructFilename(toolId);
-  return fileName;
-}
-
-// Test cases
-console.assert(
-  testFilenameConstruction('Dialogflow (Google Conversational AI)') ===
-    'dialogflow.json',
-  'Test Case 1 Failed: Dialogflow'
-);
-console.assert(
-  testFilenameConstruction('Amazon Lex') === 'amazon_lex.json',
-  'Test Case 2 Failed: Amazon Lex'
-);
-console.assert(
-  testFilenameConstruction('Google Cloud NLP') === 'google_cloud_nlp.json',
-  'Test Case 3 Failed: Google Cloud NLP'
-);
+// --- Removed filename construction tests ---

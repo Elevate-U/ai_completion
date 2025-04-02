@@ -1,0 +1,141 @@
+{
+  "name": "Perplexity AI",
+  "category": "AI Search Engine",
+  "description": "AI-powered answer engine providing real-time, cited answers using advanced language models. Offers both a web interface and API access for developers.",
+  "features": [
+    "Real-time information retrieval with citations",
+    "Conversational interface",
+    "Multiple AI models available (Free and Pro tiers, API)",
+    "\"Pro Search\" for more detailed/intensive searches",
+    "API access with usage-based pricing",
+    "Image generation (personal, non-commercial use)",
+    "File upload and analysis (Pro)",
+    "Focus modes (e.g., Academic, Writing, WolframAlpha)"
+  ],
+  "pricing": {
+    "model": "Freemium + Subscription + API Usage",
+    "free_tier": "Yes, standard features, limited Pro searches per day.",
+    "paid_tiers": [
+      {
+        "name": "Pro",
+        "price": "$20/month or $200/year",
+        "features": [
+          "300+ Pro searches daily",
+          "Choice of advanced AI models (GPT-4, Claude 3, Perplexity models)",
+          "$5 monthly API credit",
+          "Unlimited file uploads",
+          "Pro support"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "$40/month per seat (minimum 5 seats)",
+        "features": [
+          "All Pro features",
+          "SSO (SAML)",
+          "Data privacy controls",
+          "Usage analytics",
+          "Priority support"
+        ]
+      }
+    ],
+    "notes": "API pricing is usage-based and varies by model. See documentation for details (e.g., pplx-7b-online $0.28/M tokens, llama-3-sonar-large-32k-online $1.0/M tokens)."
+  },
+  "use_cases": [
+    {
+      "title": "Research & Information Gathering",
+      "description": "Quickly find and synthesize information from the web with cited sources.",
+      "example": "Asking 'What are the latest developments in renewable energy?' and getting a summarized answer with links."
+    },
+    {
+      "title": "Content Creation Assistance",
+      "description": "Generate ideas, outlines, or drafts for articles, emails, or reports.",
+      "example": "Using the 'Writing' focus mode to brainstorm blog post ideas."
+    },
+    {
+      "title": "Coding Help",
+      "description": "Get explanations for code snippets or generate code.",
+      "example": "Pasting a Python function and asking for an explanation or optimization."
+    }
+  ],
+  "pros": [
+    "Provides citations/sources for answers",
+    "Access to up-to-date information",
+    "Multiple AI model choices (Pro/API)",
+    "Intuitive conversational format",
+    "Generous free tier",
+    "API access for integration"
+  ],
+  "cons": [
+    "Free tier has usage limits on advanced features",
+    "AI can still hallucinate or provide inaccurate information",
+    "Some responses can be repetitive",
+    "Image generation limited to non-commercial use"
+  ],
+  "technical_specifications": {
+    "api_type": "REST",
+    "sdks": ["Python", "JavaScript (Community/Unofficial likely)"],
+    "platforms": "Web, iOS, Android, Chrome Extension",
+    "input_methods": ["Text prompts", "File uploads (Pro)"],
+    "supported_languages": ["English (Primary)", "Multiple others via underlying LLMs"],
+    "performance_metrics": {
+      "latency": "Varies by model, generally low for online models",
+      "throughput": "Subject to API rate limits",
+      "accuracy": "High, with citations, but not infallible"
+    }
+  },
+  "user_reviews": {
+    "summary": null,
+    "average_rating": "N/A",
+    "sentiment_analysis": null,
+    "sources": []
+  },
+  "benchmark_scores": {
+    "overall_performance": "N/A",
+    "accuracy": "N/A",
+    "speed": "N/A",
+    "task_specific": {}
+  },
+  "integration_capabilities": [
+    "REST API for custom integrations",
+    "Chrome Browser Extension"
+  ],
+  "scalability": "API designed for scaling with usage-based pricing and rate limits.",
+  "support_options": [
+    "Help Center/FAQ",
+    "Community Discord",
+    "Pro Support (Paid Tier)",
+    "Enterprise Support (Paid Tier)"
+  ],
+  "training_resources": [
+    {
+      "type": "Documentation",
+      "url": "https://docs.perplexity.ai/",
+      "description": "Official API and usage documentation."
+    },
+    {
+      "type": "FAQ",
+      "url": "https://www.perplexity.ai/hub/faq",
+      "description": "Frequently asked questions about the service."
+    },
+    {
+      "type": "Blog",
+      "url": "https://blog.perplexity.ai/",
+      "description": "Updates and articles from the Perplexity team."
+    }
+  ],
+  "security_compliance": {
+    "certifications": ["N/A"],
+    "data_protection": "Standard data privacy measures. Enterprise plan offers enhanced controls and SOC2 compliance."
+  },
+  "documentation_url": "https://docs.perplexity.ai/home",
+  "api_url": "https://docs.perplexity.ai/reference/post_chat_completions",
+  "sdk_url": "https://github.com/perplexity-ai/perplexity-python",
+  "data_source_urls": [
+    "https://www.perplexity.ai/",
+    "https://docs.perplexity.ai/guides/pricing",
+    "https://team-gpt.com/blog/perplexity-pricing/",
+    "https://www.toolsforhumans.ai/ai-tools/perplexity"
+  ],
+  "last_updated": "2025-04-01"
+}

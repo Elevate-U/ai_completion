@@ -9,7 +9,8 @@
     "format": "prettier --write \"**/*.{js,css,html,md,json}\"",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "build:css": "postcss website/css/style.css -o website/css/style.min.css",
-    "watch:css": "postcss website/css/style.css -o website/css/style.min.css --watch"
+    "watch:css": "postcss website/css/style.css -o website/css/style.min.css --watch",
+    "dev": "node api_server.js & node website/local-dev-server.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "@types/node": "^22.13.14",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.3",
+    "concurrently": "^9.1.2",
     "cssnano": "^6.0.1",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
@@ -42,8 +44,10 @@
   },
   "dependencies": {
     "@types/jest": "^29.5.14",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0"
+    "jest-environment-jsdom": "^29.7.0",
+    "sqlite3": "^5.1.7"
   }
 }

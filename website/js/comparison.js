@@ -1,5 +1,8 @@
 // Comparison page functionality (Refined)
 
+// Import data loader
+import { loadAllToolsData } from './utils/dataLoader.js'; // Import the centralized loader
+
 // DOM Elements (Ensure these IDs exist in updated comparison.html)
 const categoryFilter = document.getElementById('category-filter');
 const toolSearch = document.getElementById('tool-search');
@@ -13,30 +16,32 @@ const featuresChartCtx = document
 const comparisonChart2Ctx = document
   .getElementById('pricing-chart')
   ?.getContext('2d'); // Renamed ID for clarity, use optional chaining
+const toolSelectionCounterSpan = document.getElementById('tool-selection-counter'); // Added counter span
 
 // State
+let aiToolsData = []; // Store loaded data locally for this page
 let selectedTools = []; // Store names or unique IDs of selected tools
 let featuresChartInstance = null;
 let comparisonChart2Instance = null;
-const MAX_COMPARE_TOOLS = 4;
+const MAX_COMPARE_TOOLS = 8; // Increased limit
 
 // Initialize comparison page
 function initComparisonPage() {
   console.log('Initializing Comparison Page...');
-  // Check if aiToolsData is loaded
-  if (typeof aiToolsData === 'undefined' || aiToolsData.length === 0) {
-    console.error('AI Tools data not available for comparison page.');
-    if (comparisonPlaceholder) {
-      comparisonPlaceholder.innerHTML =
-        '<p>Error loading tool data. Please try refreshing.</p>';
-      comparisonPlaceholder.style.display = 'block';
-    }
-    if (comparisonResults) comparisonResults.style.display = 'none';
-    // Disable filters/search if no data
-    if (categoryFilter) categoryFilter.disabled = true;
-    if (toolSearch) toolSearch.disabled = true;
-    return;
-  }
+ // Check if aiToolsData is loaded (it should be by the time this runs)
+ if (!aiToolsData || aiToolsData.length === 0) {
+   console.error('AI Tools data not available for comparison page initialization.');
+   // Error handling might have already happened in the loader, but double-check
+   if (comparisonPlaceholder && !comparisonPlaceholder.textContent.includes('Error')) {
+       comparisonPlaceholder.innerHTML = '<p>Tool data is empty or failed to load.</p>';
+       comparisonPlaceholder.style.display = 'block';
+   }
+   if (comparisonResults) comparisonResults.style.display = 'none';
+   // Disable filters/search if no data
+   if (categoryFilter) categoryFilter.disabled = true;
+   if (toolSearch) toolSearch.disabled = true;
+   return;
+ }
 
   // Ensure chart contexts are available
   if (!featuresChartCtx || !comparisonChart2Ctx) {
@@ -49,6 +54,7 @@ function initComparisonPage() {
   populateToolList(); // Initial population
   setupComparisonEventListeners();
   updateComparisonResults(); // Update based on initially selected tools (if any persisted)
+  updateToolSelectionCounter(); // Initial counter update
   console.log('Comparison Page Initialized.');
 }
 
@@ -134,7 +140,7 @@ function updateComparisonResults() {
   if (toolsToCompare.length < 2) {
     comparisonResults.style.display = 'none';
     comparisonPlaceholder.style.display = 'block';
-    comparisonPlaceholder.innerHTML = `<p>Select ${2 - toolsToCompare.length} more tool${toolsToCompare.length === 0 ? 's' : ''} to compare (up to ${MAX_COMPARE_TOOLS}).</p>`;
+    comparisonPlaceholder.innerHTML = `<p>Select 2 to ${MAX_COMPARE_TOOLS} tools from the sidebar to compare.</p>`; // Updated placeholder text
     // Destroy charts if they exist and less than 2 tools are selected
     if (featuresChartInstance) featuresChartInstance.destroy();
     if (comparisonChart2Instance) comparisonChart2Instance.destroy();
@@ -160,39 +166,100 @@ function updateComparisonTable(tools) {
   // Define the features/aspects to compare
   const comparisonAspects = [
     { label: 'Category', key: 'category' },
-    { label: 'Description', key: 'description', truncate: 150 }, // Add description
+    { label: 'Description', key: 'description', truncate: 120 }, // Reduced truncation
     {
-      label: 'Key Features',
+      label: 'Key Features (Top 5)', // Updated label
       key: 'features',
-      format: (val) => (val ? val.join(', ') : '-'),
+      format: (val) => {
+        if (Array.isArray(val) && val.length > 0) {
+          const escapeHtml = (unsafe) => { // Keep escaping
+            if (typeof unsafe !== 'string') return unsafe;
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+          };
+          // Show only first 5 features
+          const featuresToShow = val.slice(0, 5);
+          let html = `<ul class="key-features-list compact-list">${featuresToShow.map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ul>`;
+          if (val.length > 5) {
+            html += `<small>(${val.length - 5} more...)</small>`; // Indicate more exist
+          }
+          return html;
+        }
+        return '-';
+      },
     },
-    { label: 'Pricing Model', key: 'pricing.model', fallback: 'N/A' }, // Access nested property safely
+   { label: 'Primary Use Case', key: 'use_cases.0.title', fallback: 'N/A' }, // Added
+   {
+     label: 'Pricing Summary', // Changed label
+     key: 'pricing.tiers', // Target the new tiers array
+     format: (tiers) => { // Custom formatter
+       if (!Array.isArray(tiers) || tiers.length === 0) return 'N/A';
+       // Show first 1-2 paid tiers or indicate free/custom
+       const freeTier = tiers.find(t => t.tier_name?.toLowerCase().includes('free') || t.price_description === '$0');
+       const paidTiers = tiers.filter(t => t.price_description && t.price_description !== '$0' && !t.tier_name?.toLowerCase().includes('free'));
+       const customTier = tiers.find(t => t.price_description?.toLowerCase() === 'custom');
+
+       let summary = '';
+       if (freeTier) summary += 'Free Tier Available. ';
+       if (paidTiers.length > 0) {
+           summary += `Paid: ${paidTiers[0].price_description}${paidTiers[0].unit ? ` ${paidTiers[0].unit}` : ''}`;
+           if (paidTiers.length > 1) summary += ` / ${paidTiers[1].price_description}${paidTiers[1].unit ? ` ${paidTiers[1].unit}` : ''}`;
+           if (paidTiers.length > 2) summary += '...';
+       } else if (customTier) {
+           summary += 'Custom Pricing.';
+       } else if (!freeTier) {
+           summary = 'Check Website'; // If only free tier exists, this won't be hit
+       }
+       return summary.trim() || 'N/A';
+     },
+     fallback: 'N/A',
+   },
+   // Removed the old dedicated 'Free Tier' row as it's incorporated above
     {
-      label: 'Free Tier',
-      key: 'pricing.free_tier',
-      format: (val) => (val ? 'Yes' : 'No'),
-      fallback: 'N/A',
-    },
-    {
-      label: 'Pros',
+      label: 'Pros (Top 3)', // Updated label
       key: 'pros',
-      format: (val) => (val ? val.join(', ') : '-'),
+      format: (val) => { // Updated format
+        if (Array.isArray(val) && val.length > 0) {
+          return `<ul class="compact-list">${val.slice(0, 3).map(p => `<li>${p}</li>`).join('')}</ul>`;
+        }
+        return val || '-';
+      },
     },
     {
-      label: 'Cons',
+      label: 'Cons (Top 3)', // Updated label
       key: 'cons',
-      format: (val) => (val ? val.join(', ') : '-'),
+      format: (val) => { // Updated format
+        if (Array.isArray(val) && val.length > 0) {
+          return `<ul class="compact-list">${val.slice(0, 3).map(c => `<li>${c}</li>`).join('')}</ul>`;
+        }
+        return val || '-';
+      },
     },
     {
       label: 'API Type',
       key: 'technical_specifications.api_type',
       fallback: 'N/A',
     },
-    { label: 'Scalability', key: 'scalability', fallback: 'N/A' },
     {
-      label: 'Support Options',
+      label: 'SDKs', // Added
+      key: 'technical_specifications.sdks',
+      format: (val) => (Array.isArray(val) ? val.join(', ') : (typeof val === 'string' ? val : '-')), // Handle array or string
+      fallback: 'N/A',
+    },
+    // Removed 'Scalability' row
+    {
+      label: 'Support Options (Top 3)', // Updated label
       key: 'support_options',
-      format: (val) => (val ? val.join(', ') : '-'),
+      format: (val) => { // Updated format
+        if (Array.isArray(val) && val.length > 0) {
+          return `<ul class="compact-list">${val.slice(0, 3).map(s => `<li>${s}</li>`).join('')}</ul>`;
+        }
+        return val || '-';
+      },
     },
     {
       label: 'Last Updated',
@@ -344,7 +411,24 @@ function updateCharts(tools) {
           text: 'Qualitative Comparison',
           font: { size: 16 },
         },
-        legend: { position: 'bottom' },
+        legend: {
+          position: 'bottom',
+          labels: {
+            boxWidth: 12, // Smaller color box
+            padding: 15 // Spacing between legend items
+          },
+          onClick: (e, legendItem, legend) => { // Make legend interactive
+            const index = legendItem.datasetIndex;
+            const ci = legend.chart;
+            if (ci.isDatasetVisible(index)) {
+                ci.hide(index);
+                legendItem.hidden = true;
+            } else {
+                ci.show(index);
+                legendItem.hidden = false;
+            }
+          }
+        },
       },
       scales: {
         r: {
@@ -370,27 +454,46 @@ function getChartColor(index) {
   return colors[index % colors.length];
 }
 
-// Simplified pricing score calculation (higher = better/cheaper)
+// Updated pricing score calculation (higher = better/cheaper)
 function getPricingScore(tool) {
-  const pricing = tool.pricing;
-  if (!pricing) return 3; // Default score if no pricing info
-  if (typeof pricing === 'string') return 5; // Basic info
+   const tiers = tool.pricing?.tiers;
+   if (!Array.isArray(tiers) || tiers.length === 0) {
+       // Check if it's explicitly free like NLTK/spaCy based on model description
+       const modelDesc = tool.pricing?.model?.toLowerCase() || '';
+       if (modelDesc.includes('free') || modelDesc.includes('open source')) return 10;
+       return 3; // Default score if no pricing info
+   }
 
-  const model = pricing.model ? pricing.model.toLowerCase() : '';
-  const hasFreeTier = pricing.free_tier === true;
+   const hasFreeTier = tiers.some(t => t.tier_name?.toLowerCase().includes('free') || t.price_description === '$0');
+   if (hasFreeTier) return 10;
 
-  if (hasFreeTier) return 10;
-  if (model.includes('free')) return 10;
-  if (model.includes('open source')) return 9;
-  if (
-    model.includes('low') ||
-    model.includes('affordable') ||
-    model.includes('pay-as-you-go')
-  )
-    return 7;
-  if (model.includes('medium') || model.includes('moderate')) return 5;
-  if (model.includes('high') || model.includes('enterprise')) return 2;
-  return 4; // Default for other models
+   // Find the lowest numerical monthly price for a rough score
+   let minMonthlyPrice = Infinity;
+   tiers.forEach(tier => {
+       if (tier.price_description && typeof tier.price_description === 'string') {
+           const priceMatch = tier.price_description.match(/\$?(\d+(\.\d+)?)\s*\/(month|mo)/i);
+           if (priceMatch && priceMatch[1]) {
+               const price = parseFloat(priceMatch[1]);
+               if (price > 0 && price < minMonthlyPrice) {
+                   minMonthlyPrice = price;
+               }
+           }
+       }
+   });
+
+   if (minMonthlyPrice <= 10) return 9; // Very affordable tier
+   if (minMonthlyPrice <= 30) return 7; // Affordable tier
+   if (minMonthlyPrice <= 100) return 5; // Moderate tier
+   if (minMonthlyPrice < Infinity) return 3; // Expensive tier
+
+   // If no monthly price found, check for other indicators
+   const hasPayGo = tiers.some(t => t.unit?.includes('request') || t.unit?.includes('token') || t.unit?.includes('credits') || t.unit?.includes('item'));
+   if (hasPayGo) return 6; // Pay-as-you-go is generally good value
+
+   const hasCustom = tiers.some(t => t.price_description?.toLowerCase() === 'custom');
+   if (hasCustom) return 2; // Custom usually implies enterprise/expensive
+
+   return 4; // Default if only non-monthly paid tiers exist
 }
 
 // Simplified scalability score
@@ -401,6 +504,13 @@ function getScalabilityScore(tool) {
   if (scalability.includes('medium') || scalability.includes('good')) return 7;
   if (scalability.includes('low') || scalability.includes('limited')) return 3;
   return 5; // Default if unknown
+}
+
+// Update the selection counter display
+function updateToolSelectionCounter() {
+  if (toolSelectionCounterSpan) {
+    toolSelectionCounterSpan.textContent = `(${selectedTools.length} / ${MAX_COMPARE_TOOLS})`;
+  }
 }
 
 // Setup event listeners for comparison page
@@ -429,13 +539,14 @@ function setupComparisonEventListeners() {
           } else if (selectedTools.length >= MAX_COMPARE_TOOLS) {
             e.target.checked = false; // Prevent checking more than max
             // Optionally show a message to the user
-            alert(`You can only compare up to ${MAX_COMPARE_TOOLS} tools.`);
+            alert(`You can only compare up to ${MAX_COMPARE_TOOLS} tools.`); // Message reflects new limit
             return; // Stop further processing for this event
           }
         } else {
           selectedTools = selectedTools.filter((id) => id !== toolId);
         }
         updateComparisonResults();
+        updateToolSelectionCounter(); // Update counter on change
         // Refresh tool list to update disabled states
         populateToolList();
       }
@@ -445,64 +556,26 @@ function setupComparisonEventListeners() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
-  // Make listener async
-  console.log('[comparison.js] DOMContentLoaded event fired.');
-
-  // Load data specifically for this page
-  // Assign the loaded data to a variable accessible by initComparisonPage
-  // We'll redefine aiToolsData locally for this script's scope using window
-  window.aiToolsData = await loadAllToolDataForComparison();
-
-  // Now that data is loaded (or failed), initialize the page
-  initComparisonPage();
+ console.log('[comparison.js] DOMContentLoaded event fired.');
+ try {
+   // Use the centralized data loader to fetch data from the API
+   console.log('[comparison.js] Attempting to load all tool data via dataLoader...');
+   aiToolsData = await loadAllToolsData(); // Assign to local variable
+   console.log(`[comparison.js] Successfully loaded data for ${aiToolsData.length} tools via API.`);
+   // Now that data is loaded (or failed), initialize the page
+   initComparisonPage();
+ } catch (error) {
+     console.error('[comparison.js] Error loading tool data via dataLoader:', error);
+     // Display error on the page
+     if (comparisonPlaceholder) {
+         comparisonPlaceholder.innerHTML = `<p>Error loading tool data: ${error.message}. Please try refreshing.</p>`;
+         comparisonPlaceholder.style.display = 'block';
+     }
+     if (comparisonResults) comparisonResults.style.display = 'none';
+     // Initialize with empty data to prevent further errors
+     aiToolsData = [];
+     initComparisonPage(); // Still init to setup listeners etc., but with no data
+ }
 });
 
-// Function to fetch all tool data for the comparison page
-async function loadAllToolDataForComparison() {
-  console.log('[comparison.js] Attempting to load all tool data...');
-  try {
-    // 1. Fetch the list of tool filenames
-    const listResponse = await fetch('/list-tool-files'); // Assumes local-dev-server.js endpoint is running
-    if (!listResponse.ok) {
-      throw new Error(`Failed to fetch tool list: ${listResponse.statusText}`);
-    }
-    const filenames = await listResponse.json();
-    console.log(`[comparison.js] Fetched ${filenames.length} tool filenames.`);
-
-    // 2. Fetch each tool's data file concurrently
-    const fetchPromises = filenames.map((filename) =>
-      fetch(`/ai_tools_resource/data/${filename}`) // Construct path relative to server root
-        .then((response) => {
-          if (!response.ok) {
-            console.warn(
-              `[comparison.js] Failed to fetch ${filename}: ${response.statusText}`
-            );
-            return null; // Return null for failed fetches
-          }
-          return response.json();
-        })
-        .catch((error) => {
-          console.warn(`[comparison.js] Error fetching ${filename}:`, error);
-          return null; // Return null on network error
-        })
-    );
-
-    const toolDataResults = await Promise.all(fetchPromises);
-
-    // 3. Filter out null results (failed fetches) and assign to a local variable
-    const loadedTools = toolDataResults.filter((data) => data !== null);
-    console.log(
-      `[comparison.js] Successfully loaded data for ${loadedTools.length} tools.`
-    );
-    return loadedTools; // Return the loaded data
-  } catch (error) {
-    console.error('[comparison.js] Error loading tool data:', error);
-    // Display error on the page
-    if (comparisonPlaceholder) {
-      comparisonPlaceholder.innerHTML = `<p>Error loading tool data: ${error.message}. Please try refreshing.</p>`;
-      comparisonPlaceholder.style.display = 'block';
-    }
-    if (comparisonResults) comparisonResults.style.display = 'none';
-    return []; // Return empty array on error
-  }
-}
+// Removed the old loadAllToolDataForComparison function as it's replaced by loadAllToolsData from dataLoader.js
