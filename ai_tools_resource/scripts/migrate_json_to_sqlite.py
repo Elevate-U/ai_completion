@@ -215,8 +215,19 @@ def insert_structured_list(cursor, tool_id, data, key, table_name, columns):
         rows_to_insert = []
         for item in items:
             if isinstance(item, dict):
-                row = [tool_id] + [safe_get(item, col) for col in columns]
-                rows_to_insert.append(tuple(row))
+                # Handle dictionary items (original logic)
+                row_values = [safe_get(item, col) for col in columns]
+                rows_to_insert.append(tuple([tool_id] + row_values))
+            elif isinstance(item, str) and table_name == 'tool_use_cases' and 'description' in columns:
+                # Handle string items specifically for tool_use_cases table
+                # Assumes 'description' is the primary column to populate from the string
+                row_values = []
+                for col in columns:
+                    if col == 'description':
+                        row_values.append(item) # Put the string in the description column
+                    else:
+                        row_values.append(None) # Set other columns (title, example) to None
+                rows_to_insert.append(tuple([tool_id] + row_values))
         if rows_to_insert:
             cursor.executemany(sql, rows_to_insert)
 
@@ -595,22 +606,24 @@ def main():
                 process_pricing(cursor, tool_id, pricing)
 
                 logging.info(f"Successfully processed {filename} (New Tool ID: {tool_id})")
+                conn.commit() # Commit after successfully processing each file
+                logging.debug(f"Committed changes for {filename}")
 
             except json.JSONDecodeError as e:
                 logging.error(f"Failed to decode JSON for {filename}: {e}")
+                # No rollback here, as we want to keep previous successful commits
             except Exception as e:
                 logging.error(f"Error processing {filename}: {e}", exc_info=True)
-                conn.rollback() # Rollback changes for this specific file on error
-                logging.warning(f"Rolled back changes for {filename}")
+                # No rollback here
+                logging.warning(f"Skipping {filename} due to error, previously committed files are safe.")
 
 
         # 6. (Optional) Clean up or vacuum database if needed
         # logging.info("Vacuuming database...")
         # cursor.execute("VACUUM")
 
-        # 7. Commit changes
-        conn.commit()
-        logging.info("Migration committed successfully.")
+        # 7. Final commit removed (commits happen per file now)
+        logging.info("Finished processing all files.")
 
     except sqlite3.Error as e:
         logging.error(f"Database error during migration: {e}", exc_info=True)

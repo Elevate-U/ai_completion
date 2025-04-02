@@ -129,5 +129,25 @@
     "https://ai.google.dev/",
     "https://cloud.google.com/vertex-ai"
   ],
+  "user_reviews": {
+    "summary": "Gemini generally receives positive feedback for its broad knowledge base and ease of use. G2 reviewers rate it 4.4/5 (164 reviews), highlighting its ability to answer diverse questions and simplify tasks. TrustRadius users give it 8.2/10 (24 reviews), praising its minimalist interface and focus on content.",
+    "sources": [
+      {
+        "source_name": "G2",
+        "rating": "4.4/5",
+        "review_count": 164,
+        "highlights": ["Answers almost everything", "Makes day-to-day tasks much easier"],
+        "source_url": "https://www.g2.com/products/google-gemini/reviews"
+      },
+      {
+        "source_name": "TrustRadius",
+        "rating": "8.2/10",
+        "review_count": 24,
+        "highlights": ["Easy to use, minimalist interface", "Focus on content"],
+        "source_url": "https://www.trustradius.com/products/google-gemini/reviews"
+      }
+    ],
+    "common_uses_from_reviews": []
+  },
   "last_updated": "2025-04-02"
 }
