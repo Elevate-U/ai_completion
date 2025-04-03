@@ -1,7 +1,10 @@
 // Data loading utilities - moved from tool-details.js
 
 // Configuration for the API endpoint
-const API_ENDPOINT = 'http://localhost:3001/api/tools'; // New API server endpoint
+// Determine API endpoint based on hostname
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+// TODO: Replace '/api/tools' with the actual public URL of your deployed API
+const API_ENDPOINT = isLocal ? 'http://localhost:3001/api/tools' : '/api/tools';
 
 // Global cache for all tools data to avoid multiple fetches
 let allToolsCache = null;
