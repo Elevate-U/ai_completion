@@ -71,7 +71,6 @@ export function initTabs() {
 }
 
 export async function renderTabContents(tool) {
-  console.log('renderTabContents called');
   // Get references to all tab content containers
   const featuresTab = document.getElementById('features-tab');
   const pricingTab = document.getElementById('pricing-tab');

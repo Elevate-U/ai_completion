@@ -17,7 +17,7 @@ export default [
   {
     files: [
       'Gruntfile.cjs',
-      'postcss.config.js',
+      'postcss.config.cjs',
       '.stylelintrc.cjs',
       'css-property-order.cjs',
       // REMOVED jest.config.js
@@ -80,7 +80,14 @@ export default [
       prettier: prettierPlugin,
     },
     rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       'no-console': 'warn',
       eqeqeq: 'error',
       ...prettierConfig.rules,

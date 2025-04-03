@@ -66,7 +66,6 @@ function renderBreadcrumbs(tool) {
 
 // Main rendering function - Enhanced Hybrid Approach
 async function renderToolDetails(tool) {
-  console.log('renderToolDetails called - rendering sequentially');
   const container = document.getElementById('tool-details-content');
   if (!container) return;
 
@@ -92,7 +91,6 @@ async function renderToolDetails(tool) {
   // Needs to run after content is in the DOM
   setTimeout(initializeMermaid, 0);
 
-  console.log('Sequential rendering complete.');
   // Removed tab initialization and summary click listener logic
 }
 

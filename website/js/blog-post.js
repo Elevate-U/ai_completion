@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     !postBodyElement ||
     !articleElement
   ) {
-    console.error('One or more required post elements not found!');
     if (articleElement) {
       articleElement.innerHTML =
         '<p>Error: Could not load post content due to a page structure issue.</p>';
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const slug = urlParams.get('slug');
 
   if (!slug) {
-    console.error('No post slug found in URL.');
     articleElement.innerHTML =
       '<h1>Post Not Found</h1><p>No specific post was requested. Please return to the <a href="blog.html">blog list</a>.</p>';
     document.title = 'Post Not Found - ThinkStack';
@@ -60,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
               day: 'numeric',
             });
           }
-        } catch (e) {
-          console.warn(`Could not format date ${post.date}: ${e}`);
+        } catch (_e) {
+          /* No action needed on date format error */
         }
 
         // Populate the template
@@ -71,13 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         postAuthorElement.textContent = post.author;
         postBodyElement.innerHTML = post.content; // Use innerHTML to render HTML tags in content
       } else {
-        console.error(`Post with slug "${slug}" not found.`);
         articleElement.innerHTML = `<h1>Post Not Found</h1><p>Sorry, the post you are looking for (slug: ${slug}) could not be found. Please return to the <a href="blog.html">blog list</a>.</p>`;
         document.title = 'Post Not Found - ThinkStack';
       }
     })
-    .catch((error) => {
-      console.error('Error fetching or processing blog post:', error);
+    .catch((_error) => {
       articleElement.innerHTML =
         '<h1>Error Loading Post</h1><p>There was an error loading the blog post content. Please try again later or return to the <a href="blog.html">blog list</a>.</p>';
       document.title = 'Error Loading Post - ThinkStack';

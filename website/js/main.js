@@ -67,7 +67,6 @@ function updateThemeAttribute(theme) {
 // --- Filter Population ---
 function populateFilters(tools) {
   if (!categoryFiltersContainer || !featureFiltersContainer) {
-    console.warn('Filter containers not found, skipping filter population.');
     return;
   }
 
@@ -128,7 +127,6 @@ function populateFilters(tools) {
 // --- Display Tools Function (Minor update for clarity) ---
 function displayTools(toolsData) {
   if (!toolsListContainer) {
-    console.error('Tool list container (#tools-list) not found.');
     return;
   }
 
@@ -150,7 +148,6 @@ function displayTools(toolsData) {
 
 // --- Filtering and Sorting Logic ---
 function applyFiltersAndSort() {
-  console.log('Applying filters and sort:', currentFilters, currentSort);
   if (!toolsListContainer) return;
 
   // Show loading indicator temporarily
@@ -259,9 +256,6 @@ function applyFiltersAndSort() {
 
     // 6. Display the final list
     displayTools(filteredTools);
-    console.log(
-      `Displayed ${filteredTools.length} tools after filtering/sorting.`
-    );
   }, 50); // Small delay for rendering loading state
 }
 
@@ -284,23 +278,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Event listener for the toggle button
     themeToggle.addEventListener('click', () => {
-      console.log('Theme toggle clicked');
       let currentThemeIndex = themes.indexOf(currentTheme);
       let nextThemeIndex = (currentThemeIndex + 1) % themes.length;
       let nextTheme = themes[nextThemeIndex];
 
-      console.log(`Current theme: ${currentTheme}, Next theme: ${nextTheme}`);
-
       // Update theme attribute and save to localStorage
       updateThemeAttribute(nextTheme);
-      localStorage.setItem('theme', nextTheme);
-      console.log(`Theme toggled to ${nextTheme} mode`);
+      localStorage.setItem('theme', nextTheme); // Removed empty block after this
 
       // Update currentTheme for the next click
       currentTheme = nextTheme;
     });
-  } else {
-    console.log('Theme toggle element not found');
   }
 
   // Mobile Nav Toggle Logic (Keep as is)
@@ -319,12 +307,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // --- Load Initial Data and Set Up Filters/Sorting ---
   if (toolsListContainer) {
     try {
-      console.log('Loading all tool data for homepage...');
       toolsListContainer.innerHTML =
         '<p class="loading-indicator">Loading tools...</p>'; // Initial loading state
 
       allToolsData = await loadAllToolsData(); // Store fetched data globally
-      console.log(`Loaded ${allToolsData.length} tools.`);
 
       populateFilters(allToolsData); // Populate filter options
       displayTools(allToolsData); // Display the initial full list
@@ -384,15 +370,13 @@ document.addEventListener('DOMContentLoaded', async () => {
           applyFiltersAndSort();
         });
       }
-    } catch (error) {
-      console.error('Error loading or setting up tools on homepage:', error);
+    } catch (_error) {
       if (toolsListContainer) {
+        // Removed empty block after this
         toolsListContainer.innerHTML =
           '<p class="empty-state">Could not load tools. Please try again later.</p>';
       }
     }
-  } else {
-    console.log('Tool list container (#tools-list) not found on this page.');
   }
 });
 

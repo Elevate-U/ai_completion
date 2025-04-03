@@ -19,11 +19,9 @@ let fetchAllToolsPromise = null;
 
 // Main function to load tool data
 export async function loadToolData() {
-  console.log('[dataLoader] loadToolData called');
   const urlParams = new URLSearchParams(window.location.search);
   const toolId = urlParams.get('id'); // Get the raw ID from URL
   if (!toolId) {
-    console.error('[dataLoader] Tool ID missing from URL');
     throw new Error('Tool ID missing from URL');
   }
 
@@ -36,21 +34,11 @@ export async function loadToolData() {
     const toolData = findToolInData(decodedToolId, allTools);
 
     if (toolData) {
-      console.log(
-        `[dataLoader] Found tool data for "${decodedToolId}" in cache.`
-      );
       return toolData;
     } else {
-      console.error(
-        `[dataLoader] Tool "${decodedToolId}" not found in loaded data.`
-      );
       throw new Error(`Tool data for "${decodedToolId}" could not be found.`);
     }
   } catch (error) {
-    console.error(
-      `[dataLoader] Error loading tool data for "${toolId}":`,
-      error
-    );
     // Re-throw the error to be handled by the caller
     throw new Error(
       `Tool data for "${toolId}" could not be loaded. ${error.message}`
@@ -60,19 +48,13 @@ export async function loadToolData() {
 
 // Function to load data for ALL tools
 export async function loadAllToolsData() {
-  console.log('[dataLoader] loadAllToolsData called');
-
   // Return cached data if available
   if (allToolsCache) {
-    console.log('[dataLoader] Returning cached tool data.');
     return allToolsCache;
   }
 
   // If a fetch is already in progress, return the existing promise
   if (isFetchingAllTools && fetchAllToolsPromise) {
-    console.log(
-      '[dataLoader] Fetch already in progress, returning existing promise.'
-    );
     return fetchAllToolsPromise;
   }
 
@@ -80,9 +62,6 @@ export async function loadAllToolsData() {
   isFetchingAllTools = true;
   fetchAllToolsPromise = (async () => {
     try {
-      console.log(
-        `[dataLoader] Fetching all tool data from API: ${API_ENDPOINT}`
-      );
       const response = await fetch(API_ENDPOINT);
       if (!response.ok) {
         throw new Error(
@@ -93,16 +72,9 @@ export async function loadAllToolsData() {
       if (!Array.isArray(data)) {
         throw new Error('API response is not an array.');
       }
-      console.log(
-        `[dataLoader] Successfully loaded data for ${data.length} tools from API.`
-      );
       allToolsCache = data; // Cache the data
       return data;
     } catch (error) {
-      console.error(
-        '[dataLoader] Error fetching or processing data from API:',
-        error
-      );
       allToolsCache = null; // Clear cache on error
       throw new Error(`Could not load tool data from API. ${error.message}`); // Re-throw
     } finally {

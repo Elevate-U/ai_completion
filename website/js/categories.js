@@ -38,14 +38,12 @@ let currentSearchTerm = '';
 function initCategoriesPage() {
   // Remove loadedData parameter
   // Accept loaded data
-  console.log('Initializing Categories Page...');
   // Data is now passed directly, no need for global check here.
   // Error handling for loading is done before calling this function.
   // const loadingIndicator = toolsContainer?.querySelector('.loading-indicator'); // Removed unused variable
 
   // Use module-level allToolsData
   if (!allToolsData || allToolsData.length === 0) {
-    console.error('initCategoriesPage called with invalid or empty data.');
     if (categorySidebarList)
       categorySidebarList.innerHTML =
         '<p class="error-message">Error: No category data loaded.</p>';
@@ -74,7 +72,6 @@ function initCategoriesPage() {
     allToolsData.some((tool) => tool.category === categoryFromUrl)
   ) {
     currentCategory = categoryFromUrl;
-    console.log(`Category from URL: ${currentCategory}`);
   } else {
     currentCategory = 'all'; // Default if no valid category in URL
   }
@@ -82,7 +79,6 @@ function initCategoriesPage() {
   displayCategorySidebar(); // Call without data
   displayTools(); // Call without data
   setupCategoriesEventListeners(); // Call without data
-  console.log('Categories Page Initialized.');
   // console.log('aiToolsData:', loadedData); // Log the passed data
 }
 
@@ -91,7 +87,6 @@ function displayCategorySidebar() {
   // Remove toolsData parameter
   // Accept data
   if (!categorySidebarList) {
-    console.warn('Category sidebar list element not found.');
     return;
   }
 
@@ -193,9 +188,6 @@ function displayTools() {
     !categoryTitle ||
     !categoryDescription
   ) {
-    console.warn(
-      'Required elements for displaying tools (container, title, description, tools) are missing.'
-    );
     // Attempt to display an error message even if some elements are missing
     if (toolsContainer) {
       toolsContainer.innerHTML =
@@ -229,9 +221,6 @@ function displayTools() {
       } else if (typeof tool.category === 'string') {
         return tool.category === currentCategory; // Fallback for string category
       } else {
-        console.error(
-          `Invalid category type: ${typeof tool.category} for tool: ${tool.name}`
-        );
         return false; // Skip this tool
       }
     });
@@ -290,8 +279,6 @@ function displayTools() {
 function setupCategoriesEventListeners() {
   // Remove toolsData parameter
   // Accept data (for consistency/future use)
-  console.log('[categories.js] Setting up event listeners...'); // Log setup start
-  console.log('[categories.js] toolsContainer element:', toolsContainer); // Log the element
 
   // Category sidebar click handlers
   if (categorySidebarList) {
@@ -322,8 +309,6 @@ function setupCategoriesEventListeners() {
         history.pushState({}, '', url); // Update URL bar
       }
     });
-  } else {
-    console.warn('Category sidebar list not found for event listener setup.');
   }
 
   // Search functionality (Moved inside this function)
@@ -339,8 +324,6 @@ function setupCategoriesEventListeners() {
         displayTools(); // Call without data
       }
     });
-  } else {
-    console.warn('Search input or button not found for event listener setup.');
   }
 
   // Add listener for tool cards and "View Details" buttons
@@ -355,28 +338,21 @@ function setupCategoriesEventListeners() {
         const toolId = toolCard
           ? toolCard.dataset.toolId
           : toolButton.dataset.toolId;
-        console.log(`Navigate to details for tool: ${toolId}`);
         window.location.href = `tool-details.html?id=${encodeURIComponent(toolId)}`;
       }
     });
-  } else {
-    console.warn('Tools container not found for event listener setup.');
   }
 } // Correct closing brace for setupCategoriesEventListeners
 
 // Initialize when DOM is loaded by fetching all tool data
 document.addEventListener('DOMContentLoaded', async () => {
   // Make async
-  console.log('[categories.js] DOMContentLoaded event fired.');
 
   try {
-    console.log('[categories.js] Attempting to load all tool data...');
     // Assign loaded data to module-level variable
     allToolsData = await loadAllToolsData();
-    console.log('[categories.js] All tool data loaded successfully.');
     initCategoriesPage(); // Initialize without passing data
-  } catch (error) {
-    console.error('[categories.js] Failed to load all tool data:', error);
+  } catch (_error) {
     // Display error message using new structure/classes
     if (categorySidebarList)
       categorySidebarList.innerHTML =

@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const blogPostList = document.querySelector('.blog-post-list');
 
   if (!blogPostList) {
-    console.error('Blog post list container not found!');
     return;
   }
 
@@ -43,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
               day: 'numeric',
             });
           }
-        } catch (e) {
-          console.warn(`Could not format date ${post.date}: ${e}`);
+        } catch (_e) {
+          /* No action needed on date format error */
         }
 
         listItem.innerHTML = `
@@ -62,8 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         blogPostList.appendChild(listItem);
       });
     })
-    .catch((error) => {
-      console.error('Error fetching or processing blog posts:', error);
+    .catch((_error) => {
       blogPostList.innerHTML =
         '<li>Error loading blog posts. Please try again later.</li>';
     });

@@ -9,10 +9,8 @@ export function showError(message) {
             </div>
         `;
   }
-  console.error(message);
 }
 
-export function logError(error) {
-  console.error('Error:', error);
+export function logError(_error) {
   // Additional error logging logic can be added here
 }

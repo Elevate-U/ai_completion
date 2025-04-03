@@ -13,7 +13,6 @@ export function renderFeatureList(features) {
   try {
     // Validate input
     if (!features) {
-      console.warn('renderFeatureList: No features provided');
       return '<div class="no-features">No feature information available</div>';
     }
 
@@ -52,8 +51,7 @@ export function renderFeatureList(features) {
                 ${featureCards.join('')}
             </div>
         `;
-  } catch (error) {
-    console.error('Error rendering feature list:', error);
+  } catch (_error) {
     return '<div class="error">Error displaying features</div>';
   }
 }
@@ -105,8 +103,7 @@ export function renderFeatureComparison(comparisonData) {
 
     // Actual implementation would process comparisonData here
     return '<div class="feature-comparison">Feature comparison will be rendered here</div>';
-  } catch (error) {
-    console.error('Error rendering feature comparison:', error);
+  } catch (_error) {
     return '<div class="error">Error displaying feature comparison</div>';
   }
 }

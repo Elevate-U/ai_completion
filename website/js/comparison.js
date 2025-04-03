@@ -29,12 +29,8 @@ const MAX_COMPARE_TOOLS = 8; // Increased limit
 
 // Initialize comparison page
 function initComparisonPage() {
-  console.log('Initializing Comparison Page...');
   // Check if aiToolsData is loaded (it should be by the time this runs)
   if (!aiToolsData || aiToolsData.length === 0) {
-    console.error(
-      'AI Tools data not available for comparison page initialization.'
-    );
     // Error handling might have already happened in the loader, but double-check
     if (
       comparisonPlaceholder &&
@@ -52,18 +48,12 @@ function initComparisonPage() {
   }
 
   // Ensure chart contexts are available
-  if (!featuresChartCtx || !comparisonChart2Ctx) {
-    console.warn(
-      'One or both chart canvas contexts not found. Charts will be disabled.'
-    );
-  }
 
   populateCategoryFilter();
   populateToolList(); // Initial population
   setupComparisonEventListeners();
   updateComparisonResults(); // Update based on initially selected tools (if any persisted)
   updateToolSelectionCounter(); // Initial counter update
-  console.log('Comparison Page Initialized.');
 }
 
 // Populate category filter dropdown
@@ -611,23 +601,12 @@ function setupComparisonEventListeners() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log('[comparison.js] DOMContentLoaded event fired.');
   try {
     // Use the centralized data loader to fetch data from the API
-    console.log(
-      '[comparison.js] Attempting to load all tool data via dataLoader...'
-    );
     aiToolsData = await loadAllToolsData(); // Assign to local variable
-    console.log(
-      `[comparison.js] Successfully loaded data for ${aiToolsData.length} tools via API.`
-    );
     // Now that data is loaded (or failed), initialize the page
     initComparisonPage();
   } catch (error) {
-    console.error(
-      '[comparison.js] Error loading tool data via dataLoader:',
-      error
-    );
     // Display error on the page
     if (comparisonPlaceholder) {
       comparisonPlaceholder.innerHTML = `<p>Error loading tool data: ${error.message}. Please try refreshing.</p>`;

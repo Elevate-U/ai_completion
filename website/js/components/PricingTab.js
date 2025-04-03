@@ -9,13 +9,9 @@ export async function renderPricingTabContent(tool) {
     pricingData?.scraped_pricing_tables &&
     Array.isArray(pricingData.scraped_pricing_tables) &&
     pricingData.scraped_pricing_tables.length > 0;
-  const dataSource = hasScrapedTables
+  const _dataSource = hasScrapedTables
     ? 'scraped_pricing_tables'
     : 'original pricing object';
-
-  console.log(
-    `PricingTab: Rendering pricing for "${tool.name}". Using data source: ${dataSource}.`
-  );
 
   // Check if pricingData is valid before rendering
   // Check if we have *any* valid pricing data (either scraped or original)
@@ -24,7 +20,6 @@ export async function renderPricingTabContent(tool) {
     typeof pricingData !== 'object' ||
     Object.keys(pricingData).length === 0
   ) {
-    console.warn(`PricingTab: No pricing data found for "${tool.name}".`);
     // Return only the inner content, the container is provided by the caller
     return `
         <h2>${tool.name} Pricing</h2>

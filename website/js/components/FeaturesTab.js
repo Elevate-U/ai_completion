@@ -2,7 +2,6 @@
 import { renderFeatureList } from './FeatureComponents.js';
 
 export function renderFeaturesTabContent(tool) {
-  console.log('renderFeaturesTabContent called');
   return `
         <section class="tool-section">
             <h2>Key Features</h2>

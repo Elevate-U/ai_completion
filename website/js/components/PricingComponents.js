@@ -75,27 +75,16 @@ export function renderPricingTable(pricingData) {
       pricingData?.overall_notes
     ) {
       // If only model/notes exist, PricingTab.js handles them. Return empty here.
-      console.log(
-        'PricingComponents: No pricing tiers found, but model/notes might exist.'
-      );
       return '';
     } else {
-      console.warn(
-        'PricingComponents: No valid pricing tiers or other pricing info found.'
-      );
       return '<p class="tab-no-data">No pricing information available.</p>';
     }
   }
-
-  console.log(
-    `PricingComponents: Rendering ${pricingData.tiers.length} pricing tiers.`
-  );
 
   // Iterate through the tiers array from the new structure
   const tiersHtml = pricingData.tiers
     .map((tier) => {
       if (!tier || typeof tier !== 'object') {
-        console.warn('PricingComponents: Skipping invalid tier object:', tier);
         return ''; // Skip invalid tier data
       }
 

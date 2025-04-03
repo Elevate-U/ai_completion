@@ -19,10 +19,8 @@ export function initializeMermaid() {
       mermaid.run({
         nodes: document.querySelectorAll('.mermaid'),
       });
-    } catch (error) {
-      console.error('Mermaid initialization failed:', error);
+    } catch (_error) {
+      /* Mermaid initialization failed, ignore */
     }
-  } else {
-    console.warn('Mermaid library not found.');
   }
 }

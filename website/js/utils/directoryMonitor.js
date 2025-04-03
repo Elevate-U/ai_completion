@@ -7,24 +7,20 @@ const directoryMonitorConfig = {
 
 // Function to check for changes in the directory
 async function checkForChanges() {
-  console.log('Checking for changes in directory...');
   try {
     const response = await fetch(directoryMonitorConfig.getFileListScript);
     if (!response.ok) {
       throw new Error('HTTP error! status: ' + response.status); // Changed to string concatenation
     }
-    const fileList = await response.json();
-    console.log('File list:', fileList);
+    const _fileList = await response.json();
     // TODO: Implement logic to compare the new file list to the cached file list
     // and update the website content accordingly.
-    console.log('No changes detected.');
-  } catch (error) {
-    console.error('Failed to get file list:', error);
+  } catch (_error) {
+    /* Failed to get file list, ignore */
   }
 }
 
 // Function to start monitoring the directory
 export function startDirectoryMonitor() {
-  console.log('Starting directory monitor...');
   setInterval(checkForChanges, directoryMonitorConfig.updateInterval);
 }
