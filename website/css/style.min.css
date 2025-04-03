@@ -747,20 +747,14 @@ html[data-theme='light'] .hero-section .subtitle {
 @media (min-width: 768px) {
   .hero-section {
     padding: 7.5rem 0 11.25rem; /* 120px 180px - Kept specific rem values */
-    padding: 5rem 0; /* 80px - Kept specific rem value */
-    text-align: left; /* Align hero text to the left on larger screens */
   }
 
   .hero-section h1 {
     font-size: 4rem;
-    font-size: 3.5rem;
   }
 
   .hero-section .subtitle {
     font-size: 1.5rem;
-    margin-left: 0; /* Remove auto margins for left alignment */
-    font-size: 1.3rem;
-    text-align: left;
   }
 }
 
@@ -1573,18 +1567,26 @@ html[data-theme='dark'] .search-bar button:hover {
   .nav-links {
     gap: 2rem;
     gap: var(--space-lg); /* 32px */
-    position: static;
-    display: flex !important; /* Override display: none for desktop */
-    flex-direction: row;
-    width: auto;
-    padding: 0;
-    border-top: none;
-    box-shadow: none;
   }
 
   .nav-link {
     padding: 0.5rem 1.5rem;
     padding: var(--space-xs) var(--space-md); /* 8px 24px */
+  }
+
+  .hero-section {
+    padding: 5rem 0; /* 80px - Kept specific rem value */
+    text-align: left; /* Align hero text to the left on larger screens */
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-section .subtitle {
+    margin-left: 0; /* Remove auto margins for left alignment */
+    font-size: 1.3rem;
+    text-align: left;
   }
 }
 
@@ -1681,6 +1683,16 @@ html[data-theme='dark'] .search-bar button:hover {
 @media (min-width: 768px) {
   .mobile-nav-toggle {
     display: none;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex !important; /* Override display: none for desktop */
+    flex-direction: row;
+    width: auto;
+    padding: 0;
+    border-top: none;
+    box-shadow: none;
   }
 }
 

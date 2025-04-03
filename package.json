@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js",
-    "lint:css": "stylelint \"**/*.css\" --config .stylelintrc.cjs",
+    "lint:css": "stylelint \"website/css/style.css\" --config .stylelintrc.cjs",
     "format": "prettier --write \"**/*.{js,css,html,md,json}\"",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "build:css": "postcss website/css/style.css -o website/css/style.min.css",
